@@ -1,4 +1,7 @@
 
-public class Terrain {
-
+public enum Terrain {
+	ABBAYE,
+	ROUTE,
+	VILLE,
+	CHAMPS
 }

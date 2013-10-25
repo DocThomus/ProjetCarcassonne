@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 
 public class Tuile {
-	Terrain [] tabCarac;// 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
-	boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
-	boolean [][] tabConnexitéBordure;
-	boolean [][] tabConnexitéChamps;
-	int bouclier;
-	Pion PionPlacé;
-	ArrayList<Tuile> tuileAdjacentes;
-	int sensTuile;
+	private Terrain [] tabCarac;// 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
+	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
+	private boolean [][] tabConnexitéBordure;
+	private boolean [][] tabConnexitéChamps;
+	private int bouclier;
+	private Pion PionPlacé;
+	private ArrayList<Tuile> tuileAdjacentes;
+	private int sensTuile;
 	
 	
 	public Tuile(Terrain [] terre, boolean [] presencechamps, boolean [][] connexitéchamps, boolean [][] connexitébordure, int bouclier){
@@ -42,8 +42,11 @@ public class Tuile {
 		this.tabCarac[(2+sens)%4]=this.tabCarac[(3+sens)%4];
 		this.tabCarac[(3+sens)%4]=temp;
 		
-		if (sens == 3)
-			sens = 7;
+		if (sens == 1) {
+			sens = 2;
+		} else if (sens == 3) {
+			sens = 6;
+		}
 		
 		boolean temp2 =this.tabPresenceChamps[0];
 		this.tabPresenceChamps[sens%8] = this.tabPresenceChamps[(1+sens)%8];
