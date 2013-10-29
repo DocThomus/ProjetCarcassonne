@@ -2,25 +2,25 @@ import java.util.ArrayList;
 
 
 public class Tuile {
-	private Terrain [] tabCarac;// 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
+	private Terrain [] tabCarac; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
 	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
 	private boolean [][] tabConnexitéBordure;
 	private boolean [][] tabConnexitéChamps;
-	private int bouclier;
+	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion PionPlacé;
 	private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
 	
 	
-	public Tuile(Terrain [] terre, boolean [] presencechamps, boolean [][] connexitéchamps, boolean [][] connexitébordure, int bouclier){
+	public Tuile(Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
 		// pré-requis : Terrain [5] terre;
-		//boolean [8] presencechamps;
-		//boolean [4][4] connexitébordure;
-		//boolean [8][8] connexitéchamps;
-		this.tabCarac=terre;
-		this.tabPresenceChamps=presencechamps;
-		this.tabConnexitéChamps=connexitéchamps;
-		this.tabConnexitéBordure=connexitébordure;
+		// boolean [8] presencechamps;
+		// boolean [4][4] connexitébordure;
+		// boolean [8][8] connexitéchamps;
+		this.tabCarac=caracs;
+		this.tabPresenceChamps=presenceChamps;
+		this.tabConnexitéBordure=connexiteBordure;
+		this.tabConnexitéChamps=connexiteChamps;
 		this.bouclier=bouclier;
 		
 	}
