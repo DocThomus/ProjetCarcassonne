@@ -271,5 +271,53 @@ public class Pioche {
 							{false, false, false, false, false, false, false, false}},
 					0)); // Position du bouclier.
 		}
+		
+		
+		// Tuile 12 : Ville qui traverse la tuile (ouest, centre, est) sans bouclier, champs au nord, champs au sud (x1).
+		for (int i = 0; i < 1; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
+					new boolean [] {true, true, false, false, true, true, false, false}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, true , true }, 
+							{false, false, false, false, false}, 
+							{false, true , false, false, true }, 
+							{false, true , false, true , false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, true , false, false, false, false, false, false},
+							{true , false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, true , false, false},
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 13 : Ville qui traverse la tuile (ouest, centre, est) avec bouclier, champs au nord, champs au sud (x2).
+		for (int i = 0; i < 1; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
+					new boolean [] {true, true, false, false, true, true, false, false}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, true , true }, 
+							{false, false, false, false, false}, 
+							{false, true , false, false, true }, 
+							{false, true , false, true , false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, true , false, false, false, false, false, false},
+							{true , false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, true , false, false},
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false}},
+					1)); // Position du bouclier.
+		}
 	}
 }
