@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Pioche {
@@ -298,7 +299,7 @@ public class Pioche {
 		
 		
 		// Tuile 13 : Ville qui traverse la tuile (ouest, centre, est) avec bouclier, champs au nord, champs au sud (x2).
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			this.pioche.add(new Tuile(
 					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {true, true, false, false, true, true, false, false}, // Présence des champs.
@@ -319,5 +320,92 @@ public class Pioche {
 							{false, false, false, false, false, false, false, false}},
 					1)); // Position du bouclier.
 		}
+		
+		
+		// Tuile 14 : Ville au nord et ville à l'ouest (disjointes et sans bouclier), champs au centre, est et sud (joints) (x2).
+		for (int i = 0; i < 2; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, true , true , true , false, false},
+							{false, false, true , false, true , true , false, false},
+							{false, false, true , true , false, true , false, false},
+							{false, false, true , true , true , false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		// Tuile 15 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
+		for (int i = 0; i < 3; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, true , false, false, true , true },
+							{false, false, true , false, false, false, true , true },
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, true , true , false, false, false, true },
+							{false, false, true , true , false, false, true , false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 16 : Ville au nord (sans bouclier), champs au centre, est, sud et ouest (joints) (x5).
+		for (int i = 0; i < 5; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, true , true , true , true , true },
+							{false, false, true , false, true , true , true , true },
+							{false, false, true , true , false, true , true , true },
+							{false, false, true , true , true , false, true , true },
+							{false, false, true , true , true , true , false, true },
+							{false, false, true , true , true , true , true , false}},
+					5)); // Position du bouclier.
+		}
+	}
+	
+	
+	public int random() {
+		int val = 0;
+		Random r = new Random();
+		val = r.nextInt(this.pioche.size()+1); // Un entier sera choisi entre 0 et 112
+		return val;
+	}
+	
+	
+	public Tuile piocheAleatoire(){
+		int val = this.random();
+		Tuile t = this.pioche.get(val); // On récupere la tuile à l'index qui est donné par la fonction random().
+		this.pioche.remove(val); // On suppprime la tuile de la pioche pour ne pas la repiocher.
+		return t;
 	}
 }
