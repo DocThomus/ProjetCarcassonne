@@ -391,6 +391,151 @@ public class Pioche {
 							{false, false, true , true , true , true , true , false}},
 					5)); // Position du bouclier.
 		}
+		
+		
+		// Tuile 17 : Ville au nord (sans bouclier), route à l'ouest et au sud (joints) champs à l'est (joints) (x3).
+		for (int i = 0; i < 3; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, true , false}, 
+							{false, false, true , false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, true , true , false, false, true },
+							{false, false, true , false, true , false, false, true },
+							{false, false, true , true , false, false, false, true },
+							{false, false, false, false, false, false, true , false},
+							{false, false, false, false, false, true , false, false},
+							{false, false, true , true , true , false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 18 : Ville au nord (sans bouclier), route à l'est et au sud (joints) champs à l'ouest (joints) (x3).
+		for (int i = 0; i < 3; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, true , false, false}, 
+							{false, true , false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, true , true , true },
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, true , false, false, false, false},
+							{false, false, true , false, false, false, true , true },
+							{false, false, true , false, false, true , false, true },
+							{false, false, true , false, false, true , true , false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 19 : Ville au nord (sans bouclier), route à l'ouest, est et au sud (disjoints avec croisement) (x3).
+		for (int i = 0; i < 3; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, true },
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, true , false, false, false, false},
+							{false, false, false, false, false, false, true , false},
+							{false, false, false, false, false, true , false, false},
+							{false, false, true , false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 20 : Ville au nord (sans bouclier), route à l'ouest et à l'est (joints), champs au sud (x3).
+		for (int i = 0; i < 3; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, true , true }, 
+							{false, false, false, false, false}, 
+							{false, true , false, false, true }, 
+							{false, true , false, true , false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, true },
+							{false, false, false, false, true , true , true , false},
+							{false, false, false, true , false, true , true , false},
+							{false, false, false, true , true , false, true , false},
+							{false, false, false, true , true , true , false, false},
+							{false, false, true , false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 21 : Route au nord, centre et au sud (joints), champs à l'ouest et à l'est (x8).
+		for (int i = 0; i < 8; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, true , false, true }, 
+							{false, false, false, false, false}, 
+							{true , false, false, false, true }, 
+							{false, false, false, false, false}, 
+							{true , false, true , false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, true , true , true },
+							{false, false, true , true , true , false, false, false},
+							{false, true , false, true , true , false, false, false},
+							{false, true , true , false, true , false, false, false},
+							{false, true , true , true , false, false, false, false},
+							{true , false, false, false, false, false, true , true },
+							{true , false, false, false, false, true , false, true },
+							{true , false, false, false, false, true , true , false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 22 : Route au sud et à l'ouest (joints), champs au nord et à l'est (x9).
+		for (int i = 0; i < 9; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.CHAMPS, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS}, // Caractéristiques des bords.
+					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, true , false}, 
+							{false, false, true , false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, true , true , true , true , false, false, true },
+							{true , false, true , true , true , false, false, true },
+							{true , true , false, true , true , false, false, true },
+							{true , true , true , false, true , false, false, true },
+							{true , true , true , true , false, false, false, true },
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{true , true , true , true , true , false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
 	}
 	
 	
