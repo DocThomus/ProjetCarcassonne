@@ -530,12 +530,83 @@ public class Pioche {
 							{true , true , false, true , true , false, false, true },
 							{true , true , true , false, true , false, false, true },
 							{true , true , true , true , false, false, false, true },
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, true , false},
+							{false, false, false, false, false, true , false, false},
 							{true , true , true , true , true , false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
+		
+		// Tuile 23 : Route au sud, à l'est et à l'ouest (disjoints), champs au nord (x4).
+		for (int i = 0; i < 4; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, true , true , false, false, false, false, true },
+							{true , false, true , false, false, false, false, true },
+							{true , true , false, false, false, false, false, true },
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, true , false, false, false, false},
+							{false, false, false, false, false, false, true , false},
+							{false, false, false, false, false, true , false, false},
+							{true , true , true , false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 24 : Route au sud, à l'est, au nord et à l'ouest (disjoints) (x1).
+		for (int i = 0; i < 1; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}, 
+							{false, false, false, false, false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, true },
+							{false, false, true , false, false, false, false, false},
+							{false, true , false, false, false, false, false, false},
+							{false, false, false, false, true , false, false, false},
+							{false, false, false, true , false, false, false, false},
+							{false, false, false, false, false, false, true , false},
+							{false, false, false, false, false, true , false, false},
+							{true , false, false, false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
+		
+		
+		// Tuile 25 : Route à l'est et à l'ouest (joints), ville au nord, champs au sud, tuile de base (x1).
+		for (int i = 0; i < 1; i++) {
+			this.pioche.add(new Tuile(
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+					new boolean [][] { // Tableau de connexité des caractéristiques.
+							{false, false, false, false, false}, 
+							{false, false, false, true , true }, 
+							{false, false, false, false, false}, 
+							{false, true , false, false, true }, 
+							{false, true , false, true , false}},
+					new boolean [][] { // Tableau de connexité des champs.
+							{false, false, false, false, false, false, false, true },
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, false, false, false, false},
+							{false, false, false, false, true , true , true , false},
+							{false, false, false, true , false, true , true , false},
+							{false, false, false, true , true , false, true , false},
+							{false, false, false, true , true , true , false, false},
+							{false, false, true , false, false, false, false, false}},
+					5)); // Position du bouclier.
+		}
 	}
 	
 	
