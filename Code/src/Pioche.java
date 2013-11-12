@@ -130,7 +130,7 @@ public class Pioche {
 		}
 		
 		
-		// Tuile 6 : Une seule ville (nord, ouest, est) sans bouclier, avec route au sud (x3).
+		// Tuile 6 : Une seule ville (nord, ouest, est) sans bouclier, avec route au sud (x1).
 		for (int i = 0; i < 1; i++) {
 			this.pioche.add(new Tuile(
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.ROUTE, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
@@ -613,7 +613,7 @@ public class Pioche {
 	public int random() {
 		int val = 0;
 		Random r = new Random();
-		val = r.nextInt(this.pioche.size()+1); // Un entier sera choisi entre 0 et 112
+		val = r.nextInt(this.pioche.size()+1); // Un entier sera choisi entre 0 et la taille de la pioche.
 		return val;
 	}
 	
