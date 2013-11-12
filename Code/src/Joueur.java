@@ -33,6 +33,7 @@ public class Joueur {
 	
 	public void ajoutPoints(int p) {
 		// Pré-requis : p est positif ou nul.
+		// A utiliser avec valeurAbbaye() ou valeurVille() ou valeurRoute()
 		this.score = this.score + p;
 	}
 	
