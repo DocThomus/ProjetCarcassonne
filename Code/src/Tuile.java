@@ -10,7 +10,8 @@ public class Tuile {
 	private Pion PionPlacé;
 	private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
-	
+	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
+	private int y; // ordonnée ...
 	
 	public Tuile(Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
 		// pré-requis : Terrain [5] terre;
@@ -71,6 +72,14 @@ public class Tuile {
 		else return false;
 	}
 
+	public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
+		// pré-requis : la pose de la tuile est légale
+		r.setTuile(this, x, y);
+		if (adjacente.get(0)!=null) {this.tuileAdjacentes.add(0,adjacente.get(0));}
+		if (adjacente.get(1)!=null) {this.tuileAdjacentes.add(1,adjacente.get(1));}
+		if (adjacente.get(2)!=null) {this.tuileAdjacentes.add(2,adjacente.get(2));}
+		if (adjacente.get(3)!=null) {this.tuileAdjacentes.add(3,adjacente.get(3));}
+	}
 	
 	
 	public ArrayList<Tuile> verifPresenceAbbaye (){
