@@ -16,20 +16,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.ABBAYE}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , true , true , true , true , true , true },
-							{true , false, true , true , true , true , true , true },
-							{true , true , false, true , true , true , true , true },
-							{true , true , true , false, true , true , true , true },
-							{true , true , true , true , false, true , true , true },
-							{true , true , true , true , true , false, true , true },
-							{true , true , true , true , true , true , false, true },
-							{true , true , true , true , true , true , true , false}},
+							{true},
+							{true , true},
+							{true , true , true},
+							{true , true , true , true},
+							{true , true , true , true , true},
+							{true , true , true , true , true , true},
+							{true , true , true , true , true , true , true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -40,20 +38,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.CHAMPS, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ABBAYE}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , true , true , true , true , true , true },
-							{true , false, true , true , true , true , true , true },
-							{true , true , false, true , true , true , true , true },
-							{true , true , true , false, true , true , true , true },
-							{true , true , true , true , false, true , true , true },
-							{true , true , true , true , true , false, true , true },
-							{true , true , true , true , true , true , false, true },
-							{true , true , true , true , true , true , true , false}},
+							{true},
+							{true , true},
+							{true , true , true},
+							{true , true , true , true},
+							{true , true , true , true , true},
+							{true , true , true , true , true , true},
+							{true , true , true , true , true , true , true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -64,20 +60,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.VILLE, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {false, false, false, false, false, false, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, true , true , true , true }, 
-							{true , false, true , true , true }, 
-							{true , true , false, true , true }, 
-							{true , true , true , false, true }, 
-							{true , true , true , true , false}},
+							{true}, 
+							{true , true}, 
+							{true , true , true}, 
+							{true , true , true , true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, false},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					4)); // Position du bouclier.
 		}
 		
@@ -88,20 +82,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {false, false, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, true , false, true , true }, 
-							{true , false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{true , true , false, false, true }, 
-							{true , true , false, true , false}},
+							{true}, 
+							{false, false}, 
+							{true , true , false}, 
+							{true , true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -112,20 +104,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {false, false, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, true , false, true , true }, 
-							{true , false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{true , true , false, false, true }, 
-							{true , true , false, true , false}},
+							{true}, 
+							{false, false}, 
+							{true , true , false}, 
+							{true , true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -136,20 +126,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.ROUTE, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {false, false, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, true , false, true , true }, 
-							{true , false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{true , true , false, false, true }, 
-							{true , true , false, true , false}},
+							{true}, 
+							{false, false}, 
+							{true , true , false}, 
+							{true , true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, false},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -160,20 +148,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.ROUTE, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {false, false, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, true , false, true , true }, 
-							{true , false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{true , true , false, false, true }, 
-							{true , true , false, true , false}},
+							{true}, 
+							{false, false}, 
+							{true , true , false}, 
+							{true , true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, false},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					4)); // Position du bouclier.
 		}
 		
@@ -184,20 +170,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, true , false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{true , false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{true , false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , true , true , false, false},
-							{false, false, true , false, true , true , false, false},
-							{false, false, true , true , false, true , false, false},
-							{false, false, true , true , true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, true , true},
+							{false, false, true , true , true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -208,20 +192,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, true , false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{true , false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{true , false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , true , true , false, false},
-							{false, false, true , false, true , true , false, false},
-							{false, false, true , true , false, true , false, false},
-							{false, false, true , true , true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, true , true},
+							{false, false, true , true , true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					0)); // Position du bouclier.
 		}
 		
@@ -232,20 +214,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, true , false}, 
-							{false, false, true , false, false}, 
-							{false, true , false, false, false}, 
-							{true , false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, true}, 
+							{true , false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, true , false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, true , false, false},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -256,20 +236,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, true , false}, 
-							{false, false, true , false, false}, 
-							{false, true , false, false, false}, 
-							{true , false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, true}, 
+							{true , false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, true , false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, true , false, false},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					0)); // Position du bouclier.
 		}
 		
@@ -280,20 +258,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {true, true, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{false, true , false, false, true }, 
-							{false, true , false, true , false}},
+							{false}, 
+							{false, false}, 
+							{false, true , false}, 
+							{false, true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , false, false, false, false, false, false},
-							{true , false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{true},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -304,20 +280,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
 					new boolean [] {true, true, false, false, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{false, true , false, false, true }, 
-							{false, true , false, true , false}},
+							{false}, 
+							{false, false}, 
+							{false, true , false}, 
+							{false, true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , false, false, false, false, false, false},
-							{true , false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{true},
+							{false, false},
+							{false, false, false},
+							{false, false, false, false},
+							{false, false, false, false, true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					1)); // Position du bouclier.
 		}
 		
@@ -328,20 +302,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , true , true , false, false},
-							{false, false, true , false, true , true , false, false},
-							{false, false, true , true , false, true , false, false},
-							{false, false, true , true , true , false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, true , true},
+							{false, false, true , true , true},
+							{false, false, false, false, false, false},
+							{false, false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -351,20 +323,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , false, false, true , true },
-							{false, false, true , false, false, false, true , true },
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, true , true , false, false, false, true },
-							{false, false, true , true , false, false, true , false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, false, false},
+							{false, false, false, false, false},
+							{false, false, true , true , false, false},
+							{false, false, true , true , false, false, true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -375,20 +345,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , true , true , true , true },
-							{false, false, true , false, true , true , true , true },
-							{false, false, true , true , false, true , true , true },
-							{false, false, true , true , true , false, true , true },
-							{false, false, true , true , true , true , false, true },
-							{false, false, true , true , true , true , true , false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, true , true},
+							{false, false, true , true , true},
+							{false, false, true , true , true , true},
+							{false, false, true , true , true , true , true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -399,20 +367,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, true , false}, 
-							{false, false, true , false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, true}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, true , true , false, false, true },
-							{false, false, true , false, true , false, false, true },
-							{false, false, true , true , false, false, false, true },
-							{false, false, false, false, false, false, true , false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, true , true , true , false, false, false}},
+							{false},
+							{false, false},
+							{false, false, true},
+							{false, false, true , true},
+							{false, false, false, false, false},
+							{false, false, false, false, false, true},
+							{false, false, true , true , true , false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -423,20 +389,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, true , false, false}, 
-							{false, true , false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, true}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, true , true , true },
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, true , false, false, false, true , true },
-							{false, false, true , false, false, true , false, true },
-							{false, false, true , false, false, true , true , false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, true , false, false},
+							{false, false, true , false, false, true},
+							{false, false, true , false, false, true , true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -447,20 +411,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, true },
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, false, false, false, false, true , false},
-							{false, false, false, false, false, true , false, false},
-							{false, false, true , false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, false, false, false},
+							{false, false, false, false, false, true},
+							{false, false, true , false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -471,20 +433,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{false, true , false, false, true }, 
-							{false, true , false, true , false}},
+							{false}, 
+							{false, false}, 
+							{false, true , false}, 
+							{false, true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, true },
-							{false, false, false, false, true , true , true , false},
-							{false, false, false, true , false, true , true , false},
-							{false, false, false, true , true , false, true , false},
-							{false, false, false, true , true , true , false, false},
-							{false, false, true , false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, false, true , true},
+							{false, false, false, true , true , true},
+							{false, false, true , false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -495,20 +455,18 @@ public class Pioche {
 					new Terrain [] {Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, true , false, true }, 
-							{false, false, false, false, false}, 
-							{true , false, false, false, true }, 
-							{false, false, false, false, false}, 
-							{true , false, true , false, false}},
+							{false}, 
+							{true , false}, 
+							{false, false, false}, 
+							{true , false, true , false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, true , true , true },
-							{false, false, true , true , true , false, false, false},
-							{false, true , false, true , true , false, false, false},
-							{false, true , true , false, true , false, false, false},
-							{false, true , true , true , false, false, false, false},
-							{true , false, false, false, false, false, true , true },
-							{true , false, false, false, false, true , false, true },
-							{true , false, false, false, false, true , true , false}},
+							{false},
+							{false, true},
+							{false, true , true},
+							{false, true , true , true},
+							{true , false, false, false, false},
+							{true , false, false, false, false, true},
+							{true , false, false, false, false, true , true}},
 					5)); // Position du bouclier.
 		}
 		
@@ -519,20 +477,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, true , false}, 
-							{false, false, true , false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, true}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , true , true , true , false, false, true },
-							{true , false, true , true , true , false, false, true },
-							{true , true , false, true , true , false, false, true },
-							{true , true , true , false, true , false, false, true },
-							{true , true , true , true , false, false, false, true },
-							{false, false, false, false, false, false, true , false},
-							{false, false, false, false, false, true , false, false},
-							{true , true , true , true , true , false, false, false}},
+							{true},
+							{true , true},
+							{true , true , true},
+							{true , true , true , true},
+							{false, false, false, false, false},
+							{false, false, false, false, false, true},
+							{true , true , true , true , true , false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -543,20 +499,18 @@ public class Pioche {
 					new Terrain [] {Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, true , true , false, false, false, false, true },
-							{true , false, true , false, false, false, false, true },
-							{true , true , false, false, false, false, false, true },
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, false, false, false, false, true , false},
-							{false, false, false, false, false, true , false, false},
-							{true , true , true , false, false, false, false, false}},
+							{true},
+							{true , true},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, false, false, false},
+							{false, false, false, false, false, true},
+							{true , true , true , false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -567,20 +521,18 @@ public class Pioche {
 					new Terrain [] {Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}, 
-							{false, false, false, false, false}},
+							{false}, 
+							{false, false}, 
+							{false, false, false}, 
+							{false, false, false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, true },
-							{false, false, true , false, false, false, false, false},
-							{false, true , false, false, false, false, false, false},
-							{false, false, false, false, true , false, false, false},
-							{false, false, false, true , false, false, false, false},
-							{false, false, false, false, false, false, true , false},
-							{false, false, false, false, false, true , false, false},
-							{true , false, false, false, false, false, false, false}},
+							{false},
+							{false, true},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, false, false, false},
+							{false, false, false, false, false, true},
+							{true , false, false, false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 		
@@ -591,20 +543,18 @@ public class Pioche {
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false, false, false, false, false}, 
-							{false, false, false, true , true }, 
-							{false, false, false, false, false}, 
-							{false, true , false, false, true }, 
-							{false, true , false, true , false}},
+							{false}, 
+							{false, false}, 
+							{false, true , false}, 
+							{false, true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
-							{false, false, false, false, false, false, false, true },
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, false, false, false, false},
-							{false, false, false, false, true , true , true , false},
-							{false, false, false, true , false, true , true , false},
-							{false, false, false, true , true , false, true , false},
-							{false, false, false, true , true , true , false, false},
-							{false, false, true , false, false, false, false, false}},
+							{false},
+							{false, false},
+							{false, false, false},
+							{false, false, false, true},
+							{false, false, false, true , true},
+							{false, false, false, true , true , true},
+							{false, false, true , false, false, false, false}},
 					5)); // Position du bouclier.
 		}
 	}
