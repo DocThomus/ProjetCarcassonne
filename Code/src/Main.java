@@ -38,7 +38,9 @@ public class Main {
 		adj = r.getTuileAdjacentes(x, y);
 		if(t1.verifPoseTuileLegale(r, adj, 0)){		
 			t1.poseTuile(adj, r, x, y);
-			System.out.println("tuile1 posé");
+			System.out.println("tuile1 posée");
+		} else {
+			System.out.println("tuile1 non posée");
 		}
 		
 		Tuile t2 = new Tuile(new Terrain [] {Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
@@ -65,7 +67,9 @@ public class Main {
 		adj = r.getTuileAdjacentes(x, y);
 		if(t2.verifPoseTuileLegale(r, adj, 0)){		
 			t2.poseTuile(adj, r, x, y);
-			System.out.println("tuile2 posé");
+			System.out.println("tuile2 posée");
+		} else {
+			System.out.println("tuile2 non posée");
 		}
 		
 	}

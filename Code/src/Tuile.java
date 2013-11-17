@@ -73,6 +73,7 @@ public class Tuile {
 	}
 	
 	public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
+		// TODO gestion de si la tuile est posée sur une tuile déjà existante.
 		// dans l'attribut ArrayList<Tuile> tuileAdjacentes, l'ordre correspond à leur place par rapport à la tuile qu'on veut poser : 0 = dessus, 1 = droite, 2 = dessous, 3 = à gauche
 		if (adjacente.get(0) == null && adjacente.get(1) == null && adjacente.get(2) == null && adjacente.get(3) == null) {
 			// On ne peut pas pose une tuile si elle n'est pas entourée d'au moins une tuile.
@@ -93,21 +94,30 @@ public class Tuile {
 
 	public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
 		// pré-requis : la pose de la tuile est légale
-		r.setTuile(this, x, y);
+		r.poseTuile(this, x, y);
 		this.x = x;
 		this.y = y;
 		
-		this.tuileAdjacentes.add(0,adjacente.get(0));
-		if (adjacente.get(0).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(0).tuileAdjacentes.add(2,this);} // ajoute this dans tuileAdjacente de la tuile du dessus si ce n'est pas une Tuile vide 
+		// Pour chaque voisin, a condition qu'il existe, on ajoute à cette tuile son nouveau voisin, et au voisin cette tuile.
+		if (adjacente.get(0) != null) {
+			this.tuileAdjacentes.add(0,adjacente.get(0));
+			this.tuileAdjacentes.get(0).tuileAdjacentes.add(2,this);
+		} 
 		
-		this.tuileAdjacentes.add(1,adjacente.get(1));
-		if (adjacente.get(1).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(1).tuileAdjacentes.add(3,this);}
+		if (adjacente.get(1) != null) {
+			this.tuileAdjacentes.add(1,adjacente.get(1));
+			this.tuileAdjacentes.get(1).tuileAdjacentes.add(3,this);
+		}
 		
-		this.tuileAdjacentes.add(2,adjacente.get(2));
-		if (adjacente.get(2).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(2).tuileAdjacentes.add(0,this);}
+		if (adjacente.get(2) != null) {
+			this.tuileAdjacentes.add(2,adjacente.get(2));
+			this.tuileAdjacentes.get(2).tuileAdjacentes.add(0,this);
+		}
 		
-		this.tuileAdjacentes.add(3,adjacente.get(3));
-		if (adjacente.get(3).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(3).tuileAdjacentes.add(1,this);}
+		if (adjacente.get(3) != null) {
+			this.tuileAdjacentes.add(3,adjacente.get(3));
+			this.tuileAdjacentes.get(3).tuileAdjacentes.add(1,this);
+		}
 	}
 	
 	
