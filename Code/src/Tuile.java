@@ -72,21 +72,30 @@ public class Tuile {
 		this.tabPresenceChamps[(7+sens)%8] = temp2;
 	}
 	
-	public boolean verifPoseTuileLegale (ArrayList<Tuile> adjacente, int sens){
+	public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
 		// dans l'attribut ArrayList<Tuile> tuileAdjacentes, l'ordre correspond à leur place par rapport à la tuile qu'on veut poser : 0 = dessus, 1 = droite, 2 = dessous, 3 = à gauche
-		if(  (this.tabCarac[0]==adjacente.get(0).tabCarac[2] || adjacente.get(0).tabCarac[0]==Terrain.VIDE)
-				&& (this.tabCarac[1]==adjacente.get(1).tabCarac[3] || adjacente.get(1).tabCarac[0]==Terrain.VIDE)
-				&& (this.tabCarac[2]==adjacente.get(2).tabCarac[0] || adjacente.get(2).tabCarac[0]==Terrain.VIDE) 
-				&& (this.tabCarac[3]==adjacente.get(3).tabCarac[1] || adjacente.get(3).tabCarac[0]==Terrain.VIDE) ){
-		
-		return true;
+		if (adjacente.get(0) == null && adjacente.get(1) == null && adjacente.get(2) == null && adjacente.get(3) == null) {
+			// On ne peut pas pose une tuile si elle n'est pas entourée d'au moins une tuile.
+			return false;
 		}
-		else return false;
+		else if(   (adjacente.get(0) != null && this.tabCarac[0]==adjacente.get(0).tabCarac[2])
+				&& (adjacente.get(1) != null && this.tabCarac[1]==adjacente.get(1).tabCarac[3])
+				&& (adjacente.get(2) != null && this.tabCarac[2]==adjacente.get(2).tabCarac[0]) 
+				&& (adjacente.get(3) != null && this.tabCarac[3]==adjacente.get(3).tabCarac[1])) {
+			// On vérifie la compatibilité des caractéristiques entre la tuile proposée et ses voisins.
+			// Pour chaque voisin, on vérifie qu'il existe, et seulement ensuite, on vérifie la correspondance des caracs.
+			return true;
+		} else {
+			// On retourne faux si les caracs des voisis ne correspondent pas.
+			return false;
+		}
 	}
 
 	public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
 		// pré-requis : la pose de la tuile est légale
 		r.setTuile(this, x, y);
+		this.x = x;
+		this.y = y;
 		
 		this.tuileAdjacentes.add(0,adjacente.get(0));
 		if (adjacente.get(0).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(0).tuileAdjacentes.add(2,this);} // ajoute this dans tuileAdjacente de la tuile du dessus si ce n'est pas une Tuile vide 
@@ -215,7 +224,6 @@ public class Tuile {
 		
 		return res;
 	}
-	
 	
 	
 	

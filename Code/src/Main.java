@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Pioche p = new Pioche();
-		Plateau r = new Plateau(150,75);
+		Plateau r = new Plateau();
 		Tuile t1 = new Tuile(
 				new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 				new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
@@ -36,7 +36,7 @@ public class Main {
 		int x = sc.nextInt();
 		int y = sc.nextInt();
 		adj = r.getTuileAdjacentes(x, y);
-		if(t1.verifPoseTuileLegale(adj,0)){		
+		if(t1.verifPoseTuileLegale(r, adj, 0)){		
 			t1.poseTuile(adj, r, x, y);
 			System.out.println("tuile1 posé");
 		}
@@ -63,7 +63,7 @@ public class Main {
 		x = sc.nextInt();
 		y = sc.nextInt();
 		adj = r.getTuileAdjacentes(x, y);
-		if(t2.verifPoseTuileLegale(adj,0)){		
+		if(t2.verifPoseTuileLegale(r, adj, 0)){		
 			t2.poseTuile(adj, r, x, y);
 			System.out.println("tuile2 posé");
 		}
