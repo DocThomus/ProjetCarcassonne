@@ -10,7 +10,8 @@ public class Tuile {
 	private Pion PionPlacé;
 	private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
-	
+	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
+	private int y; // ordonnée ...
 	
 	public Tuile(Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
 		// pré-requis : Terrain [5] terre;
@@ -22,7 +23,19 @@ public class Tuile {
 		this.tabConnexitéBordure=connexiteBordure;
 		this.tabConnexitéChamps=connexiteChamps;
 		this.bouclier=bouclier;
+		this.tuileAdjacentes=new ArrayList<Tuile>(4);
 		
+	}
+	
+	public Tuile (){
+		this.tabCarac= new Terrain[4];
+		for(int i =0;i<4;i++){
+		this.tabCarac[i]=Terrain.VIDE;
+		}
+		this.tabPresenceChamps= new boolean [1];
+		this.tabConnexitéBordure= new boolean [1][1];
+		this.tabConnexitéChamps=new boolean [1][1];
+		this.bouclier=5;
 	}
 	
 	public void retirePion(){
@@ -61,16 +74,32 @@ public class Tuile {
 	
 	public boolean verifPoseTuileLegale (ArrayList<Tuile> adjacente, int sens){
 		// dans l'attribut ArrayList<Tuile> tuileAdjacentes, l'ordre correspond à leur place par rapport à la tuile qu'on veut poser : 0 = dessus, 1 = droite, 2 = dessous, 3 = à gauche
-		if(  (this.tabCarac[0]==adjacente.get(0).tabCarac[2] || adjacente.get(0)==null)
-				&& (this.tabCarac[1]==adjacente.get(1).tabCarac[3] || adjacente.get(1)==null)
-				&& (this.tabCarac[2]==adjacente.get(2).tabCarac[0] || adjacente.get(2)==null) 
-				&& (this.tabCarac[3]==adjacente.get(3).tabCarac[1] || adjacente.get(3)==null) ){
+		if(  (this.tabCarac[0]==adjacente.get(0).tabCarac[2] || adjacente.get(0).tabCarac[0]==Terrain.VIDE)
+				&& (this.tabCarac[1]==adjacente.get(1).tabCarac[3] || adjacente.get(1).tabCarac[0]==Terrain.VIDE)
+				&& (this.tabCarac[2]==adjacente.get(2).tabCarac[0] || adjacente.get(2).tabCarac[0]==Terrain.VIDE) 
+				&& (this.tabCarac[3]==adjacente.get(3).tabCarac[1] || adjacente.get(3).tabCarac[0]==Terrain.VIDE) ){
 		
 		return true;
 		}
 		else return false;
 	}
 
+	public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
+		// pré-requis : la pose de la tuile est légale
+		r.setTuile(this, x, y);
+		
+		this.tuileAdjacentes.add(0,adjacente.get(0));
+		if (adjacente.get(0).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(0).tuileAdjacentes.add(2,this);} // ajoute this dans tuileAdjacente de la tuile du dessus si ce n'est pas une Tuile vide 
+		
+		this.tuileAdjacentes.add(1,adjacente.get(1));
+		if (adjacente.get(1).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(1).tuileAdjacentes.add(3,this);}
+		
+		this.tuileAdjacentes.add(2,adjacente.get(2));
+		if (adjacente.get(2).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(2).tuileAdjacentes.add(0,this);}
+		
+		this.tuileAdjacentes.add(3,adjacente.get(3));
+		if (adjacente.get(3).tabCarac[0]!=Terrain.VIDE) {this.tuileAdjacentes.get(3).tuileAdjacentes.add(1,this);}
+	}
 	
 	
 	public ArrayList<Tuile> verifPresenceAbbaye (){
@@ -170,7 +199,22 @@ public class Tuile {
 		else return false;
 	}
 	
-	
+	public int evalAbbayeFinPartie(Plateau r){
+		// pré-requis : tuile avec un pion, en fin de partie
+		// action : retourne la valeur d'une abbaye en fin de partie
+		int res=1; 
+		if ( r.getTuile(this.x-1,this.y+1)!=null ){ res++;}
+		if ( r.getTuile(this.x,this.y+1)!=null ){ res++;}
+		if ( r.getTuile(this.x+1,this.y+1)!=null ){ res++;}
+		if ( r.getTuile(this.x+1,this.y)!=null ){ res++;}
+		
+		if ( r.getTuile(this.x+1,this.y-1)!=null ){ res++;}
+		if ( r.getTuile(this.x,this.y-1)!=null ){ res++;}
+		if ( r.getTuile(this.x-1,this.y-1)!=null ){ res++;}
+		if ( r.getTuile(this.x-1,this.y)!=null ){ res++;}
+		
+		return res;
+	}
 	
 	
 	

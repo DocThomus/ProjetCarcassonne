@@ -3,5 +3,6 @@ public enum Terrain {
 	ABBAYE,
 	ROUTE,
 	VILLE,
-	CHAMPS
+	CHAMPS,
+	VIDE
 }
