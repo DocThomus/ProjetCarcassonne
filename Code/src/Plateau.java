@@ -40,31 +40,35 @@ private static int taillePlateau = 200;
 		return this.repere[x][y];
 	}
 	
+	public boolean isEmpty (int x, int y){
+		return (this.repere[x][y]==null);
+	}
+	
 	public ArrayList<Tuile> getTuileAdjacentes(int x, int y) {
 		// renvoie les tuile adjacente a un point précis pour faire les vérifications de légalité, poser la tuile etc...
 		// si il n'y a pas de tuile en renvoie une Tuile vide plutôt qu'un null pour éviter les problèmes par la suite
 		ArrayList<Tuile> tAdjacente= new ArrayList<Tuile>(4);
 		
-		if (this.getTuile(x, y+1) == null) { 
+		if (this.isEmpty(x, y+1)) { 
 			tAdjacente.add(0, null);
 		} else {
 			tAdjacente.add(0, this.getTuile(x, y+1));
 		}
 		
-		if (this.getTuile(x+1, y) == null) { 
+		if (this.isEmpty(x+1, y)) { 
 			tAdjacente.add(1, null);
 		} else {
 			tAdjacente.add(1, this.getTuile(x+1, y));
 		}
 		
-		if (this.getTuile(x, y-1) == null) { 
+		if (this.isEmpty(x, y-1)) { 
 			tAdjacente.add(2, null);
 		}
 		else {
 			tAdjacente.add(2, this.getTuile(x, y-1));
 		}
 		
-		if (this.getTuile(x-1, y) == null) {  
+		if (this.isEmpty(x-1, y)) {  
 			tAdjacente.add(3, null);
 		} else {
 			tAdjacente.add(3, this.getTuile(x-1, y));
@@ -72,6 +76,8 @@ private static int taillePlateau = 200;
 		
 		return tAdjacente;
 	}
+	
+	
 	
 	
 }
