@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Tuile {
@@ -38,6 +39,34 @@ public class Tuile {
 		this.bouclier=5;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tuile other = (Tuile) obj;
+		if (bouclier != other.bouclier)
+			return false;
+		if (sensTuile != other.sensTuile)
+			return false;
+		if (!Arrays.equals(tabCarac, other.tabCarac))
+			return false;
+		if (!Arrays.equals(tabConnexitéBordure, other.tabConnexitéBordure))
+			return false;
+		if (!Arrays.equals(tabConnexitéChamps, other.tabConnexitéChamps))
+			return false;
+		if (!Arrays.equals(tabPresenceChamps, other.tabPresenceChamps))
+			return false;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
+	}
+
 	public void retirePion(){
 		this.PionPlacé=null;
 	}
@@ -92,7 +121,7 @@ public class Tuile {
 		this.tabPresenceChamps[(7+sens)%8] = temp2;
 	}
 	
-	public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
+	/*public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
 		// TODO gestion de si la tuile est posée sur une tuile déjà existante.
 		// dans l'attribut ArrayList<Tuile> tuileAdjacentes, l'ordre correspond à leur place par rapport à la tuile qu'on veut poser : 0 = dessus, 1 = droite, 2 = dessous, 3 = à gauche
 		if (adjacente.get(0) == null && adjacente.get(1) == null && adjacente.get(2) == null && adjacente.get(3) == null) {
@@ -110,9 +139,32 @@ public class Tuile {
 			// On retourne faux si les caracs des voisis ne correspondent pas.
 			return false;
 		}
+	}*/
+	
+	public boolean verifPoseTuileLegale (Plateau p, int x, int y){
+		if(p.isEmpty(x,y)){ // Vérifie que l'emplacement est disponible
+			if(p.isEmpty(x-1, y) || p.getTuile(x-1, y).getCarac(1)==this.tabCarac[3]){ // Vérifie la compatibilité avec la tuile de gauche si elle existe
+				if(p.isEmpty(x, y+1) || p.getTuile(x, y+1).getCarac(2)==this.tabCarac[0]){ // Vérifie la compatibilité avec la tuile du haut si elle existe
+					if(p.isEmpty(x+1, y) || p.getTuile(x+1, y).getCarac(3)==this.tabCarac[1]){ // Vérifie la compatibilité avec la tuile de droite si elle existe
+						if(p.isEmpty(x, y-1) || p.getTuile(x, y-1).getCarac(0)==this.tabCarac[2]){ // Vérifie la compatibilité avec la tuile du bas si elle existe
+							if(!p.isEmpty(x-1, y) || !p.isEmpty(x, y+1) || !p.isEmpty(x+1, y) || !p.isEmpty(x, y-1) ){ // Vérifie si il y a au moins une tuile adjacentes
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void poseTuile (Plateau r, int x, int y){
+		r.poseTuile(this, x, y);
+		this.x = x;
+		this.y = y;
 	}
 
-	public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
+	/*public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
 		// pré-requis : la pose de la tuile est légale
 		r.poseTuile(this, x, y);
 		this.x = x;
@@ -138,7 +190,9 @@ public class Tuile {
 			this.tuileAdjacentes.add(3,adjacente.get(3));
 			this.tuileAdjacentes.get(3).tuileAdjacentes.add(1,this);
 		}
-	}
+	}*/
+	
+	
 	
 	
 }// fin de classe

@@ -26,5 +26,7 @@ public class Pion {
 		proprio.retirePion(this); // cf. retirePion(Pion) de la classe Joueur.
 		tuile.retirePion(); // cf. retirePion() de la classe Tuile.
 	}
+	
+	
 
 }

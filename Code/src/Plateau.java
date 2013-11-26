@@ -16,8 +16,8 @@ private static int taillePlateau = 200;
 					new boolean [][] { // Tableau de connexité des caractéristiques.
 							{false}, 
 							{false, false}, 
-							{false, true , false}, 
-							{false, true , false, true}},
+							{false, false , false}, 
+							{false, true , false, false}},
 					new boolean [][] { // Tableau de connexité des champs.
 							{false},
 							{false, false},
@@ -27,7 +27,7 @@ private static int taillePlateau = 200;
 							{false, false, false, true , true , true},
 							{false, false, true , false, false, false, false}},
 					5); // Position du bouclier.
-		tuileDeBase.poseTuile(getTuileAdjacentes(100, 100), this, 100, 100); // Place la tuile de base sur le plateau en position 100/100
+		tuileDeBase.poseTuile(this, 100, 100); // Place la tuile de base sur le plateau en position 100/100
 		//this.tuileDeBase = tuileDeBase; 
 	}
 

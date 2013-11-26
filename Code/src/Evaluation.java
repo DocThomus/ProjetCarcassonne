@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Evaluation {
 	private Tuile t;
 	private Plateau p;
-	private int position; // Dans l'Evaluation c'est la position de la caractéristique qui nous intéresse.
+	private int position; // Dans l'Evaluation c'est la position sur t de la caractéristique qui nous intéresse.
 	
 	public Evaluation (Tuile t, Plateau p, int pos){
 		this.t=t;
@@ -91,21 +91,35 @@ public class Evaluation {
 		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
 		boolean fini=false;
 		boolean impossible=false;
-		frontiere.add(this);
-		ArrayList<Evaluation>fils;
+		frontiere.add(0,this);
+		ArrayList<Evaluation> fils;
 		ArrayList<Tuile>construction=new ArrayList<Tuile>();
-		
+
 		while(!fini && !impossible){
 			fils=frontiere.get(0).genereFils();
+			
+			System.out.println("frontiere début : "+frontiere.size());
+			
 			if(!frontiere.isEmpty()){
-				if(fils.isEmpty()){impossible=true;}} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
-			else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);} // ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
+				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+			} 
+			
 			if(frontiere.isEmpty()){fini=true;}
+			
+			//**TEST
+			System.out.println("fils : "+fils.size());
+			System.out.println("dejaVus : "+dejaVus.size());
+			System.out.println("frontiere fin : "+frontiere.size());
+			System.out.println("fini : "+ fini + "impossible : " +impossible);
+			System.out.println("------");
+			//**TEST
 		}
+		
 		
 		if(!impossible){
 				// La boucle suivante met les Tuile des Evaluation de dejaVus dans construction, en éliminant les tuiles en double parmis les Evaluation 	
-			for(int i=0;i<dejaVus.size()-1;i++){ 
+			for(int i=0;i<dejaVus.size();i++){ 
 				if(!construction.contains(dejaVus.get(i).t)){
 					construction.add(dejaVus.get(i).t);
 				}
@@ -117,15 +131,23 @@ public class Evaluation {
 	
 	public void ajoutEtMaj (ArrayList<Evaluation>dejaVus, ArrayList<Evaluation>frontiere, ArrayList<Evaluation>fils){
 		// Ajoute dans dejaVus et frontiere les Evaluation de fils qui sont pas déja, et retire le pére de frontiere.
-		for (int i = 0; i < fils.size()-1; i++) {
-			if(!dejaVus.contains(fils.get(i))){
-				dejaVus.add(fils.get(i));
-				frontiere.add(fils.get(i));
+		boolean trouve =false;
+		for (int i = 0; i < fils.size(); i++) {
+			trouve=false;
+			for(int j=0; j<dejaVus.size();j++){
+				if( fils.equals(dejaVus.get(j)) ){
+					trouve=true;
+				}
 			}
+			if(!trouve){dejaVus.add(fils.get(i));
+			frontiere.add(fils.get(i));}
 		}
 		frontiere.remove(this);
 	}
 	
+	public boolean equals(Evaluation e){
+		return (this.t.equals(e.t) && this.position==e.position );
+	}
 	
 	
 	public ArrayList<Evaluation> genereFils(){
@@ -134,7 +156,7 @@ public class Evaluation {
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
 		boolean existe=true;
-		ArrayList<Evaluation>fils = new ArrayList();
+		ArrayList<Evaluation>fils = new ArrayList<Evaluation>();
 		
 		if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
 			
@@ -143,14 +165,17 @@ public class Evaluation {
 			
 			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
 			if(connex[1][0]){ 
+				System.out.println("connection haut gauche");
 				if(p.isEmpty(x+1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
 			}	
 			if(connex[2][0]){
+				System.out.println("connection haut bas");
 				if(p.isEmpty(x, y-1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
 			}
 			if(connex[3][0]){
+				System.out.println("connection haut droite");
 				if(p.isEmpty(x-1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
 			}
@@ -209,8 +234,8 @@ public class Evaluation {
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
 		}
 		
-		if(existe){return fils;}
-		else return new ArrayList();
+		if(existe){ return fils; }
+		else return new ArrayList<Evaluation>();
 		
 	}
 	

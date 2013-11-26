@@ -12,66 +12,73 @@ public class Main {
 		Pioche p = new Pioche();
 		Plateau r = new Plateau();
 		Tuile t1 = new Tuile(
-				new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
-				new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+				// Tuile 12 bis : Ville qui traverse la tuile ( nord, centre, sud) sans bouclier, champs a l'est et l'ouest (x1).
+				new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE}, // Caractéristiques des bords.
+				new boolean [] { false, false, true, true, false, false, true, true}, // Présence des champs.
 				new boolean [][] { // Tableau de connexité des caractéristiques.
-						{false, false, false, false, false}, 
-						{false, false, false, true , true }, 
-						{false, false, false, false, false}, 
-						{false, true , false, false, true }, 
-						{false, true , false, true , false}},
+						{false}, 
+						{false, false}, 
+						{true, false , false}, 
+						{false, false , false, false}},
 				new boolean [][] { // Tableau de connexité des champs.
-						{false, false, false, false, false, false, false, true },
-						{false, false, false, false, false, false, false, false},
-						{false, false, false, false, false, false, false, false},
-						{false, false, false, false, true , true , true , false},
-						{false, false, false, true , false, true , true , false},
-						{false, false, false, true , true , false, true , false},
-						{false, false, false, true , true , true , false, false},
-						{false, false, true , false, false, false, false, false}},
-				5);
-		ArrayList<Tuile> adj = new ArrayList<Tuile>();
+						{false},
+						{false, false},
+						{false, false, true},
+						{false, false, false, false},
+						{false, false, false, false, false},
+						{false, false, false, false, false, false},
+						{false, false, false, false, false, false, true}},
+				5); // Position du bouclier.
 		
 		Scanner sc = new Scanner(System.in);
 		int x = sc.nextInt();
 		int y = sc.nextInt();
-		adj = r.getTuileAdjacentes(x, y);
-		if(t1.verifPoseTuileLegale(r, adj, 0)){		
-			t1.poseTuile(adj, r, x, y);
+		
+		if(t1.verifPoseTuileLegale(r,x,y)){	
+			t1.poseTuile(r, x, y);
 			System.out.println("tuile1 posée");
 		} else {
 			System.out.println("tuile1 non posée");
+			
 		}
-		
-		Tuile t2 = new Tuile(new Terrain [] {Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
-				new boolean [] {true, true, true, true, true, true, true, true}, // Présence des champs.
+		// Tuile 15 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
+		Tuile t2 = new Tuile(
+				new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+				new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
 				new boolean [][] { // Tableau de connexité des caractéristiques.
-						{false, false, false, false, false}, 
-						{false, false, false, false, false}, 
-						{false, false, false, false, false}, 
-						{false, false, false, false, false}, 
-						{false, false, false, false, false}},
+						{false}, 
+						{false, false}, 
+						{false, false, false}, 
+						{false, false, false, false}},
 				new boolean [][] { // Tableau de connexité des champs.
-						{false, false, false, false, false, false, false, true },
-						{false, false, true , false, false, false, false, false},
-						{false, true , false, false, false, false, false, false},
-						{false, false, false, false, true , false, false, false},
-						{false, false, false, true , false, false, false, false},
-						{false, false, false, false, false, false, true , false},
-						{false, false, false, false, false, true , false, false},
-						{true , false, false, false, false, false, false, false}},
-				5);
+						{false},
+						{false, false},
+						{false, false, true},
+						{false, false, false, false},
+						{false, false, false, false, false},
+						{false, false, true , true , false, false},
+						{false, false, true , true , false, false, true}},
+				5); // Position du bouclier.
 		
 		x = sc.nextInt();
 		y = sc.nextInt();
-		adj = r.getTuileAdjacentes(x, y);
-		if(t2.verifPoseTuileLegale(r, adj, 0)){		
-			t2.poseTuile(adj, r, x, y);
+
+		if(t2.verifPoseTuileLegale(r,x,y)){		
+			t2.poseTuile(r, x, y);
 			System.out.println("tuile2 posée");
 		} else {
 			System.out.println("tuile2 non posée");
 		}
 		
+		Evaluation e = new Evaluation(r.getTuile(100,100),r,0);
+		/*boolean [][] connex = e.t.getConnexitéBordure();
+		System.out.println(connex[1][0]);
+		System.out.println(connex[2][0]);
+		System.out.println(connex[3][0]);*/
+		System.out.println("000");
+		ArrayList<Tuile>c=e.evalConstruction();
+		System.out.println("000");
+		System.out.println(e.valeurVille(c));
 	}
 
 }
