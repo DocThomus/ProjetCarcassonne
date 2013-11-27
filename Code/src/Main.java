@@ -96,6 +96,7 @@ public class Main {
 		}
 		else{Evaluation pionT = new Evaluation(t2,r,choix);
 			if(t1.verifPosePionLegale(pionT)){
+				System.out.println("Pion légale");
 				t1.posePion(p1,choix);
 			}
 		}

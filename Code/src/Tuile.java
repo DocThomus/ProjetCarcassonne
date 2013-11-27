@@ -82,11 +82,11 @@ public class Tuile {
 	
 	public boolean verifPosePionLegale(Evaluation e){
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
-		boolean autrePion = false;
+		boolean autrePion = true;
 		for(int i=0;i<evalPosePion.size();i++){
 			if(evalPosePion.get(i).getT().PionPlacé!=null){ //Si il y a un pion sur cette tuile et ...
 				if(evalPosePion.get(i).getT().PionPlacé.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
-					autrePion=true; // C'est qu'il y a déjà un ou plusieurs pion.
+					autrePion=false; // C'est qu'il y a déjà un ou plusieurs pion.
 				}
 			}	
 		}
