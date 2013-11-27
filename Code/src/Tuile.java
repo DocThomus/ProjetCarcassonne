@@ -66,6 +66,32 @@ public class Tuile {
 			return false;
 		return true;
 	}
+	
+	public void posePion(Joueur j, int pos){
+		// Il faudrait empêcher les gens de poser un pion au milieu si c'est une route ou une ville, ils doivent le poser sur un des bord( ce qui ne chage absolument rien pour eux).
+		if(j.getTabPions().size()<7){
+			
+		Pion p = new Pion(j,this,pos);
+		j.getTabPions().add(p);
+		this.PionPlacé=p;
+		System.out.println("Pion placé");
+		}
+		else{ System.out.println("Vous n'avez plus de pions");}
+		
+	}
+	
+	public boolean verifPosePionLegale(Evaluation e){
+		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
+		boolean autrePion = false;
+		for(int i=0;i<evalPosePion.size();i++){
+			if(evalPosePion.get(i).getT().PionPlacé!=null){ //Si il y a un pion sur cette tuile et ...
+				if(evalPosePion.get(i).getT().PionPlacé.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
+					autrePion=true; // C'est qu'il y a déjà un ou plusieurs pion.
+				}
+			}	
+		}
+		return autrePion;
+	}
 
 	public void retirePion(){
 		this.PionPlacé=null;

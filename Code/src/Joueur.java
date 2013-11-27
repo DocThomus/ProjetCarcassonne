@@ -9,7 +9,7 @@ public class Joueur {
 	public Joueur(int id) {
 		this.identifiant = id;
 		this.score = 0;
-		this.tabPions = null;
+		this.tabPions = new ArrayList<Pion>();
 	}
 	
 	public int getIdentifiant() {
@@ -25,6 +25,10 @@ public class Joueur {
 	public int getNbPions() {
 		// Remarque : Un joueur peut avoir entre 0 et 7 pions.
 		return this.tabPions.size();
+	}
+	
+	public ArrayList<Pion> getTabPions(){
+		return this.tabPions;
 	}
 	
 	public int getScore() {

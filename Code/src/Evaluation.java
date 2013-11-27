@@ -12,6 +12,13 @@ public class Evaluation {
 		this.position=pos;
 	}
 	
+	public Tuile getT(){
+		return t;
+	}
+	public int getPosition(){
+		return position;
+	}
+	
 	
 	//***************BLOC ABBAYE**************************
 	public ArrayList<Tuile> verifPresenceAbbaye (){
@@ -84,6 +91,8 @@ public class Evaluation {
 		return res;
 	}
 	
+	
+	
 	public ArrayList<Tuile> evalConstruction(){
 		// Renvoie la liste de Tuile composant la construction(route ou ville) qui est situé sur t.getCarac(position), si la construction est terminée.
 		// Sinon renvoie une liste vide.
@@ -92,6 +101,7 @@ public class Evaluation {
 		boolean fini=false;
 		boolean impossible=false;
 		frontiere.add(0,this);
+		dejaVus.add(0,this);
 		ArrayList<Evaluation> fils;
 		ArrayList<Tuile>construction=new ArrayList<Tuile>();
 
@@ -127,8 +137,35 @@ public class Evaluation {
 		}
 		System.out.println("construction : "+construction.size());
 		return construction;
-		
 	}
+	
+	public ArrayList<Evaluation> evalPosePion(){
+		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
+		// Contrairement a evalConstruction, on conserve position  ce qui permet de vérifier la présence de pion.
+		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
+		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
+		boolean fini=false;
+		boolean impossible=false;
+		frontiere.add(0,this);
+		dejaVus.add(0,this);
+		ArrayList<Evaluation> fils;
+		ArrayList<Tuile>construction=new ArrayList<Tuile>();
+
+		while(!fini && !impossible){
+			fils=frontiere.get(0).genereFils();
+			
+			if(!frontiere.isEmpty()){
+				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
+				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+			} 
+			
+			if(frontiere.isEmpty()){fini=true;}
+			
+		}
+		System.out.println("evalPosePoin fini :" + dejaVus.size() );
+		return dejaVus;
+	}
+	
 	
 	public void ajoutEtMaj (ArrayList<Evaluation>dejaVus, ArrayList<Evaluation>frontiere, ArrayList<Evaluation>fils){
 		// Ajoute dans dejaVus et frontiere les Evaluation de fils qui sont pas déja, et retire le pére de frontiere.
@@ -166,17 +203,17 @@ public class Evaluation {
 			
 			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
 			if(connex[1][0]){ 
-				System.out.println("connection haut gauche");
+				//System.out.println("connection haut gauche");
 				if(p.isEmpty(x+1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
 			}	
 			if(connex[2][0]){
-				System.out.println("connection haut bas");
+				//System.out.println("connection haut bas");
 				if(p.isEmpty(x, y-1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
 			}
 			if(connex[3][0]){
-				System.out.println("connection haut droite");
+				//System.out.println("connection haut droite");
 				if(p.isEmpty(x-1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
 			}

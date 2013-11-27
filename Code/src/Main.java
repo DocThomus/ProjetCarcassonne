@@ -30,7 +30,7 @@ public class Main {
 						{false, false, false, false, false, false, true}},
 				5); // Position du bouclier.
 		
-		
+		Joueur p1 = new Joueur(1);
 		int x;int y; int rota;
 		boolean poser=false;
 		Scanner sc = new Scanner(System.in);
@@ -49,7 +49,17 @@ public class Main {
 			} 
 			else {System.out.println("tuile1 non posée");	}
 		}
-		
+		System.out.println("Voulez-vous poser un pion, si oui indiquer sa position (0,1,2,3,4) sinon 5");
+		int choix = sc.nextInt();
+		if(choix>4){
+			System.out.println("Pion non posé");
+		}
+		else{Evaluation pionT = new Evaluation(t1,r,choix);
+			if(t1.verifPosePionLegale(pionT)){
+				System.out.println("Pion légale");
+				t1.posePion(p1,choix);
+			}
+		}
 		// Tuile 15 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
 		Tuile t2 = new Tuile(
 				new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
@@ -78,6 +88,18 @@ public class Main {
 		} else {
 			System.out.println("tuile2 non posée");
 		}
+		
+		System.out.println("Voulez-vous poser un pion, si oui indiquer sa position (0,1,2,3,4) sinon 5");
+		choix = sc.nextInt();
+		if(choix>4){
+			System.out.println("Pion non posé");
+		}
+		else{Evaluation pionT = new Evaluation(t2,r,choix);
+			if(t1.verifPosePionLegale(pionT)){
+				t1.posePion(p1,choix);
+			}
+		}
+
 		
 		Evaluation e = new Evaluation(r.getTuile(100,100),r,0);
 		/*boolean [][] connex = e.t.getConnexitéBordure();
