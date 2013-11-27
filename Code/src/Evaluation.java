@@ -67,7 +67,7 @@ public class Evaluation {
 	
 	public int valeurRoute(ArrayList<Tuile>route){
 		int res=0;
-		for(int i=0;i<route.size()-1;i++){
+		for(int i=0;i<route.size();i++){
 			res++;
 		}
 		return res;
@@ -75,7 +75,7 @@ public class Evaluation {
 	
 	public int valeurVille(ArrayList<Tuile>ville){
 		int res=0;
-		for(int i=0;i<ville.size()-1;i++){
+		for(int i=0;i<ville.size();i++){
 			res=res+2;
 			if(ville.get(i).getBouclier()!=5){
 				res=res+2;
@@ -111,7 +111,7 @@ public class Evaluation {
 			System.out.println("fils : "+fils.size());
 			System.out.println("dejaVus : "+dejaVus.size());
 			System.out.println("frontiere fin : "+frontiere.size());
-			System.out.println("fini : "+ fini + "impossible : " +impossible);
+			System.out.println("fini : "+ fini + ", impossible : " +impossible);
 			System.out.println("------");
 			//**TEST
 		}
@@ -125,6 +125,7 @@ public class Evaluation {
 				}
 			}			
 		}
+		System.out.println("construction : "+construction.size());
 		return construction;
 		
 	}
@@ -132,14 +133,14 @@ public class Evaluation {
 	public void ajoutEtMaj (ArrayList<Evaluation>dejaVus, ArrayList<Evaluation>frontiere, ArrayList<Evaluation>fils){
 		// Ajoute dans dejaVus et frontiere les Evaluation de fils qui sont pas déja, et retire le pére de frontiere.
 		boolean trouve =false;
-		for (int i = 0; i < fils.size(); i++) {
+		for (int i = 0; i < fils.size(); i++) { // Pour chaque Evaluation dans fils...
 			trouve=false;
-			for(int j=0; j<dejaVus.size();j++){
-				if( fils.equals(dejaVus.get(j)) ){
+			for(int j=0; j<dejaVus.size();j++){// et pour chaque Evaluation dans dejaVus...
+				if( fils.get(i).equals(dejaVus.get(j)) ){  // ... on vérifie si le fils est dans dejaVus
 					trouve=true;
 				}
 			}
-			if(!trouve){dejaVus.add(fils.get(i));
+			if(!trouve){dejaVus.add(fils.get(i)); // Si il n'y était pas on l'ajoute a dejaVus et frontiere
 			frontiere.add(fils.get(i));}
 		}
 		frontiere.remove(this);

@@ -30,17 +30,26 @@ public class Main {
 						{false, false, false, false, false, false, true}},
 				5); // Position du bouclier.
 		
-		Scanner sc = new Scanner(System.in);
-		int x = sc.nextInt();
-		int y = sc.nextInt();
 		
-		if(t1.verifPoseTuileLegale(r,x,y)){	
-			t1.poseTuile(r, x, y);
-			System.out.println("tuile1 posée");
-		} else {
-			System.out.println("tuile1 non posée");
+		int x;int y; int rota;
+		boolean poser=false;
+		Scanner sc = new Scanner(System.in);
+		while(!poser){
+			 x = sc.nextInt();
+			 y = sc.nextInt();
+			rota = sc.nextInt();
+			if (rota==1 || rota==-1){
+				t1.rotation(rota);
+			}
 			
+			if(t1.verifPoseTuileLegale(r,x,y)){	
+				t1.poseTuile(r, x, y);
+				poser=true;
+				System.out.println("tuile1 posée");
+			} 
+			else {System.out.println("tuile1 non posée");	}
 		}
+		
 		// Tuile 15 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
 		Tuile t2 = new Tuile(
 				new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
