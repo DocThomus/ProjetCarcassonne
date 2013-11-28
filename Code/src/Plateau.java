@@ -16,8 +16,8 @@ private static int taillePlateau = 200;
 					new boolean [][] { // Tableau de connexité des caractéristiques.
 							{false}, 
 							{false, false}, 
-							{false, false , false}, 
-							{false, true , false, false}},
+							{false, true , false}, 
+							{false, true , false, true}},
 					new boolean [][] { // Tableau de connexité des champs.
 							{false},
 							{false, false},

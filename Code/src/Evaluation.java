@@ -108,16 +108,16 @@ public class Evaluation {
 		while(!fini && !impossible){
 			fils=frontiere.get(0).genereFils();
 			
-			System.out.println("frontiere début : "+frontiere.size());
-			
 			if(!frontiere.isEmpty()){
-				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
+				if(fils.isEmpty()){impossible=true;
+				System.out.println("La construction n'est pas terminée");
+				} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
 				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
 			} 
 			
 			if(frontiere.isEmpty()){fini=true;}
 			
-			//**TEST
+			//**TEST pour voir les changement
 			System.out.println("fils : "+fils.size());
 			System.out.println("dejaVus : "+dejaVus.size());
 			System.out.println("frontiere fin : "+frontiere.size());
@@ -139,32 +139,6 @@ public class Evaluation {
 		return construction;
 	}
 	
-	public ArrayList<Evaluation> evalPosePion(){
-		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
-		// Contrairement a evalConstruction, on conserve position  ce qui permet de vérifier la présence de pion.
-		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
-		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
-		boolean fini=false;
-		boolean impossible=false;
-		frontiere.add(0,this);
-		dejaVus.add(0,this);
-		ArrayList<Evaluation> fils;
-		ArrayList<Tuile>construction=new ArrayList<Tuile>();
-
-		while(!fini && !impossible){
-			fils=frontiere.get(0).genereFils();
-			
-			if(!frontiere.isEmpty()){
-				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
-				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
-			} 
-			
-			if(frontiere.isEmpty()){fini=true;}
-			
-		}
-		System.out.println("evalPosePoin fini :" + dejaVus.size() );
-		return dejaVus;
-	}
 	
 	
 	public void ajoutEtMaj (ArrayList<Evaluation>dejaVus, ArrayList<Evaluation>frontiere, ArrayList<Evaluation>fils){
@@ -202,20 +176,24 @@ public class Evaluation {
 			else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} // Sinon on l'ajoute aux fils
 			
 			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
-			if(connex[1][0]){ 
+			if(connex[0][0]){ 
 				//System.out.println("connection haut gauche");
 				if(p.isEmpty(x+1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
 			}	
-			if(connex[2][0]){
+			if(connex[1][0]){
 				//System.out.println("connection haut bas");
 				if(p.isEmpty(x, y-1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
 			}
-			if(connex[3][0]){
+			if(connex[2][0]){
 				//System.out.println("connection haut droite");
 				if(p.isEmpty(x-1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+			}
+			if(connex[3][0]){
+				//System.out.println("connection avec le centre") : inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
 			}
 			
 		}
@@ -224,23 +202,46 @@ public class Evaluation {
 			if(p.isEmpty(x+1, y)){existe=false;}
 			else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
 			
-			if(connex[1][0]){
+			if(connex[0][0]){
 				if(p.isEmpty(x, y+1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
 	
-			if(connex[2][1]){
+			if(connex[1][1]){
 				if(p.isEmpty(x, y-1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
 			
-			if(connex[3][1]){
+			if(connex[2][1]){
 				if(p.isEmpty(x-1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+			if(connex[3][1]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
 			
 		}
 		
 		if(position==2){
 			if(p.isEmpty(x, y-1)){existe=false;}
 			else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+			
+			if(connex[1][0]){
+				if(p.isEmpty(x, y+1)){existe=false;}
+				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+	
+			if(connex[1][1]){
+				if(p.isEmpty(x+1, y)){existe=false;}
+				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+			
+			if(connex[2][2]){
+				if(p.isEmpty(x-1, y)){existe=false;}
+				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+			if(connex[3][2]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+		}
+		
+		if(position==3){
+			if(p.isEmpty(x-1, y)){existe=false;}
+			else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
 			
 			if(connex[2][0]){
 				if(p.isEmpty(x, y+1)){existe=false;}
@@ -250,26 +251,20 @@ public class Evaluation {
 				if(p.isEmpty(x+1, y)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
 			
-			if(connex[3][2]){
-				if(p.isEmpty(x-1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
-		}
-		
-		if(position==3){
-			if(p.isEmpty(x-1, y)){existe=false;}
-			else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
-			
-			if(connex[3][0]){
-				if(p.isEmpty(x, y+1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
-	
-			if(connex[3][1]){
-				if(p.isEmpty(x+1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
-			
-			if(connex[3][2]){
+			if(connex[2][2]){
 				if(p.isEmpty(x, y-1)){existe=false;}
 				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+			if(connex[3][3]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+		}
+		
+		if(position==4){
+			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
+			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
+			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
+			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
+			
 		}
 		
 		if(existe){ return fils; }
@@ -277,7 +272,136 @@ public class Evaluation {
 		
 	}
 	
+	///****Bloc concernant les Evaluation utilisé pour la gestion des pions, il s'agit de fonction presque identique à celle utilisée pour les construction  
 	
+	public ArrayList<Evaluation> evalPosePion(){
+		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
+		// Contrairement a evalConstruction, on conserve position ce qui permet de vérifier la présence de pion.
+		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
+		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
+		boolean fini=false;
+		boolean impossible=false;
+		frontiere.add(0,this);
+		dejaVus.add(0,this);
+		ArrayList<Evaluation> fils;
+
+		while(!fini && !impossible){
+			fils=frontiere.get(0).genereFilsPion();
+			
+			if(!frontiere.isEmpty()){
+				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
+				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+			} 
+			
+			if(frontiere.isEmpty()){fini=true;}
+			
+		}
+		//System.out.println("evalPosePoin fini :" + dejaVus.size() );
+		return dejaVus;
+	}
+	
+	public ArrayList<Evaluation> genereFilsPion(){
+		// Action : Renvoie les Evaluation fils  
+		// Contrairement a genereFils, le boolean existe ne sert plus a rien puisqu'on veut connaître les Evaluation d'une construction même si elle n'est pas fini (pour savoir si il y a déjà des pions dessus).
+		boolean [][] connex = t.getConnexitéBordure();
+		int x= t.getX(); // Pour simplifier la lecture de la suite.
+		int y= t.getY();
+		ArrayList<Evaluation>fils = new ArrayList<Evaluation>();
+		
+		if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
+			
+			if(!p.isEmpty(x, y+1)){
+			fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} 
+			
+			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
+			if(connex[0][0]){ 
+				//System.out.println("connection haut gauche");
+				if(!p.isEmpty(x+1, y)){
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+			}	
+			if(connex[1][0]){
+				//System.out.println("connection haut bas");
+				if(!p.isEmpty(x, y-1)){
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+			}
+			if(connex[2][0]){
+				//System.out.println("connection haut droite");
+				if(!p.isEmpty(x-1, y)){
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+			}
+			if(connex[3][0]){
+				//System.out.println("connection avec le centre") : inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+			
+		}
+		
+		if(position==1){
+			if(!p.isEmpty(x+1, y)){
+			fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+			
+			if(connex[0][0]){
+				if(!p.isEmpty(x, y+1)){
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+	
+			if(connex[1][1]){
+				if(!p.isEmpty(x, y-1)){
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+			
+			if(connex[2][1]){
+				if(!p.isEmpty(x-1, y)){
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+			if(connex[3][1]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+			
+		}
+		
+		if(position==2){
+			if(!p.isEmpty(x, y-1)){
+			fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+			
+			if(connex[1][0]){
+				if(!p.isEmpty(x, y+1)){
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+	
+			if(connex[1][1]){
+				if(!p.isEmpty(x+1, y)){
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+			
+			if(connex[2][2]){
+				if(!p.isEmpty(x-1, y)){
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+			if(connex[3][2]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+		}
+		
+		if(position==3){
+			if(!p.isEmpty(x-1, y)){
+			fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+			
+			if(connex[2][0]){
+				if(!p.isEmpty(x, y+1)){
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+	
+			if(connex[2][1]){
+				if(!p.isEmpty(x+1, y)){
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+			
+			if(connex[2][2]){
+				if(!p.isEmpty(x, y-1)){
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+			if(connex[3][3]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+			}
+		}
+		
+		if(position==4){
+			fils.add(this);
+		}
+		return fils; 		
+	}
 	
 	
 }// fin de classe

@@ -28,17 +28,6 @@ public class Tuile {
 		
 	}
 	
-	public Tuile (){
-		this.tabCarac= new Terrain[4];
-		for(int i =0;i<4;i++){
-		this.tabCarac[i]=Terrain.VIDE;
-		}
-		this.tabPresenceChamps= new boolean [1];
-		this.tabConnexitéBordure= new boolean [1][1];
-		this.tabConnexitéChamps=new boolean [1][1];
-		this.bouclier=5;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -68,13 +57,12 @@ public class Tuile {
 	}
 	
 	public void posePion(Joueur j, int pos){
-		// Il faudrait empêcher les gens de poser un pion au milieu si c'est une route ou une ville, ils doivent le poser sur un des bord( ce qui ne chage absolument rien pour eux).
-		if(j.getTabPions().size()<7){
-			
-		Pion p = new Pion(j,this,pos);
-		j.getTabPions().add(p);
-		this.PionPlacé=p;
-		System.out.println("Pion placé");
+		//pré-requis : la pose du pion est légale
+		if(j.getTabPions().size()<7){			
+			Pion p = new Pion(j,this,pos);
+			j.getTabPions().add(p);
+			this.PionPlacé=p;
+			System.out.println("Pion placé");
 		}
 		else{ System.out.println("Vous n'avez plus de pions");}
 		
@@ -86,7 +74,8 @@ public class Tuile {
 		for(int i=0;i<evalPosePion.size();i++){
 			if(evalPosePion.get(i).getT().PionPlacé!=null){ //Si il y a un pion sur cette tuile et ...
 				if(evalPosePion.get(i).getT().PionPlacé.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
-					autrePion=false; // C'est qu'il y a déjà un ou plusieurs pion.
+					autrePion=false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
+					System.out.println("Il y a déjà un pion sur cette construction");
 				}
 			}	
 		}
@@ -145,6 +134,7 @@ public class Tuile {
 		this.tabPresenceChamps[(5+sens)%8] = this.tabPresenceChamps[(6+sens)%8];
 		this.tabPresenceChamps[(6+sens)%8] = this.tabPresenceChamps[(7+sens)%8];
 		this.tabPresenceChamps[(7+sens)%8] = temp2;
+		
 	}
 	
 	/*public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
