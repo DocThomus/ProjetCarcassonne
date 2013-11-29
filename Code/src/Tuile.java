@@ -6,13 +6,22 @@ public class Tuile {
 	private Terrain [] tabCarac; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
 	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
 	private boolean [][] tabConnexitéBordure;
-	private boolean [][] tabConnexitéChamps;
+	private boolean [][] tabConnexitéChamps; //Cette table de connexité concerne les champs.
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion PionPlacé;
 	private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
+	
+	/**
+	 * 
+	 * @param caracs : Les caracterisqtiques des bords de la tuile
+	 * @param presenceChamps : Présence des champs ou non.
+	 * @param connexiteBordure : Tableau de connexité des bordures.
+	 * @param connexiteChamps : Tableau de connexité des champs.
+	 * @param bouclier : présence de bouclier ou non.
+	 */
 	
 	public Tuile(Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
 		// pré-requis : Terrain [5] terre;
@@ -56,8 +65,15 @@ public class Tuile {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param j : le joueur desirant posé un pion.
+	 * @param pos : la position à laquelle le joueur veut poser le pion.
+	 */
+	
 	public void posePion(Joueur j, int pos){
 		//pré-requis : la pose du pion est légale
+		//action: pose un pion à la position souhaitée
 		if(j.getTabPions().size()<7){			
 			Pion p = new Pion(j,this,pos);
 			j.getTabPions().add(p);
@@ -68,20 +84,28 @@ public class Tuile {
 		
 	}
 	
+	/**
+	 * 
+	 * @param e : Appel de la méthode Evaluation qui permetra de verifier si la pose est légale ou non. 
+	 * @return
+	 */
+	
 	public boolean verifPosePionLegale(Evaluation e){
+		//prérequis : aucun
+		//action : verifier si il y a déja un pion sur la tuile.
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
 		boolean autrePion = true;
 		for(int i=0;i<evalPosePion.size();i++){
 			if(evalPosePion.get(i).getT().PionPlacé!=null){ //Si il y a un pion sur cette tuile et ...
 				if(evalPosePion.get(i).getT().PionPlacé.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
 					autrePion=false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
-					System.out.println("Il y a déjà un pion sur cette construction");
+					System.out.println("Il y a déjà un pion sur cette construction"); //Si un pion est déjà présent on le signal au joueur.
 				}
 			}	
 		}
 		return autrePion;
-	}
-
+	} 
+      
 	public void retirePion(){
 		this.PionPlacé=null;
 	}
@@ -105,7 +129,11 @@ public class Tuile {
 	public boolean [][] getConnexitéBordure(){
 		return this.tabConnexitéBordure;
 	}
-	
+	 /**
+	  * 
+	  * @param sens : Cette méthode permet au joueur de faire tourner sa tuile si il le désir.
+	  */
+	 
 	public void rotation(int sens){
 		//pré-requis sens 1 : sens horaire ou sens -1 : sens antihoraire  
 		if(sens == -1)
@@ -113,7 +141,7 @@ public class Tuile {
 		
 		this.sensTuile = (this.sensTuile + sens) % 4;
 		
-		Terrain temp=this.tabCarac[0];
+		Terrain temp=this.tabCarac[0]; //Fait tourner les caractéristiques de la tuile. 
 		this.tabCarac[sens%4]=this.tabCarac[(1+sens)%4];
 		this.tabCarac[(1+sens)%4]=this.tabCarac[(2+sens)%4];
 		this.tabCarac[(2+sens)%4]=this.tabCarac[(3+sens)%4];
@@ -125,7 +153,7 @@ public class Tuile {
 			sens = 6;
 		}
 		
-		boolean temp2 =this.tabPresenceChamps[0];
+		boolean temp2 =this.tabPresenceChamps[0]; //Si il y a des champs, cette méthode permet de fare tourner les champs
 		this.tabPresenceChamps[sens%8] = this.tabPresenceChamps[(1+sens)%8];
 		this.tabPresenceChamps[(1+sens)%8] = this.tabPresenceChamps[(2+sens)%8];
 		this.tabPresenceChamps[(2+sens)%8] = this.tabPresenceChamps[(3+sens)%8];
@@ -135,7 +163,23 @@ public class Tuile {
 		this.tabPresenceChamps[(6+sens)%8] = this.tabPresenceChamps[(7+sens)%8];
 		this.tabPresenceChamps[(7+sens)%8] = temp2;
 		
+		if(sens==1){
+			boolean[][] rconnex= new boolean[4][4];
+			rconnex[0][0]=this.tabConnexitéBordure[2][0];
+			rconnex[1][0]=this.tabConnexitéBordure[2][1];
+			rconnex[1][1]=this.tabConnexitéBordure[0][0];
+			rconnex[2][0]=this.tabConnexitéBordure[2][2];
+			rconnex[2][1]=this.tabConnexitéBordure[1][0];
+			rconnex[2][2]=this.tabConnexitéBordure[1][1];
+			rconnex[3][0]=this.tabConnexitéBordure[3][3];
+			rconnex[3][1]=this.tabConnexitéBordure[3][0];
+			rconnex[3][2]=this.tabConnexitéBordure[3][1];
+			rconnex[3][3]=this.tabConnexitéBordure[3][2];
+			this.tabConnexitéBordure=rconnex;
+		}
 	}
+	
+	
 	
 	/*public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
 		// TODO gestion de si la tuile est posée sur une tuile déjà existante.
@@ -157,6 +201,14 @@ public class Tuile {
 		}
 	}*/
 	
+	/**
+	 * 
+	 * @param p : le plateau sur lequel la tuile est posé
+	 * @param x : l'abcisse choisie par l'utilisateur
+	 * @param y : l'ordonnée choisie par l'utilisateur
+	 * @return
+	 */
+	
 	public boolean verifPoseTuileLegale (Plateau p, int x, int y){
 		if(p.isEmpty(x,y)){ // Vérifie que l'emplacement est disponible
 			if(p.isEmpty(x-1, y) || p.getTuile(x-1, y).getCarac(1)==this.tabCarac[3]){ // Vérifie la compatibilité avec la tuile de gauche si elle existe
@@ -173,6 +225,12 @@ public class Tuile {
 		}
 		return false;
 	}
+	/**
+	 * 
+	 * @param r : le plateau sur lequel on pose la tuile.
+	 * @param x : la coordonnée d'abcisse.
+	 * @param y : la coordonnée d'ordonnée.
+	 */
 	
 	public void poseTuile (Plateau r, int x, int y){
 		r.poseTuile(this, x, y);

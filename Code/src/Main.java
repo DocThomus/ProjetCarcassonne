@@ -129,23 +129,29 @@ public class Main {
 		tab[4]=t6;
 		tab[6]=t1;
 		
-		t2.rotation(-1);
+		/*t2.rotation(1);
 		t2.poseTuile(r, 100, 99);
 		
-		t3.rotation(-1);
+		t3.rotation(1);
+		t3.rotation(1);
+		t3.rotation(1);
 		t3.poseTuile(r, 101, 99);
 		
-		t4.rotation(-1);
-		t4.rotation(-1);
+		t4.rotation(1);
+		t4.rotation(1);
 		t4.poseTuile(r, 99, 99);
 		
 		t5.rotation(1);
-		t5.poseTuile(r, 99, 99);
+		t5.poseTuile(r, 99, 98);
 		
 		t6.poseTuile(r, 101, 98);
 		
-		t1.rotation(-1);
+		t1.rotation(1);
 		t1.poseTuile(r, 100, 98);
+		*/
+		
+		t1.poseTuile(r, 100, 101);
+		t2.poseTuile(r, 100, 102);
 		
 		
 		/*while(tab[i]!=null){
@@ -183,7 +189,7 @@ public class Main {
 		}// fin boucle
 		*/
 		
-		Evaluation e = new Evaluation(r.getTuile(100,99),r,3);
+		Evaluation e = new Evaluation(r.getTuile(100,100),r,0);
 		/*boolean [][] connex = e.t.getConnexitéBordure();
 		System.out.println(connex[1][0]);
 		System.out.println(connex[2][0]);
