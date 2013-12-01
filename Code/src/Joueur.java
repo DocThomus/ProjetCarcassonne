@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Joueur {
 	
+	static ArrayList<Joueur> listJoueur= new ArrayList<Joueur>();
+	
 	private int identifiant; // Identifiant permettant de différencier les joueurs.
 	private int score; // Compte courant de score du joueur
 	private ArrayList<Pion> tabPions; // Liste des pions actuellements placés sur le plateau par le joueur. (0..7)
@@ -10,6 +12,7 @@ public class Joueur {
 		this.identifiant = id;
 		this.score = 0;
 		this.tabPions = new ArrayList<Pion>();
+	listJoueur.add(this);
 	}
 	
 	public int getIdentifiant() {
@@ -39,6 +42,7 @@ public class Joueur {
 		// Pré-requis : p est positif ou nul.
 		// A utiliser avec valeurAbbaye() ou valeurVille() ou valeurRoute()
 		this.score = this.score + p;
+		System.out.println(" + " + p +" points");
 	}
 	
 	public void retirePion(Pion p) {

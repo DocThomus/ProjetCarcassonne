@@ -119,6 +119,8 @@ public class Main {
 		
 		
 		Joueur p1 = new Joueur(1);
+		Joueur p2 = new Joueur(2);
+		Joueur p3 = new Joueur(3);
 		int x;int y; int rota; int i=0;
 		Scanner sc = new Scanner(System.in);
 		Tuile [] tab = new Tuile [10];
@@ -129,17 +131,29 @@ public class Main {
 		tab[4]=t6;
 		tab[6]=t1;
 		
-		/*t2.rotation(1);
+		t2.rotation(1);
 		t2.poseTuile(r, 100, 99);
+		Evaluation pionT = new Evaluation(t2,r,3);
+		if(t2.verifPosePionLegale(pionT)){
+			System.out.println("Pion légale 1");
+			t2.posePion(p1,3);}
 		
 		t3.rotation(1);
 		t3.rotation(1);
 		t3.rotation(1);
 		t3.poseTuile(r, 101, 99);
+		pionT = new Evaluation(t3,r,3);
+		if(t3.verifPosePionLegale(pionT)){
+			System.out.println("Pion légale 2");
+			t3.posePion(p2,3);}
 		
 		t4.rotation(1);
 		t4.rotation(1);
 		t4.poseTuile(r, 99, 99);
+		pionT = new Evaluation(t4,r,1);
+		if(t4.verifPosePionLegale(pionT)){
+			System.out.println("Pion légale 3");
+			t4.posePion(p3,1);}
 		
 		t5.rotation(1);
 		t5.poseTuile(r, 99, 98);
@@ -148,13 +162,9 @@ public class Main {
 		
 		t1.rotation(1);
 		t1.poseTuile(r, 100, 98);
-		*/
 		
-		t1.poseTuile(r, 100, 101);
-		t2.poseTuile(r, 100, 102);
-		
-		
-		/*while(tab[i]!=null){
+		/*
+		while(tab[i]!=null){
 		
 			boolean poser=false;
 			while(!poser){
@@ -189,14 +199,15 @@ public class Main {
 		}// fin boucle
 		*/
 		
-		Evaluation e = new Evaluation(r.getTuile(100,100),r,0);
-		/*boolean [][] connex = e.t.getConnexitéBordure();
-		System.out.println(connex[1][0]);
-		System.out.println(connex[2][0]);
-		System.out.println(connex[3][0]);*/
+		Evaluation e = new Evaluation(r.getTuile(100,99),r,3);
 		System.out.println("Evaluation de la Construction : ");
 		ArrayList<Tuile>c=e.evalConstruction();
+		ArrayList<Joueur> winner=e.getMajorité(Joueur.listJoueur);
 		System.out.println("Valeur : " + e.valeurVille(c) );
+		System.out.println("nb de winner : " + winner.size() );
+		for(int j=0;j<winner.size();j++){
+			winner.get(j).ajoutPoints(e.valeurVille(c));
+		}
 	}
 
 }

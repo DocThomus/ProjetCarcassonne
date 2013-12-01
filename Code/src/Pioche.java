@@ -252,7 +252,7 @@ public class Pioche {
 		}
 		
 		
-		// Tuile 12 : Ville qui traverse la tuile (ouest, centre, est) sans bouclier, champs au nord, champs au sud (x1). ??? Pas dans le jeu de base
+		// Tuile 12 : Ville qui traverse la tuile (ouest, centre, est) sans bouclier, champs au nord, champs au sud (x1).
 		for (int i = 0; i < 1; i++) {
 			this.pioche.add(new Tuile(
 					new Terrain [] {Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
@@ -273,26 +273,7 @@ public class Pioche {
 					5)); // Position du bouclier.
 		}
 		
-		// Tuile 12 bis : Ville qui traverse la tuile ( nord, centre, sud) sans bouclier, champs a l'est et l'ouest (x1). 
-		for (int i = 0; i < 1; i++) {
-			this.pioche.add(new Tuile(
-					new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE}, // Caractéristiques des bords.
-					new boolean [] { false, false, true, true, false, false, true, true}, // Présence des champs.
-					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false}, 
-							{true, false}, 
-							{false, false , false}, 
-							{true, false , true, false}},
-					new boolean [][] { // Tableau de connexité des champs.
-							{false},
-							{false, false},
-							{false, false, true},
-							{false, false, false, false},
-							{false, false, false, false, false},
-							{false, false, false, false, false, false},
-							{false, false, false, false, false, false, true}},
-					5)); // Position du bouclier.
-		}
+
 		
 		
 		// Tuile 13 : Ville qui traverse la tuile (ouest, centre, est) avec bouclier, champs au nord, champs au sud (x2).

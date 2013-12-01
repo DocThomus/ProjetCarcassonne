@@ -129,6 +129,10 @@ public class Tuile {
 	public boolean [][] getConnexitéBordure(){
 		return this.tabConnexitéBordure;
 	}
+	
+	public Pion getPionPlacé(){
+		return this.PionPlacé;
+	}
 	 /**
 	  * 
 	  * @param sens : Cette méthode permet au joueur de faire tourner sa tuile si il le désir.
@@ -136,6 +140,7 @@ public class Tuile {
 	 
 	public void rotation(int sens){
 		//pré-requis sens 1 : sens horaire ou sens -1 : sens antihoraire  
+		/*
 		if(sens == -1)
 			sens = 3; // Bricolage pour le %4 si on a sens = -1
 		
@@ -162,9 +167,21 @@ public class Tuile {
 		this.tabPresenceChamps[(5+sens)%8] = this.tabPresenceChamps[(6+sens)%8];
 		this.tabPresenceChamps[(6+sens)%8] = this.tabPresenceChamps[(7+sens)%8];
 		this.tabPresenceChamps[(7+sens)%8] = temp2;
+		*/
+		
+		
 		
 		if(sens==1){
-			boolean[][] rconnex= new boolean[4][4];
+			
+			Terrain[]carac=new Terrain [5]; // Fait pivoter les caractéristique des bords.
+			carac[0]=this.tabCarac[3];
+			carac[1]=this.tabCarac[0];
+			carac[2]=this.tabCarac[1];
+			carac[3]=this.tabCarac[2];
+			carac[4]=this.tabCarac[4];
+			this.tabCarac=carac;
+			
+			boolean[][] rconnex= new boolean[4][4]; // Fait pivoter les connexité entre les caractéristique.
 			rconnex[0][0]=this.tabConnexitéBordure[2][0];
 			rconnex[1][0]=this.tabConnexitéBordure[2][1];
 			rconnex[1][1]=this.tabConnexitéBordure[0][0];
@@ -177,6 +194,7 @@ public class Tuile {
 			rconnex[3][3]=this.tabConnexitéBordure[3][2];
 			this.tabConnexitéBordure=rconnex;
 		}
+		
 	}
 	
 	

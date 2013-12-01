@@ -263,7 +263,7 @@ public class Evaluation {
 			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
 			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
 			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
-			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
+			if(connex[3][3]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
 			
 		}
 		
@@ -272,31 +272,53 @@ public class Evaluation {
 		
 	}
 	
-	///****Bloc concernant les Evaluation utilisé pour la gestion des pions, il s'agit de fonction presque identique à celle utilisée pour les construction  
+	///****Bloc concernant les Evaluation utilisé pour la gestion des pions, il s'agit parfois de fonction presque identique à celle utilisée pour les construction  
+	
+	
+	public ArrayList<Joueur>getMajorité(ArrayList<Joueur> player){
+	// Renvoie la liste du(ou des) joueur(s) ayant la majorité des pions sur une construction achevé. Et retire les pions.
+		ArrayList<Evaluation> evalPosePion = this.evalPosePion();
+		ArrayList<Joueur> winner = new ArrayList<Joueur>();
+		int [] nbpion= new int [player.size()+1];
+		for(int i=0;i<evalPosePion.size();i++){
+			if(evalPosePion.get(i).getT().getPionPlacé()!=null){ //Si il y a un pion sur cette tuile ...
+				nbpion[evalPosePion.get(i).getT().getPionPlacé().getProprio().getIdentifiant()]++; // +1 dans la case du tableau ayant le même numéro que l'id du joueur.
+				evalPosePion.get(i).getT().getPionPlacé().liberePion(); // retire le pion.
+			}
+		}
+		
+		int max=0;
+		for(int i=0;i<nbpion.length;i++){ // trouve quel est le plus haut nombre de pion pour un même joueur.
+			if(nbpion[i]>max){max=nbpion[i];}
+			i++;
+		}
+		
+		for(int i=0;i<player.size();i++){
+			if(nbpion[player.get(i).getIdentifiant()]==max){
+				winner.add(player.get(i));
+			}
+		}
+		return winner;
+	}
+	
+	
 	
 	public ArrayList<Evaluation> evalPosePion(){
 		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
-		// Contrairement a evalConstruction, on conserve position ce qui permet de vérifier la présence de pion.
+		// Contrairement a evalConstruction, on ne s'arrête pas quant il manque un voisin à une tuile. Le boolean "impossible" et tout ce qui va avec est donc retiré.
+		// De plus on conserve position ce qui permet de vérifier la présence de pion.
 		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
 		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
 		boolean fini=false;
-		boolean impossible=false;
 		frontiere.add(0,this);
 		dejaVus.add(0,this);
 		ArrayList<Evaluation> fils;
 
-		while(!fini && !impossible){
+		while(!fini ){
 			fils=frontiere.get(0).genereFilsPion();
-			
-			if(!frontiere.isEmpty()){
-				if(fils.isEmpty()){impossible=true;} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
-				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
-			} 
-			
+			frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);
 			if(frontiere.isEmpty()){fini=true;}
-			
 		}
-		//System.out.println("evalPosePoin fini :" + dejaVus.size() );
 		return dejaVus;
 	}
 	
