@@ -21,53 +21,58 @@ public class Evaluation {
 	
 	
 	//***************BLOC ABBAYE**************************
-	public ArrayList<Tuile> verifPresenceAbbaye (){
+	public ArrayList<Evaluation> verifPresenceAbbaye (){
 		// A utiliser sur une tuile qui vient d'être posé pour avoir la liste de toute les abbaye qui pourrait devenir compléte grâce à cette tuile.
 		// Action : Renvoie la liste des tuiles adjacentes contenant une abbaye, y compris elle-même si c'est le cas.
-		ArrayList<Tuile> TuileAbbaye = new ArrayList<Tuile>();
+		ArrayList<Evaluation> TuileAbbaye = new ArrayList<Evaluation>();
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
 		
-		if (t.getCarac(4)==Terrain.ABBAYE ){TuileAbbaye.add(t);}
+		if (t.getCarac(4)==Terrain.ABBAYE ){TuileAbbaye.add(new Evaluation(t,p,4));}
 		
-		if (!p.isEmpty(x-1,y+1) && p.getTuile(x-1,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x-1, y+1));}
-		if (!p.isEmpty(x,y+1) && p.getTuile(x,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x, y+1));}
-		if (!p.isEmpty(x+1,y+1) && p.getTuile(x+1,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x+1, y+1));}
+		if (!p.isEmpty(x-1,y+1) && p.getTuile(x-1,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x-1, y+1),p,4));}
+		if (!p.isEmpty(x,y+1) && p.getTuile(x,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x, y+1),p,4));}
+		if (!p.isEmpty(x+1,y+1) && p.getTuile(x+1,y+1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x+1, y+1),p,4));}
 		
-		if (!p.isEmpty(x-1,y) && p.getTuile(x-1,y).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x-1, y));}
-		if (!p.isEmpty(x+1,y) && p.getTuile(x+1,y).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x+1, y));}
+		if (!p.isEmpty(x-1,y) && p.getTuile(x-1,y).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x-1, y),p,4));}
+		if (!p.isEmpty(x+1,y) && p.getTuile(x+1,y).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x+1, y),p,4));}
 		
-		if (!p.isEmpty(x-1,y-1) && p.getTuile(x-1,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x-1, y-1));}
-		if (!p.isEmpty(x,y-1) && p.getTuile(x,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x, y-1));}
-		if (!p.isEmpty(x+1,y-1) && p.getTuile(x+1,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(p.getTuile(x+1, y-1));}
+		if (!p.isEmpty(x-1,y-1) && p.getTuile(x-1,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x-1, y-1),p,4));}
+		if (!p.isEmpty(x,y-1) && p.getTuile(x,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x, y-1),p,4));}
+		if (!p.isEmpty(x+1,y-1) && p.getTuile(x+1,y-1).getCarac(4)==Terrain.ABBAYE){ TuileAbbaye.add(new Evaluation(p.getTuile(x+1, y-1),p,4));}
 		
 		return TuileAbbaye;
 	}
 	
 	public int evalAbbaye(){
 		// pré-requis : tuile avec un pion sur une abbaye, en cours de partie
-		// action : retourne 9 si l'abaye est compléte, 0 sinon 
-		if ( !p.isEmpty(t.getX()-1,t.getY()+1) && !p.isEmpty(t.getX(),t.getY()+1) && !p.isEmpty(t.getX()+1,t.getY()+1) &&
-				!p.isEmpty(t.getX()+1,t.getY()) && !p.isEmpty(t.getX()+1,t.getY()-1) && !p.isEmpty(t.getX(),t.getY()-1) &&
-				!p.isEmpty(t.getX()-1,t.getY()-1) && !p.isEmpty(t.getX()-1,t.getY() ))
-		{return 9;}
+		// action : retourne 9 et retire le pion si l'abaye est compléte, 0 sinon 
+		int x= t.getX(); // Pour simplifier la lecture de la suite.
+		int y= t.getY();
+		if ( !p.isEmpty(x-1,y+1) && !p.isEmpty(x,y+1) && !p.isEmpty(x+1,y+1) && !p.isEmpty(x+1,y) && !p.isEmpty(x+1,y-1) && !p.isEmpty(x,y-1) && !p.isEmpty(x-1,y-1) && !p.isEmpty(x-1,y)){
+			this.t.getPionPlacé().liberePion();
+			return 9;
+		}
 		else { return 0;}		
 	}
 	
 	public int evalAbbayeFinPartie(){
 		// pré-requis : tuile avec un pion sur une abbaye, en fin de partie
-		// action : retourne la valeur d'une abbaye en fin de partie
+		// action : retourne la valeur d'une abbaye en fin de partie, et retire le pion.
+		int x= t.getX(); // Pour simplifier la lecture de la suite.
+		int y= t.getY();
 		int res=1; 
-		if ( !p.isEmpty(t.getX()-1,t.getY()+1) ){ res++;}
-		if ( !p.isEmpty(t.getX(),t.getY()+1) ){ res++;}
-		if ( !p.isEmpty(t.getX()+1,t.getY()+1) ){ res++;}
-		if ( !p.isEmpty(t.getX()+1,t.getY()) ){ res++;}
+		if ( !p.isEmpty(x-1,y+1) ){ res++;}
+		if ( !p.isEmpty(x,y+1) ){ res++;}
+		if ( !p.isEmpty(x+1,y+1) ){ res++;}
+		if ( !p.isEmpty(x+1,y) ){ res++;}
 		
-		if ( !p.isEmpty(t.getX()+1,t.getY()-1) ){ res++;}
-		if ( !p.isEmpty(t.getX(),t.getY()-1) ){ res++;}
-		if ( !p.isEmpty(t.getX()-1,t.getY()-1) ){ res++;}
-		if ( !p.isEmpty(t.getX()-1,t.getY()) ){ res++;}
+		if ( !p.isEmpty(x+1,y-1) ){ res++;}
+		if ( !p.isEmpty(x,y-1) ){ res++;}
+		if ( !p.isEmpty(x-1,y-1) ){ res++;}
+		if ( !p.isEmpty(x-1,y) ){ res++;}
 		
+		this.t.getPionPlacé().liberePion();
 		return res;
 	}
 	//***************FIN BLOC ABBAYE**************************
@@ -91,6 +96,28 @@ public class Evaluation {
 		return res;
 	}
 	
+	public int valeurVilleFinDePartie(ArrayList<Tuile>ville){
+		int res=0;
+		for(int i=0;i<ville.size();i++){
+			res=res+2;
+			if(ville.get(i).getBouclier()!=5){
+				res=res+2;
+			}
+		}
+		return res;
+	}
+	
+	public ArrayList<Tuile> evalConstructionFinDePartie(){
+		ArrayList<Evaluation> eval = this.evalPosePion();
+		ArrayList<Tuile> construction = new ArrayList<Tuile>();
+		
+		for(int i=0;i<eval.size();i++){ 
+			if(!construction.contains(eval.get(i).t)){
+				construction.add(eval.get(i).t);
+			}
+		}
+		return construction;
+	}
 	
 	
 	public ArrayList<Tuile> evalConstruction(){
@@ -260,6 +287,7 @@ public class Evaluation {
 		}
 		
 		if(position==4){
+			fils.add(this);
 			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
 			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
 			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
@@ -278,16 +306,19 @@ public class Evaluation {
 	public ArrayList<Joueur>getMajorité(ArrayList<Joueur> player){
 	// Renvoie la liste du(ou des) joueur(s) ayant la majorité des pions sur une construction achevé. Et retire les pions.
 		ArrayList<Evaluation> evalPosePion = this.evalPosePion();
+		System.out.println("evalPosePion : " + evalPosePion.size());
 		ArrayList<Joueur> winner = new ArrayList<Joueur>();
 		int [] nbpion= new int [player.size()];
 		for(int i=0;i<evalPosePion.size();i++){
 			if(evalPosePion.get(i).getT().getPionPlacé()!=null){ //Si il y a un pion sur cette tuile ...
-				nbpion[evalPosePion.get(i).getT().getPionPlacé().getProprio().getIdentifiant()-1]++; // +1 dans la case du tableau ayant le même numéro que l'id du joueur.
-				evalPosePion.get(i).getT().getPionPlacé().liberePion(); // retire le pion.
+				if(evalPosePion.get(i).t.getPionPlacé().getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // Pour ne pas comptabiliser un pion qui serait sur la tuile mais pas dans la construction qui nous intéresse
+					nbpion[evalPosePion.get(i).getT().getPionPlacé().getProprio().getIdentifiant()-1]++; // +1 dans la case du tableau ayant le même numéro que l'id du joueur.
+					evalPosePion.get(i).getT().getPionPlacé().liberePion(); // retire le pion.
+				}
 			}
 		}
 		
-		int max=0;
+		int max=1;
 		for(int i=0;i<nbpion.length;i++){ // trouve quel est le plus haut nombre de pion pour un même joueur.
 			if(nbpion[i]>max){max=nbpion[i];}
 			i++;
@@ -311,6 +342,7 @@ public class Evaluation {
 		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
 		// Contrairement a evalConstruction, on ne s'arrête pas quant il manque un voisin à une tuile. Le boolean "impossible" et tout ce qui va avec est donc retiré.
 		// De plus on conserve position ce qui permet de vérifier la présence de pion.
+		// Les Evaluation renvoyé peuvent aussi servir en fin de jeu pour les construction imcompléte.
 		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
 		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
 		boolean fini=false;
@@ -425,6 +457,10 @@ public class Evaluation {
 		
 		if(position==4){
 			fils.add(this);
+			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
+			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
+			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
+			if(connex[3][3]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
 		}
 		return fils; 		
 	}
