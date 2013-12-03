@@ -12,7 +12,7 @@ public class Joueur {
 		this.identifiant = id;
 		this.score = 0;
 		this.tabPions = new ArrayList<Pion>();
-	listJoueur.add(this);
+		listJoueur.add(this);
 	}
 	
 	public int getIdentifiant() {
@@ -42,6 +42,7 @@ public class Joueur {
 		// Pré-requis : p est positif ou nul.
 		// A utiliser avec valeurAbbaye() ou valeurVille() ou valeurRoute()
 		this.score = this.score + p;
+		System.out.println("joueur : " + this.identifiant);
 		System.out.println(" + " + p +" points");
 	}
 	

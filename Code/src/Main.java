@@ -199,7 +199,8 @@ public class Main {
 		}// fin boucle
 		*/
 		
-		Evaluation e = new Evaluation(r.getTuile(100,99),r,3);
+		Evaluation e = new Evaluation(r.getTuile(100,98),r,4);
+		//Evaluation e = new Evaluation(r.getTuile(99,99),r,2);
 		System.out.println("Evaluation de la Construction : ");
 		ArrayList<Tuile>c=e.evalConstruction();
 		ArrayList<Joueur> winner=e.getMajorité(Joueur.listJoueur);
