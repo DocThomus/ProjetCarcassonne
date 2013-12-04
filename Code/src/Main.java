@@ -352,7 +352,42 @@ public class Main {
 								{false, false, false, false, false, false},
 								{false, false, false, false, false, false, false}},
 						4); // Position du bouclier.
-		
+				
+				Tuile t11 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
+						new boolean [] {false, false, false, false, true, true, false, false}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{true}, 
+								{false, false}, 
+								{true , true , false}, 
+								{true , true , false, true}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, false},
+								{false, false, false, false},
+								{false, false, false, false, true},
+								{false, false, false, false, false, false},
+								{false, false, false, false, false, false, false}},
+						2); // Position du bouclier.
+				
+				Tuile t12 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+						new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{false}, 
+								{false, false}, 
+								{false, false, false}, 
+								{false, false, false, false}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, true},
+								{false, false, true , true},
+								{false, false, true , true , true},
+								{false, false, true , true , true , true},
+								{false, false, true , true , true , true , true}},
+						5);
 				
 		
 		Joueur p1 = new Joueur(1);
@@ -362,7 +397,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		//BLOC TEST CENTRE VILLE
-		
+		/*
 		t10.poseTuile(r,100,101);
 		t10.posePion(p1,4);
 		
@@ -384,7 +419,7 @@ public class Main {
 		for(int j=0;j<winner.size();j++){
 			winner.get(j).ajoutPoints(e.valeurVille(c));
 		}
-		
+		*/
 		
 		//FIN CENTRE VILLE
 		
@@ -486,13 +521,20 @@ public class Main {
 		
 	
 	 	//**************************** BLOC TEST VILLE 
-		/*
+		
 		t2.rotation(1);
 		t2.poseTuile(r, 100, 99);
 		Evaluation pionT = new Evaluation(t2,r,3);
 		if(t2.verifPosePionLegale(pionT)){
 			System.out.println("Pion légale 1");
 			t2.posePion(p1,3);}
+		
+		t1.rotation(1);
+		t1.poseTuile(r, 100, 98);
+		pionT = new Evaluation(t1,r,4);
+		if(t1.verifPosePionLegale(pionT)){
+			System.out.println("Pion légale 1");
+			t1.posePion(p3,4);}
 		
 		t3.rotation(1);
 		t3.rotation(1);
@@ -503,33 +545,46 @@ public class Main {
 			System.out.println("Pion légale 2");
 			t3.posePion(p2,3);}
 		
-		t4.rotation(1);
+		t10.poseTuile(r,99,99);
+		
+		/*t11.rotation(1);
+		t11.rotation(1);
+		t11.poseTuile(r,99,99);*/
+		
+		/*t4.rotation(1);
 		t4.rotation(1);
 		t4.poseTuile(r, 99, 99);
 		pionT = new Evaluation(t4,r,1);
 		if(t4.verifPosePionLegale(pionT)){
 			System.out.println("Pion légale 3");
-			t4.posePion(p3,1);}
+			t4.posePion(p3,1);}*/
+		
+		t12.rotation(1);
+		t12.poseTuile(r,98,99);
+		
 		
 		t5.rotation(1);
 		t5.poseTuile(r, 99, 98);
 		
 		t6.poseTuile(r, 101, 98);
 		
-		t1.rotation(1);
-		t1.poseTuile(r, 100, 98);
 		
-		Evaluation e = new Evaluation(r.getTuile(99,98),r,1);
+		
+		Evaluation e = new Evaluation(r.getTuile(101,99),r,3);
 		System.out.println("Evaluation de la Construction : ");
-		ArrayList<Tuile>c=e.evalConstruction();
-		System.out.println("Valeur : " + e.valeurVille(c) );
+		//ArrayList<Tuile>c=e.evalConstruction();
+		//System.out.println("Valeur : " + e.valeurVille(c) );
+		ArrayList<Tuile>c=e.evalConstructionFinDePartie();
+		System.out.println("Valeur : " + e.valeurVilleFinDePartie(c) );
+		
 		
 		ArrayList<Joueur> winner=e.getMajorité(Joueur.listJoueur);
 		System.out.println("nb de winner : " + winner.size() );
 		for(int j=0;j<winner.size();j++){
-			winner.get(j).ajoutPoints(e.valeurVille(c));
+			winner.get(j).ajoutPoints(e.valeurVilleFinDePartie(c));
+			//winner.get(j).ajoutPoints(e.valeurVille(c));
 		}
-		*/
+		
 	
 	//**************** FIN BLOC VILLE
 	

@@ -99,9 +99,9 @@ public class Evaluation {
 	public int valeurVilleFinDePartie(ArrayList<Tuile>ville){
 		int res=0;
 		for(int i=0;i<ville.size();i++){
-			res=res+2;
+			res=res+1;
 			if(ville.get(i).getBouclier()!=5){
-				res=res+2;
+				res=res+1;
 			}
 		}
 		return res;
