@@ -22,7 +22,7 @@ public class Evaluation {
 	
 	//***************BLOC ABBAYE**************************
 	public ArrayList<Evaluation> verifPresenceAbbaye (){
-		// A utiliser sur une tuile qui vient d'être posé pour avoir la liste de toute les abbaye qui pourrait devenir compléte grâce à cette tuile.
+		// A utiliser sur une tuile qui vient d'être posée pour avoir la liste de toutes les abbayes qui pourraient devenir complètes grâce à cette tuile.
 		// Action : Renvoie la liste des tuiles adjacentes contenant une abbaye, y compris elle-même si c'est le cas.
 		ArrayList<Evaluation> TuileAbbaye = new ArrayList<Evaluation>();
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
@@ -202,7 +202,7 @@ public class Evaluation {
 			if(p.isEmpty(x, y+1)){existe=false;} // Si la tuile au dessus n'existe pas c'est que la construction n'est pas fini.
 			else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} // Sinon on l'ajoute aux fils
 			
-			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
+			// Il faut faire de même avec d'autres caractéristiques si elles étaient connecté a position :
 			if(connex[0][0]){ 
 				//System.out.println("connection haut gauche");
 				if(p.isEmpty(x+1, y)){existe=false;}

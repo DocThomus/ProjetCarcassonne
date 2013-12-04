@@ -48,6 +48,60 @@ public class Main {
 								{false, false, true , true , false, false},
 								{false, false, true , true , false, false, true}},
 						5); // Position du bouclier.
+				
+				Tuile t21 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+						new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{false}, 
+								{false, false}, 
+								{false, false, false}, 
+								{false, false, false, false}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, true},
+								{false, false, false, false},
+								{false, false, false, false, false},
+								{false, false, true , true , false, false},
+								{false, false, true , true , false, false, true}},
+						5); // Position du bouclier.
+				
+				Tuile t22 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+						new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{false}, 
+								{false, false}, 
+								{false, false, false}, 
+								{false, false, false, false}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, true},
+								{false, false, false, false},
+								{false, false, false, false, false},
+								{false, false, true , true , false, false},
+								{false, false, true , true , false, false, true}},
+						5); // Position du bouclier.
+				
+				Tuile t23 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
+						new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{false}, 
+								{false, false}, 
+								{false, false, false}, 
+								{false, false, false, false}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, true},
+								{false, false, false, false},
+								{false, false, false, false, false},
+								{false, false, true , true , false, false},
+								{false, false, true , true , false, false, true}},
+						5); // Position du bouclier.
 		
 				Tuile t3 = new Tuile(new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS}, // Caractéristiques des bords.
 						new boolean [] {false, false, true, true, true, true, false, false}, // Présence des champs.
@@ -281,6 +335,23 @@ public class Main {
 								{true , true , true , true , true , true},
 								{true , true , true , true , true , true , true}},
 						5); 
+				Tuile t10 = new Tuile(
+						new Terrain [] {Terrain.VILLE, Terrain.VILLE, Terrain.VILLE, Terrain.VILLE, Terrain.VILLE}, // Caractéristiques des bords.
+						new boolean [] {false, false, false, false, false, false, false, false}, // Présence des champs.
+						new boolean [][] { // Tableau de connexité des caractéristiques.
+								{true}, 
+								{true , true}, 
+								{true , true , true}, 
+								{true , true , true , true}},
+						new boolean [][] { // Tableau de connexité des champs.
+								{false},
+								{false, false},
+								{false, false, false},
+								{false, false, false, false},
+								{false, false, false, false, false},
+								{false, false, false, false, false, false},
+								{false, false, false, false, false, false, false}},
+						4); // Position du bouclier.
 		
 				
 		
@@ -289,6 +360,33 @@ public class Main {
 		Joueur p3 = new Joueur(3);
 		int x;int y; int rota; int i=0;
 		Scanner sc = new Scanner(System.in);
+		
+		//BLOC TEST CENTRE VILLE
+		
+		t10.poseTuile(r,100,101);
+		t10.posePion(p1,4);
+		
+		t2.poseTuile(r,100,102);
+		
+		t21.rotation(1);
+		t21.poseTuile(r,99,101);
+		
+		t22.rotation(1);
+		t22.poseTuile(r,101,101);
+		
+		Evaluation e = new Evaluation(r.getTuile(100,100),r,0);
+		System.out.println("Evaluation de la Construction : ");
+		ArrayList<Tuile>c=e.evalConstruction();
+		System.out.println("Valeur : " + e.valeurVille(c) );
+		
+		ArrayList<Joueur> winner=e.getMajorité(Joueur.listJoueur);
+		System.out.println("nb de winner : " + winner.size() );
+		for(int j=0;j<winner.size();j++){
+			winner.get(j).ajoutPoints(e.valeurVille(c));
+		}
+		
+		
+		//FIN CENTRE VILLE
 		
 		/*
 		//BLOC TEST ABBAYE
