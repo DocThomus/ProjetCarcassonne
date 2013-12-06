@@ -36,6 +36,10 @@ private static int taillePlateau = 200;
 		this.tuilePosees.add(t);
 	}
 	
+	public ArrayList<Tuile> getTuilePosees(){
+		return this.tuilePosees;
+	}
+	
 	public Tuile getTuile (int x, int y){
 		return this.repere[x][y];
 	}

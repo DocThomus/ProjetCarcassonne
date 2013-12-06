@@ -318,7 +318,7 @@ public class Evaluation {
 			}
 		}
 		
-		int max=1;
+		int max=1; // Pour éviter que, si une construction est évalué alors qu'il n'y a pas de pion, les point soient ajouter à tous les joueurs
 		for(int i=0;i<nbpion.length;i++){ // trouve quel est le plus haut nombre de pion pour un même joueur.
 			if(nbpion[i]>max){max=nbpion[i];}
 			i++;

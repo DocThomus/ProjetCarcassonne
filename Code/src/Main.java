@@ -533,8 +533,8 @@ public class Main {
 		t1.poseTuile(r, 100, 98);
 		pionT = new Evaluation(t1,r,4);
 		if(t1.verifPosePionLegale(pionT)){
-			System.out.println("Pion légale 1");
-			t1.posePion(p3,4);}
+			System.out.println("Pion légale 2");
+			t1.posePion(p2,4);}
 		
 		t3.rotation(1);
 		t3.rotation(1);
@@ -545,19 +545,19 @@ public class Main {
 			System.out.println("Pion légale 2");
 			t3.posePion(p2,3);}
 		
-		t10.poseTuile(r,99,99);
+		/*t10.poseTuile(r,99,99);*/
 		
 		/*t11.rotation(1);
 		t11.rotation(1);
 		t11.poseTuile(r,99,99);*/
 		
-		/*t4.rotation(1);
+		t4.rotation(1);
 		t4.rotation(1);
 		t4.poseTuile(r, 99, 99);
 		pionT = new Evaluation(t4,r,1);
 		if(t4.verifPosePionLegale(pionT)){
 			System.out.println("Pion légale 3");
-			t4.posePion(p3,1);}*/
+			t4.posePion(p3,1);}
 		
 		t12.rotation(1);
 		t12.poseTuile(r,98,99);
@@ -570,22 +570,31 @@ public class Main {
 		
 		
 		
-		Evaluation e = new Evaluation(r.getTuile(101,99),r,3);
+		Evaluation e = new Evaluation(r.getTuile(100,98),r,3);
 		System.out.println("Evaluation de la Construction : ");
-		//ArrayList<Tuile>c=e.evalConstruction();
-		//System.out.println("Valeur : " + e.valeurVille(c) );
-		ArrayList<Tuile>c=e.evalConstructionFinDePartie();
-		System.out.println("Valeur : " + e.valeurVilleFinDePartie(c) );
+		ArrayList<Tuile>c=e.evalConstruction();
+		System.out.println("Valeur : " + e.valeurVille(c) );
+		//ArrayList<Tuile>c=e.evalConstructionFinDePartie();
+		//System.out.println("Valeur : " + e.valeurVilleFinDePartie(c) );
 		
 		
 		ArrayList<Joueur> winner=e.getMajorité(Joueur.listJoueur);
 		System.out.println("nb de winner : " + winner.size() );
 		for(int j=0;j<winner.size();j++){
-			winner.get(j).ajoutPoints(e.valeurVilleFinDePartie(c));
-			//winner.get(j).ajoutPoints(e.valeurVille(c));
+			//winner.get(j).ajoutPoints(e.valeurVilleFinDePartie(c));
+			winner.get(j).ajoutPoints(e.valeurVille(c));
 		}
 		
-	
+		e= new Evaluation(r.getTuile(100,98),r,1); // 2éme Evaluation pour tester le cas d'une double évaluation sur une même construction
+		System.out.println("Evaluation de la Construction : ");
+		c=e.evalConstruction();
+		System.out.println("Valeur : " + e.valeurVille(c) );
+		winner=e.getMajorité(Joueur.listJoueur);
+		System.out.println("nb de winner : " + winner.size() );
+		for(int j=0;j<winner.size();j++){
+			//winner.get(j).ajoutPoints(e.valeurVilleFinDePartie(c));
+			winner.get(j).ajoutPoints(e.valeurVille(c));
+		}
 	//**************** FIN BLOC VILLE
 	
 		

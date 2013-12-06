@@ -139,38 +139,8 @@ public class Tuile {
 	  */
 	 
 	public void rotation(int sens){
-		//pré-requis sens 1 : sens horaire ou sens -1 : sens antihoraire  
-		/*
-		if(sens == -1)
-			sens = 3; // Bricolage pour le %4 si on a sens = -1
-		
-		this.sensTuile = (this.sensTuile + sens) % 4;
-		
-		Terrain temp=this.tabCarac[0]; //Fait tourner les caractéristiques de la tuile. 
-		this.tabCarac[sens%4]=this.tabCarac[(1+sens)%4];
-		this.tabCarac[(1+sens)%4]=this.tabCarac[(2+sens)%4];
-		this.tabCarac[(2+sens)%4]=this.tabCarac[(3+sens)%4];
-		this.tabCarac[(3+sens)%4]=temp;
-		
-		if (sens == 1) {
-			sens = 2;
-		} else if (sens == 3) {
-			sens = 6;
-		}
-		
-		boolean temp2 =this.tabPresenceChamps[0]; //Si il y a des champs, cette méthode permet de fare tourner les champs
-		this.tabPresenceChamps[sens%8] = this.tabPresenceChamps[(1+sens)%8];
-		this.tabPresenceChamps[(1+sens)%8] = this.tabPresenceChamps[(2+sens)%8];
-		this.tabPresenceChamps[(2+sens)%8] = this.tabPresenceChamps[(3+sens)%8];
-		this.tabPresenceChamps[(3+sens)%8] = this.tabPresenceChamps[(4+sens)%8];
-		this.tabPresenceChamps[(4+sens)%8] = this.tabPresenceChamps[(5+sens)%8];
-		this.tabPresenceChamps[(5+sens)%8] = this.tabPresenceChamps[(6+sens)%8];
-		this.tabPresenceChamps[(6+sens)%8] = this.tabPresenceChamps[(7+sens)%8];
-		this.tabPresenceChamps[(7+sens)%8] = temp2;
-		*/
-		
-		
-		
+		//pré-requis sens 1 : sens horaire
+
 		if(sens==1){
 			
 			Terrain[]carac=new Terrain [5]; // Fait pivoter les caractéristique des bords.
@@ -196,28 +166,7 @@ public class Tuile {
 		}
 		
 	}
-	
-	
-	
-	/*public boolean verifPoseTuileLegale (Plateau p, ArrayList<Tuile> adjacente, int sens){
-		// TODO gestion de si la tuile est posée sur une tuile déjà existante.
-		// dans l'attribut ArrayList<Tuile> tuileAdjacentes, l'ordre correspond à leur place par rapport à la tuile qu'on veut poser : 0 = dessus, 1 = droite, 2 = dessous, 3 = à gauche
-		if (adjacente.get(0) == null && adjacente.get(1) == null && adjacente.get(2) == null && adjacente.get(3) == null) {
-			// On ne peut pas pose une tuile si elle n'est pas entourée d'au moins une tuile.
-			return false;
-		}
-		else if(   (adjacente.get(0) != null && this.tabCarac[0]==adjacente.get(0).tabCarac[2])
-				&& (adjacente.get(1) != null && this.tabCarac[1]==adjacente.get(1).tabCarac[3])
-				&& (adjacente.get(2) != null && this.tabCarac[2]==adjacente.get(2).tabCarac[0]) 
-				&& (adjacente.get(3) != null && this.tabCarac[3]==adjacente.get(3).tabCarac[1])) {
-			// On vérifie la compatibilité des caractéristiques entre la tuile proposée et ses voisins.
-			// Pour chaque voisin, on vérifie qu'il existe, et seulement ensuite, on vérifie la correspondance des caracs.
-			return true;
-		} else {
-			// On retourne faux si les caracs des voisis ne correspondent pas.
-			return false;
-		}
-	}*/
+
 	
 	/**
 	 * 
@@ -256,33 +205,14 @@ public class Tuile {
 		this.y = y;
 	}
 
-	/*public void poseTuile (ArrayList<Tuile> adjacente, Plateau r, int x, int y){
-		// pré-requis : la pose de la tuile est légale
-		r.poseTuile(this, x, y);
-		this.x = x;
-		this.y = y;
-		
-		// Pour chaque voisin, a condition qu'il existe, on ajoute à cette tuile son nouveau voisin, et au voisin cette tuile.
-		if (adjacente.get(0) != null) {
-			this.tuileAdjacentes.add(0,adjacente.get(0));
-			this.tuileAdjacentes.get(0).tuileAdjacentes.add(2,this);
-		} 
-		
-		if (adjacente.get(1) != null) {
-			this.tuileAdjacentes.add(1,adjacente.get(1));
-			this.tuileAdjacentes.get(1).tuileAdjacentes.add(3,this);
+	public boolean verifTuileEstPosable(Plateau p){
+		boolean estPosable=false;
+		for(int i =0; i<p.getTuilePosees().size();i++){
+			
 		}
 		
-		if (adjacente.get(2) != null) {
-			this.tuileAdjacentes.add(2,adjacente.get(2));
-			this.tuileAdjacentes.get(2).tuileAdjacentes.add(0,this);
-		}
-		
-		if (adjacente.get(3) != null) {
-			this.tuileAdjacentes.add(3,adjacente.get(3));
-			this.tuileAdjacentes.get(3).tuileAdjacentes.add(1,this);
-		}
-	}*/
+		return estPosable;
+	}
 	
 	
 	
