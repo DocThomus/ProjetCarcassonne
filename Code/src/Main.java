@@ -396,6 +396,24 @@ public class Main {
 		int x;int y; int rota; int i=0;
 		Scanner sc = new Scanner(System.in);
 		
+		// TEST verifTuilePosable
+		/*
+		if(t12.verifTuileEstPosable(r)){
+			System.out.println("Tuile posable");
+			t12.rotation(1);
+			t12.rotation(1);
+			if(t12.verifPoseTuileLegale(r,100,101)){
+				t12.poseTuile(r,100,101);
+				System.out.println("Tuile 1 posé");
+			}
+		}
+		
+		if(t10.verifTuileEstPosable(r)){
+			System.out.println("Tuile posable ??");
+		}
+		*/
+		//FIN verifTuilePosable
+		
 		//BLOC TEST CENTRE VILLE
 		/*
 		t10.poseTuile(r,100,101);
@@ -521,7 +539,7 @@ public class Main {
 		
 	
 	 	//**************************** BLOC TEST VILLE 
-		
+		/*
 		t2.rotation(1);
 		t2.poseTuile(r, 100, 99);
 		Evaluation pionT = new Evaluation(t2,r,3);
@@ -545,11 +563,6 @@ public class Main {
 			System.out.println("Pion légale 2");
 			t3.posePion(p2,3);}
 		
-		/*t10.poseTuile(r,99,99);*/
-		
-		/*t11.rotation(1);
-		t11.rotation(1);
-		t11.poseTuile(r,99,99);*/
 		
 		t4.rotation(1);
 		t4.rotation(1);
@@ -595,20 +608,26 @@ public class Main {
 			//winner.get(j).ajoutPoints(e.valeurVilleFinDePartie(c));
 			winner.get(j).ajoutPoints(e.valeurVille(c));
 		}
+		
+		*/
 	//**************** FIN BLOC VILLE
 	
 		
 		
 		
 		 // BLOC TOUR TYPE En cours
-		 /*
+		 
 		 	int tour=0;//initialisation avant début du jeu puis incrémente enfin de tour
+		 	Joueur player = Joueur.listJoueur.get(tour%Joueur.listJoueur.size()); // Donne la main au joueur suivant
 		 	
 			Tuile tp=p.piocheAleatoire();
-			Joueur player = Joueur.listJoueur.get(tour);
+			while(tp.verifTuileEstPosable(r)){ // Tant que la tuile piochée est imposable, on repioche
+				tp=p.piocheAleatoire();
+			}
+			
 		
 			boolean poser=false;
-			while(!poser){
+			while(!poser){ // Tant que la tuile n'est pas posée on retente
 				System.out.println("Entrez les coordonnées de la tuile à placer");
 				 x = sc.nextInt();
 				 y = sc.nextInt();
@@ -626,20 +645,30 @@ public class Main {
 				else {System.out.println("tuile non posée");}
 			}
 			
-			System.out.println("Voulez-vous poser un pion, si oui indiquer sa position (0,1,2,3,4) sinon 5");
-			int choix = sc.nextInt();
-			if(choix>4){
-				System.out.println("Pion non posé");
-			}
-			else{Evaluation pionT = new Evaluation(tp,r,choix);
-				if(tp.verifPosePionLegale(pionT)){
-					System.out.println("Pion légale");
-					tp.posePion(p1,choix);
-				}	
+			boolean finPion=false;
+			while(!finPion){ // Tant le pion n'est pas placé ou que le joueur ne veut pas placer de pion
+				System.out.println("Voulez-vous poser un pion, si oui indiquer sa position (0,1,2,3,4) sinon 5");
+				int choix = sc.nextInt();
+				if(choix>4){
+					System.out.println("Pion non posé");
+					finPion=true;
+				}
+				else{Evaluation pionT = new Evaluation(tp,r,choix);
+					if(tp.verifPosePionLegale(pionT)){
+						System.out.println("Pion légale");
+						finPion=true;
+						tp.posePion(p1,choix);
+					}	
+				}
 			}
 			
-			for(i)
-	*/
+			// Evaluation 
+			Evaluation eval = new Evaluation(tp,r,0);
+			ArrayList<Evaluation> list = eval.verifPresenceAbbaye();
+			for(i=0;i<list.size();i++){
+				list.get(i).evalAbbaye();
+			}
+			
 		
 		
 	} // fin main

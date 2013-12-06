@@ -44,19 +44,18 @@ public class Evaluation {
 		return TuileAbbaye;
 	}
 	
-	public int evalAbbaye(){
+	public void evalAbbaye(){
 		// pré-requis : tuile avec un pion sur une abbaye, en cours de partie
-		// action : retourne 9 et retire le pion si l'abaye est compléte, 0 sinon 
+		// action : ajoute 9 et retire le pion si l'abaye est compléte, 0 sinon 
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
 		if ( !p.isEmpty(x-1,y+1) && !p.isEmpty(x,y+1) && !p.isEmpty(x+1,y+1) && !p.isEmpty(x+1,y) && !p.isEmpty(x+1,y-1) && !p.isEmpty(x,y-1) && !p.isEmpty(x-1,y-1) && !p.isEmpty(x-1,y)){
+			this.t.getPionPlacé().getProprio().ajoutPoints(9);
 			this.t.getPionPlacé().liberePion();
-			return 9;
-		}
-		else { return 0;}		
+		}		
 	}
 	
-	public int evalAbbayeFinPartie(){
+	public void evalAbbayeFinPartie(){
 		// pré-requis : tuile avec un pion sur une abbaye, en fin de partie
 		// action : retourne la valeur d'une abbaye en fin de partie, et retire le pion.
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
@@ -72,8 +71,8 @@ public class Evaluation {
 		if ( !p.isEmpty(x-1,y-1) ){ res++;}
 		if ( !p.isEmpty(x-1,y) ){ res++;}
 		
+		this.t.getPionPlacé().getProprio().ajoutPoints(res);
 		this.t.getPionPlacé().liberePion();
-		return res;
 	}
 	//***************FIN BLOC ABBAYE**************************
 	

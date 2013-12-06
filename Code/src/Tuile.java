@@ -207,8 +207,17 @@ public class Tuile {
 
 	public boolean verifTuileEstPosable(Plateau p){
 		boolean estPosable=false;
-		for(int i =0; i<p.getTuilePosees().size();i++){
-			
+		int x=0; int y=0;
+		for(int i =0; i<p.getTuilePosees().size();i++){ //Pour chaque tuile déjà posées...
+			x=p.getTuilePosees().get(i).getX();
+			y=p.getTuilePosees().get(i).getY();
+			for(int j=0;j<3;j++){ // ... et pour les 4 position possible...
+				if( this.verifPoseTuileLegale(p,x,y+1) || this.verifPoseTuileLegale(p,x+1,y) || this.verifPoseTuileLegale(p,x,y-1) || this.verifPoseTuileLegale(p,x-1,y)	 ){
+					estPosable=true; //... on cherche si il y a au moins un emplacement libre autour des tuiles déjà posées
+				}
+				this.rotation(1);
+			}
+			this.rotation(1); // La tuile revient dans sa position initiale;
 		}
 		
 		return estPosable;
