@@ -669,6 +669,23 @@ public class Main {
 				list.get(i).evalAbbaye();
 			}
 			
+			for(i=0;i<3;i++){
+				if(tp.getCarac(i)!=Terrain.CHAMPS){
+					eval = new Evaluation(tp,r,i);
+					ArrayList<Tuile> construction = eval.evalConstruction();
+					if(!construction.isEmpty()){
+						ArrayList<Joueur> winner = eval.getMajorité(Joueur.listJoueur);
+						for(int j=0;j<winner.size();j++){
+							if(tp.getCarac(i)!=Terrain.VILLE){
+							winner.get(j).ajoutPoints(eval.valeurVille(construction));
+							}
+							if(tp.getCarac(i)!=Terrain.ROUTE){
+								winner.get(j).ajoutPoints(eval.valeurRoute(construction));
+								}
+						}
+					}
+				}
+			}
 		
 		
 	} // fin main

@@ -49,10 +49,12 @@ public class Evaluation {
 		// action : ajoute 9 et retire le pion si l'abaye est compléte, 0 sinon 
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
-		if ( !p.isEmpty(x-1,y+1) && !p.isEmpty(x,y+1) && !p.isEmpty(x+1,y+1) && !p.isEmpty(x+1,y) && !p.isEmpty(x+1,y-1) && !p.isEmpty(x,y-1) && !p.isEmpty(x-1,y-1) && !p.isEmpty(x-1,y)){
-			this.t.getPionPlacé().getProprio().ajoutPoints(9);
-			this.t.getPionPlacé().liberePion();
-		}		
+		if(this.t.getPionPlacé()!=null){
+			if ( !p.isEmpty(x-1,y+1) && !p.isEmpty(x,y+1) && !p.isEmpty(x+1,y+1) && !p.isEmpty(x+1,y) && !p.isEmpty(x+1,y-1) && !p.isEmpty(x,y-1) && !p.isEmpty(x-1,y-1) && !p.isEmpty(x-1,y)){
+				this.t.getPionPlacé().getProprio().ajoutPoints(9);
+				this.t.getPionPlacé().liberePion();
+			}
+		}
 	}
 	
 	public void evalAbbayeFinPartie(){
@@ -60,19 +62,21 @@ public class Evaluation {
 		// action : retourne la valeur d'une abbaye en fin de partie, et retire le pion.
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
-		int res=1; 
-		if ( !p.isEmpty(x-1,y+1) ){ res++;}
-		if ( !p.isEmpty(x,y+1) ){ res++;}
-		if ( !p.isEmpty(x+1,y+1) ){ res++;}
-		if ( !p.isEmpty(x+1,y) ){ res++;}
-		
-		if ( !p.isEmpty(x+1,y-1) ){ res++;}
-		if ( !p.isEmpty(x,y-1) ){ res++;}
-		if ( !p.isEmpty(x-1,y-1) ){ res++;}
-		if ( !p.isEmpty(x-1,y) ){ res++;}
-		
-		this.t.getPionPlacé().getProprio().ajoutPoints(res);
-		this.t.getPionPlacé().liberePion();
+		if(this.t.getPionPlacé()!=null){
+			int res=1; 
+			if ( !p.isEmpty(x-1,y+1) ){ res++;}
+			if ( !p.isEmpty(x,y+1) ){ res++;}
+			if ( !p.isEmpty(x+1,y+1) ){ res++;}
+			if ( !p.isEmpty(x+1,y) ){ res++;}
+			
+			if ( !p.isEmpty(x+1,y-1) ){ res++;}
+			if ( !p.isEmpty(x,y-1) ){ res++;}
+			if ( !p.isEmpty(x-1,y-1) ){ res++;}
+			if ( !p.isEmpty(x-1,y) ){ res++;}
+			
+			this.t.getPionPlacé().getProprio().ajoutPoints(res);
+			this.t.getPionPlacé().liberePion();
+		}
 	}
 	//***************FIN BLOC ABBAYE**************************
 	
