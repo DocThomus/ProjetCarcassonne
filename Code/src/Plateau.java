@@ -5,20 +5,20 @@ public class Plateau {
 private Tuile [][] repere;
 private ArrayList<Tuile> tuilePosees;
 private static int taillePlateau = 200;
-//private static Tuile tuileDeBase; la tuile de base sera ajouté comme les autres tuile en position centrale ( x=75, y= 75 pour un repere de taille 150
+//private static Tuile tuileDeBase; la tuile de base sera ajoutï¿½ comme les autres tuile en position centrale ( x=75, y= 75 pour un repere de taille 150
 
 	public Plateau () {
 		this.repere= new Tuile [taillePlateau][taillePlateau]; // taillePlateau = 200.
-		this.tuilePosees = new ArrayList<Tuile>() ; // permet de parcourir toute les tuile posé rapidement, en fin de jeu notamment
+		this.tuilePosees = new ArrayList<Tuile>() ; // permet de parcourir toute les tuile posï¿½ rapidement, en fin de jeu notamment
 		Tuile tuileDeBase = new Tuile(
-					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
-					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
-					new boolean [][] { // Tableau de connexité des caractéristiques.
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractï¿½ristiques des bords.
+					new boolean [] {false, false, true, true, true, true, true, true}, // Prï¿½sence des champs.
+					new boolean [][] { // Tableau de connexitï¿½ des caractï¿½ristiques.
 							{false}, 
 							{false, false}, 
 							{false, true , false}, 
 							{false, true , false, true}},
-					new boolean [][] { // Tableau de connexité des champs.
+					new boolean [][] { // Tableau de connexitï¿½ des champs.
 							{false},
 							{false, false},
 							{false, false, false},
@@ -49,30 +49,30 @@ private static int taillePlateau = 200;
 	}
 	
 	public ArrayList<Tuile> getTuileAdjacentes(int x, int y) {
-		// renvoie les tuile adjacente a un point précis pour faire les vérifications de légalité, poser la tuile etc...
-		// si il n'y a pas de tuile en renvoie une Tuile vide plutôt qu'un null pour éviter les problèmes par la suite
+		// renvoie les tuile adjacente a un point prï¿½cis pour faire les vï¿½rifications de lï¿½galitï¿½, poser la tuile etc...
+		// si il n'y a pas de tuile en renvoie une Tuile vide plutï¿½t qu'un null pour ï¿½viter les problï¿½mes par la suite
 		ArrayList<Tuile> tAdjacente= new ArrayList<Tuile>(4);
 		
-		if (this.isEmpty(x, y+1)) { 
+		if (this.isEmpty(x, y+1)) { // ajoute la uile du haut Ã  tAdjacence
 			tAdjacente.add(0, null);
 		} else {
 			tAdjacente.add(0, this.getTuile(x, y+1));
 		}
 		
-		if (this.isEmpty(x+1, y)) { 
+		if (this.isEmpty(x+1, y)) { // ajoute la tuile de droite Ã  tAdjacence
 			tAdjacente.add(1, null);
 		} else {
 			tAdjacente.add(1, this.getTuile(x+1, y));
 		}
 		
-		if (this.isEmpty(x, y-1)) { 
+		if (this.isEmpty(x, y-1)) { // ajoute la tuile du bas Ã  tadjacence
 			tAdjacente.add(2, null);
 		}
 		else {
 			tAdjacente.add(2, this.getTuile(x, y-1));
 		}
 		
-		if (this.isEmpty(x-1, y)) {  
+		if (this.isEmpty(x-1, y)) {  // ajoute la tuile de gauche Ã  tAdjacence
 			tAdjacente.add(3, null);
 		} else {
 			tAdjacente.add(3, this.getTuile(x-1, y));
