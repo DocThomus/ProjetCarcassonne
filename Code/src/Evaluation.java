@@ -143,20 +143,13 @@ public class Evaluation {
 				System.out.println("La construction n'est pas terminée");
 				} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
 				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
-			} 
-			
+			} 			
 			if(frontiere.isEmpty()){fini=true;}
-			
 			//**TEST pour voir les changement
-			System.out.println("fils : "+fils.size());
-			System.out.println("dejaVus : "+dejaVus.size());
-			System.out.println("frontiere fin : "+frontiere.size());
-			System.out.println("fini : "+ fini + ", impossible : " +impossible);
-			System.out.println("------");
+			//System.out.println("fils : "+fils.size());System.out.println("dejaVus : "+dejaVus.size());System.out.println("frontiere fin : "+frontiere.size());System.out.println("fini : "+ fini + ", impossible : " +impossible);System.out.println("------");
 			//**TEST
 		}
-		
-		
+			
 		if(!impossible){
 				// La boucle suivante met les Tuile des Evaluation de dejaVus dans construction, en éliminant les tuiles en double parmis les Evaluation 	
 			for(int i=0;i<dejaVus.size();i++){ 
