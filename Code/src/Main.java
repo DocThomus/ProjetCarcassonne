@@ -9,10 +9,10 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Pioche p = new Pioche();
+/*		Pioche p = new Pioche();
 		Plateau r = new Plateau();
 		Tuile t1 = new Tuile(
-				// Tuile 12 bis : Ville qui traverse la tuile ( nord, centre, sud) sans bouclier, champs a l'est et l'ouest (x1).
+				// Tuile 11 bis : Ville qui traverse la tuile ( nord, centre, sud) sans bouclier, champs a l'est et l'ouest (x1).
 				new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE}, // Caractéristiques des bords.
 				new boolean [] { false, false, true, true, false, false, true, true}, // Présence des champs.
 				new boolean [][] { // Tableau de connexité des caractéristiques.
@@ -30,7 +30,7 @@ public class Main {
 						{false, false, false, false, false, false, true}},
 				5); // Position du bouclier.
 		
-		// Tuile 15 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
+		// Tuile 14 : Ville au nord et ville au sud (disjointes et sans bouclier), champs au centre, est et ouest (joints) (x3).
 				Tuile t2 = new Tuile(
 						new Terrain [] {Terrain.VILLE, Terrain.CHAMPS, Terrain.VILLE, Terrain.CHAMPS, Terrain.CHAMPS}, // Caractéristiques des bords.
 						new boolean [] {false, false, true, true, false, false, true, true}, // Présence des champs.
@@ -388,14 +388,14 @@ public class Main {
 								{false, false, true , true , true , true},
 								{false, false, true , true , true , true , true}},
 						5);
-				
+	
 		
 		Joueur p1 = new Joueur(1);
 		Joueur p2 = new Joueur(2);
 		Joueur p3 = new Joueur(3);
 		int x;int y; int rota; int i=0;
 		Scanner sc = new Scanner(System.in);
-		
+*/
 		// TEST verifTuilePosable
 		/*
 		if(t12.verifTuileEstPosable(r)){
@@ -614,7 +614,7 @@ public class Main {
 	
 		
 		
-		
+/*		
 		 // BLOC TOUR TYPE En cours
 		 
 		 	int tour=0;//initialisation avant début du jeu puis incrémente enfin de tour
@@ -687,7 +687,7 @@ public class Main {
 				}
 			}
 		
-		
+*/		
 	} // fin main
 
 } // fin classe

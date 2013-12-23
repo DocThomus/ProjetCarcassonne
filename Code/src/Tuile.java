@@ -1,8 +1,10 @@
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class Tuile {
+	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
 	private Terrain [] tabCarac; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
 	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
 	private boolean [][] tabConnexitéBordure;
@@ -14,6 +16,8 @@ public class Tuile {
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
 	
+	public static ArrayList<Image> listImagesTuiles = new ArrayList<Image>();
+	
 	/**
 	 * 
 	 * @param caracs : Les caracterisqtiques des bords de la tuile
@@ -23,11 +27,12 @@ public class Tuile {
 	 * @param bouclier : présence de bouclier ou non.
 	 */
 	
-	public Tuile(Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
+	public Tuile(int num, Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
 		// pré-requis : Terrain [5] terre;
 		// boolean [8] presencechamps;
 		// boolean [4][4] connexitébordure;
 		// boolean [8][8] connexitéchamps;
+		this.num = num;
 		this.tabCarac=caracs;
 		this.tabPresenceChamps=presenceChamps;
 		this.tabConnexitéBordure=connexiteBordure;

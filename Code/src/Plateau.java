@@ -11,6 +11,7 @@ private static int taillePlateau = 200;
 		this.repere= new Tuile [taillePlateau][taillePlateau]; // taillePlateau = 200.
 		this.tuilePosees = new ArrayList<Tuile>() ; // permet de parcourir toute les tuile pos� rapidement, en fin de jeu notamment
 		Tuile tuileDeBase = new Tuile(
+					24,
 					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caract�ristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Pr�sence des champs.
 					new boolean [][] { // Tableau de connexit� des caract�ristiques.
