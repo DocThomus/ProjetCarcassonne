@@ -16,7 +16,7 @@ public class Tuile {
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
 	
-	public static ArrayList<Image> listImagesTuiles = new ArrayList<Image>();
+	public static ArrayList<Image> listImagesTuiles = new ArrayList<Image>(); // TODO A remplir
 	
 	/**
 	 * 
