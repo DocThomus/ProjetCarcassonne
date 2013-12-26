@@ -3,17 +3,27 @@ import java.util.ArrayList;
 
 public class Joueur {
 	
-	static ArrayList<Joueur> listJoueur= new ArrayList<Joueur>();
+	public static ArrayList<Joueur> listJoueur= new ArrayList<Joueur>();
 	
+	public static int getNbJoueurs() {
+		return listJoueur.size();
+	}
+		
+	private String nom; // Nom du joueur (en rapport avec l'interface)
 	private int identifiant; // Identifiant permettant de différencier les joueurs.
 	private int score; // Compte courant de score du joueur
 	private ArrayList<Pion> tabPions; // Liste des pions actuellements placés sur le plateau par le joueur. (0..7)
 	
-	public Joueur(int id) {
+	public Joueur(int id, String n) {
+		this.nom = n;
 		this.identifiant = id;
 		this.score = 0;
 		this.tabPions = new ArrayList<Pion>();
 		listJoueur.add(this);
+	}
+	
+	public String getNom() {
+		return this.nom;
 	}
 	
 	public int getIdentifiant() {
