@@ -1,3 +1,4 @@
+package Noyau;
 public class Pion {
 
 	private Joueur proprio; // Propriétaire de la tuile.
