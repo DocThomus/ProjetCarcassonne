@@ -15,11 +15,11 @@ import InterfaceHistorique.ContHistorique;
 public class ContJeu implements Controleur {	
 	
 	public static int nbElements = 4;
-	public static int x[] = 	{ 0,  0,  2,  7};
+	public static int x[] = 	{ 0,  0,  2,  8};
 	public static int y[] = 	{ 0,  1,  0,  0};
-	public static int larg[] = 	{ 2,  2,  5,  3};
+	public static int larg[] = 	{ 2,  2,  6,  2};
 	public static int haut[] =  { 1,  1,  2,  2};
-	public static int px[] = 	{20,  0, 50, 30};
+	public static int px[] = 	{20,  0, 60, 20};
 	public static int py[] = 	{50, 50,  0,  0};
 	
 	private ContScore contScore;
@@ -27,7 +27,7 @@ public class ContJeu implements Controleur {
 	// private ContPioche contPioche;
 	// private ContPlateau contPlateau;
 	
-	public ContJeu(JFrame fenetrePrincipale) {
+	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {
 		fenetrePrincipale.getContentPane().setLayout(new GridBagLayout());
 		
 		GridBagConstraints contraintesLayout = new GridBagConstraints();
@@ -40,7 +40,7 @@ public class ContJeu implements Controleur {
 			contraintesLayout.weightx = px[i];
 			contraintesLayout.weighty = py[i];
 			if (i == 0) {
-				contScore = new ContScore(fenetrePrincipale, contraintesLayout);
+				contScore = new ContScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 			} else if(i == 1) {
 				fenetrePrincipale.getContentPane().add((new JButton("3")),contraintesLayout); // Test
 				//contPioche = new ContPioche(fenetrePrincipale, contraintesLayout);				

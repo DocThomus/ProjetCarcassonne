@@ -12,10 +12,12 @@ public class ContPrincipal {
 	public ContPrincipal() {
 		vuePrincipale = new VuePrincipale();
 		
-		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale()); // Temporaire, pour tester l'interface graphique Jeu.
+		String[] nomsJoueurs = {"a","b","c","d"};
+		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), 4, nomsJoueurs); // Temporaire, pour tester l'interface graphique Jeu.
 	}
 	
 	public static void main(String[] args) {
 		ContPrincipal c = new ContPrincipal();
+		
 	}
 }

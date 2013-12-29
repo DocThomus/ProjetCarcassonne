@@ -8,9 +8,9 @@ public class ContScore {
 	private ModScore modele;
 	private VueScore vue;
 	
-	public ContScore(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
+	public ContScore(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int nbJoueurs, String[] nomsJoueurs) {
 		modele = new ModScore();
-		vue = new VueScore(fenetrePrincipale, contraintesLayout);
+		vue = new VueScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 		modele.addObserver(vue);
 	}
 }

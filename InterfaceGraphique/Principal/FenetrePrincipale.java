@@ -9,5 +9,6 @@ public class FenetrePrincipale extends JFrame {
 
 	public FenetrePrincipale() {
 		this.setSize(ContPrincipal.LARGEUR_FENETRE, ContPrincipal.HAUTEUR_FENETRE);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }
