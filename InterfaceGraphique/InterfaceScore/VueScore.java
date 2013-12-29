@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 
 public class VueScore implements Observer{
 	private PanneauScore panScore;
 	
-	public VueScore () {
+	public VueScore (JFrame fenetrePrincipale) {
 		panScore = new PanneauScore();
+		fenetrePrincipale.add(panScore);
+		
+		String[] a = {"a", "b", "c", "d"}; 	// Test
+		int[] b = {1,5,6,2}; 				// ...
+		int[] c = {10,20,54,120}; 			// ...
+		panScore.maj(4,a,b,c); 				// ...
 	}
 	
 	public void update(Observable o, Object arg) {
-		@SuppressWarnings("unchecked")
 		ArrayList<Object> tab = (ArrayList<Object>) arg; 
 		
 		Integer nbJoueurs = (Integer) tab.get(0);
