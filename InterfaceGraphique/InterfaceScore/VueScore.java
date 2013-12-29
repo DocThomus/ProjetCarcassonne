@@ -1,5 +1,6 @@
 package InterfaceScore;
 
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -10,9 +11,9 @@ import javax.swing.JFrame;
 public class VueScore implements Observer{
 	private PanneauScore panScore;
 	
-	public VueScore (JFrame fenetrePrincipale) {
+	public VueScore (JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
 		panScore = new PanneauScore();
-		fenetrePrincipale.add(panScore);
+		fenetrePrincipale.getContentPane().add(panScore, contraintesLayout);
 		
 		String[] a = {"a", "b", "c", "d"}; 	// Test
 		int[] b = {1,5,6,2}; 				// ...

@@ -7,14 +7,11 @@ import Noyau.Joueur;
 
 public class ModScore extends Observable{
 	
-	public ModScore () {	
-	}
-	
-	public Integer getNbJoueurs() {
+	private Integer getNbJoueurs() {
 		return new Integer(Joueur.getNbJoueurs());
 	}
 	
-	public String[] getTabNomsJoueurs () {
+	private String[] getTabNomsJoueurs () {
 		int nbJoueurs = getNbJoueurs();
 		String[] tabScore = new String[nbJoueurs];
 		for(int i = 0; i < nbJoueurs; i++) {
@@ -23,7 +20,7 @@ public class ModScore extends Observable{
 		return tabScore;
 	}	
 	
-	public int[] getTabNbPions() {
+	private int[] getTabNbPions() {
 		int nbJoueurs = getNbJoueurs();
 		int[] tabScore = new int[nbJoueurs];
 		for(int i = 0; i < nbJoueurs; i++) {
@@ -32,7 +29,7 @@ public class ModScore extends Observable{
 		return tabScore;
 	}
 	
-	public int[] getTabScore() {
+	private int[] getTabScore() {
 		int nbJoueurs = getNbJoueurs();
 		int[] tabScore = new int[nbJoueurs];
 		for(int i = 0; i < nbJoueurs; i++) {
