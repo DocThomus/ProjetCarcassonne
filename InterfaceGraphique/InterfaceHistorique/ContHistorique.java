@@ -12,5 +12,12 @@ public class ContHistorique {
 		modele = new ModHistorique();
 		vue = new VueHistorique(fenetrePrincipale, contraintesLayout);
 		modele.addObserver(vue);
+		
+		// Test 
+		modele.ajouterEvenement("azwasgsdd");
+		modele.ajouterEvenement("qdzaer");
+		modele.ajouterEvenement("azwxcvwwd");
+		
+		modele.refresh();
 	}
 }

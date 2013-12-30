@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class VueHistorique implements Observer {
-	private ArrayList<JLabel> listeMessages;
+	private ArrayList<JLabel> etiquettesMessages;
 
 	public VueHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
 		JPanel panHistorique = new JPanel();
@@ -25,18 +25,18 @@ public class VueHistorique implements Observer {
 		panHistorique.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		panHistorique.add(new JLabel("Historique :"));
 		
-		listeMessages = new ArrayList<JLabel>();
+		etiquettesMessages = new ArrayList<JLabel>();
 		for(int i = 0; i < 10; i++) {
 			JLabel e = new JLabel();
 			panHistorique.add(e);
-			listeMessages.add(e);
+			etiquettesMessages.add(e);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
-		for (int i = 0; i < 10; i++) {
-			listeMessages.get(i).setText(((ArrayList<String>)arg).get(i));
+		for (int i = 0; i < ((ArrayList<String>)arg).size(); i++) {
+			etiquettesMessages.get(i).setText(((ArrayList<String>)arg).get(i));
 		}
 	}
 
