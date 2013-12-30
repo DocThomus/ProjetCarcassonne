@@ -13,9 +13,7 @@ public class PanneauScore extends JPanel {
  	
 	public static int px[] = {90, 10, 10};
 	
-	private Integer nbJoueurs;
-	private int[] tabNbPion;	
-	private int[] tabScores;
+	private int nbJoueurs;
 	
 	private JLabel[] etiquettesPions;
 	private JLabel[] etiquettesScores;
@@ -63,8 +61,8 @@ public class PanneauScore extends JPanel {
 	}
 
 	public void maj(int[] tabNbP, int[] tabS) {
-		tabNbPion = tabNbP;
-		tabScores = tabS;
+		int[] tabNbPion = tabNbP;
+		int[] tabScores = tabS;
 		
 		for (int i = 0; i < this.nbJoueurs; i++) {
 			etiquettesPions[i].setText(""+tabNbPion[i]);

@@ -1,23 +1,43 @@
 package InterfaceHistorique;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class VueHistorique implements Observer {
-	private PanneauHistorique panHistorique;
+	private ArrayList<JLabel> listeMessages;
 
 	public VueHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
-		panHistorique = new PanneauHistorique();
+		JPanel panHistorique = new JPanel();
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
+		
+		panHistorique.setBackground(Color.cyan);
+		
+		panHistorique.setLayout(new BoxLayout(panHistorique, BoxLayout.Y_AXIS));
+		panHistorique.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+		panHistorique.add(new JLabel("Historique :"));
+		
+		listeMessages = new ArrayList<JLabel>();
+		for(int i = 0; i < 10; i++) {
+			JLabel e = new JLabel();
+			panHistorique.add(e);
+			listeMessages.add(e);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
-		this.panHistorique.maj((ArrayList<String>)arg);
+		for (int i = 0; i < 10; i++) {
+			listeMessages.get(i).setText(((ArrayList<String>)arg).get(i));
+		}
 	}
 
 }

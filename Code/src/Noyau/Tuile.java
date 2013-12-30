@@ -1,8 +1,9 @@
 package Noyau;
+
 import java.awt.Image;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 public class Tuile {
 	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
