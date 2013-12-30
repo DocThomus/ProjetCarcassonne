@@ -14,5 +14,7 @@ public class ContPlateau {
 		modele = new ModPlateau(plateau);
 		vue = new VuePlateau(fenetrePrincipale, contraintesLayout);
 		modele.addObserver(vue);
+		
+		modele.getTabImages();
 	}
 }

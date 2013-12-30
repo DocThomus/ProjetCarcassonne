@@ -6,6 +6,8 @@ public class Plateau {
 private Tuile [][] repere;
 private ArrayList<Tuile> tuilePosees;
 private static int taillePlateau = 200;
+public static int xCentre = 100;
+public static int yCentre = 100;
 //private static Tuile tuileDeBase; la tuile de base sera ajout� comme les autres tuile en position centrale ( x=75, y= 75 pour un repere de taille 150
 
 	public Plateau () {
