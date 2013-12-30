@@ -12,7 +12,7 @@ public class ContPioche {
 	
 	public ContPioche(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		modele = new ModPioche(plateau);
-		vue = new VuePioche(fenetrePrincipale, contraintesLayout);
+		vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
 		modele.addObserver(vue);
 	}
 	

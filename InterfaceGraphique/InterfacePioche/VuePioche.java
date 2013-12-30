@@ -11,8 +11,8 @@ public class VuePioche implements Observer {
 
 	private PanneauPioche panPioche;
 
-	public VuePioche (JFrame fenetrePrincipale, GridBagConstraints contraintesLayout){
-		panPioche=new PanneauPioche();
+	public VuePioche (JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, ContPioche controleur){
+		this.panPioche=new PanneauPioche(controleur);
 		fenetrePrincipale.getContentPane().add(panPioche, contraintesLayout);
 	}
 

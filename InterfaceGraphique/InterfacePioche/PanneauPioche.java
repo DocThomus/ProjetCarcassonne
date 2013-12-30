@@ -22,7 +22,7 @@ public class PanneauPioche extends JPanel {
 	private JButton rotationAntiHoraire;
 	
 	
-	public PanneauPioche (){
+	public PanneauPioche (ContPioche controleur){
 		try {
 			imgTuile = new ImageIcon(ImageIO.read(new File("Image/tuileTest.jpg")));
 		} catch (IOException e) {

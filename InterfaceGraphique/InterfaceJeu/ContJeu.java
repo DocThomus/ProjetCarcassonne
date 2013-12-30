@@ -12,7 +12,7 @@ import Noyau.Plateau;
 import Principal.Controleur;
 import InterfaceHistorique.ContHistorique;
 import InterfacePioche.ContPioche;
-import InterfacePlateau.ContPlateau;
+//import InterfacePlateau.ContPlateau;
 
 public class ContJeu implements Controleur {	
 	
@@ -27,7 +27,7 @@ public class ContJeu implements Controleur {
 	private ContScore contScore;
 	private ContHistorique contHistorique;
 	private ContPioche contPioche;
-	private ContPlateau contPlateau;
+	//private ContPlateau contPlateau;
 	
 	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {
 		Plateau plateau = new Plateau();
@@ -48,7 +48,7 @@ public class ContJeu implements Controleur {
 			} else if(i == 1) {
 				contPioche = new ContPioche(fenetrePrincipale, contraintesLayout, plateau);				
 			} else if(i == 2) {
-				contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
+			//	contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
 			} else if(i == 3) {
 				contHistorique = new ContHistorique(fenetrePrincipale, contraintesLayout);
 			}
