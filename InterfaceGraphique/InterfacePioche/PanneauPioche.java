@@ -1,10 +1,13 @@
 package InterfacePioche;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -54,10 +57,13 @@ public class PanneauPioche extends JPanel {
 		panBoutons.add(rotationAntiHoraire);
 		
 		JLabel panImage = new JLabel(imgTuile);
+		panImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		this.add(panImage);
+		this.add(Box.createVerticalGlue());
+		this.add(panImage, BorderLayout.CENTER);
+		this.add(Box.createVerticalStrut(10));
 		this.add(panBoutons);
-		
+		this.add(Box.createVerticalStrut(10));		
 	}
 	
 	public void maj (Image img){
