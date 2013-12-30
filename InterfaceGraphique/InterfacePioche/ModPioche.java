@@ -1,21 +1,21 @@
 package InterfacePioche;
 import java.awt.Image;
 import java.util.List;
+import java.util.Observable;
 
 import Noyau.Pioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
 
 
-public class ModPioche {
+public class ModPioche extends Observable {
 
 		private Tuile t;
 		private Pioche pioche;
 		private Plateau plateau;
 		
-		public ModPioche (Tuile t, Pioche pioche, Plateau plateau){
-			this.t=t;
-			this.pioche= pioche;
+		public ModPioche (Plateau plateau){
+			this.pioche= new Pioche();
 			this.plateau= plateau;
 		}
 		
@@ -30,7 +30,7 @@ public class ModPioche {
 			return this.t;
 		}
 		
-		public Image getImage(){
+		/*public Image getImage(){
 			return ((List<Image>) Tuile.listImagesTuiles.get(this.t.getNum())).get(0);
-		}
+		}*/
 }

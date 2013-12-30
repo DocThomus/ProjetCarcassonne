@@ -6,10 +6,12 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import InterfacePioche.ContPioche;
 import InterfaceScore.ContScore;
+import Noyau.Plateau;
 import Principal.Controleur;
 import InterfaceHistorique.ContHistorique;
-//import InterfacePioche.ContPioche;
+import InterfacePioche.ContPioche;
 //import InterfacePlateau.ContPlateau;
 
 public class ContJeu implements Controleur {	
@@ -24,10 +26,12 @@ public class ContJeu implements Controleur {
 	
 	private ContScore contScore;
 	private ContHistorique contHistorique;
-	// private ContPioche contPioche;
+	private ContPioche contPioche;
 	// private ContPlateau contPlateau;
 	
-	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {		
+	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {
+		Plateau plateau = new Plateau();
+		
 		fenetrePrincipale.getContentPane().setLayout(new GridBagLayout());
 		
 		GridBagConstraints contraintesLayout = new GridBagConstraints();
@@ -42,8 +46,7 @@ public class ContJeu implements Controleur {
 			if (i == 0) {
 				contScore = new ContScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 			} else if(i == 1) {
-				fenetrePrincipale.getContentPane().add((new JButton("3")),contraintesLayout); // Test
-				//contPioche = new ContPioche(fenetrePrincipale, contraintesLayout);				
+				contPioche = new ContPioche(fenetrePrincipale, contraintesLayout, plateau);				
 			} else if(i == 2) {
 				fenetrePrincipale.getContentPane().add((new JButton("4")),contraintesLayout); // Test
 				//contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout);
