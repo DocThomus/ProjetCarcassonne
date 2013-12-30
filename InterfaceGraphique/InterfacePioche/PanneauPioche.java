@@ -8,19 +8,20 @@ import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
 public class PanneauPioche extends JPanel {
 	
-	private Image imgTuile;
+	private ImageIcon imgTuile;
 	private JButton rotationHoraire;
 	private JButton rotationAntiHoraire;
 	
 	
 	public PanneauPioche (){
 		try {
-			this.imgTuile= ImageIO.read(new File("Image/tuileTest.jpg"));
+			imgTuile = new ImageIcon(ImageIO.read(new File("Image/tuileTest.jpg")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -45,13 +46,22 @@ public class PanneauPioche extends JPanel {
 		}
 		this.rotationAntiHoraire= new JButton(icon2);
 		
-		this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-		this.add(rotationHoraire);
-		this.add(rotationAntiHoraire);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
+		JPanel panBoutons = new JPanel();
+		panBoutons.setLayout(new BoxLayout(panBoutons, BoxLayout.LINE_AXIS));
+		panBoutons.add(rotationHoraire);
+		panBoutons.add(rotationAntiHoraire);
+		
+		JLabel panImage = new JLabel(imgTuile);
+		
+		this.add(panImage);
+		this.add(panBoutons);
+		
 	}
 	
-	public void maj ( Image img){
-		this.imgTuile=img;
+	public void maj (Image img){
+		this.imgTuile = new ImageIcon(img);
 	}
 	
 	public JButton getRotationH(){
@@ -62,8 +72,8 @@ public class PanneauPioche extends JPanel {
 		return this.rotationAntiHoraire;
 	}
 	
-	public void paintComponent(Graphics g) {
+	/*public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(this.imgTuile, 20, 20, 250, 250, this);
-	}
+	}*/
 }
