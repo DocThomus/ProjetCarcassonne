@@ -234,37 +234,613 @@ public class Tuile {
 		return estPosable;
 	}
 	
-public void ajouteImagesTuiles(){
-		
-		for(int i=0;i<24;i++){ // Création des 25 ArrayList<Image>, qui contiendront chacune 4 image 
-			Tuile.listImagesTuiles.add(i,new ArrayList<Image>());
+	public static void ajouteImagesTuiles(){
+			
+			for(int i=0;i<25;i++){ // Création des 25 ArrayList<Image>, qui contiendront chacune 4 image 
+				Tuile.listImagesTuiles.add(i,new ArrayList<Image>());
+			}
+			// *************************Tuile 0
+			try {
+				Tuile.listImagesTuiles.get(0).add(0,ImageIO.read(new File("Image/Tuiles/tuile00.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile01.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(0).add(2,ImageIO.read(new File("Image/Tuiles/tuile02.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(0).add(3,ImageIO.read(new File("Image/Tuiles/tuile03.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// **********************************Tuile 1
+			try {
+				Tuile.listImagesTuiles.get(1).add(0,ImageIO.read(new File("Image/Tuiles/tuile10.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(1).add(1,ImageIO.read(new File("Image/Tuiles/tuile11.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(1).add(2,ImageIO.read(new File("Image/Tuiles/tuile12.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				Tuile.listImagesTuiles.get(1).add(3,ImageIO.read(new File("Image/Tuiles/tuile13.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// **********************************Tuile 2
+						try {
+							Tuile.listImagesTuiles.get(2).add(0,ImageIO.read(new File("Image/Tuiles/tuile20.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(2).add(1,ImageIO.read(new File("Image/Tuiles/tuile21.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(2).add(2,ImageIO.read(new File("Image/Tuiles/tuile22.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(2).add(3,ImageIO.read(new File("Image/Tuiles/tuile23.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}				
+			
+			// **********************************Tuile 3
+						try {
+							Tuile.listImagesTuiles.get(3).add(0,ImageIO.read(new File("Image/Tuiles/tuile30.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(3).add(1,ImageIO.read(new File("Image/Tuiles/tuile31.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(3).add(2,ImageIO.read(new File("Image/Tuiles/tuile32.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(3).add(3,ImageIO.read(new File("Image/Tuiles/tuile33.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+			// **********************************Tuile 4
+						try {
+							Tuile.listImagesTuiles.get(4).add(0,ImageIO.read(new File("Image/Tuiles/tuile40.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(4).add(1,ImageIO.read(new File("Image/Tuiles/tuile41.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(4).add(2,ImageIO.read(new File("Image/Tuiles/tuile42.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(4).add(3,ImageIO.read(new File("Image/Tuiles/tuile43.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 5
+						try {
+							Tuile.listImagesTuiles.get(5).add(0,ImageIO.read(new File("Image/Tuiles/tuile50.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(5).add(1,ImageIO.read(new File("Image/Tuiles/tuile51.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(5).add(2,ImageIO.read(new File("Image/Tuiles/tuile52.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(5).add(3,ImageIO.read(new File("Image/Tuiles/tuile53.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 6
+						try {
+							Tuile.listImagesTuiles.get(6).add(0,ImageIO.read(new File("Image/Tuiles/tuile60.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(6).add(1,ImageIO.read(new File("Image/Tuiles/tuile61.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(6).add(2,ImageIO.read(new File("Image/Tuiles/tuile62.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(6).add(3,ImageIO.read(new File("Image/Tuiles/tuile63.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 7
+						try {
+							Tuile.listImagesTuiles.get(7).add(0,ImageIO.read(new File("Image/Tuiles/tuile70.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(7).add(1,ImageIO.read(new File("Image/Tuiles/tuile71.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(7).add(2,ImageIO.read(new File("Image/Tuiles/tuile72.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(7).add(3,ImageIO.read(new File("Image/Tuiles/tuile73.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 8
+						try {
+							Tuile.listImagesTuiles.get(8).add(0,ImageIO.read(new File("Image/Tuiles/tuile80.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(8).add(1,ImageIO.read(new File("Image/Tuiles/tuile81.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(8).add(2,ImageIO.read(new File("Image/Tuiles/tuile82.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(8).add(3,ImageIO.read(new File("Image/Tuiles/tuile83.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 9
+						try {
+							Tuile.listImagesTuiles.get(9).add(0,ImageIO.read(new File("Image/Tuiles/tuile90.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(9).add(1,ImageIO.read(new File("Image/Tuiles/tuile91.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(9).add(2,ImageIO.read(new File("Image/Tuiles/tuile92.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(9).add(3,ImageIO.read(new File("Image/Tuiles/tuile93.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 10
+						try {
+							Tuile.listImagesTuiles.get(10).add(0,ImageIO.read(new File("Image/Tuiles/tuile100.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(10).add(1,ImageIO.read(new File("Image/Tuiles/tuile101.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(10).add(2,ImageIO.read(new File("Image/Tuiles/tuile102.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(10).add(3,ImageIO.read(new File("Image/Tuiles/tuile103.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 11
+						try {
+							Tuile.listImagesTuiles.get(11).add(0,ImageIO.read(new File("Image/Tuiles/tuile110.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(11).add(1,ImageIO.read(new File("Image/Tuiles/tuile111.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(11).add(2,ImageIO.read(new File("Image/Tuiles/tuile112.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(11).add(3,ImageIO.read(new File("Image/Tuiles/tuile113.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 12
+						try {
+							Tuile.listImagesTuiles.get(12).add(0,ImageIO.read(new File("Image/Tuiles/tuile120.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(12).add(1,ImageIO.read(new File("Image/Tuiles/tuile121.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(12).add(2,ImageIO.read(new File("Image/Tuiles/tuile122.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(12).add(3,ImageIO.read(new File("Image/Tuiles/tuile123.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 13
+						try {
+							Tuile.listImagesTuiles.get(13).add(0,ImageIO.read(new File("Image/Tuiles/tuile130.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(13).add(1,ImageIO.read(new File("Image/Tuiles/tuile131.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(13).add(2,ImageIO.read(new File("Image/Tuiles/tuile132.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(13).add(3,ImageIO.read(new File("Image/Tuiles/tuile133.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 14
+						try {
+							Tuile.listImagesTuiles.get(14).add(0,ImageIO.read(new File("Image/Tuiles/tuile140.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(14).add(1,ImageIO.read(new File("Image/Tuiles/tuile141.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(14).add(2,ImageIO.read(new File("Image/Tuiles/tuile142.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(14).add(3,ImageIO.read(new File("Image/Tuiles/tuile143.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 15
+						try {
+							Tuile.listImagesTuiles.get(15).add(0,ImageIO.read(new File("Image/Tuiles/tuile150.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(15).add(1,ImageIO.read(new File("Image/Tuiles/tuile151.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(15).add(2,ImageIO.read(new File("Image/Tuiles/tuile152.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(15).add(3,ImageIO.read(new File("Image/Tuiles/tuile153.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 16
+						try {
+							Tuile.listImagesTuiles.get(16).add(0,ImageIO.read(new File("Image/Tuiles/tuile160.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(16).add(1,ImageIO.read(new File("Image/Tuiles/tuile161.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(16).add(2,ImageIO.read(new File("Image/Tuiles/tuile162.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(16).add(3,ImageIO.read(new File("Image/Tuiles/tuile163.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 17
+						try {
+							Tuile.listImagesTuiles.get(17).add(0,ImageIO.read(new File("Image/Tuiles/tuile170.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(17).add(1,ImageIO.read(new File("Image/Tuiles/tuile171.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(17).add(2,ImageIO.read(new File("Image/Tuiles/tuile172.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(17).add(3,ImageIO.read(new File("Image/Tuiles/tuile173.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 18
+						try {
+							Tuile.listImagesTuiles.get(18).add(0,ImageIO.read(new File("Image/Tuiles/tuile180.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(18).add(1,ImageIO.read(new File("Image/Tuiles/tuile181.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(18).add(2,ImageIO.read(new File("Image/Tuiles/tuile182.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(18).add(3,ImageIO.read(new File("Image/Tuiles/tuile183.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 19
+						try {
+							Tuile.listImagesTuiles.get(19).add(0,ImageIO.read(new File("Image/Tuiles/tuile190.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(19).add(1,ImageIO.read(new File("Image/Tuiles/tuile191.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(19).add(2,ImageIO.read(new File("Image/Tuiles/tuile192.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(19).add(3,ImageIO.read(new File("Image/Tuiles/tuile193.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 20
+						try {
+							Tuile.listImagesTuiles.get(20).add(0,ImageIO.read(new File("Image/Tuiles/tuile200.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(20).add(1,ImageIO.read(new File("Image/Tuiles/tuile201.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(20).add(2,ImageIO.read(new File("Image/Tuiles/tuile202.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(20).add(3,ImageIO.read(new File("Image/Tuiles/tuile203.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				// **********************************Tuile 21
+						try {
+							Tuile.listImagesTuiles.get(21).add(0,ImageIO.read(new File("Image/Tuiles/tuile210.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(21).add(1,ImageIO.read(new File("Image/Tuiles/tuile211.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(21).add(2,ImageIO.read(new File("Image/Tuiles/tuile212.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(21).add(3,ImageIO.read(new File("Image/Tuiles/tuile213.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						// **********************************Tuile 22
+						try {
+							Tuile.listImagesTuiles.get(22).add(0,ImageIO.read(new File("Image/Tuiles/tuile220.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(22).add(1,ImageIO.read(new File("Image/Tuiles/tuile221.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(22).add(2,ImageIO.read(new File("Image/Tuiles/tuile222.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(22).add(3,ImageIO.read(new File("Image/Tuiles/tuile223.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						// **********************************Tuile 23
+						try {
+							Tuile.listImagesTuiles.get(23).add(0,ImageIO.read(new File("Image/Tuiles/tuile230.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(23).add(1,ImageIO.read(new File("Image/Tuiles/tuile231.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(23).add(2,ImageIO.read(new File("Image/Tuiles/tuile232.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(23).add(3,ImageIO.read(new File("Image/Tuiles/tuile233.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						// **********************************Tuile 24
+						try {
+							Tuile.listImagesTuiles.get(24).add(0,ImageIO.read(new File("Image/Tuiles/tuile240.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(24).add(1,ImageIO.read(new File("Image/Tuiles/tuile241.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(24).add(2,ImageIO.read(new File("Image/Tuiles/tuile242.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							Tuile.listImagesTuiles.get(24).add(3,ImageIO.read(new File("Image/Tuiles/tuile243.jpg")));
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 		}
-		// Tuile 0
-		try {
-			Tuile.listImagesTuiles.get(0).add(0,ImageIO.read(new File("Image/Tuiles/tuile00.jpg")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile01.jpg")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile02.jpg")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile03.jpg")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 	
 	
