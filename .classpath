@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="Code/Noyau"/>
 	<classpathentry kind="src" path="InterfaceGraphique"/>
+	<classpathentry kind="src" path="Noyau"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="Code/bin"/>
 </classpath>
