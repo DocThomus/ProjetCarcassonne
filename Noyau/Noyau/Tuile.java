@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 public class Tuile {
 	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
+	private int position; // Numéro correspondant à une des 4 orientations possible de la tuile
 	private Terrain [] tabCarac; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
 	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
 	private boolean [][] tabConnexitéBordure;
@@ -39,6 +40,7 @@ public class Tuile {
 		// boolean [4][4] connexitébordure;
 		// boolean [8][8] connexitéchamps;
 		this.num = num;
+		this.position=0;
 		this.tabCarac=caracs;
 		this.tabPresenceChamps=presenceChamps;
 		this.tabConnexitéBordure=connexiteBordure;
@@ -121,6 +123,18 @@ public class Tuile {
 		this.PionPlacé=null;
 	}
 	
+	public Image getImageTuile(){
+		return Tuile.listImagesTuiles.get(this.num).get(this.position);
+	}
+	
+	public int getPosition(){
+		return this.position;
+	}
+	
+	public int getNum(){
+		return this.num;
+	}
+	
 	public int getX(){
 		return this.x;
 	}
@@ -149,10 +163,8 @@ public class Tuile {
 	  * @param sens : Cette méthode permet au joueur de faire tourner sa tuile si il le désir.
 	  */
 	 
-	public void rotation(int sens){
-		//pré-requis sens 1 : sens horaire
-
-		if(sens==1){
+	public void rotation(){
+		//sens horaire		
 			
 			Terrain[]carac=new Terrain [5]; // Fait pivoter les caractéristique des bords.
 			carac[0]=this.tabCarac[3];
@@ -174,7 +186,11 @@ public class Tuile {
 			rconnex[3][2]=this.tabConnexitéBordure[3][1];
 			rconnex[3][3]=this.tabConnexitéBordure[3][2];
 			this.tabConnexitéBordure=rconnex;
-		}
+		
+			this.position++;
+			if(position>3){
+				this.position=0;
+			}
 		
 	}
 
@@ -226,9 +242,9 @@ public class Tuile {
 				if( this.verifPoseTuileLegale(p,x,y+1) || this.verifPoseTuileLegale(p,x+1,y) || this.verifPoseTuileLegale(p,x,y-1) || this.verifPoseTuileLegale(p,x-1,y)	 ){
 					estPosable=true; //... on cherche si il y a au moins un emplacement libre autour des tuiles déjà posées
 				}
-				this.rotation(1);
+				this.rotation();
 			}
-			this.rotation(1); // La tuile revient dans sa position initiale;
+			this.rotation(); // La tuile revient dans sa position initiale;
 		}
 		
 		return estPosable;

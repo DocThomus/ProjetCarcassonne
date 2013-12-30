@@ -15,4 +15,6 @@ public class ContPioche {
 		vue = new VuePioche(fenetrePrincipale, contraintesLayout);
 		modele.addObserver(vue);
 	}
+	
+	
 }
