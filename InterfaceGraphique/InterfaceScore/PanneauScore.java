@@ -27,7 +27,7 @@ public class PanneauScore extends JPanel {
 		
 		this.setLayout(new GridBagLayout()); // Structure de l'affichage
 		GridBagConstraints contraintesLayout = new GridBagConstraints();
-		contraintesLayout.fill = GridBagConstraints.BOTH;
+		contraintesLayout.fill = GridBagConstraints.HORIZONTAL;
 		for(int i = 0; i < nbJoueurs+1; i++) {
 			for (int j = 0; j < 3; j++) {
 				contraintesLayout.gridx = j;

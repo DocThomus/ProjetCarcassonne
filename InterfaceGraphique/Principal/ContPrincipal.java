@@ -14,14 +14,12 @@ public class ContPrincipal {
 		vuePrincipale = new VuePrincipale();
 		
 		// Temporaire, pour tester l'interface graphique Jeu.
-		Joueur.creerJoueur("aazqsde");
-		Joueur.creerJoueur("bazqsdee");
-		Joueur.creerJoueur("cqsaed");
-		Joueur.creerJoueur("qsqsddqa");
-		Joueur.creerJoueur("cqzeaararsd");
-		Joueur.creerJoueur("azeaqsd");
-		
-		System.out.println(Joueur.getNbJoueurs());
+		Joueur.creerJoueur("Joueur1");
+		Joueur.creerJoueur("Joueur2");
+		Joueur.creerJoueur("Joueur3");
+		Joueur.creerJoueur("Joueur4");
+		Joueur.creerJoueur("Joueur5");
+		Joueur.creerJoueur("Joueur6");
 		
 		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
 	}

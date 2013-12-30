@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import InterfaceScore.ContScore;
-import Noyau.Joueur;
 import Principal.Controleur;
 import InterfaceHistorique.ContHistorique;
 //import InterfacePioche.ContPioche;
@@ -16,12 +15,12 @@ import InterfaceHistorique.ContHistorique;
 public class ContJeu implements Controleur {	
 	
 	public static int nbElements = 4;
-	public static int x[] = 	{ 0,  0,  2,  8};
-	public static int y[] = 	{ 0,  3,  0,  0};
-	public static int larg[] = 	{ 1,  2,  6,  2};
-	public static int haut[] =  { 3,  7, 10, 10};
-	public static int px[] = 	{10,  0, 60, 20};
-	public static int py[] = 	{30, 70,  0,  0};
+	public static int x[] = 	{ 0,  0,  1,  9};
+	public static int y[] = 	{ 0,  2,  0,  0};
+	public static int larg[] = 	{ 1,  1,  8,  1};
+	public static int haut[] =  { 2,  8, 10, 10};
+	public static int px[] = 	{10,  0, 80, 10};
+	public static int py[] = 	{20, 80,  0,  0};
 	
 	private ContScore contScore;
 	private ContHistorique contHistorique;
