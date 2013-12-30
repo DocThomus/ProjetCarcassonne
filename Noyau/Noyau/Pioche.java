@@ -602,4 +602,9 @@ public class Pioche {
 		this.pioche.remove(val); // On suppprime la tuile de la pioche pour ne pas la repiocher.
 		return t;
 	}
+	
+	//TEST
+	public ArrayList<Tuile> getPioche(){
+		return this.pioche;
+	}
 }

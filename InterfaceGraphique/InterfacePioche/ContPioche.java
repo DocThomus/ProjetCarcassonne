@@ -11,10 +11,19 @@ public class ContPioche {
 	private VuePioche vue;
 	
 	public ContPioche(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
-		modele = new ModPioche(plateau);
-		vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
-		modele.addObserver(vue);
+		this.modele = new ModPioche(plateau);
+		this.vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
+		this.modele.addObserver(vue);
+		//this.modele.setImage();//Test
 	}
 	
+	public void rotationH (){
+		this.modele.rotationHoraire();
+		System.out.println("ok");
+	}
+	public void rotationAH (){
+		this.modele.rotationAntiHoraire();
+		System.out.println("ok");
+	}
 	
 }

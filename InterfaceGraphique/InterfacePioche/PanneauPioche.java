@@ -3,6 +3,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,14 +17,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class PanneauPioche extends JPanel {
+public class PanneauPioche extends JPanel implements ActionListener {
 	
 	private ImageIcon imgTuile;
 	private JButton rotationHoraire;
 	private JButton rotationAntiHoraire;
-	
+	private ContPioche controleur;
 	
 	public PanneauPioche (ContPioche controleur){
+		this.controleur=controleur;
 		try {
 			imgTuile = new ImageIcon(ImageIO.read(new File("Image/tuileTest.jpg")));
 		} catch (IOException e) {
@@ -38,6 +41,7 @@ public class PanneauPioche extends JPanel {
 			e.printStackTrace();
 		}
 		this.rotationHoraire= new JButton(icon);
+		rotationHoraire.addActionListener(this);
 		
 		Image rotationAH;
 		ImageIcon icon2 = new ImageIcon();
@@ -48,6 +52,7 @@ public class PanneauPioche extends JPanel {
 			e.printStackTrace();
 		}
 		this.rotationAntiHoraire= new JButton(icon2);
+		rotationAntiHoraire.addActionListener(this);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
@@ -76,5 +81,15 @@ public class PanneauPioche extends JPanel {
 	
 	public JButton getRotationAH(){
 		return this.rotationAntiHoraire;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == rotationHoraire){
+			this.controleur.rotationH();
+		}
+		if(e.getSource() == rotationAntiHoraire){
+			this.controleur.rotationAH();
+		}
 	}
 }

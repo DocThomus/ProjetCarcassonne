@@ -47,9 +47,9 @@ public class ContJeu implements Controleur {
 				contScore = new ContScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 			} else if(i == 1) {
 				contPioche = new ContPioche(fenetrePrincipale, contraintesLayout, plateau);				
-			} else if(i == 2) {
-			//	contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
-			} else if(i == 3) {
+			} /*else if(i == 2) {
+				contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
+			}*/ else if(i == 3) {
 				contHistorique = new ContHistorique(fenetrePrincipale, contraintesLayout);
 			}
 		}
