@@ -1,6 +1,7 @@
 package Principal;
 
 import InterfaceJeu.ContJeu;
+import Noyau.Joueur;
 
 public class ContPrincipal {
 	public static final int LARGEUR_FENETRE = 1280;
@@ -12,12 +13,16 @@ public class ContPrincipal {
 	public ContPrincipal() {
 		vuePrincipale = new VuePrincipale();
 		
-		String[] nomsJoueurs = {"a","b","c","d"};
-		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), 4, nomsJoueurs); // Temporaire, pour tester l'interface graphique Jeu.
-	}
-	
-	public static void main(String[] args) {
-		ContPrincipal c = new ContPrincipal();
+		// Temporaire, pour tester l'interface graphique Jeu.
+		Joueur.creerJoueur("aazqsde");
+		Joueur.creerJoueur("bazqsdee");
+		Joueur.creerJoueur("cqsaed");
+		Joueur.creerJoueur("qsqsddqa");
+		Joueur.creerJoueur("cqzeaararsd");
+		Joueur.creerJoueur("azeaqsd");
 		
+		System.out.println(Joueur.getNbJoueurs());
+		
+		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
 	}
 }

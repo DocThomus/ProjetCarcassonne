@@ -14,8 +14,7 @@ public class ModHistorique extends Observable {
 		listeEvenements.add(0, str);
 	}
 	
-	private ArrayList<String> getListeEvenements() {
-		// Retourne la liste des derniers éléments à afficher.
+	private ArrayList<String> getListeEvenements() { // Retourne la liste des derniers éléments à afficher.
 		int nbMessages = 10;
 		ArrayList<String> list = new ArrayList<String>();
 		

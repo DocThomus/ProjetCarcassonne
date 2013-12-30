@@ -13,4 +13,8 @@ public class ContScore {
 		vue = new VueScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 		modele.addObserver(vue);
 	}
+	
+	public void refresh() {
+		modele.refresh();
+	}
 }

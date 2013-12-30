@@ -8,28 +8,20 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 
-public class VueScore implements Observer{
+public class VueScore implements Observer{	
 	private PanneauScore panScore;
 	
 	public VueScore (JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int nbJoueurs, String[] nomsJoueurs) {
 		panScore = new PanneauScore(nbJoueurs, nomsJoueurs);
 		fenetrePrincipale.getContentPane().add(panScore, contraintesLayout);
-		
-		int[] b = {1,5,6,2}; 				// ...
-		int[] c = {10,20,54,120}; 			// ...
-		panScore.maj(b,c); 					// ...
-		
-		
-		int[] b2 = {2,5,6,2}; 				// ...
-		int[] c2 = {11,20,54,120}; 			// ...
-		panScore.maj(b2,c2); 				// ...*/
 	}
 	
 	public void update(Observable o, Object arg) {
+		@SuppressWarnings("unchecked")
 		ArrayList<Object> tab = (ArrayList<Object>) arg; 
 		
-		int[] tabNbPion = (int[]) tab.get(2);
-		int[] tabScore = (int[]) tab.get(3);
+		int[] tabNbPion = (int[]) tab.get(0);
+		int[] tabScore = (int[]) tab.get(1);
 		
 		this.panScore.maj(tabNbPion, tabScore);
 	}

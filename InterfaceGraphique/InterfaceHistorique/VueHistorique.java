@@ -15,6 +15,7 @@ public class VueHistorique implements Observer {
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
 		this.panHistorique.maj((ArrayList<String>)arg);
 	}

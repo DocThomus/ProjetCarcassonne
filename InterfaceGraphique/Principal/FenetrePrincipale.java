@@ -1,7 +1,6 @@
 package Principal;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class FenetrePrincipale extends JFrame {
 	

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import InterfaceScore.ContScore;
+import Noyau.Joueur;
 import Principal.Controleur;
 import InterfaceHistorique.ContHistorique;
 //import InterfacePioche.ContPioche;
@@ -16,18 +17,18 @@ public class ContJeu implements Controleur {
 	
 	public static int nbElements = 4;
 	public static int x[] = 	{ 0,  0,  2,  8};
-	public static int y[] = 	{ 0,  1,  0,  0};
-	public static int larg[] = 	{ 2,  2,  6,  2};
-	public static int haut[] =  { 1,  1,  2,  2};
-	public static int px[] = 	{20,  0, 60, 20};
-	public static int py[] = 	{50, 50,  0,  0};
+	public static int y[] = 	{ 0,  3,  0,  0};
+	public static int larg[] = 	{ 1,  2,  6,  2};
+	public static int haut[] =  { 3,  7, 10, 10};
+	public static int px[] = 	{10,  0, 60, 20};
+	public static int py[] = 	{30, 70,  0,  0};
 	
 	private ContScore contScore;
 	private ContHistorique contHistorique;
 	// private ContPioche contPioche;
 	// private ContPlateau contPlateau;
 	
-	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {
+	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {		
 		fenetrePrincipale.getContentPane().setLayout(new GridBagLayout());
 		
 		GridBagConstraints contraintesLayout = new GridBagConstraints();
@@ -51,5 +52,6 @@ public class ContJeu implements Controleur {
 				contHistorique = new ContHistorique(fenetrePrincipale, contraintesLayout);
 			}
 		}
+		contScore.refresh();
 	}
 }
