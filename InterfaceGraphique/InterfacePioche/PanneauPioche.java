@@ -77,9 +77,4 @@ public class PanneauPioche extends JPanel {
 	public JButton getRotationAH(){
 		return this.rotationAntiHoraire;
 	}
-	
-	/*public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(this.imgTuile, 20, 20, 250, 250, this);
-	}*/
 }
