@@ -1,9 +1,13 @@
 package Noyau;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.imageio.ImageIO;
 
 public class Tuile {
 	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
@@ -18,7 +22,7 @@ public class Tuile {
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
 	
-	public static ArrayList<Image> listImagesTuiles = new ArrayList<Image>(); // TODO A remplir
+	public static ArrayList<ArrayList<Image>> listImagesTuiles = new ArrayList<ArrayList<Image>>();
 	
 	/**
 	 * 
@@ -230,6 +234,37 @@ public class Tuile {
 		return estPosable;
 	}
 	
+public void ajouteImagesTuiles(){
+		
+		for(int i=0;i<24;i++){ // Création des 25 ArrayList<Image>, qui contiendront chacune 4 image 
+			Tuile.listImagesTuiles.add(i,new ArrayList<Image>());
+		}
+		// Tuile 0
+		try {
+			Tuile.listImagesTuiles.get(0).add(0,ImageIO.read(new File("Image/Tuiles/tuile00.jpg")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile01.jpg")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile02.jpg")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Tuile.listImagesTuiles.get(0).add(1,ImageIO.read(new File("Image/Tuiles/tuile03.jpg")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	

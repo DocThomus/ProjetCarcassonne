@@ -122,7 +122,7 @@ public class Pioche {
 							{false, false, false, false, true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
-					5)); // Position du bouclier.
+					0)); // Position du bouclier.
 		}
 		
 		
