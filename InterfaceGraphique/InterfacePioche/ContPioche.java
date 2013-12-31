@@ -14,16 +14,16 @@ public class ContPioche {
 		this.modele = new ModPioche(plateau);
 		this.vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
 		this.modele.addObserver(vue);
-		//this.modele.setImage();//Test
 	}
 	
 	public void rotationH (){
 		this.modele.rotationHoraire();
-		System.out.println("ok");
+		this.modele.piocher();
+		System.out.println("rotation horaire + test pioche ok");
 	}
 	public void rotationAH (){
 		this.modele.rotationAntiHoraire();
-		System.out.println("ok");
+		System.out.println("rotation anti horaire ok");
 	}
 	
 }

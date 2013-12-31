@@ -3,6 +3,8 @@ import java.awt.Image;
 import java.util.List;
 import java.util.Observable;
 
+import javax.swing.ImageIcon;
+
 import Noyau.Pioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
@@ -18,7 +20,7 @@ public class ModPioche extends Observable {
 			this.pioche= new Pioche();
 			System.out.println(this.pioche.getPioche().size());
 			this.plateau= plateau;
-			//this.piocher();
+			this.piocher();
 		}
 		
 		public void piocher (){
@@ -53,9 +55,4 @@ public class ModPioche extends Observable {
 			return  Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getPosition());
 		}
 		
-		public void setImage(){//Test
-			this.t=this.pioche.getPioche().get(3);
-			this.setChanged();
-			this.notifyObservers(this.getImage());
-		}
 }
