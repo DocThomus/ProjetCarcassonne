@@ -14,6 +14,7 @@ public class ContPioche {
 		this.modele = new ModPioche(plateau);
 		this.vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
 		this.modele.addObserver(vue);
+		this.modele.piocher();
 	}
 	
 	public void rotationH (){

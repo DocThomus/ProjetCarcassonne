@@ -26,6 +26,8 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	private JButton rotationHoraire;
 	private JButton rotationAntiHoraire;
 	private ContPioche controleur;
+	private int taillePioche=0;
+	private JLabel nbTuile;
 	
 	public PanneauPioche (ContPioche controleur){
 		this.controleur=controleur;
@@ -58,19 +60,21 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		
 		/*JLabel panImage = new JLabel(imgTuile);
 		panImage.setAlignmentX(Component.CENTER_ALIGNMENT);*/
-		
+		nbTuile = new JLabel("Nombre de tuiles restantes : " + this.taillePioche);
 		this.add(Box.createVerticalGlue());
-		
+		this.add(nbTuile);
 		//this.add(panImage, BorderLayout.CENTER);
 		this.add(Box.createVerticalStrut(10));
 		this.add(panBoutons);
 		this.add(Box.createVerticalStrut(10));
 	}
 	
-	public void maj (Image img){
+	public void maj (Image img,int taille){
 		System.out.println("maj ok");
 		//this.imgTuile = new ImageIcon(img);
 		this.imgTuile=img;
+		this.taillePioche=taille;
+		this.nbTuile.setText("Nombre de tuiles restantes : " + this.taillePioche);
 		this.repaint();
 	}
 	

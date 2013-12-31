@@ -18,7 +18,7 @@ public class VuePioche implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		Image imgTuile = (Image) arg;
-		this.panPioche.maj(imgTuile);
+		PaquetPioche pp = (PaquetPioche) arg;	
+		this.panPioche.maj(pp.getImageTuile(),pp.getTaillePioche());
 	}
 }

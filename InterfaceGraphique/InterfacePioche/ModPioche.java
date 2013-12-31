@@ -1,5 +1,5 @@
 package InterfacePioche;
-import java.awt.Image;
+
 import java.util.List;
 import java.util.Observable;
 
@@ -50,9 +50,10 @@ public class ModPioche extends Observable {
 			return this.t;
 		}
 		
-		public Image getImage(){
-			System.out.println(this.t.getNum() +"  "+ this.t.getPosition());
-			return  Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getPosition());
+		public PaquetPioche getImage(){
+			//System.out.println(this.t.getNum() +"  "+ this.t.getPosition());
+			System.out.println(this.pioche.getPioche().size());
+			return  new PaquetPioche(Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getPosition()), this.pioche.getPioche().size());
 		}
 		
 }
