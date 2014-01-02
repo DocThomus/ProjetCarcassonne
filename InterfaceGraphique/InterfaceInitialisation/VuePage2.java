@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,33 +51,45 @@ public class VuePage2 implements ActionListener {
 			Jouer = new JButton("JOUER");
 			Jouer.addActionListener(this);
 			
-			champ1 = new JTextField(10);
-			champ2 = new JTextField(10);
-			champ3 = new JTextField(10);
-			champ4 = new JTextField(10);
-			champ5 = new JTextField(10);
-			champ6 = new JTextField(10);
+			champ1 = new JTextField(12);
+			champ2 = new JTextField(12);
+			champ3 = new JTextField(12);
+			champ4 = new JTextField(12);
+			champ5 = new JTextField(12);
+			champ6 = new JTextField(12);
 		
 			label1 = new JLabel("Joueurs");
 			
 			ListeBoutons.setLayout(new BoxLayout(ListeBoutons, BoxLayout.Y_AXIS)); //on crée un nouveaux layout pour que les widgets soit disposé en colonne
 			ListeBoutons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
 			
-			//ListeChamps.setLayout(new BoxLayout(ListeChamps, BoxLayout.Y_AXIS));
+			ListeChamps.setLayout(new BoxLayout(ListeChamps, BoxLayout.Y_AXIS));
 			ListeChamps.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
 			
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ1); //on ajoute un champs
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ2);
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ3);
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ4);
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ5);
+			//ListeChamps.add(Box.createGlue());
 			ListeChamps.add(champ6);
+			//ListeChamps.add(Box.createGlue());
 			
 			ListeBoutons.add(Bouton1); //on ajoute un bouton
+			ListeBoutons.add(Box.createGlue());
 			ListeBoutons.add(Bouton2);
+			ListeBoutons.add(Box.createGlue());
 			ListeBoutons.add(Bouton3);
+			ListeBoutons.add(Box.createGlue());
 			ListeBoutons.add(Bouton4);
+			ListeBoutons.add(Box.createGlue());
 			ListeBoutons.add(Bouton5);
+			ListeBoutons.add(Box.createGlue());
 			ListeBoutons.add(Bouton6);
 			
 			Titre.add(label1); //on ajoute un titre
@@ -89,7 +102,7 @@ public class VuePage2 implements ActionListener {
 			
 			cadre.getContentPane().add(BorderLayout.NORTH,Titre);
 			cadre.getContentPane().add(BorderLayout.WEST,ListeBoutons);
-			cadre.getContentPane().add(BorderLayout.CENTER,ListeChamps);
+			cadre.getContentPane().add(BorderLayout.EAST,ListeChamps);
 			cadre.getContentPane().add(BorderLayout.SOUTH,Jeu);
 		
 			cadre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ce programme s'arretera des que l'on appuira sur la croix en haut à droite 
