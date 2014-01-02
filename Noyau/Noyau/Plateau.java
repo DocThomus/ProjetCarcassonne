@@ -31,11 +31,13 @@ public static int yCentre = 100;
 							{false, false, false, true , true , true},
 							{false, false, true , false, false, false, false}},
 					5); // Position du bouclier.
-		tuileDeBase.poseTuile(this, 100, 100); // Place la tuile de base sur le plateau en position 100/100
+		tuileDeBase.poseTuile(this, 0, 0); // Place la tuile de base sur le plateau en position 100/100 (xCentre et yCentre sont ajoutés dans poseTuile).
 		//this.tuileDeBase = tuileDeBase; 
 	}
 
 	public void poseTuile (Tuile t, int x, int y){
+		x = x + xCentre;
+		y = y + yCentre;
 		this.repere[x][y] = t;
 		this.tuilePosees.add(t);
 	}
@@ -45,10 +47,14 @@ public static int yCentre = 100;
 	}
 	
 	public Tuile getTuile (int x, int y){
+		x = x + xCentre;
+		y = y + yCentre;
 		return this.repere[x][y];
 	}
 	
 	public boolean isEmpty (int x, int y){
+		x = x + xCentre;
+		y = y + yCentre;
 		return (this.repere[x][y]==null);
 	}
 	
@@ -56,6 +62,8 @@ public static int yCentre = 100;
 		// renvoie les tuile adjacente a un point prï¿½cis pour faire les vï¿½rifications de lï¿½galitï¿½, poser la tuile etc...
 		// si il n'y a pas de tuile en renvoie une Tuile vide plutï¿½t qu'un null pour ï¿½viter les problï¿½mes par la suite
 		ArrayList<Tuile> tAdjacente= new ArrayList<Tuile>(4);
+		x = x + xCentre;
+		y = y + yCentre;
 		
 		if (this.isEmpty(x, y+1)) { // ajoute la uile du haut Ã  tAdjacence
 			tAdjacente.add(0, null);
@@ -86,6 +94,8 @@ public static int yCentre = 100;
 	}
 	
 	public boolean isCaseLibre(int x, int y) {
+		x = x + xCentre;
+		y = y + yCentre;
 		// retourne vrai ssi la case en positon (x,y) est libre, et si elle a au moins un voisin.
 		// On considère la taille du plateau suffisemment grande pour ne pas dépasser ses bords.
 		return (this.isEmpty(x, y)) && ((!this.isEmpty(x-1, y) || !this.isEmpty(x, y-1) || !this.isEmpty(x+1, y) || !this.isEmpty(x, y+1)));

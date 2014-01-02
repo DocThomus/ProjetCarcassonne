@@ -22,7 +22,7 @@ public class ModPlateau extends Observable {
 		Image[][] tabtabImages = new Image[largNbTuiles][hautNbTuiles];
 		for (int i = 0; i < largNbTuiles; i++) {
 			for (int j = 0; j < hautNbTuiles; j++) {
-				Tuile t = plateau.getTuile(Plateau.xCentre+i+xPosPlateau, Plateau.yCentre+j+yPosPlateau); 
+				Tuile t = plateau.getTuile(i+xPosPlateau, j+yPosPlateau); 
 				if (t != null) {
 					tabtabImages[i][j] = t.getImageTuile();
 				} 
@@ -32,7 +32,13 @@ public class ModPlateau extends Observable {
 	}
 	
 	public boolean[][] getTabCasesLibres() {
-		return null;
+		boolean[][] tabtabCasesLibres = new boolean[largNbTuiles][hautNbTuiles];
+		for (int i = 0; i < largNbTuiles; i++) {
+			for (int j = 0; j < hautNbTuiles; j++) {
+				tabtabCasesLibres[i][j] = this.plateau.isCaseLibre(i, j);
+			}
+		}
+		return tabtabCasesLibres;
 	}
 	
 	
