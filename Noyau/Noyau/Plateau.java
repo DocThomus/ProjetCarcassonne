@@ -88,7 +88,7 @@ public static int yCentre = 100;
 	public boolean isCaseLibre(int x, int y) {
 		// retourne vrai ssi la case en positon (x,y) est libre, et si elle a au moins un voisin.
 		// On considère la taille du plateau suffisemment grande pour ne pas dépasser ses bords.
-		return (this.isEmpty(x, y)) && ((this.isEmpty(x-1, y) || this.isEmpty(x, y-1) || this.isEmpty(x+1, y) || this.isEmpty(x, y+1)));
+		return (this.isEmpty(x, y)) && ((!this.isEmpty(x-1, y) || !this.isEmpty(x, y-1) || !this.isEmpty(x+1, y) || !this.isEmpty(x, y+1)));
 	}
 	
 	
