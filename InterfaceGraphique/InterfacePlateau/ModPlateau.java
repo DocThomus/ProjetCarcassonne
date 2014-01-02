@@ -25,9 +25,7 @@ public class ModPlateau extends Observable {
 				Tuile t = plateau.getTuile(Plateau.xCentre+i+xPosPlateau, Plateau.yCentre+j+yPosPlateau); 
 				if (t != null) {
 					tabtabImages[i][j] = t.getImageTuile();
-				} else {
-
-				}
+				} 
 			}
 		}
 		return tabtabImages;
