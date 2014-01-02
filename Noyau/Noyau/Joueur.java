@@ -11,6 +11,7 @@ public class Joueur {
 	
 	public static void creerJoueur(String nom) {
 		listJoueur.add(new Joueur(nom));
+		System.out.println("joueur créé : " + nom);
 	}	
 	
 	public static Joueur getJoueur(int id) {
