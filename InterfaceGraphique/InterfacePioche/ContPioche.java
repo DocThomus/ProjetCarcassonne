@@ -19,7 +19,7 @@ public class ContPioche {
 	
 	public void rotationH (){
 		this.modele.rotationHoraire();
-		this.modele.piocher();
+		//this.modele.piocher();
 		System.out.println("rotation horaire + test pioche ok");
 	}
 	public void rotationAH (){
