@@ -62,18 +62,21 @@ public static int yCentre = 100;
 		// renvoie les tuile adjacente a un point prï¿½cis pour faire les vï¿½rifications de lï¿½galitï¿½, poser la tuile etc...
 		// si il n'y a pas de tuile en renvoie une Tuile vide plutï¿½t qu'un null pour ï¿½viter les problï¿½mes par la suite
 		ArrayList<Tuile> tAdjacente= new ArrayList<Tuile>(4);
-		x = x + xCentre;
-		y = y + yCentre;
+		
 		
 		if (this.isEmpty(x, y+1)) { // ajoute la uile du haut Ã  tAdjacence
 			tAdjacente.add(0, null);
 		} else {
+			x = x + xCentre;
+			y = y + yCentre;
 			tAdjacente.add(0, this.getTuile(x, y+1));
 		}
 		
 		if (this.isEmpty(x+1, y)) { // ajoute la tuile de droite Ã  tAdjacence
 			tAdjacente.add(1, null);
 		} else {
+			x = x + xCentre;
+			y = y + yCentre;
 			tAdjacente.add(1, this.getTuile(x+1, y));
 		}
 		
@@ -81,12 +84,16 @@ public static int yCentre = 100;
 			tAdjacente.add(2, null);
 		}
 		else {
+			x = x + xCentre;
+			y = y + yCentre;
 			tAdjacente.add(2, this.getTuile(x, y-1));
 		}
 		
 		if (this.isEmpty(x-1, y)) {  // ajoute la tuile de gauche Ã  tAdjacence
 			tAdjacente.add(3, null);
 		} else {
+			x = x + xCentre;
+			y = y + yCentre;
 			tAdjacente.add(3, this.getTuile(x-1, y));
 		}
 		
@@ -94,8 +101,6 @@ public static int yCentre = 100;
 	}
 	
 	public boolean isCaseLibre(int x, int y) {
-		x = x + xCentre;
-		y = y + yCentre;
 		// retourne vrai ssi la case en positon (x,y) est libre, et si elle a au moins un voisin.
 		// On considère la taille du plateau suffisemment grande pour ne pas dépasser ses bords.
 		return (this.isEmpty(x, y)) && ((!this.isEmpty(x-1, y) || !this.isEmpty(x, y-1) || !this.isEmpty(x+1, y) || !this.isEmpty(x, y+1)));

@@ -31,7 +31,6 @@ public class VueHistorique implements Observer {
 		
 		panHistorique.setBackground(Color.cyan);
 		
-		
 		panHistorique.setLayout(new BoxLayout(panHistorique, BoxLayout.Y_AXIS));
 		panHistorique.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 0));
 		panHistorique.add(new JLabel("Historique :"));

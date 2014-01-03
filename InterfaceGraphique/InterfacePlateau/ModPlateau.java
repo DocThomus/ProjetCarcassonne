@@ -8,21 +8,25 @@ import Noyau.Tuile;
 
 public class ModPlateau extends Observable {
 	private Plateau plateau;
-	private static int largNbTuiles = 9;
-	private static int hautNbTuiles = 7;
-	private static int xPosPlateau = -4;
-	private static int yPosPlateau = -3;
+	private int largNbTuiles;
+	private int hautNbTuiles;
+	private int xPosPlateau;
+	private int yPosPlateau;
 
 
-	public ModPlateau(Plateau plateau) {
+	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
 		this.plateau = plateau;
+		this.largNbTuiles = largNbTuiles;
+		this.hautNbTuiles = hautNbTuiles;
+		this.xPosPlateau = xPosPlateau;
+		this.yPosPlateau = yPosPlateau;
 	}
 	
 	public Image[][] getTabTabImages() {
-		Image[][] tabtabImages = new Image[largNbTuiles][hautNbTuiles];
-		for (int i = 0; i < largNbTuiles; i++) {
-			for (int j = 0; j < hautNbTuiles; j++) {
-				Tuile t = plateau.getTuile(i+xPosPlateau, j+yPosPlateau); 
+		Image[][] tabtabImages = new Image[hautNbTuiles][largNbTuiles];
+		for (int i = 0; i < hautNbTuiles; i++) {
+			for (int j = 0; j < largNbTuiles; j++) {
+				Tuile t = plateau.getTuile(i+yPosPlateau, j+xPosPlateau); 
 				if (t != null) {
 					tabtabImages[i][j] = t.getImageTuile();
 				} 
@@ -32,12 +36,17 @@ public class ModPlateau extends Observable {
 	}
 	
 	public boolean[][] getTabTabCasesLibres() {
-		boolean[][] tabtabCasesLibres = new boolean[largNbTuiles][hautNbTuiles];
-		for (int i = 0; i < largNbTuiles; i++) {
-			for (int j = 0; j < hautNbTuiles; j++) {
-				tabtabCasesLibres[i][j] = this.plateau.isCaseLibre(i, j);
+		boolean[][] tabtabCasesLibres = new boolean[hautNbTuiles][largNbTuiles];
+		for (int i = 0; i < hautNbTuiles; i++) {
+			for (int j = 0; j < largNbTuiles; j++) {
+				tabtabCasesLibres[i][j] = this.plateau.isCaseLibre(i+yPosPlateau, j+xPosPlateau);
 			}
 		}
 		return tabtabCasesLibres;
+	}
+
+	public void sendMajToVue() {
+		this.setChanged();
+		this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres()));
 	}
 }
