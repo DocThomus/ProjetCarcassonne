@@ -1,6 +1,5 @@
 package InterfacePioche;
 import java.awt.GridBagConstraints;
-import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,7 +15,7 @@ public class VuePioche implements Observer {
 		fenetrePrincipale.getContentPane().add(panPioche, contraintesLayout);
 	}
 
-	@Override
+	
 	public void update(Observable o, Object arg) {
 		PaquetPioche pp = (PaquetPioche) arg;	
 		this.panPioche.maj(pp.getImageTuile(),pp.getTaillePioche());
