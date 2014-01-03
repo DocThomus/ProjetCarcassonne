@@ -28,6 +28,7 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	private ContPioche controleur;
 	private int taillePioche=0;
 	private JLabel nbTuile;
+	private JLabel panImage;
 	
 	public PanneauPioche (ContPioche controleur){
 		this.controleur=controleur;
@@ -58,12 +59,14 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		panBoutons.add(rotationHoraire);
 		panBoutons.add(rotationAntiHoraire);
 		
-		/*JLabel panImage = new JLabel(imgTuile);
-		panImage.setAlignmentX(Component.CENTER_ALIGNMENT);*/
-		nbTuile = new JLabel("Nombre de tuiles restantes : " + this.taillePioche);
+		this.panImage = new JLabel(new ImageIcon(imgTuile));
+		this.panImage.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.nbTuile = new JLabel("Nombre de tuiles restantes : " + this.taillePioche);
+		this.nbTuile.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(Box.createVerticalGlue());
 		this.add(nbTuile);
-		//this.add(panImage, BorderLayout.CENTER);
+		this.add(Box.createVerticalStrut(10));
+		this.add(panImage, BorderLayout.CENTER);
 		this.add(Box.createVerticalStrut(10));
 		this.add(panBoutons);
 		this.add(Box.createVerticalStrut(10));
@@ -75,13 +78,14 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		this.imgTuile=img;
 		this.taillePioche=taille;
 		this.nbTuile.setText("Nombre de tuiles restantes : " + this.taillePioche);
-		this.repaint();
+		this.panImage.setIcon(new ImageIcon(img));
+		//this.repaint();
 	}
 	
-	public void paintComponent(Graphics g) {
+	/*public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(this.imgTuile, this.getWidth()/4,this.getHeight()/4,150,150,this);
-	}
+	}*/
 	
 	public JButton getRotationH(){
 		return this.rotationHoraire;

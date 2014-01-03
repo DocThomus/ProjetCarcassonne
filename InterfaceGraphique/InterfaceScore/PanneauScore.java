@@ -23,7 +23,7 @@ public class PanneauScore extends JPanel {
 		this.etiquettesPions = new JLabel[nbJoueurs];
 		this.etiquettesScores = new JLabel[nbJoueurs];
 		
-		this.setBackground(Color.yellow); // Test
+		//this.setBackground(Color.yellow); // Test
 		
 		this.setLayout(new GridBagLayout()); // Structure de l'affichage
 		GridBagConstraints contraintesLayout = new GridBagConstraints();

@@ -29,7 +29,7 @@ public class VueHistorique implements Observer {
 		JPanel panHistorique = new JPanel();
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
 		
-		panHistorique.setBackground(Color.cyan);
+		//panHistorique.setBackground(Color.cyan);
 		
 		panHistorique.setLayout(new BoxLayout(panHistorique, BoxLayout.Y_AXIS));
 		panHistorique.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 0));
