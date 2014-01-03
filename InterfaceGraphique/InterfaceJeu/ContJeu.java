@@ -16,12 +16,12 @@ import InterfacePlateau.ContPlateau;
 public class ContJeu implements Controleur {	
 	
 	public static int nbElements = 4;
-	public static int x[] = 	{ 0,  0,  1,  8};
+	public static int x[] = 	{ 0,  0,  1,  7};
 	public static int y[] = 	{ 0,  2,  0,  0};
-	public static int larg[] = 	{ 1,  1,  7,  2};
-	public static int haut[] =  { 2,  8, 10, 10};
-	public static int px[] = 	{50,  0,  0, 50};
-	public static int py[] = 	{0, 100,  0,  0};
+	public static int larg[] = 	{ 1,  1,  6,  3};
+	public static int haut[] =  { 3,  8,  8, 10};
+	public static int px[] = 	{10,  0,  0, 70};
+	public static int py[] = 	{ 0,100,  0,  0};
 	
 	private ContScore contScore;
 	private ContHistorique contHistorique;

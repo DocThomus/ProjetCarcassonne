@@ -10,10 +10,10 @@ public class ContPlateau {
 	private ModPlateau modele;
 	private VuePlateau vue;
 	
-	private int largNbTuiles = 9;
-	private int hautNbTuiles = 7;
-	private int xPosPlateau = -4;
-	private int yPosPlateau = -3;
+	private int largNbTuiles = 7;
+	private int hautNbTuiles = 6;
+	private int xPosPlateau = -3;
+	private int yPosPlateau = -2;
 	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);

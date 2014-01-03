@@ -20,12 +20,12 @@ import javax.swing.JPanel;
 
 public class VuePlateau implements Observer {
 	private JButton boutonHaut;
-	private JButton boutonDroite;
+	private JButton boutonDroit;
 	private JButton boutonBas;
 	private JButton boutonGauche;
 	private JPanel panPlateau;				// Contient les images des tuiles et les boutons pour poser.
-	private JPanel panPlateauAvecBoutons;	// Contient panPlateau entouré de 4 boutons grâce à un BorderLayout.
-	private JPanel panPlateauAvecGlues; 	// Contient verticalement : 1 glue, panPlateauAvecBoutons, 1 glue.
+	//private JPanel panPlateauAvecBoutons;	// Contient panPlateau entouré de 4 boutons grâce à un BorderLayout.
+	//private JPanel panPlateauAvecGlues; 	// Contient verticalement : 1 glue, panPlateauAvecBoutons, 1 glue.
 	private int largeurPlateau;
 	private int hauteurPlateau;
 	private Image[][] tabtabImages;
@@ -42,29 +42,27 @@ public class VuePlateau implements Observer {
 		
 		this.boutonHaut = new JButton("Haut");
 		this.boutonBas = new JButton("Bas");
-		this.boutonDroite = new JButton("Droite");
+		this.boutonDroit = new JButton("Droite");
 		this.boutonGauche = new JButton("Gauche");
 		
-		this.panPlateauAvecBoutons = new JPanel();
-		this.panPlateauAvecBoutons.setLayout(new BorderLayout());
-		this.panPlateauAvecBoutons.add(panPlateau, BorderLayout.CENTER);
-		this.panPlateauAvecBoutons.add(boutonHaut, BorderLayout.NORTH);
-		this.panPlateauAvecBoutons.add(boutonBas, BorderLayout.SOUTH);
-		this.panPlateauAvecBoutons.add(boutonDroite, BorderLayout.EAST);
-		this.panPlateauAvecBoutons.add(boutonGauche, BorderLayout.WEST);
+		JPanel panPlateauAvecBoutons = new JPanel();
+		BorderLayout layoutAvecBoutons = new BorderLayout();
+		panPlateauAvecBoutons.setLayout(layoutAvecBoutons);
+		panPlateauAvecBoutons.add(panPlateau, BorderLayout.CENTER);
+		panPlateauAvecBoutons.add(boutonHaut, BorderLayout.NORTH);
+		panPlateauAvecBoutons.add(boutonBas, BorderLayout.SOUTH);
+		panPlateauAvecBoutons.add(boutonDroit, BorderLayout.EAST);
+		panPlateauAvecBoutons.add(boutonGauche, BorderLayout.WEST);
+
+		fenetrePrincipale.getContentPane().add(panPlateauAvecBoutons, contraintesLayout);
 		
+		/*JPanel panPlateauComplet = new JPanel();
+		panPlateauComplet.setLayout(new BoxLayout(panPlateauComplet, BoxLayout.PAGE_AXIS));
+		panPlateauComplet.add(Box.createHorizontalGlue());
+		panPlateauComplet.add(panPlateauAvecBoutons);
+		panPlateauComplet.add(Box.createHorizontalGlue());*/
 		
-		this.panPlateauAvecGlues = new JPanel();
-		this.panPlateauAvecGlues.setLayout(new BoxLayout(panPlateauAvecGlues, BoxLayout.Y_AXIS));
-		//this.panPlateauAvecGlues.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-		this.panPlateauAvecGlues.add(Box.createGlue());
-		this.panPlateauAvecGlues.add(this.panPlateauAvecBoutons);
-		this.panPlateauAvecGlues.add(Box.createGlue());
-		this.panPlateauAvecGlues.revalidate();
-		this.panPlateauAvecGlues.repaint();
-		
-		
-		fenetrePrincipale.getContentPane().add(this.panPlateauAvecGlues, contraintesLayout);
+		//fenetrePrincipale.getContentPane().add(panPlateauComplet, contraintesLayout);
 	}
 
 	public void update(Observable o, Object arg) {

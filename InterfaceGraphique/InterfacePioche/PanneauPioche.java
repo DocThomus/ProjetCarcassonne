@@ -61,9 +61,12 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		
 		this.panImage = new JLabel(new ImageIcon(imgTuile));
 		this.panImage.setAlignmentX(Component.CENTER_ALIGNMENT);
-		this.nbTuile = new JLabel("Nombre de tuiles restantes : " + this.taillePioche);
+		JLabel labelNbTuilesConst = new JLabel("Nombre de tuiles restantes : ");
+		labelNbTuilesConst.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.nbTuile = new JLabel(""+this.taillePioche);
 		this.nbTuile.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(Box.createVerticalGlue());
+		this.add(labelNbTuilesConst);
 		this.add(nbTuile);
 		this.add(Box.createVerticalStrut(10));
 		this.add(panImage, BorderLayout.CENTER);
@@ -77,7 +80,7 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		//this.imgTuile = new ImageIcon(img);
 		this.imgTuile=img;
 		this.taillePioche=taille;
-		this.nbTuile.setText("Nombre de tuiles restantes : " + this.taillePioche);
+		this.nbTuile.setText(""+this.taillePioche);
 		this.panImage.setIcon(new ImageIcon(img));
 		//this.repaint();
 	}
