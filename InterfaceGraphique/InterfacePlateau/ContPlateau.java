@@ -43,8 +43,8 @@ public class ContPlateau {
 		this.modele.setXPosPlateau(this.xPosPlateau);
 	}
 	
-	public void poseTuile(int x, int y){
-		this.modele.poseTuile(x+this.xPosPlateau, y+this.yPosPlateau);
-		System.out.println((x+this.xPosPlateau) + " " + (y+this.yPosPlateau));
+	public void poseTuile(int col, int ligne){
+		this.modele.poseTuile(col+this.xPosPlateau, ligne+this.yPosPlateau);
+		System.out.println((col+this.xPosPlateau) + " " + (ligne+this.yPosPlateau));
 	}
 }

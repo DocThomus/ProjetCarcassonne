@@ -117,11 +117,11 @@ public class VuePlateau implements Observer, ActionListener {
 		} else if(e.getSource()== boutonDroit){		// Bouton Droit
 			this.controleur.decaleDroite();
 		} else if(e.getSource().getClass() == BoutonPlateau.class) {	// Bouton Poser
-			int ColPosBouton = ((BoutonPlateau) e.getSource()).getCol();
-			System.out.println(""+ColPosBouton);
-			int LignePosBouton = ((BoutonPlateau) e.getSource()).getLigne();
-			System.out.println(""+LignePosBouton);
-			//this.controleur.poseTuile(yPosBouton, xPosBouton);
+			int colPosBouton = ((BoutonPlateau) e.getSource()).getCol();
+			System.out.println(""+colPosBouton);
+			int lignePosBouton = ((BoutonPlateau) e.getSource()).getLigne();
+			System.out.println(""+lignePosBouton);
+			this.controleur.poseTuile(colPosBouton, lignePosBouton);
 		}
 	}
 }
