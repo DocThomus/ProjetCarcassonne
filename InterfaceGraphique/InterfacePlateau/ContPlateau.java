@@ -19,7 +19,7 @@ public class ContPlateau {
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
 		vue = new VuePlateau(fenetrePrincipale, contraintesLayout, largNbTuiles, hautNbTuiles, this);
 		modele.addObserver(vue);
-		modele.sendMajToVue();
+		modele.sendMajToVue(true);
 	}
 	
 	public void montePlateau(){

@@ -14,6 +14,7 @@ public class ModPlateau extends Observable {
 	private int xPosPlateau;
 	private int yPosPlateau;
 
+	private boolean etapePoseTuile;
 
 	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
 		this.plateau = plateau;
@@ -21,6 +22,7 @@ public class ModPlateau extends Observable {
 		this.hautNbTuiles = hautNbTuiles;
 		this.xPosPlateau = xPosPlateau;
 		this.yPosPlateau = yPosPlateau;
+		this.etapePoseTuile = true;
 	}
 	
 	public Image[][] getTabTabImages() {
@@ -50,26 +52,26 @@ public class ModPlateau extends Observable {
 		if(ModPioche.tuilePiochee.verifPoseTuileLegale(this.plateau, x, y)){
 			//int xp = x+Plateau.xCentre; int yp = y+Plateau.yCentre;
 			ModPioche.tuilePiochee.poseTuile(this.plateau, x, y);
-			this.sendMajToVue();
+			this.sendMajToVue(false);
 		}
 		else {System.out.println("Pose impossible");}
 	}
 	
 	public void setXPosPlateau(int x){
 		this.xPosPlateau=x;
-		this.sendMajToVue();
+		this.sendMajToVue(this.etapePoseTuile);
 		System.out.println("xPosPlateau :" + this.xPosPlateau);
 	}
 	
 	public void setYPosPlateau(int y){
 		this.yPosPlateau=y;
-		this.sendMajToVue();
+		this.sendMajToVue(this.etapePoseTuile);
 		System.out.println("yPosPlateau :" + this.yPosPlateau);
 	}
 
-	public void sendMajToVue() {
+	public void sendMajToVue(boolean etapePoseTuile) {
 		this.setChanged();
-		this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres()));
+		this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), etapePoseTuile));
 	}
 	
 	

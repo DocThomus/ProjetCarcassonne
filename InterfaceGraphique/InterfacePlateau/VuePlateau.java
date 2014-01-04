@@ -35,12 +35,15 @@ public class VuePlateau implements Observer, ActionListener {
 	private int hauteurPlateau;
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;
+	
+	private boolean etapePoseTuile;
 
 	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau, ContPlateau controleur) {
 		this.largeurPlateau = largeurPlateau;
 		this.hauteurPlateau = hauteurPlateau;
 		this.controleur = controleur;
 		
+		this.etapePoseTuile = true;
 		
 		this.panPlateau = new JPanel();
 		this.panPlateau.setLayout(new GridLayout(this.hauteurPlateau, this.largeurPlateau));
@@ -78,6 +81,8 @@ public class VuePlateau implements Observer, ActionListener {
 	public void update(Observable o, Object arg) {
 		PaquetPlateau pp = (PaquetPlateau) arg;
 		System.out.println("update ok");
+		
+		this.etapePoseTuile = pp.getEtapePoseTuile();
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
 		this.panPlateau.removeAll();
@@ -92,6 +97,7 @@ public class VuePlateau implements Observer, ActionListener {
 					image.revalidate();
 				} else if(this.tabtabCasesLibres[ligne][col] == true) {
 					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", ligne, col);
+					boutonPoser.setEnabled(this.etapePoseTuile);
 					boutonPoser.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);

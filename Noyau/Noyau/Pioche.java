@@ -453,7 +453,7 @@ public class Pioche {
 		for (int i = 0; i < 3; i++) {
 			this.pioche.add(new Tuile(
 					19,
-					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE}, // Caractéristiques des bords.
+					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
 					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
 					new boolean [][] { // Tableau de connexité des caractéristiques.
 							{false}, 
@@ -589,10 +589,8 @@ public class Pioche {
 	
 	
 	public int random() {
-		int val = 0;
 		Random r = new Random();
-		val = r.nextInt(this.pioche.size()+1); // Un entier sera choisi entre 0 et la taille de la pioche.
-		return val;
+		return r.nextInt(this.pioche.size()); // Un entier sera choisi entre 0 et la taille de la pioche.
 	}
 	
 	
