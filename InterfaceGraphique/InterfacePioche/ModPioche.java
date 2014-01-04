@@ -13,7 +13,6 @@ import Noyau.Tuile;
 		
 
 public class ModPioche extends Observable {
-		public static ArrayList<ModPioche> PiocheActuel = new ArrayList<ModPioche>();
 		private Tuile t;
 		private Pioche pioche;
 		private Plateau plateau;
@@ -23,7 +22,6 @@ public class ModPioche extends Observable {
 			System.out.println(this.pioche.getPioche().size());
 			this.plateau= plateau;
 			this.piocher();
-			ModPioche.PiocheActuel.add(0,this);
 		}
 		
 		public void piocher (){

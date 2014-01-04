@@ -1,12 +1,14 @@
 package InterfacePioche;
 
 import java.awt.GridBagConstraints;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import Noyau.Plateau;
 
 public class ContPioche {
+	public static ArrayList<ContPioche> ControleurPioche = new ArrayList<ContPioche>();
 	private ModPioche modele;
 	private VuePioche vue;
 	
@@ -15,6 +17,11 @@ public class ContPioche {
 		this.vue = new VuePioche(fenetrePrincipale, contraintesLayout, this);
 		this.modele.addObserver(vue);
 		this.modele.piocher();
+		ContPioche.ControleurPioche.add(0,this);
+	}
+	
+	public ModPioche getModele(){
+		return this.modele;
 	}
 	
 	public void rotationH (){
