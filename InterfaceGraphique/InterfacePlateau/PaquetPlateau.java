@@ -28,7 +28,7 @@ public class PaquetPlateau {
 		return this.ligneTuilePosee;
 	}
 	
-	public int getcolTuilePosee() {
+	public int getColTuilePosee() {
 		return this.colTuilePosee;
 	}
 	

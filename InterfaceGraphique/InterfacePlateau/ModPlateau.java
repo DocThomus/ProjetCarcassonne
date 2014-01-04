@@ -91,6 +91,7 @@ public class ModPlateau extends Observable {
 	}
 
 	public void sendMajToVue(boolean etapePoseTuile) {
+		this.etapePoseTuile = etapePoseTuile;
 		this.setChanged();
 		if (isTuilePoseeDansPlateau()) {
 			int colTuilePosee = this.xRelCentreTuilePosee - xPosPlateau;

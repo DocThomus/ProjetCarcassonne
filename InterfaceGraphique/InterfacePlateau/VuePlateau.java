@@ -37,6 +37,9 @@ public class VuePlateau implements Observer, ActionListener {
 	private boolean[][] tabtabCasesLibres;
 	
 	private boolean etapePoseTuile;
+	private boolean isTuilePoseeDansPlateau;
+	private int colTuilePosee;
+	private int ligneTuilePosee;
 
 	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau, ContPlateau controleur) {
 		this.largeurPlateau = largeurPlateau;
@@ -85,6 +88,10 @@ public class VuePlateau implements Observer, ActionListener {
 		this.etapePoseTuile = pp.getEtapePoseTuile();
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
+		this.isTuilePoseeDansPlateau = pp.isTuilePoseeDansPlateau();
+		this.colTuilePosee = pp.getColTuilePosee();
+		this.ligneTuilePosee = pp.getLigneTuilePosee();
+		
 		this.panPlateau.removeAll();
 		this.panPlateau.validate();
 		
