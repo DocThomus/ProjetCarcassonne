@@ -25,11 +25,11 @@ public class ModPlateau extends Observable {
 	
 	public Image[][] getTabTabImages() {
 		Image[][] tabtabImages = new Image[hautNbTuiles][largNbTuiles];
-		for (int i = 0; i < hautNbTuiles; i++) {
-			for (int j = 0; j < largNbTuiles; j++) {
-				Tuile t = plateau.getTuile(i+yPosPlateau, j+xPosPlateau); 
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				Tuile t = plateau.getTuile(ligne+yPosPlateau, col+xPosPlateau); 
 				if (t != null) {
-					tabtabImages[i][j] = t.getImageTuile();
+					tabtabImages[ligne][col] = t.getImageTuile();
 				} 
 			}
 		}
@@ -38,9 +38,9 @@ public class ModPlateau extends Observable {
 	
 	public boolean[][] getTabTabCasesLibres() {
 		boolean[][] tabtabCasesLibres = new boolean[hautNbTuiles][largNbTuiles];
-		for (int i = 0; i < hautNbTuiles; i++) {
-			for (int j = 0; j < largNbTuiles; j++) {
-				tabtabCasesLibres[i][j] = this.plateau.isCaseLibre(i+yPosPlateau, j+xPosPlateau);
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				tabtabCasesLibres[ligne][col] = this.plateau.isCaseLibre(ligne+yPosPlateau, col+xPosPlateau);
 			}
 		}
 		return tabtabCasesLibres;
@@ -50,9 +50,9 @@ public class ModPlateau extends Observable {
 		if(ModPioche.tuilePiochee.verifPoseTuileLegale(this.plateau, x, y)){
 			//int xp = x+Plateau.xCentre; int yp = y+Plateau.yCentre;
 			ModPioche.tuilePiochee.poseTuile(this.plateau, x, y);
+			this.sendMajToVue();
 		}
 		else {System.out.println("Pose impossible");}
-		this.sendMajToVue();
 	}
 	
 	public void setXPosPlateau(int x){

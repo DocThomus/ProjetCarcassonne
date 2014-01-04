@@ -221,13 +221,13 @@ public class Tuile {
 	}
 	/**
 	 * 
-	 * @param r : le plateau sur lequel on pose la tuile.
+	 * @param p : le plateau sur lequel on pose la tuile.
 	 * @param x : la coordonnée d'abcisse.
 	 * @param y : la coordonnée d'ordonnée.
 	 */
 	
-	public void poseTuile (Plateau r, int x, int y){
-		r.poseTuile(this, x, y);
+	public void poseTuile (Plateau p, int x, int y){
+		p.poseTuile(this, x, y);
 		this.x = x;
 		this.y = y;
 	}
