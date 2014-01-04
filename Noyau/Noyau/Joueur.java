@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Joueur {
 	
 	private static ArrayList<Joueur> listJoueur= new ArrayList<Joueur>();
-	
+	private static Joueur joueurActuel;
 	public static int getNbJoueurs() {
 		return listJoueur.size();
 	}
@@ -16,6 +16,18 @@ public class Joueur {
 	
 	public static Joueur getJoueur(int id) {
 		return listJoueur.get(id);
+	}
+	
+	public static Joueur getJoueurActif(){
+		return Joueur.joueurActuel;
+	}
+	
+	public static void joueurSuivant(){
+		int num = Joueur.joueurActuel.getIdentifiant()+1;
+		if(num<Joueur.listJoueur.size()){
+			Joueur.joueurActuel=Joueur.listJoueur.get(num);
+		}
+		else { Joueur.joueurActuel=Joueur.listJoueur.get(0);}
 	}
 	
 	public static String[] getNomsJoueurs() {
@@ -39,6 +51,7 @@ public class Joueur {
 		this.identifiant = listJoueur.size();
 		this.score = 0;
 		this.tabPions = new ArrayList<Pion>();
+		Joueur.joueurActuel=this;
 	}
 
 	public String getNom() {
