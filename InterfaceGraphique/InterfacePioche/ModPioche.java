@@ -9,9 +9,10 @@ import Noyau.Pioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
 
+		
 
 public class ModPioche extends Observable {
-
+		public static Tuile tuilePiochee;
 		private Tuile t;
 		private Pioche pioche;
 		private Plateau plateau;
@@ -28,6 +29,7 @@ public class ModPioche extends Observable {
 			while(!this.t.verifTuileEstPosable(plateau)){
 				this.t=this.pioche.piocheAleatoire();
 			}
+			ModPioche.tuilePiochee=this.t;
 			this.setChanged();
 			this.notifyObservers(this.getImage());
 		}
