@@ -38,6 +38,7 @@ public class ModPioche extends Observable {
 			this.t.rotation();
 			this.setChanged();
 			this.notifyObservers(this.getImage());
+			ModPioche.tuilePiochee=this.t;
 		}
 		
 		public void rotationAntiHoraire(){
@@ -46,6 +47,7 @@ public class ModPioche extends Observable {
 			this.t.rotation();
 			this.setChanged();
 			this.notifyObservers(this.getImage());
+			ModPioche.tuilePiochee=this.t;
 		}
 		
 		public Tuile getTuile(){
