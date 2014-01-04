@@ -12,6 +12,7 @@ public class BoutonPlateau extends JButton {
 		super(nom);
 		this.x=x;
 		this.y=y;
+		this.setActionCommand(this.x+","+this.y);
 	}
 	
 	public int getX (){

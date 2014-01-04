@@ -80,20 +80,27 @@ public class VuePlateau implements Observer, ActionListener {
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
 		this.panPlateau.removeAll();
+		this.panPlateau.validate();
 		
 		for(int i = 0; i < this.hauteurPlateau; i++) {
 			for(int j = 0; j < this.largeurPlateau; j++) {
 				if(this.tabtabImages[i][j] != null) {
-					this.panPlateau.add(new JLabel(new ImageIcon(tabtabImages[i][j])));
+					JLabel image = new JLabel(new ImageIcon(tabtabImages[i][j]));
+					this.panPlateau.add(image);
+					image.revalidate();
 				} else if(this.tabtabCasesLibres[i][j] == true) {
 					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", i, j);
 					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);
+					boutonPoser.revalidate();
 				} else {
-					this.panPlateau.add(new JPanel());
+					JPanel panelVide = new JPanel();
+					this.panPlateau.add(panelVide);
+					panelVide.revalidate();
 				}
 			}
 		}
+		this.panPlateau.validate();
 	}
 
 	public void actionPerformed(ActionEvent e) {
