@@ -78,6 +78,7 @@ public class VueHistorique implements Observer, ActionListener {
 			ContPioche.ControleurPioche.getModele().piocher();
 			Joueur.joueurSuivant();
 			this.setEtatBoutonPasser(false);
+			ContPioche.ControleurPioche.setRotation(true);
 			this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
 			ContPlateau.activerBoutonsPoser();
 		}

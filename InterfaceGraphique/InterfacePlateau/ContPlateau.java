@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JFrame;
 
 import InterfaceHistorique.ContHistorique;
+import InterfacePioche.ContPioche;
 import Noyau.Joueur;
 import Noyau.Plateau;
 
@@ -59,6 +60,7 @@ public class ContPlateau {
 		//int yPosRelativeCentre = col + yPosPlateau;
 		
 		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
+			ContPioche.ControleurPioche.setRotation(false);
 			ContHistorique.contHistorique.activerBoutonPasser();
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + "," + yPosRelativeCentre + ").");
 			System.out.println("posée");

@@ -97,6 +97,11 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	public JButton getRotationAH(){
 		return this.rotationAntiHoraire;
 	}
+	
+	public void setRotation(boolean etat){
+		this.rotationHoraire.setEnabled(etat);
+		this.rotationAntiHoraire.setEnabled(etat);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

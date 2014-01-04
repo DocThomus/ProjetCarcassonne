@@ -20,4 +20,8 @@ public class VuePioche implements Observer {
 		PaquetPioche pp = (PaquetPioche) arg;	
 		this.panPioche.maj(pp.getImageTuile(),pp.getTaillePioche());
 	}
+	
+	public void setRotation(boolean etat){
+		this.panPioche.setRotation(etat);
+	}
 }
