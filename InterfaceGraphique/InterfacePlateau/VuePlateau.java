@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class VuePlateau implements Observer, ActionListener {
+	private ContPlateau controleur;
+	
 	private JButton boutonHaut;
 	private JButton boutonDroit;
 	private JButton boutonBas;
@@ -33,9 +35,10 @@ public class VuePlateau implements Observer, ActionListener {
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;
 
-	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau) {
+	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau, ContPlateau controleur) {
 		this.largeurPlateau = largeurPlateau;
 		this.hauteurPlateau = hauteurPlateau;
+		this.controleur = controleur;
 		
 		
 		this.panPlateau = new JPanel();
@@ -84,7 +87,7 @@ public class VuePlateau implements Observer, ActionListener {
 					this.panPlateau.add(new JLabel(new ImageIcon(tabtabImages[i][j])));
 				} else if(this.tabtabCasesLibres[i][j] == true) {
 					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", i, j);
-					this.panPlateau.add(boutonPoser); // On pet créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
+					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);
 				} else {
 					this.panPlateau.add(new JPanel());
