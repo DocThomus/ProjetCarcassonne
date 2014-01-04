@@ -19,15 +19,24 @@ public class ContPlateau {
 	private int xPosPlateau = -3;
 	private int yPosPlateau = -2;
 	
-	public static void activerBoutonsPoser() {
-		ContPlateau.contPlateau.modele.sendMajToVue(true);
+	public static void activerBoutonsPoserTuile() {
+		ContPlateau.contPlateau.modele.setEtapePoseTuile(true);
+	}
+	
+	public static void desactiverBoutonsPoserPion() {
+		ContPlateau.contPlateau.modele.setEtapePosePion(false);
+	}
+	
+	public static void refresh() {
+		ContPlateau.contPlateau.modele.sendMajToVue();
 	}
 	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
 		vue = new VuePlateau(fenetrePrincipale, contraintesLayout, largNbTuiles, hautNbTuiles, this);
 		modele.addObserver(vue);
-		modele.sendMajToVue(true);
+		modele.setEtapePoseTuile(true);
+		modele.sendMajToVue();
 		ContPlateau.contPlateau = this;
 	}
 	
@@ -70,4 +79,6 @@ public class ContPlateau {
 		}
 		System.out.println(xPosRelativeCentre + " " + yPosRelativeCentre);
 	}
+
+
 }
