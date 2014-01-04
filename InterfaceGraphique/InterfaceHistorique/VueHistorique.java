@@ -60,4 +60,8 @@ public class VueHistorique implements Observer {
 		}
 	}
 
+	public void setEtatBoutonPasser(boolean b) {
+		this.boutonPasser.setEnabled(b);
+	}
+
 }

@@ -12,6 +12,7 @@ public class ModHistorique extends Observable {
 	
 	public void ajouterEvenement(String str) {
 		listeEvenements.add(0, str);
+		this.refresh();
 	}
 	
 	private int min(int i, int j) {

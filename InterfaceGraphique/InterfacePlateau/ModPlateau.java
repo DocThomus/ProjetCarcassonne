@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.util.Observable;
 
 import InterfacePioche.ContPioche;
-import InterfacePioche.ModPioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
 
@@ -49,13 +48,17 @@ public class ModPlateau extends Observable {
 		return tabtabCasesLibres;
 	}
 	
-	public void poseTuile(int x, int y){
-		if(ContPioche.ControleurPioche.get(0).getModele().getTuile().verifPoseTuileLegale(this.plateau, x, y)){
+	public boolean poseTuile(int x, int y){
+		if(ContPioche.ControleurPioche.getModele().getTuile().verifPoseTuileLegale(this.plateau, x, y)){
 			//int xp = x+Plateau.xCentre; int yp = y+Plateau.yCentre;
-			ContPioche.ControleurPioche.get(0).getModele().getTuile().poseTuile(this.plateau, x, y);
+			ContPioche.ControleurPioche.getModele().getTuile().poseTuile(this.plateau, x, y);
 			this.sendMajToVue(false);
+			return true;
 		}
-		else {System.out.println("Pose impossible");}
+		else {
+			System.out.println("Pose impossible");
+			return false;
+		}
 	}
 	
 	public void setXPosPlateau(int x){

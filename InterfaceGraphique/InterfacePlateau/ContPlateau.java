@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.JFrame;
 
+import InterfaceHistorique.ContHistorique;
+import Noyau.Joueur;
 import Noyau.Plateau;
 
 public class ContPlateau {
@@ -50,7 +52,14 @@ public class ContPlateau {
 		//int xPosRelativeCentre = ligne + this.xPosPlateau;
 		//int yPosRelativeCentre = col + yPosPlateau;
 		
-		this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre);
+		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
+			ContHistorique.contHistorique.activerBoutonPasser();
+			//contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + ";" + yPosRelativeCentre + ").");
+			System.out.println("posée");
+		} else {
+			ContHistorique.contHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile ici !");
+			System.out.println("pas posable");
+		}
 		System.out.println(xPosRelativeCentre + " " + yPosRelativeCentre);
 	}
 }

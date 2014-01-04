@@ -5,12 +5,14 @@ import java.awt.GridBagConstraints;
 import javax.swing.JFrame;
 
 public class ContHistorique {
+	public static ContHistorique contHistorique;
 	private ModHistorique modele;
 	private VueHistorique vue;
 
 	public ContHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
 		modele = new ModHistorique();
 		vue = new VueHistorique(fenetrePrincipale, contraintesLayout);
+		this.desactiverBoutonPasser();
 		modele.addObserver(vue);
 		
 		// Test 
@@ -28,5 +30,19 @@ public class ContHistorique {
 		modele.ajouterEvenement("Joueur6 pose une tuile en position (1,5).");
 		
 		modele.refresh();
+		
+		ContHistorique.contHistorique = this;
 	}
+	
+	public void ajouterEvenement(String str) {
+		this.modele.ajouterEvenement(str);
+	}
+	
+	public void activerBoutonPasser() {
+		this.vue.setEtatBoutonPasser(true);
+	}
+	
+	public void desactiverBoutonPasser() {
+		this.vue.setEtatBoutonPasser(false);
+	}	
 }
