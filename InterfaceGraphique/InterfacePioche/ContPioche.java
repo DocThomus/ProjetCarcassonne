@@ -33,4 +33,8 @@ public class ContPioche {
 		System.out.println("rotation anti horaire ok");
 	}
 	
+	public void setRotation(boolean etat){
+		this.vue.setRotation(etat);
+	}
+	
 }
