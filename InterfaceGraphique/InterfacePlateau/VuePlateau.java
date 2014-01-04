@@ -21,6 +21,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import InterfacePioche.ContPioche;
+import Noyau.Tuile;
+
 public class VuePlateau implements Observer, ActionListener {
 	private ContPlateau controleur;
 	
@@ -36,19 +39,19 @@ public class VuePlateau implements Observer, ActionListener {
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;
 	
-	private JButton boutonPion01;
-	private JButton boutonPion02;
-	private JButton boutonPion03;
-	private JButton boutonPion10;
-	private JButton boutonPion14;
-	private JButton boutonPion20;
-	private JButton boutonPion22;
-	private JButton boutonPion24;
-	private JButton boutonPion30;
-	private JButton boutonPion34;
-	private JButton boutonPion41;
-	private JButton boutonPion42;
-	private JButton boutonPion43;
+	private BoutonPion boutonPion01;
+	private BoutonPion boutonPion02;
+	private BoutonPion boutonPion03;
+	private BoutonPion boutonPion10;
+	private BoutonPion boutonPion14;
+	private BoutonPion boutonPion20;
+	private BoutonPion boutonPion22;
+	private BoutonPion boutonPion24;
+	private BoutonPion boutonPion30;
+	private BoutonPion boutonPion34;
+	private BoutonPion boutonPion41;
+	private BoutonPion boutonPion42;
+	private BoutonPion boutonPion43;
 	
 	private boolean etapePoseTuile;
 	private boolean isTuilePoseeDansPlateau;
@@ -71,19 +74,33 @@ public class VuePlateau implements Observer, ActionListener {
 		this.boutonDroit = new JButton("Droite");
 		this.boutonGauche = new JButton("Gauche");
 		
-		this.boutonPion01 = new JButton();
-		this.boutonPion02 = new JButton();
-		this.boutonPion03 = new JButton();
-		this.boutonPion10 = new JButton();
-		this.boutonPion14 = new JButton();
-		this.boutonPion20 = new JButton();
-		this.boutonPion22 = new JButton();
-		this.boutonPion24 = new JButton();
-		this.boutonPion30 = new JButton();
-		this.boutonPion34 = new JButton();
-		this.boutonPion41 = new JButton();
-		this.boutonPion42 = new JButton();
-		this.boutonPion43 = new JButton();
+		this.boutonPion01 = new BoutonPion(11);
+		this.boutonPion02 = new BoutonPion(12);
+		this.boutonPion03 = new BoutonPion(1);
+		this.boutonPion10 = new BoutonPion(10);
+		this.boutonPion14 = new BoutonPion(2);
+		this.boutonPion20 = new BoutonPion(9);
+		this.boutonPion22 = new BoutonPion(0);
+		this.boutonPion24 = new BoutonPion(3);
+		this.boutonPion30 = new BoutonPion(8);
+		this.boutonPion34 = new BoutonPion(4);
+		this.boutonPion41 = new BoutonPion(7);
+		this.boutonPion42 = new BoutonPion(6);
+		this.boutonPion43 = new BoutonPion(5);
+		
+		this.boutonPion01.addActionListener(this);
+		this.boutonPion02.addActionListener(this);
+		this.boutonPion03.addActionListener(this);
+		this.boutonPion10.addActionListener(this);
+		this.boutonPion14.addActionListener(this);
+		this.boutonPion20.addActionListener(this);
+		this.boutonPion22.addActionListener(this);
+		this.boutonPion24.addActionListener(this);
+		this.boutonPion30.addActionListener(this);
+		this.boutonPion34.addActionListener(this);
+		this.boutonPion41.addActionListener(this);
+		this.boutonPion42.addActionListener(this);
+		this.boutonPion43.addActionListener(this);
 		
 		JPanel panPlateauAvecBoutons = new JPanel();
 		BorderLayout layoutAvecBoutons = new BorderLayout();
@@ -113,6 +130,8 @@ public class VuePlateau implements Observer, ActionListener {
 		PaquetPlateau pp = (PaquetPlateau) arg;
 		System.out.println("update ok");
 		
+		Tuile tuilePosee = ContPioche.ControleurPioche.getModele().getTuile();
+		
 		this.etapePoseTuile = pp.getEtapePoseTuile();
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
@@ -131,6 +150,20 @@ public class VuePlateau implements Observer, ActionListener {
 					panTuilePosee.setImageFond(tabtabImages[ligne][col]);
 					
 					// Bouton pions :
+					this.boutonPion01.setTuile(tuilePosee);
+					this.boutonPion02.setTuile(tuilePosee);
+					this.boutonPion03.setTuile(tuilePosee);
+					this.boutonPion10.setTuile(tuilePosee);
+					this.boutonPion14.setTuile(tuilePosee);
+					this.boutonPion20.setTuile(tuilePosee);
+					this.boutonPion22.setTuile(tuilePosee);
+					this.boutonPion24.setTuile(tuilePosee);
+					this.boutonPion30.setTuile(tuilePosee);
+					this.boutonPion34.setTuile(tuilePosee);
+					this.boutonPion41.setTuile(tuilePosee);
+					this.boutonPion42.setTuile(tuilePosee);
+					this.boutonPion43.setTuile(tuilePosee);
+					
 					panTuilePosee.setLayout(new GridLayout(5, 5, 10, 10)); 
 					JPanel panVide00 = new JPanel();
 					JPanel panVide04 = new JPanel();
@@ -193,7 +226,7 @@ public class VuePlateau implements Observer, ActionListener {
 						this.panPlateau.add(image);
 						image.revalidate();
 					} else if(this.tabtabCasesLibres[ligne][col] == true) {
-						BoutonPlateau boutonPoser = new BoutonPlateau("Poser", ligne, col);
+						BoutonTuile boutonPoser = new BoutonTuile("Poser", ligne, col);
 						boutonPoser.setEnabled(this.etapePoseTuile);
 						boutonPoser.setMinimumSize(new Dimension(100, 100));
 						this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
@@ -221,12 +254,17 @@ public class VuePlateau implements Observer, ActionListener {
 			this.controleur.decaleGauche();
 		} else if(e.getSource()== boutonDroit){		// Bouton Droit
 			this.controleur.decaleDroite();
-		} else if(e.getSource().getClass() == BoutonPlateau.class) {	// Bouton Poser
-			int colPosBouton = ((BoutonPlateau) e.getSource()).getCol();
+		} else if(e.getSource().getClass() == BoutonTuile.class) {	// Bouton Tuile
+			int colPosBouton = ((BoutonTuile) e.getSource()).getCol();
 			System.out.println(""+colPosBouton);
-			int lignePosBouton = ((BoutonPlateau) e.getSource()).getLigne();
+			int lignePosBouton = ((BoutonTuile) e.getSource()).getLigne();
 			System.out.println(""+lignePosBouton);
-			this.controleur.poseTuile(colPosBouton, lignePosBouton);
+			this.controleur.poseTuile(lignePosBouton, colPosBouton);
+		} else if(e.getSource().getClass() == BoutonPion.class) {	// Bouton Pion
+			int position = ((BoutonPion) e.getSource()).getPosition();
+			Tuile tuile = ((BoutonPion) e.getSource()).getTuile();
+			System.out.println("Pion : " + position);
+			this.controleur.posePion(tuile, position);
 		}
 	}
 }

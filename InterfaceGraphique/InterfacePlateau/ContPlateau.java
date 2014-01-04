@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 
 import InterfaceHistorique.ContHistorique;
 import InterfacePioche.ContPioche;
+import Noyau.Evaluation;
 import Noyau.Joueur;
 import Noyau.Plateau;
+import Noyau.Tuile;
 
 public class ContPlateau {
 	private static ContPlateau contPlateau;
@@ -18,6 +20,10 @@ public class ContPlateau {
 	private int hautNbTuiles = 6;
 	private int xPosPlateau = -3;
 	private int yPosPlateau = -2;
+	private Plateau plateau;
+	
+	private int xPosRelativeCentre;
+	private int yPosRelativeCentre;
 	
 	public static void activerBoutonsPoserTuile() {
 		ContPlateau.contPlateau.modele.setEtapePoseTuile(true);
@@ -32,6 +38,7 @@ public class ContPlateau {
 	}
 	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
+		this.plateau = plateau;
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
 		vue = new VuePlateau(fenetrePrincipale, contraintesLayout, largNbTuiles, hautNbTuiles, this);
 		modele.addObserver(vue);
@@ -61,12 +68,9 @@ public class ContPlateau {
 		this.modele.setXPosPlateau(this.xPosPlateau);
 	}
 	
-	public void poseTuile(int col, int ligne){
-		int xPosRelativeCentre = col + this.xPosPlateau;
-		int yPosRelativeCentre = -(ligne + this.yPosPlateau);
-		
-		//int xPosRelativeCentre = ligne + this.xPosPlateau;
-		//int yPosRelativeCentre = col + yPosPlateau;
+	public void poseTuile(int ligne, int col){
+		this.xPosRelativeCentre = col + this.xPosPlateau;
+		this.yPosRelativeCentre = -(ligne + this.yPosPlateau);
 		
 		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
 			ContPioche.ControleurPioche.setRotation(false);
@@ -78,6 +82,16 @@ public class ContPlateau {
 			System.out.println("pas posable");
 		}
 		System.out.println(xPosRelativeCentre + " " + yPosRelativeCentre);
+	}
+	
+	public void posePion(Tuile t, int pos) {
+		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
+			t.posePion(Joueur.getJoueurActif(), pos);
+			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
+			System.out.println("testPion");
+		} else {
+			System.out.println("PionPasPosable");
+		}
 	}
 
 

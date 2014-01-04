@@ -17,7 +17,7 @@ public class Tuile {
 	private boolean [][] tabConnexitéBordure;
 	private boolean [][] tabConnexitéChamps; //Cette table de connexité concerne les champs.
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
-	private Pion PionPlacé;
+	private Pion pionPlace;
 	private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
@@ -84,16 +84,19 @@ public class Tuile {
 	 * @param pos : la position à laquelle le joueur veut poser le pion.
 	 */
 	
-	public void posePion(Joueur j, int pos){
+	public boolean posePion(Joueur j, int pos){
 		//pré-requis : la pose du pion est légale
 		//action: pose un pion à la position souhaitée
 		if(j.getTabPions().size()<7){			
 			Pion p = new Pion(j,this,pos);
 			j.getTabPions().add(p);
-			this.PionPlacé=p;
-			System.out.println("Pion placé");
+			this.pionPlace=p;
+			System.out.println("pion posé");
+			return true;
+		} else{ 
+			System.out.println("plus de pion");
+			return false;
 		}
-		else{ System.out.println("Vous n'avez plus de pions");}
 		
 	}
 	
@@ -109,8 +112,8 @@ public class Tuile {
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
 		boolean pasAutrePion = true;
 		for(int i=0;i<evalPosePion.size();i++){
-			if(evalPosePion.get(i).getT().PionPlacé!=null){ //Si il y a un pion sur cette tuile et ...
-				if(evalPosePion.get(i).getT().PionPlacé.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
+			if(evalPosePion.get(i).getT().pionPlace!=null){ //Si il y a un pion sur cette tuile et ...
+				if(evalPosePion.get(i).getT().pionPlace.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
 					pasAutrePion= false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
 					System.out.println("Il y a déjà un pion sur cette construction"); //Si un pion est déjà présent on le signal au joueur.
 				}
@@ -120,7 +123,7 @@ public class Tuile {
 	} 
       
 	public void retirePion(){
-		this.PionPlacé=null;
+		this.pionPlace=null;
 	}
 	
 	public Image getImageTuile(){
@@ -156,7 +159,7 @@ public class Tuile {
 	}
 	
 	public Pion getPionPlacé(){
-		return this.PionPlacé;
+		return this.pionPlace;
 	}
 	 /**
 	  * 
