@@ -121,6 +121,7 @@ public class VuePlateau implements Observer, ActionListener {
 			System.out.println(""+xPosBouton);
 			int yPosBouton = ((BoutonPlateau) e.getSource()).getY();
 			System.out.println(""+yPosBouton);
+			this.controleur.poseTuile(xPosBouton,yPosBouton);
 		}
 	}
 }
