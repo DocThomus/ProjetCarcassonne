@@ -83,15 +83,15 @@ public class VuePlateau implements Observer, ActionListener {
 		this.panPlateau.removeAll();
 		this.panPlateau.validate();
 		
-		for(int i = 0; i < this.hauteurPlateau; i++) {
-			for(int j = 0; j < this.largeurPlateau; j++) {
-				if(this.tabtabImages[i][j] != null) {
-					JLabel image = new JLabel(new ImageIcon(tabtabImages[i][j]));
+		for(int ligne = 0; ligne < this.hauteurPlateau; ligne++) {
+			for(int col = 0; col < this.largeurPlateau; col++) {
+				if(this.tabtabImages[ligne][col] != null) {
+					JLabel image = new JLabel(new ImageIcon(tabtabImages[ligne][col]));
 					image.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(image);
 					image.revalidate();
-				} else if(this.tabtabCasesLibres[i][j] == true) {
-					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", j, i);
+				} else if(this.tabtabCasesLibres[ligne][col] == true) {
+					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", ligne, col);
 					boutonPoser.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);
@@ -117,11 +117,11 @@ public class VuePlateau implements Observer, ActionListener {
 		} else if(e.getSource()== boutonDroit){		// Bouton Droit
 			this.controleur.decaleDroite();
 		} else if(e.getSource().getClass() == BoutonPlateau.class) {	// Bouton Poser
-			int xPosBouton = ((BoutonPlateau) e.getSource()).getX();
-			System.out.println(""+xPosBouton);
-			int yPosBouton = ((BoutonPlateau) e.getSource()).getY();
-			System.out.println(""+yPosBouton);
-			this.controleur.poseTuile(xPosBouton,yPosBouton);
+			int ColPosBouton = ((BoutonPlateau) e.getSource()).getCol();
+			System.out.println(""+ColPosBouton);
+			int LignePosBouton = ((BoutonPlateau) e.getSource()).getLigne();
+			System.out.println(""+LignePosBouton);
+			//this.controleur.poseTuile(yPosBouton, xPosBouton);
 		}
 	}
 }

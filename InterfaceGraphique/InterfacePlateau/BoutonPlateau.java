@@ -4,22 +4,21 @@ import javax.swing.JButton;
 
 public class BoutonPlateau extends JButton {
 	
-	private String nom;
-	private int x;
-	private int y;	
+	private int ligne;
+	private int col;	
 	
-	public BoutonPlateau (String nom ,int x , int y){
+	public BoutonPlateau (String nom, int ligne, int col){
 		super(nom);
-		this.x=x;
-		this.y=y;
+		this.ligne=ligne;
+		this.col=col;
 	}
 	
-	public int getX (){
-		return x;
+	public int getLigne(){
+		return ligne;
 	}
 	
-	public int getY(){
-		return y;
+	public int getCol(){
+		return col;
 	}
 	
 }
