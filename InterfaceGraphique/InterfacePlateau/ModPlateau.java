@@ -3,6 +3,7 @@ package InterfacePlateau;
 import java.awt.Image;
 import java.util.Observable;
 
+import InterfacePioche.ModPioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
 
@@ -45,6 +46,12 @@ public class ModPlateau extends Observable {
 		return tabtabCasesLibres;
 	}
 	
+	public void poseTuile(int x, int y){
+		if(ModPioche.tuilePiochee.verifPoseTuileLegale(this.plateau, x, y)){
+			ModPioche.tuilePiochee.poseTuile(this.plateau, x, y);
+		}
+	}
+	
 	public void setXPosPlateau(int x){
 		this.xPosPlateau=x;
 		this.sendMajToVue();
@@ -61,4 +68,6 @@ public class ModPlateau extends Observable {
 		this.setChanged();
 		this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres()));
 	}
+	
+	
 }
