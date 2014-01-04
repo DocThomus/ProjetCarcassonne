@@ -24,12 +24,12 @@ public class ContPlateau {
 	
 	public void montePlateau(){
 		System.out.println("controleur haut ok");
-		this.yPosPlateau--;
+		this.yPosPlateau++;
 		this.modele.setYPosPlateau(this.yPosPlateau);
 	}
 	public void descendPlateau(){
 		System.out.println("controleur bas ok");
-		this.yPosPlateau++;
+		this.yPosPlateau--;
 		this.modele.setYPosPlateau(this.yPosPlateau);
 	}
 	public void decaleGauche(){
