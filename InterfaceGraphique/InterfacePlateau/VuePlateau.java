@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,7 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class VuePlateau implements Observer {
+public class VuePlateau implements Observer, ActionListener {
 	private JButton boutonHaut;
 	private JButton boutonDroit;
 	private JButton boutonBas;
@@ -50,9 +52,13 @@ public class VuePlateau implements Observer {
 		panPlateauAvecBoutons.setLayout(layoutAvecBoutons);
 		panPlateauAvecBoutons.add(panPlateau, BorderLayout.CENTER);
 		panPlateauAvecBoutons.add(boutonHaut, BorderLayout.NORTH);
+		boutonHaut.addActionListener(this);
 		panPlateauAvecBoutons.add(boutonBas, BorderLayout.SOUTH);
+		boutonBas.addActionListener(this);
 		panPlateauAvecBoutons.add(boutonDroit, BorderLayout.EAST);
+		boutonDroit.addActionListener(this);
 		panPlateauAvecBoutons.add(boutonGauche, BorderLayout.WEST);
+		boutonGauche.addActionListener(this);
 
 		fenetrePrincipale.getContentPane().add(panPlateauAvecBoutons, contraintesLayout);
 		
@@ -77,11 +83,18 @@ public class VuePlateau implements Observer {
 				if(this.tabtabImages[i][j] != null) {
 					this.panPlateau.add(new JLabel(new ImageIcon(tabtabImages[i][j])));
 				} else if(this.tabtabCasesLibres[i][j] == true) {
-					this.panPlateau.add(new JButton("Poser")); // On pet créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
+					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", i, j);
+					this.panPlateau.add(boutonPoser); // On pet créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
+					boutonPoser.addActionListener(this);
 				} else {
 					this.panPlateau.add(new JPanel());
 				}
 			}
 		}
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		
+		
 	}
 }
