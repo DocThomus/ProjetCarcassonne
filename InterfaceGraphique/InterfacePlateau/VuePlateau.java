@@ -2,6 +2,7 @@ package InterfacePlateau;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -86,15 +87,18 @@ public class VuePlateau implements Observer, ActionListener {
 			for(int j = 0; j < this.largeurPlateau; j++) {
 				if(this.tabtabImages[i][j] != null) {
 					JLabel image = new JLabel(new ImageIcon(tabtabImages[i][j]));
+					image.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(image);
 					image.revalidate();
 				} else if(this.tabtabCasesLibres[i][j] == true) {
 					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", i, j);
+					boutonPoser.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);
 					boutonPoser.revalidate();
 				} else {
 					JPanel panelVide = new JPanel();
+					panelVide.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(panelVide);
 					panelVide.revalidate();
 				}
