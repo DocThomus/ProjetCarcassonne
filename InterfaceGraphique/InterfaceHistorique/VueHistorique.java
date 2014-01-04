@@ -3,6 +3,8 @@ package InterfaceHistorique;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -15,9 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import InterfacePioche.ContPioche;
+import Noyau.Joueur;
 import Principal.ContPrincipal;
 
-public class VueHistorique implements Observer {
+public class VueHistorique implements Observer, ActionListener {
 	private static final int LARGEUR_HISTORIQUE = (int) (ContPrincipal.LARGEUR_FENETRE*0.1);
 	private static final int HAUTEUR_HISTORIQUE = ContPrincipal.HAUTEUR_FENETRE;
 	private static final int INTERLIGNE_HISTORIQUE = 2;
@@ -44,6 +48,7 @@ public class VueHistorique implements Observer {
 		}
 		
 		boutonPasser = new JButton("Passer");
+		boutonPasser.addActionListener(this);
 		panHistorique.add(Box.createGlue());
 		panHistorique.add(boutonPasser);
 		
@@ -62,6 +67,15 @@ public class VueHistorique implements Observer {
 
 	public void setEtatBoutonPasser(boolean b) {
 		this.boutonPasser.setEnabled(b);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==boutonPasser){
+			ContPioche.ControleurPioche.getModele().piocher();
+			Joueur.joueurSuivant();
+		}
+		
 	}
 
 }
