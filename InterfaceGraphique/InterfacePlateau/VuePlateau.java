@@ -108,21 +108,19 @@ public class VuePlateau implements Observer, ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		/*if(e.getSource()== boutonPoser){
-			
-		}*/
-		if(e.getSource()== boutonHaut){
+		if(e.getSource()== boutonHaut){				// Bouton Haut
 			this.controleur.montePlateau();
-		}
-		if(e.getSource()== boutonBas){
+		} else if(e.getSource()== boutonBas){		// Bouton Bas
 			this.controleur.descendPlateau();
-		}
-		if(e.getSource()== boutonGauche){
+		} else if(e.getSource()== boutonGauche){	// Bouton Gauche
 			this.controleur.decaleGauche();
-		}
-		if(e.getSource()== boutonDroit){
+		} else if(e.getSource()== boutonDroit){		// Bouton Droit
 			this.controleur.decaleDroite();
+		} else if(e.getSource().getClass() == BoutonPlateau.class) {	// Bouton Poser
+			int xPosBouton = ((BoutonPlateau) e.getSource()).getX();
+			System.out.println(""+xPosBouton);
+			int yPosBouton = ((BoutonPlateau) e.getSource()).getY();
+			System.out.println(""+yPosBouton);
 		}
-		
 	}
 }
