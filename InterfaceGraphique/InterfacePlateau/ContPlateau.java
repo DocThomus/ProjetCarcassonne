@@ -54,7 +54,7 @@ public class ContPlateau {
 		
 		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
 			ContHistorique.contHistorique.activerBoutonPasser();
-			//contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + ";" + yPosRelativeCentre + ").");
+			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + "," + yPosRelativeCentre + ").");
 			System.out.println("posée");
 		} else {
 			ContHistorique.contHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile ici !");
