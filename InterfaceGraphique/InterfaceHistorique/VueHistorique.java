@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import InterfacePioche.ContPioche;
+import InterfacePlateau.ContPlateau;
 import Noyau.Joueur;
 import Principal.ContPrincipal;
 
@@ -78,6 +79,7 @@ public class VueHistorique implements Observer, ActionListener {
 			Joueur.joueurSuivant();
 			this.setEtatBoutonPasser(false);
 			this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
+			ContPlateau.activerBoutonsPoser();
 		}
 		
 	}

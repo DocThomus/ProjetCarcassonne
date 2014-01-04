@@ -9,6 +9,7 @@ import Noyau.Joueur;
 import Noyau.Plateau;
 
 public class ContPlateau {
+	private static ContPlateau contPlateau;
 	private ModPlateau modele;
 	private VuePlateau vue;
 	
@@ -17,11 +18,16 @@ public class ContPlateau {
 	private int xPosPlateau = -3;
 	private int yPosPlateau = -2;
 	
+	public static void activerBoutonsPoser() {
+		ContPlateau.contPlateau.modele.sendMajToVue(true);
+	}
+	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
 		vue = new VuePlateau(fenetrePrincipale, contraintesLayout, largNbTuiles, hautNbTuiles, this);
 		modele.addObserver(vue);
 		modele.sendMajToVue(true);
+		ContPlateau.contPlateau = this;
 	}
 	
 	public void montePlateau(){
