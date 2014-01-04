@@ -11,7 +11,7 @@ public class ContHistorique {
 
 	public ContHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
 		modele = new ModHistorique();
-		vue = new VueHistorique(fenetrePrincipale, contraintesLayout);
+		vue = new VueHistorique(fenetrePrincipale, contraintesLayout, this);
 		this.desactiverBoutonPasser();
 		modele.addObserver(vue);
 		

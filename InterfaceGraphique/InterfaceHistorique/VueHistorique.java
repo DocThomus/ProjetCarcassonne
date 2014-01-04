@@ -28,8 +28,10 @@ public class VueHistorique implements Observer, ActionListener {
 	
 	private ArrayList<JLabel> etiquettesMessages;
 	private JButton boutonPasser;
+	private ContHistorique controleur;
 
-	public VueHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
+	public VueHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, ContHistorique controleur) {
+		this.controleur = controleur;
 		JPanel panHistorique = new JPanel();
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
 		
@@ -74,6 +76,8 @@ public class VueHistorique implements Observer, ActionListener {
 		if(e.getSource()==boutonPasser){
 			ContPioche.ControleurPioche.getModele().piocher();
 			Joueur.joueurSuivant();
+			this.setEtatBoutonPasser(false);
+			this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
 		}
 		
 	}
