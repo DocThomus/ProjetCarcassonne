@@ -91,7 +91,7 @@ public class VuePlateau implements Observer, ActionListener {
 					this.panPlateau.add(image);
 					image.revalidate();
 				} else if(this.tabtabCasesLibres[i][j] == true) {
-					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", i, j);
+					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", j, i);
 					boutonPoser.setMinimumSize(new Dimension(100, 100));
 					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
 					boutonPoser.addActionListener(this);
