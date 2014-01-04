@@ -52,6 +52,7 @@ public class ModPlateau extends Observable {
 			ModPioche.tuilePiochee.poseTuile(this.plateau, x, y);
 		}
 		else {System.out.println("Pose impossible");}
+		this.sendMajToVue();
 	}
 	
 	public void setXPosPlateau(int x){
