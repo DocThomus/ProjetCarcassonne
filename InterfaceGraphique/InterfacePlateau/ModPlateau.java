@@ -44,6 +44,18 @@ public class ModPlateau extends Observable {
 		}
 		return tabtabCasesLibres;
 	}
+	
+	public void setXPosPlateau(int x){
+		this.xPosPlateau=x;
+		this.sendMajToVue();
+		System.out.println("xPosPlateau :" + this.xPosPlateau);
+	}
+	
+	public void setYPosPlateau(int y){
+		this.yPosPlateau=y;
+		this.sendMajToVue();
+		System.out.println("yPosPlateau :" + this.yPosPlateau);
+	}
 
 	public void sendMajToVue() {
 		this.setChanged();

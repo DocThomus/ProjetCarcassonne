@@ -76,7 +76,7 @@ public class VuePlateau implements Observer, ActionListener {
 
 	public void update(Observable o, Object arg) {
 		PaquetPlateau pp = (PaquetPlateau) arg;
-		
+		System.out.println("update ok");
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
 		this.panPlateau.removeAll();
@@ -96,8 +96,22 @@ public class VuePlateau implements Observer, ActionListener {
 		}
 	}
 
-	public void actionPerformed(ActionEvent arg0) {
-		
+	public void actionPerformed(ActionEvent e) {
+		/*if(e.getSource()== boutonPoser){
+			
+		}*/
+		if(e.getSource()== boutonHaut){
+			this.controleur.montePlateau();
+		}
+		if(e.getSource()== boutonBas){
+			this.controleur.descendPlateau();
+		}
+		if(e.getSource()== boutonGauche){
+			this.controleur.decaleGauche();
+		}
+		if(e.getSource()== boutonDroit){
+			this.controleur.decaleDroite();
+		}
 		
 	}
 }

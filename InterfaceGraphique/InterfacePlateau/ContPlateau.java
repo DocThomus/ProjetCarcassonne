@@ -21,4 +21,25 @@ public class ContPlateau {
 		modele.addObserver(vue);
 		modele.sendMajToVue();
 	}
+	
+	public void montePlateau(){
+		System.out.println("controleur haut ok");
+		this.yPosPlateau++;
+		this.modele.setYPosPlateau(this.yPosPlateau);
+	}
+	public void descendPlateau(){
+		System.out.println("controleur bas ok");
+		this.yPosPlateau--;
+		this.modele.setYPosPlateau(this.yPosPlateau);
+	}
+	public void decaleGauche(){
+		System.out.println("controleur gauche ok");
+		this.xPosPlateau--;
+		this.modele.setXPosPlateau(this.xPosPlateau);
+	}
+	public void decaleDroite(){
+		System.out.println("controleur droite ok");
+		this.xPosPlateau++;
+		this.modele.setXPosPlateau(this.xPosPlateau);
+	}
 }
