@@ -36,11 +36,19 @@ public class VuePlateau implements Observer, ActionListener {
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;
 	
-	private JButton boutonPionHaut;
-	private JButton boutonPionBas;
-	private JButton boutonPionGauche;
-	private JButton boutonPionDroite;
-	private JButton boutonPionMilieu;
+	private JButton boutonPion01;
+	private JButton boutonPion02;
+	private JButton boutonPion03;
+	private JButton boutonPion10;
+	private JButton boutonPion14;
+	private JButton boutonPion20;
+	private JButton boutonPion22;
+	private JButton boutonPion24;
+	private JButton boutonPion30;
+	private JButton boutonPion34;
+	private JButton boutonPion41;
+	private JButton boutonPion42;
+	private JButton boutonPion43;
 	
 	private boolean etapePoseTuile;
 	private boolean isTuilePoseeDansPlateau;
@@ -63,11 +71,19 @@ public class VuePlateau implements Observer, ActionListener {
 		this.boutonDroit = new JButton("Droite");
 		this.boutonGauche = new JButton("Gauche");
 		
-		this.boutonPionHaut = new JButton();
-		this.boutonPionBas = new JButton();
-		this.boutonPionGauche = new JButton();
-		this.boutonPionDroite = new JButton();
-		this.boutonPionMilieu = new JButton();
+		this.boutonPion01 = new JButton();
+		this.boutonPion02 = new JButton();
+		this.boutonPion03 = new JButton();
+		this.boutonPion10 = new JButton();
+		this.boutonPion14 = new JButton();
+		this.boutonPion20 = new JButton();
+		this.boutonPion22 = new JButton();
+		this.boutonPion24 = new JButton();
+		this.boutonPion30 = new JButton();
+		this.boutonPion34 = new JButton();
+		this.boutonPion41 = new JButton();
+		this.boutonPion42 = new JButton();
+		this.boutonPion43 = new JButton();
 		
 		JPanel panPlateauAvecBoutons = new JPanel();
 		BorderLayout layoutAvecBoutons = new BorderLayout();
@@ -115,24 +131,58 @@ public class VuePlateau implements Observer, ActionListener {
 					panTuilePosee.setImageFond(tabtabImages[ligne][col]);
 					
 					// Bouton pions :
-					panTuilePosee.setLayout(new GridLayout(3, 3, 25, 25)); 
-					JPanel panVide1 = new JPanel();
-					JPanel panVide2 = new JPanel();
-					JPanel panVide3 = new JPanel();
-					JPanel panVide4 = new JPanel();
-					panVide1.setVisible(false);
-					panVide2.setVisible(false);
-					panVide3.setVisible(false);
-					panVide4.setVisible(false);
-					panTuilePosee.add(panVide1);
-					panTuilePosee.add(this.boutonPionHaut);
-					panTuilePosee.add(panVide2);
-					panTuilePosee.add(this.boutonPionGauche);
-					panTuilePosee.add(this.boutonPionMilieu);
-					panTuilePosee.add(this.boutonPionDroite);
-					panTuilePosee.add(panVide3);
-					panTuilePosee.add(this.boutonPionBas);
-					panTuilePosee.add(panVide4);
+					panTuilePosee.setLayout(new GridLayout(5, 5, 10, 10)); 
+					JPanel panVide00 = new JPanel();
+					JPanel panVide04 = new JPanel();
+					JPanel panVide11 = new JPanel();
+					JPanel panVide12 = new JPanel();
+					JPanel panVide13 = new JPanel();
+					JPanel panVide21 = new JPanel();
+					JPanel panVide23 = new JPanel();
+					JPanel panVide31 = new JPanel();
+					JPanel panVide32 = new JPanel();
+					JPanel panVide33 = new JPanel();
+					JPanel panVide40 = new JPanel();
+					JPanel panVide44 = new JPanel();
+					
+					panVide00.setVisible(false);
+					panVide04.setVisible(false);
+					panVide11.setVisible(false);
+					panVide12.setVisible(false);
+					panVide13.setVisible(false);
+					panVide21.setVisible(false);
+					panVide23.setVisible(false);
+					panVide31.setVisible(false);
+					panVide32.setVisible(false);
+					panVide33.setVisible(false);
+					panVide40.setVisible(false);
+					panVide44.setVisible(false);
+					
+					panTuilePosee.add(panVide00);
+					panTuilePosee.add(this.boutonPion01);
+					panTuilePosee.add(this.boutonPion02);
+					panTuilePosee.add(this.boutonPion03);
+					panTuilePosee.add(panVide04);
+					panTuilePosee.add(this.boutonPion10);
+					panTuilePosee.add(panVide11);
+					panTuilePosee.add(panVide12);
+					panTuilePosee.add(panVide13);
+					panTuilePosee.add(this.boutonPion14);
+					panTuilePosee.add(this.boutonPion20);
+					panTuilePosee.add(panVide21);
+					panTuilePosee.add(this.boutonPion22);
+					panTuilePosee.add(panVide23);
+					panTuilePosee.add(this.boutonPion24);
+					panTuilePosee.add(this.boutonPion30);
+					panTuilePosee.add(panVide31);
+					panTuilePosee.add(panVide32);
+					panTuilePosee.add(panVide33);
+					panTuilePosee.add(this.boutonPion34);
+					panTuilePosee.add(panVide40);
+					panTuilePosee.add(this.boutonPion41);
+					panTuilePosee.add(this.boutonPion42);
+					panTuilePosee.add(this.boutonPion43);
+					panTuilePosee.add(panVide44);
 					
 					this.panPlateau.add(panTuilePosee);
 					panTuilePosee.revalidate();
