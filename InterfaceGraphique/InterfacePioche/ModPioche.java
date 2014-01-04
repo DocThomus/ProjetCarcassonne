@@ -1,5 +1,6 @@
 package InterfacePioche;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -12,7 +13,7 @@ import Noyau.Tuile;
 		
 
 public class ModPioche extends Observable {
-		public static Tuile tuilePiochee;
+		public static ArrayList<ModPioche> PiocheActuel = new ArrayList<ModPioche>();
 		private Tuile t;
 		private Pioche pioche;
 		private Plateau plateau;
@@ -22,6 +23,7 @@ public class ModPioche extends Observable {
 			System.out.println(this.pioche.getPioche().size());
 			this.plateau= plateau;
 			this.piocher();
+			ModPioche.PiocheActuel.add(0,this);
 		}
 		
 		public void piocher (){
@@ -29,7 +31,6 @@ public class ModPioche extends Observable {
 			while(!this.t.verifTuileEstPosable(plateau)){
 				this.t=this.pioche.piocheAleatoire();
 			}
-			ModPioche.tuilePiochee=this.t;
 			this.setChanged();
 			this.notifyObservers(this.getImage());
 		}
@@ -38,7 +39,6 @@ public class ModPioche extends Observable {
 			this.t.rotation();
 			this.setChanged();
 			this.notifyObservers(this.getImage());
-			ModPioche.tuilePiochee=this.t;
 		}
 		
 		public void rotationAntiHoraire(){
@@ -47,7 +47,6 @@ public class ModPioche extends Observable {
 			this.t.rotation();
 			this.setChanged();
 			this.notifyObservers(this.getImage());
-			ModPioche.tuilePiochee=this.t;
 		}
 		
 		public Tuile getTuile(){

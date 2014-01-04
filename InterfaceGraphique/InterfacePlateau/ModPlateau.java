@@ -49,9 +49,9 @@ public class ModPlateau extends Observable {
 	}
 	
 	public void poseTuile(int x, int y){
-		if(ModPioche.tuilePiochee.verifPoseTuileLegale(this.plateau, x, y)){
+		if(ModPioche.PiocheActuel.get(0).getTuile().verifPoseTuileLegale(this.plateau, x, y)){
 			//int xp = x+Plateau.xCentre; int yp = y+Plateau.yCentre;
-			ModPioche.tuilePiochee.poseTuile(this.plateau, x, y);
+			ModPioche.PiocheActuel.get(0).getTuile().poseTuile(this.plateau, x, y);
 			this.sendMajToVue(false);
 		}
 		else {System.out.println("Pose impossible");}
