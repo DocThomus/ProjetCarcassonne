@@ -15,6 +15,9 @@ public class ModPlateau extends Observable {
 	private int yPosPlateau;
 
 	private boolean etapePoseTuile;
+	private boolean premierTour;
+	private int xRelCentreTuilePosee;
+	private int yRelCentreTuilePosee;
 
 	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
 		this.plateau = plateau;
@@ -23,9 +26,10 @@ public class ModPlateau extends Observable {
 		this.xPosPlateau = xPosPlateau;
 		this.yPosPlateau = yPosPlateau;
 		this.etapePoseTuile = true;
+		this.premierTour = true;
 	}
 	
-	public Image[][] getTabTabImages() {
+	private Image[][] getTabTabImages() {
 		Image[][] tabtabImages = new Image[hautNbTuiles][largNbTuiles];
 		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
 			for (int col = 0; col < largNbTuiles; col++) {
@@ -38,7 +42,7 @@ public class ModPlateau extends Observable {
 		return tabtabImages;
 	}
 	
-	public boolean[][] getTabTabCasesLibres() {
+	private boolean[][] getTabTabCasesLibres() {
 		boolean[][] tabtabCasesLibres = new boolean[hautNbTuiles][largNbTuiles];
 		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
 			for (int col = 0; col < largNbTuiles; col++) {
@@ -50,8 +54,10 @@ public class ModPlateau extends Observable {
 	
 	public boolean poseTuile(int x, int y){
 		if(ContPioche.ControleurPioche.getModele().getTuile().verifPoseTuileLegale(this.plateau, x, y)){
-			//int xp = x+Plateau.xCentre; int yp = y+Plateau.yCentre;
 			ContPioche.ControleurPioche.getModele().getTuile().poseTuile(this.plateau, x, y);
+			this.setCoordonneesRelCentreTuilePosees(x,y);
+			System.out.println("c " + x + " " + y);
+			this.premierTour = false;
 			this.sendMajToVue(false);
 			return true;
 		}
@@ -61,6 +67,17 @@ public class ModPlateau extends Observable {
 		}
 	}
 	
+	private void setCoordonneesRelCentreTuilePosees(int x, int y) {
+		this.xRelCentreTuilePosee = x;
+		this.yRelCentreTuilePosee = y;
+	}
+	
+	private boolean isTuilePoseeDansPlateau() {
+		return ((!this.premierTour) 
+				&& ((this.xPosPlateau <= this.xRelCentreTuilePosee) && (this.xRelCentreTuilePosee <= this.xPosPlateau+this.largNbTuiles))
+				&& ((this.yPosPlateau <= this.yRelCentreTuilePosee) && (this.yRelCentreTuilePosee <= this.yPosPlateau+this.hautNbTuiles)));
+	}
+
 	public void setXPosPlateau(int x){
 		this.xPosPlateau=x;
 		this.sendMajToVue(this.etapePoseTuile);
@@ -75,8 +92,16 @@ public class ModPlateau extends Observable {
 
 	public void sendMajToVue(boolean etapePoseTuile) {
 		this.setChanged();
-		this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), etapePoseTuile));
+		if (isTuilePoseeDansPlateau()) {
+			int colTuilePosee = this.xRelCentreTuilePosee - xPosPlateau;
+			int ligneTuilePosee = -(yPosPlateau + this.yRelCentreTuilePosee);
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), etapePoseTuile, true, colTuilePosee, ligneTuilePosee));
+		} else {
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), etapePoseTuile, false, -1, -1));
+		}
+		
 	}
+	
 	
 	
 }

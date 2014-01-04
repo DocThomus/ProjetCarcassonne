@@ -53,7 +53,7 @@ public class ContPlateau {
 	
 	public void poseTuile(int col, int ligne){
 		int xPosRelativeCentre = col + this.xPosPlateau;
-		int yPosRelativeCentre = -(ligne + yPosPlateau);
+		int yPosRelativeCentre = -(ligne + this.yPosPlateau);
 		
 		//int xPosRelativeCentre = ligne + this.xPosPlateau;
 		//int yPosRelativeCentre = col + yPosPlateau;
