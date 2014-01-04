@@ -97,24 +97,33 @@ public class VuePlateau implements Observer, ActionListener {
 		
 		for(int ligne = 0; ligne < this.hauteurPlateau; ligne++) {
 			for(int col = 0; col < this.largeurPlateau; col++) {
-				if(this.tabtabImages[ligne][col] != null) {
-					JLabel image = new JLabel(new ImageIcon(tabtabImages[ligne][col]));
-					image.setMinimumSize(new Dimension(100, 100));
-					this.panPlateau.add(image);
-					image.revalidate();
-				} else if(this.tabtabCasesLibres[ligne][col] == true) {
-					BoutonPlateau boutonPoser = new BoutonPlateau("Poser", ligne, col);
-					boutonPoser.setEnabled(this.etapePoseTuile);
-					boutonPoser.setMinimumSize(new Dimension(100, 100));
-					this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
-					boutonPoser.addActionListener(this);
-					boutonPoser.revalidate();
+				if (this.isTuilePoseeDansPlateau && (col == this.colTuilePosee) && (ligne == this.ligneTuilePosee)) {
+					PanneauTuilePosee panTuilePosee = new PanneauTuilePosee();
+					panTuilePosee.setMinimumSize(new Dimension(100, 100));
+					panTuilePosee.setImageFond(tabtabImages[ligne][col]);
+					this.panPlateau.add(panTuilePosee);
+					panTuilePosee.revalidate();
 				} else {
-					JPanel panelVide = new JPanel();
-					panelVide.setMinimumSize(new Dimension(100, 100));
-					this.panPlateau.add(panelVide);
-					panelVide.revalidate();
+					if(this.tabtabImages[ligne][col] != null) {
+						JLabel image = new JLabel(new ImageIcon(tabtabImages[ligne][col]));
+						image.setMinimumSize(new Dimension(100, 100));
+						this.panPlateau.add(image);
+						image.revalidate();
+					} else if(this.tabtabCasesLibres[ligne][col] == true) {
+						BoutonPlateau boutonPoser = new BoutonPlateau("Poser", ligne, col);
+						boutonPoser.setEnabled(this.etapePoseTuile);
+						boutonPoser.setMinimumSize(new Dimension(100, 100));
+						this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
+						boutonPoser.addActionListener(this);
+						boutonPoser.revalidate();
+					} else {
+						JPanel panelVide = new JPanel();
+						panelVide.setMinimumSize(new Dimension(100, 100));
+						this.panPlateau.add(panelVide);
+						panelVide.revalidate();
+					}
 				}
+				
 			}
 		}
 		this.panPlateau.validate();
