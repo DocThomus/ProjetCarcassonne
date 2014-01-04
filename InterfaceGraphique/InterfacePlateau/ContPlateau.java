@@ -44,7 +44,7 @@ public class ContPlateau {
 	}
 	
 	public void poseTuile(int x, int y){
-		this.modele.poseTuile(x+this.xPosPlateau,y+this.yPosPlateau);
+		this.modele.poseTuile(-(y+this.yPosPlateau),x+this.xPosPlateau);
 		System.out.println((x+this.xPosPlateau) + " " + (y+this.yPosPlateau));
 	}
 }
