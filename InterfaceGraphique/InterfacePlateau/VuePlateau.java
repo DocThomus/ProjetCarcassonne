@@ -36,6 +36,12 @@ public class VuePlateau implements Observer, ActionListener {
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;
 	
+	private JButton boutonPionHaut;
+	private JButton boutonPionBas;
+	private JButton boutonPionGauche;
+	private JButton boutonPionDroite;
+	private JButton boutonPionMilieu;
+	
 	private boolean etapePoseTuile;
 	private boolean isTuilePoseeDansPlateau;
 	private int colTuilePosee;
@@ -56,6 +62,12 @@ public class VuePlateau implements Observer, ActionListener {
 		this.boutonBas = new JButton("Bas");
 		this.boutonDroit = new JButton("Droite");
 		this.boutonGauche = new JButton("Gauche");
+		
+		this.boutonPionHaut = new JButton();
+		this.boutonPionBas = new JButton();
+		this.boutonPionGauche = new JButton();
+		this.boutonPionDroite = new JButton();
+		this.boutonPionMilieu = new JButton();
 		
 		JPanel panPlateauAvecBoutons = new JPanel();
 		BorderLayout layoutAvecBoutons = new BorderLayout();
@@ -101,6 +113,27 @@ public class VuePlateau implements Observer, ActionListener {
 					PanneauTuilePosee panTuilePosee = new PanneauTuilePosee();
 					panTuilePosee.setMinimumSize(new Dimension(100, 100));
 					panTuilePosee.setImageFond(tabtabImages[ligne][col]);
+					
+					// Bouton pions :
+					panTuilePosee.setLayout(new GridLayout(3, 3, 25, 25)); 
+					JPanel panVide1 = new JPanel();
+					JPanel panVide2 = new JPanel();
+					JPanel panVide3 = new JPanel();
+					JPanel panVide4 = new JPanel();
+					panVide1.setVisible(false);
+					panVide2.setVisible(false);
+					panVide3.setVisible(false);
+					panVide4.setVisible(false);
+					panTuilePosee.add(panVide1);
+					panTuilePosee.add(this.boutonPionHaut);
+					panTuilePosee.add(panVide2);
+					panTuilePosee.add(this.boutonPionGauche);
+					panTuilePosee.add(this.boutonPionMilieu);
+					panTuilePosee.add(this.boutonPionDroite);
+					panTuilePosee.add(panVide3);
+					panTuilePosee.add(this.boutonPionBas);
+					panTuilePosee.add(panVide4);
+					
 					this.panPlateau.add(panTuilePosee);
 					panTuilePosee.revalidate();
 				} else {
