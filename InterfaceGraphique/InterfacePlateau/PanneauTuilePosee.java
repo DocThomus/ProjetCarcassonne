@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.JPanel;
 
 public class PanneauTuilePosee extends JPanel {
+	private static final long serialVersionUID = 3402916968807493499L;
 	private Image imageFond;
 	
 	public void paintComponent(Graphics g) {

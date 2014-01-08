@@ -3,7 +3,7 @@ package InterfacePlateau;
 import javax.swing.JButton;
 
 public class BoutonTuile extends JButton {
-	
+	private static final long serialVersionUID = -489245348202904739L;
 	private int ligne;
 	private int col;	
 	

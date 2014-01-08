@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import Noyau.Tuile;
 
 public class BoutonPion extends JButton {
+	private static final long serialVersionUID = 2938267745613188098L;
 	private Tuile tuile;
 	private int position;
 	
