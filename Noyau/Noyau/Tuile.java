@@ -11,14 +11,36 @@ import javax.imageio.ImageIO;
 
 public class Tuile {
 	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
-	private int position; // Numéro correspondant à une des 4 orientations possible de la tuile
+	private int orientation; // Numéro correspondant à une des 4 orientations possible de la tuile
 	private Terrain [] tabCarac; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre
 	private boolean [] tabPresenceChamps; // 0 NNO, 1 NNE, 2 ENE, 3 ESE, 4 SSE, 5 SSO, 6 OSO, 7 ONO
-	private boolean [][] tabConnexitéBordure;
-	private boolean [][] tabConnexitéChamps; //Cette table de connexité concerne les champs.
+	private boolean [][] tabConnexitéBordure; // Soit N = Nord, S = Sud, E = Est, O = Ouest, C = Centre :
+		/* Ainsi, la table de connexité est la suivante (chaque case correspond à un couple de bordures qui sont connexes (la case vaut true) ou non (false)
+		 * x\y 	0	1	2	3
+		 * 	0	EN 
+		 * 	1	SN 	SE
+		 * 	2	ON 	OE 	OS
+		 * 	3	CN 	CE 	CS 	CO
+		 * 
+		 * Ex : [2][1] = OE
+		 */
+	
+	private boolean [][] tabConnexitéChamps; // Cette table de connexité concerne les champs.
+		/* Soit NNO = A, NNE = B, ENE = C, ESE = D, SSE = E, SSO = F, OSO = G, ONO = H.
+		 * x\y	0	1	2	3	4	5	6
+		 * 	0	AB
+		 * 	1	AC	BC
+		 * 	2	AD	BD	CD
+		 * 	3	AE	BE	CE	DE
+		 * 	4	AF	BF	CF	DF	EF	
+		 * 	5	AG	BG	CG	DG	EG	FG
+		 * 	6	AH  BH	CH	DH	EH	FH	GH
+		 * Nécessite une revérification des écritures des tuiles dans la pioche.
+		 */
+	
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion pionPlace;
-	private ArrayList<Tuile> tuileAdjacentes;
+	// private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
@@ -40,13 +62,13 @@ public class Tuile {
 		// boolean [4][4] connexitébordure;
 		// boolean [8][8] connexitéchamps;
 		this.num = num;
-		this.position=0;
+		this.orientation=0;
 		this.tabCarac=caracs;
 		this.tabPresenceChamps=presenceChamps;
 		this.tabConnexitéBordure=connexiteBordure;
 		this.tabConnexitéChamps=connexiteChamps;
 		this.bouclier=bouclier;
-		this.tuileAdjacentes=new ArrayList<Tuile>(4);
+		//this.tuileAdjacentes=new ArrayList<Tuile>(4);
 		
 	}
 	
@@ -127,11 +149,11 @@ public class Tuile {
 	}
 	
 	public Image getImageTuile(){
-		return Tuile.listImagesTuiles.get(this.num).get(this.position);
+		return Tuile.listImagesTuiles.get(this.num).get(this.orientation);
 	}
 	
-	public int getPosition(){
-		return this.position;
+	public int getOrientation(){
+		return this.orientation;
 	}
 	
 	public int getNum(){
@@ -168,32 +190,58 @@ public class Tuile {
 	 
 	public void rotation(){
 		//sens horaire		
-			
-			Terrain[]carac=new Terrain [5]; // Fait pivoter les caractéristique des bords.
-			carac[0]=this.tabCarac[3];
-			carac[1]=this.tabCarac[0];
-			carac[2]=this.tabCarac[1];
-			carac[3]=this.tabCarac[2];
-			carac[4]=this.tabCarac[4];
-			this.tabCarac=carac;
-			
-			boolean[][] rconnex= new boolean[4][4]; // Fait pivoter les connexité entre les caractéristique.
-			rconnex[0][0]=this.tabConnexitéBordure[2][0];
-			rconnex[1][0]=this.tabConnexitéBordure[2][1];
-			rconnex[1][1]=this.tabConnexitéBordure[0][0];
-			rconnex[2][0]=this.tabConnexitéBordure[2][2];
-			rconnex[2][1]=this.tabConnexitéBordure[1][0];
-			rconnex[2][2]=this.tabConnexitéBordure[1][1];
-			rconnex[3][0]=this.tabConnexitéBordure[3][3];
-			rconnex[3][1]=this.tabConnexitéBordure[3][0];
-			rconnex[3][2]=this.tabConnexitéBordure[3][1];
-			rconnex[3][3]=this.tabConnexitéBordure[3][2];
-			this.tabConnexitéBordure=rconnex;
+		/*
+			private boolean [][] tabConnexitéChamps; //Cette table de connexité concerne les champs.
+			private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
+			private Pion pionPlace;
+			//private ArrayList<Tuile> tuileAdjacentes;
+			private int sensTuile;
+			private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
+			private int y; // ordonnée ...
+		 */
 		
-			this.position++;
-			if(position>3){
-				this.position=0;
-			}
+		this.orientation = (this.orientation + 1) % 4;
+			
+		Terrain[] carac = new Terrain [5]; // Fait pivoter les caractéristique des bords.
+		carac[0] = this.tabCarac[3];
+		carac[1] = this.tabCarac[0];
+		carac[2] = this.tabCarac[1];
+		carac[3] = this.tabCarac[2];
+		carac[4] = this.tabCarac[4];
+		this.tabCarac = carac;
+		
+		boolean[] champs = new boolean[8];
+		champs[0] = this.tabPresenceChamps[6];
+		champs[1] = this.tabPresenceChamps[7];
+		champs[2] = this.tabPresenceChamps[0];
+		champs[3] = this.tabPresenceChamps[1];
+		champs[4] = this.tabPresenceChamps[2];
+		champs[5] = this.tabPresenceChamps[3];
+		champs[6] = this.tabPresenceChamps[4];
+		champs[7] = this.tabPresenceChamps[5];
+		this.tabPresenceChamps = champs;
+		
+		/* x\y	0	1	2	3
+		 * 	0	EN 
+		 * 	1	SN 	SE
+		 * 	2	ON 	OE 	OS
+		 * 	3	CN 	CE 	CS 	CO
+		 */
+		
+		boolean[][] connexBord= new boolean[4][4]; // Fait pivoter les connexité entre les caractéristique.
+		connexBord[0][0] = this.tabConnexitéBordure[2][0]; // EN prend ON
+		connexBord[1][0] = this.tabConnexitéBordure[2][1]; // SN prend OE
+		connexBord[1][1] = this.tabConnexitéBordure[0][0]; // SE prend EN
+		connexBord[2][0] = this.tabConnexitéBordure[2][2]; // ON prend OS
+		connexBord[2][1] = this.tabConnexitéBordure[1][0]; // OE prend SN
+		connexBord[2][2] = this.tabConnexitéBordure[1][1]; // OS prend SE
+		connexBord[3][0] = this.tabConnexitéBordure[3][3]; // CN prend CO
+		connexBord[3][1] = this.tabConnexitéBordure[3][0]; // CE prend CN
+		connexBord[3][2] = this.tabConnexitéBordure[3][1]; // CS prend CE
+		connexBord[3][3] = this.tabConnexitéBordure[3][2]; // CO prend CS
+		this.tabConnexitéBordure = connexBord;
+		
+			
 		
 	}
 
