@@ -133,13 +133,13 @@ public class Tuile {
 		//action : verifier si il y a déja un pion sur la construction.
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
 		boolean pasAutrePion = true;
-		for(int i=0;i<evalPosePion.size();i++){
-			if(evalPosePion.get(i).getT().pionPlace!=null){ //Si il y a un pion sur cette tuile et ...
-				if(evalPosePion.get(i).getT().pionPlace.getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // .. si ce pion est sur la même position que celle de l'évaluation.
-					pasAutrePion= false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
+		for(int i=0; i < evalPosePion.size(); i++) {
+			if(evalPosePion.get(i).getT().pionPlace != null) { // Si il y a un pion sur cette tuile et ...
+				if(evalPosePion.get(i).getT().pionPlace.getPositionSurTuile() == evalPosePion.get(i).getPosition()) { // .. si ce pion est sur la même position que celle de l'évaluation.
+					pasAutrePion = false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
 					System.out.println("Il y a déjà un pion sur cette construction"); //Si un pion est déjà présent on le signal au joueur.
 				}
-			}	
+			}
 		}
 		return pasAutrePion;
 	} 

@@ -22,7 +22,7 @@ public class Evaluation {
 	
 	
 	//***************BLOC ABBAYE**************************
-	public ArrayList<Evaluation> verifPresenceAbbaye (){
+	public ArrayList<Evaluation> verifPresenceAbbaye() {
 		// A utiliser sur une tuile qui vient d'être posée pour avoir la liste de toutes les abbayes qui pourraient devenir complètes grâce à cette tuile.
 		// Action : Renvoie la liste des tuiles adjacentes contenant une abbaye, y compris elle-même si c'est le cas.
 		ArrayList<Evaluation> TuileAbbaye = new ArrayList<Evaluation>();
@@ -336,13 +336,13 @@ public class Evaluation {
 	
 	
 	public ArrayList<Evaluation> evalPosePion(){
-		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est situé sur t.getCarac(position)
-		// Contrairement a evalConstruction, on ne s'arrête pas quant il manque un voisin à une tuile. Le boolean "impossible" et tout ce qui va avec est donc retiré.
+		// Renvoie la liste des evaluation composant la construction(route ou ville) qui est située sur this.t.getCarac(position)
+		// Contrairement a evalConstruction, on ne s'arrête pas quand il manque un voisin à une tuile. Le boolean "impossible" et tout ce qui va avec est donc retiré.
 		// De plus on conserve position ce qui permet de vérifier la présence de pion.
-		// Les Evaluation renvoyé peuvent aussi servir en fin de jeu pour les construction imcompléte.
-		ArrayList<Evaluation>dejaVus = new ArrayList<Evaluation>();
-		ArrayList<Evaluation>frontiere= new ArrayList<Evaluation>();
-		boolean fini=false;
+		// Les Evaluations renvoyées peuvent aussi servir en fin de jeu pour les construction imcompléte.
+		ArrayList<Evaluation> dejaVus = new ArrayList<Evaluation>();
+		ArrayList<Evaluation> frontiere= new ArrayList<Evaluation>();
+		boolean fini = false;
 		frontiere.add(0,this);
 		dejaVus.add(0,this);
 		ArrayList<Evaluation> fils;
