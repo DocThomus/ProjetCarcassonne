@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 public class PanneauTuile extends JPanel {
 	private static final long serialVersionUID = 3402916968807493499L;
 	private Image imageTuile;
+	private boolean presencePion;
+	private int positionPion;
+	private Color couleurPion;
 	
 	public PanneauTuile(Image imageTuile) {
 		this.imageTuile = imageTuile;
@@ -20,6 +23,27 @@ public class PanneauTuile extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(this.imageTuile, 0, 0, null);
+		
+		if(this.presencePion) {
+			g.setColor(this.couleurPion);
+			if(this.positionPion == 0) { // Centre
+				g.fillRect(45, 45, 10, 10);
+			} else if(this.positionPion == 12) { // Nord 
+				g.fillRect(45, 10, 10, 10);
+			} else if(this.positionPion == 3) {	// Est
+				g.fillRect(80, 45, 10, 10);
+			} else if(this.positionPion == 6) { // Sud
+				g.fillRect(45, 80, 10, 10);
+			} else if(this.positionPion == 9) { // Ouest
+				g.fillRect(10, 45, 10, 10);
+			}
+		}
+	}
+	
+	public void setPion(boolean presencePion, int positionPion, Color couleurPion) {
+		this.presencePion = presencePion;
+		this.positionPion = positionPion;
+		this.couleurPion = couleurPion;
 	}
 
 	public void setBoutonsPosePion(BoutonPosePion[] tabBoutonPosePion, boolean[] tabPresenceBoutonPosePion) {		
@@ -92,10 +116,5 @@ public class PanneauTuile extends JPanel {
 		this.add(tabBoutonPosePion[6]);
 		this.add(panVide43); // panTuilePosee.add(tabBoutonPosePion[5]);
 		this.add(panVide44);
-	}
-
-	public void setPion(boolean presencePion, int positionPion, Color couleurPion) {
-		// TODO Auto-generated method stub
-		
 	}
 }
