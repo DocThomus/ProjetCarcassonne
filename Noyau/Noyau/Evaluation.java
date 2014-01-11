@@ -367,27 +367,27 @@ public class Evaluation {
 		if(position==12){ // On s'intéresse a la caractéristique au Nord de la Tuile. 12 et non 0 par rapport a la façon d'organiser les bonton voir la classe : VuePlateau
 			
 			if(!p.isEmpty(x, y+1)){
-			fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} 
+			fils.add(new Evaluation(p.getTuile(x, y+1),p,6));} 
 			
 			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
 			if(connex[0][0]){ 
 				//System.out.println("connection haut gauche");
 				if(!p.isEmpty(x+1, y)){
-				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,9));}
 			}	
 			if(connex[1][0]){
 				//System.out.println("connection haut bas");
 				if(!p.isEmpty(x, y-1)){
-				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}
 			}
 			if(connex[2][0]){
 				//System.out.println("connection haut droite");
 				if(!p.isEmpty(x-1, y)){
-				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}
 			}
 			if(connex[3][0]){
 				//System.out.println("connection avec le centre") : inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
-				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+				fils.add(new Evaluation(p.getTuile(x, y),p,0));
 			}
 			
 		}
@@ -396,21 +396,21 @@ public class Evaluation {
 		if(position==3){
 			
 			if(!p.isEmpty(x+1, y)){
-			fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+			fils.add(new Evaluation(p.getTuile(x+1, y),p,9));}
 			
 			if(connex[0][0]){
 				if(!p.isEmpty(x, y+1)){
-				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,6));}}
 	
 			if(connex[1][1]){
 				if(!p.isEmpty(x, y-1)){
-				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}}
 			
 			if(connex[2][1]){
 				if(!p.isEmpty(x-1, y)){
-				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}}
 			if(connex[3][1]){
-				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+				fils.add(new Evaluation(p.getTuile(x, y),p,0));
 			}
 			
 		}
@@ -418,52 +418,52 @@ public class Evaluation {
 		//if(position==2){
 		if(position==6){
 			if(!p.isEmpty(x, y-1)){
-			fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+			fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}
 			
 			if(connex[1][0]){
 				if(!p.isEmpty(x, y+1)){
-				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,6));}}
 	
 			if(connex[1][1]){
 				if(!p.isEmpty(x+1, y)){
-				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,9));}}
 			
 			if(connex[2][2]){
 				if(!p.isEmpty(x-1, y)){
-				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}}
 			if(connex[3][2]){
-				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+				fils.add(new Evaluation(p.getTuile(x, y),p,0));
 			}
 		}
 		
 		//if(position==3){
 		if(position==9){
 			if(!p.isEmpty(x-1, y)){
-			fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+			fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}
 			
 			if(connex[2][0]){
 				if(!p.isEmpty(x, y+1)){
-				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,6));}}
 	
 			if(connex[2][1]){
 				if(!p.isEmpty(x+1, y)){
-				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,9));}}
 			
 			if(connex[2][2]){
 				if(!p.isEmpty(x, y-1)){
-				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}}
 			if(connex[3][3]){
-				fils.add(new Evaluation(p.getTuile(x, y),p,4));
+				fils.add(new Evaluation(p.getTuile(x, y),p,0));
 			}
 		}
 		
 		//if(position==4){
 		if(position==0){
 			fils.add(this);
-			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
-			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
-			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
-			if(connex[3][3]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
+			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,12));}
+			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
+			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,6));}
+			if(connex[3][3]){fils.add(new Evaluation(p.getTuile(x, y),p,9));}
 		}
 		return fils; 		
 	}
