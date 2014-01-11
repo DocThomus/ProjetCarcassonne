@@ -1,5 +1,6 @@
 package InterfacePlateau;
 
+import java.awt.Color;
 import java.awt.Image;
 
 import Noyau.Tuile;
@@ -12,8 +13,11 @@ public class PaquetPlateau {
 	private int ligneTuilePosee;
 	private int colTuilePosee;
 	private boolean[] tabPresenceBoutonPosePion;
+	private boolean[][] tabtabPresencePion;
+	private int [][] tabtabPositionPion;
+	private Color[][] tabtabCouleurPion;
 	
-	public PaquetPlateau(Image[][] tabtabImages, boolean[][] tabtabCasesLibres, boolean etapePoseTuile, boolean tuilePoseeDansPlateau, int colTuilePosee , int ligneTuilePosee, boolean[] tabPresenceBoutonPosePion) {
+	public PaquetPlateau(Image[][] tabtabImages, boolean[][] tabtabCasesLibres, boolean etapePoseTuile, boolean tuilePoseeDansPlateau, int colTuilePosee , int ligneTuilePosee, boolean[] tabPresenceBoutonPosePion, boolean[][] tabtabPresencePion, int [][] tabtabPositionPion, Color[][] tabtabCouleurPion) {
 		this.tabtabImages = tabtabImages;
 		this.tabtabCasesLibres = tabtabCasesLibres;
 		this.etapePoseTuile = etapePoseTuile;
@@ -21,6 +25,9 @@ public class PaquetPlateau {
 		this.colTuilePosee = colTuilePosee;
 		this.ligneTuilePosee = ligneTuilePosee;
 		this.tabPresenceBoutonPosePion = tabPresenceBoutonPosePion;
+		this.tabtabPresencePion = tabtabPresencePion;
+		this.tabtabPositionPion = tabtabPositionPion;
+		this.tabtabCouleurPion = tabtabCouleurPion;
 		System.out.println("posée : "+tuilePoseeDansPlateau+colTuilePosee+','+ligneTuilePosee);
 	}
 	
@@ -51,4 +58,18 @@ public class PaquetPlateau {
 	public boolean[] getTabPresenceBoutonPosePion() {
 		return this.tabPresenceBoutonPosePion;
 	}
-}
+	
+	public boolean[][] getTabTabPresencePion(){
+		return this.tabtabPresencePion;
+	}
+	
+	public int [][] getTabTabPositionPion(){
+		return this.tabtabPositionPion;
+	}
+	
+	public Color[][] getTabTabCouleurPion(){
+		return this.tabtabCouleurPion;
+	}
+	
+	
+}//fin classe
