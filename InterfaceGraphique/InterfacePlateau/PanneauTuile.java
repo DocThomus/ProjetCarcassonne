@@ -5,17 +5,16 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-public class PanneauTuilePosee extends JPanel {
+public class PanneauTuile extends JPanel {
 	private static final long serialVersionUID = 3402916968807493499L;
-	private Image imageFond;
+	private Image imageTuile;
+	
+	public PanneauTuile(Image imageTuile) {
+		this.imageTuile = imageTuile;
+	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.imageFond, 0, 0, null);
-	}
-
-	public void setImageFond(Image imageFond) {
-		this.imageFond = imageFond;
-		this.repaint();
+		g.drawImage(this.imageTuile, 0, 0, null);
 	}
 }

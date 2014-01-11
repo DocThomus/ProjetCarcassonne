@@ -142,9 +142,8 @@ public class VuePlateau implements Observer, ActionListener {
 		for(int ligne = 0; ligne < this.hauteurPlateau; ligne++) {
 			for(int col = 0; col < this.largeurPlateau; col++) {
 				if (this.isTuilePoseeDansPlateau && (col == this.colTuilePosee) && (ligne == this.ligneTuilePosee)) {
-					PanneauTuilePosee panTuilePosee = new PanneauTuilePosee();
+					PanneauTuile panTuilePosee = new PanneauTuile(tabtabImages[ligne][col]);
 					panTuilePosee.setMinimumSize(new Dimension(100, 100));
-					panTuilePosee.setImageFond(tabtabImages[ligne][col]);
 					
 					// Bouton pions :
 					this.boutonPion01.setTuile(tuilePosee);
