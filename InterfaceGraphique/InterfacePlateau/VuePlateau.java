@@ -121,16 +121,16 @@ public class VuePlateau implements Observer, ActionListener {
 						this.tabBoutonPosePion[i].setTuile(tuilePosee);
 						this.tabBoutonPosePion[i].setVisible(tabPresenceBoutonPosePion[i]);
 					}
-					panTuilePosee.setBoutonsPosePion(this.tabBoutonPosePion, tabPresenceBoutonPosePion);
-					
-					panTuilePosee.setPion(false, 0, null);					
+					panTuilePosee.setBoutonsPosePion(this.tabBoutonPosePion, tabPresenceBoutonPosePion);			
 					
 					this.panPlateau.add(panTuilePosee);
 					panTuilePosee.revalidate();
 				} else {
 					if(this.tabtabImages[ligne][col] != null) {
 						PanneauTuile panTuile = new PanneauTuile(tabtabImages[ligne][col]);
-						panTuile.setPion(tabtabPresencePion[col][ligne], tabtabPositionPion[col][ligne], tabtabCouleurPion[col][ligne]);
+						if(tabtabPresencePion[ligne][col]) {
+							panTuile.setPion(tabtabPresencePion[col][ligne], tabtabPositionPion[col][ligne], tabtabCouleurPion[col][ligne]);
+						}
 						this.panPlateau.add(panTuile);
 						panTuile.revalidate();
 					} else if(this.tabtabCasesLibres[ligne][col] == true) {

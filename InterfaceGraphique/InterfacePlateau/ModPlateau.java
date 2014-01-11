@@ -59,10 +59,10 @@ public class ModPlateau extends Observable {
 		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
 			for (int col = 0; col < largNbTuiles; col++) {
 				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null) {
-					if(t.getPionPlacé()!=null){
-						tabtabPresencePion[ligne][col] = true;
-					}
+				if (t != null && t.getPionPlacé()!=null) {
+					tabtabPresencePion[ligne][col] = true;
+				} else {
+					tabtabPresencePion[ligne][col] = false;
 				}
 			}
 		}
@@ -74,11 +74,9 @@ public class ModPlateau extends Observable {
 		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
 			for (int col = 0; col < largNbTuiles; col++) {
 				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null) {
-					if(t.getPionPlacé()!=null){
-						tabtabPositionPion[ligne][col]=t.getPionPlacé().getPositionSurTuile();
-					}
-				}
+				if (t != null && t.getPionPlacé()!=null) {
+					tabtabPositionPion[ligne][col]=t.getPionPlacé().getPositionSurTuile();
+				} 
 			}
 		}
 		return tabtabPositionPion;
@@ -89,10 +87,8 @@ public class ModPlateau extends Observable {
 		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
 			for (int col = 0; col < largNbTuiles; col++) {
 				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null) {
-					if(t.getPionPlacé()!=null){
+				if (t != null && t.getPionPlacé()!=null) {
 						tabtabCouleurPion[ligne][col]=t.getPionPlacé().getProprio().getCouleur();
-					}
 				}
 			}
 		}

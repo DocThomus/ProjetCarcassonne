@@ -17,6 +17,7 @@ public class PanneauTuile extends JPanel {
 	
 	public PanneauTuile(Image imageTuile) {
 		this.imageTuile = imageTuile;
+		this.presencePion = false;
 		this.setMinimumSize(new Dimension(100, 100));
 	}
 	
@@ -29,13 +30,13 @@ public class PanneauTuile extends JPanel {
 			if(this.positionPion == 0) { // Centre
 				g.fillRect(45, 45, 10, 10);
 			} else if(this.positionPion == 12) { // Nord 
-				g.fillRect(45, 10, 10, 10);
+				g.fillRect(45, 5, 10, 10);
 			} else if(this.positionPion == 3) {	// Est
-				g.fillRect(80, 45, 10, 10);
+				g.fillRect(85, 45, 10, 10);
 			} else if(this.positionPion == 6) { // Sud
-				g.fillRect(45, 80, 10, 10);
+				g.fillRect(45, 85, 10, 10);
 			} else if(this.positionPion == 9) { // Ouest
-				g.fillRect(10, 45, 10, 10);
+				g.fillRect(5, 45, 10, 10);
 			}
 		}
 	}

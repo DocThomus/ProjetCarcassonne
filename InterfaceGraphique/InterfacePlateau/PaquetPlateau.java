@@ -28,7 +28,7 @@ public class PaquetPlateau {
 		this.tabtabPresencePion = tabtabPresencePion;
 		this.tabtabPositionPion = tabtabPositionPion;
 		this.tabtabCouleurPion = tabtabCouleurPion;
-		System.out.println("posée : "+tuilePoseeDansPlateau+colTuilePosee+','+ligneTuilePosee);
+		System.out.println("posée : "+tuilePoseeDansPlateau+""+colTuilePosee+','+ligneTuilePosee);
 	}
 	
 	public boolean isTuilePoseeDansPlateau() {
