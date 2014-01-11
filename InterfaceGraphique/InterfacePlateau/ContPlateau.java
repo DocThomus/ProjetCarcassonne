@@ -85,6 +85,7 @@ public class ContPlateau {
 	}
 	
 	public void posePion(Tuile t, int pos) {
+		System.out.println("position pion :" + pos );
 		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
 			t.posePion(Joueur.getJoueurActif(), pos);
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");

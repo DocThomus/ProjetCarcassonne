@@ -132,6 +132,7 @@ public class Tuile {
 		//prérequis : aucun
 		//action : verifier si il y a déja un pion sur la construction.
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
+		System.out.println("taille de evalPosePion : "+ evalPosePion.size());
 		boolean pasAutrePion = true;
 		for(int i=0; i < evalPosePion.size(); i++) {
 			if(evalPosePion.get(i).getT().pionPlace != null) { // Si il y a un pion sur cette tuile et ...

@@ -363,7 +363,8 @@ public class Evaluation {
 		int y= t.getY();
 		ArrayList<Evaluation>fils = new ArrayList<Evaluation>();
 		
-		if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
+		//if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
+		if(position==12){ // On s'intéresse a la caractéristique au Nord de la Tuile. 12 et non 0 par rapport a la façon d'organiser les bonton voir la classe : VuePlateau
 			
 			if(!p.isEmpty(x, y+1)){
 			fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} 
@@ -391,7 +392,9 @@ public class Evaluation {
 			
 		}
 		
-		if(position==1){
+		//if(position==1){
+		if(position==3){
+			
 			if(!p.isEmpty(x+1, y)){
 			fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
 			
@@ -412,7 +415,8 @@ public class Evaluation {
 			
 		}
 		
-		if(position==2){
+		//if(position==2){
+		if(position==6){
 			if(!p.isEmpty(x, y-1)){
 			fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
 			
@@ -432,7 +436,8 @@ public class Evaluation {
 			}
 		}
 		
-		if(position==3){
+		//if(position==3){
+		if(position==9){
 			if(!p.isEmpty(x-1, y)){
 			fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
 			
@@ -452,7 +457,8 @@ public class Evaluation {
 			}
 		}
 		
-		if(position==4){
+		//if(position==4){
+		if(position==0){
 			fils.add(this);
 			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
 			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
