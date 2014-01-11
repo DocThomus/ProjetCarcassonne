@@ -2,10 +2,14 @@ package InterfacePlateau;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.Observable;
 
 import InterfacePioche.ContPioche;
+import Noyau.Evaluation;
+import Noyau.Joueur;
 import Noyau.Plateau;
+import Noyau.Terrain;
 import Noyau.Tuile;
 
 public class ModPlateau extends Observable {
@@ -19,6 +23,28 @@ public class ModPlateau extends Observable {
 	private boolean etapePosePion;
 	private int xRelCentreTuilePosee;
 	private int yRelCentreTuilePosee;
+	
+	public void evaluationFinTour(){
+		Tuile tuileposee = ContPioche.ControleurPioche.getModele().getTuile();
+		// Evaluation des Abbaye
+		Evaluation evaltuileposee = new Evaluation(tuileposee,plateau,4);
+		ArrayList<Evaluation> abbayeAevaluer = evaltuileposee.verifPresenceAbbaye();
+		if(abbayeAevaluer.size()>0){
+			for(int i=0;i<abbayeAevaluer.size();i++){
+				abbayeAevaluer.get(i).evalAbbaye();
+			}
+		}
+		//Evaluation du nord
+		evaltuileposee = new Evaluation(tuileposee,plateau,0);
+		ArrayList<Tuile> construction = evaltuileposee.evalConstruction();
+		if(!construction.isEmpty()){
+			if(tuileposee.getCarac(0)==Terrain.ROUTE){
+				Joueur.getJoueurActif().ajoutPoints(construction.valeurRoute());
+			}
+			
+		}
+		
+	}
 
 	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
 		this.plateau = plateau;

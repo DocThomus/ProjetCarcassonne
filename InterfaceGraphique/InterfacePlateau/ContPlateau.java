@@ -37,6 +37,11 @@ public class ContPlateau {
 		ContPlateau.contPlateau.modele.sendMajToVue();
 	}
 	
+
+	public static void evaluationFinTour(){
+		ContPlateau.contPlateau.modele.evaluationFinTour();
+	}
+	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		this.plateau = plateau;
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
