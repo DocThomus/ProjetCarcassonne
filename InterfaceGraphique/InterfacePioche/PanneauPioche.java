@@ -76,19 +76,14 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	}
 	
 	public void maj (Image img,int taille){
-		System.out.println("maj ok");
-		//this.imgTuile = new ImageIcon(img);
+
 		this.imgTuile=img;
 		this.taillePioche=taille;
 		this.nbTuile.setText(""+this.taillePioche);
 		this.panImage.setIcon(new ImageIcon(img));
-		//this.repaint();
+
 	}
-	
-	/*public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(this.imgTuile, this.getWidth()/4,this.getHeight()/4,150,150,this);
-	}*/
+
 	
 	public JButton getRotationH(){
 		return this.rotationHoraire;

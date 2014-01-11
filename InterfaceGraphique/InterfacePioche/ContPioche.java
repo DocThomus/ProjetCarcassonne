@@ -25,12 +25,10 @@ public class ContPioche {
 	
 	public void rotationH (){
 		this.modele.rotationHoraire();
-		//this.modele.piocher();
-		System.out.println("rotation horaire + test pioche ok");
+
 	}
 	public void rotationAH (){
 		this.modele.rotationAntiHoraire();
-		System.out.println("rotation anti horaire ok");
 	}
 	
 	public void setRotation(boolean etat){

@@ -53,22 +53,18 @@ public class ContPlateau {
 	}
 	
 	public void montePlateau(){
-		System.out.println("controleur haut ok");
 		this.yPosPlateau--;
 		this.modele.setYPosPlateau(this.yPosPlateau);
 	}
 	public void descendPlateau(){
-		System.out.println("controleur bas ok");
 		this.yPosPlateau++;
 		this.modele.setYPosPlateau(this.yPosPlateau);
 	}
 	public void decaleGauche(){
-		System.out.println("controleur gauche ok");
 		this.xPosPlateau--;
 		this.modele.setXPosPlateau(this.xPosPlateau);
 	}
 	public void decaleDroite(){
-		System.out.println("controleur droite ok");
 		this.xPosPlateau++;
 		this.modele.setXPosPlateau(this.xPosPlateau);
 	}
@@ -94,7 +90,6 @@ public class ContPlateau {
 		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
 			t.posePion(Joueur.getJoueurActif(), pos);
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
-			System.out.println("testPion");
 		} else {
 			System.out.println("PionPasPosable");
 		}

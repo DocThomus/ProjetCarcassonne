@@ -94,7 +94,6 @@ public class VuePlateau implements Observer, ActionListener {
 
 	public void update(Observable o, Object arg) {
 		PaquetPlateau pp = (PaquetPlateau) arg;
-		System.out.println("update ok");
 		
 		Tuile tuilePosee = ContPioche.ControleurPioche.getModele().getTuile();
 		
@@ -164,9 +163,9 @@ public class VuePlateau implements Observer, ActionListener {
 			this.controleur.decaleDroite();
 		} else if(e.getSource().getClass() == BoutonTuile.class) {	// Bouton Tuile
 			int colPosBouton = ((BoutonTuile) e.getSource()).getCol();
-			System.out.println(""+colPosBouton);
+			//System.out.println(""+colPosBouton);
 			int lignePosBouton = ((BoutonTuile) e.getSource()).getLigne();
-			System.out.println(""+lignePosBouton);
+			//System.out.println(""+lignePosBouton);
 			this.controleur.poseTuile(lignePosBouton, colPosBouton);
 		} else if(e.getSource().getClass() == BoutonPosePion.class) {	// Bouton Pion
 			int position = ((BoutonPosePion) e.getSource()).getPosition();

@@ -26,23 +26,90 @@ public class ModPlateau extends Observable {
 	
 	public void evaluationFinTour(){
 		Tuile tuileposee = ContPioche.ControleurPioche.getModele().getTuile();
+		ArrayList<Joueur> winner;
+		Evaluation evalPion;
 		// Evaluation des Abbaye
 		Evaluation evaltuileposee = new Evaluation(tuileposee,plateau,4);
 		ArrayList<Evaluation> abbayeAevaluer = evaltuileposee.verifPresenceAbbaye();
-		if(abbayeAevaluer.size()>0){
 			for(int i=0;i<abbayeAevaluer.size();i++){
 				abbayeAevaluer.get(i).evalAbbaye();
-			}
 		}
 		//Evaluation du nord
 		evaltuileposee = new Evaluation(tuileposee,plateau,0);
 		ArrayList<Tuile> construction = evaltuileposee.evalConstruction();
 		if(!construction.isEmpty()){
 			if(tuileposee.getCarac(0)==Terrain.ROUTE){
-				Joueur.getJoueurActif().ajoutPoints(construction.valeurRoute());
+				evalPion=new Evaluation(tuileposee,plateau,12);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
+				}
 			}
-			
+			if(tuileposee.getCarac(0)==Terrain.VILLE){
+				evalPion=new Evaluation(tuileposee,plateau,12);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
+				}
+			}
 		}
+		//Evaluation de l'est
+		evaltuileposee = new Evaluation(tuileposee,plateau,1);
+		construction = evaltuileposee.evalConstruction();
+		if(!construction.isEmpty()){
+			if(tuileposee.getCarac(1)==Terrain.ROUTE){
+				evalPion=new Evaluation(tuileposee,plateau,3);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
+				}
+			}
+			if(tuileposee.getCarac(1)==Terrain.VILLE){
+				evalPion=new Evaluation(tuileposee,plateau,3);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
+				}
+			}
+		}
+		//Evaluation du sud
+		evaltuileposee = new Evaluation(tuileposee,plateau,2);
+		construction = evaltuileposee.evalConstruction();
+		if(!construction.isEmpty()){
+			if(tuileposee.getCarac(2)==Terrain.ROUTE){
+				evalPion=new Evaluation(tuileposee,plateau,6);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
+				}
+			}
+			if(tuileposee.getCarac(2)==Terrain.VILLE){
+				evalPion=new Evaluation(tuileposee,plateau,6);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
+				}
+			}
+		}
+		//Evaluation de l'ouest
+				evaltuileposee = new Evaluation(tuileposee,plateau,3);
+				construction = evaltuileposee.evalConstruction();
+				if(!construction.isEmpty()){
+					if(tuileposee.getCarac(3)==Terrain.ROUTE){
+						evalPion=new Evaluation(tuileposee,plateau,9);
+						winner = evalPion.getMajorité(Joueur.getListJoueur());
+						for(int i=0;i<winner.size();i++){
+							winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
+						}
+					}
+					if(tuileposee.getCarac(3)==Terrain.VILLE){
+						evalPion=new Evaluation(tuileposee,plateau,9);
+						winner = evalPion.getMajorité(Joueur.getListJoueur());
+						for(int i=0;i<winner.size();i++){
+							winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
+						}
+					}
+				}
 		
 	}
 

@@ -8,6 +8,10 @@ public class Joueur {
 	private static Joueur joueurActuel;
 	private static int numJoueurActuel = 0;
 	
+	public static ArrayList<Joueur> getListJoueur(){
+		return listJoueur;
+	}
+	
 	public static int getNbJoueurs() {
 		return listJoueur.size();
 	}
@@ -115,8 +119,7 @@ public class Joueur {
 		// Pré-requis : p est positif ou nul.
 		// TODO A utiliser avec valeurAbbaye() ou valeurVille() ou valeurRoute()
 		this.score = this.score + p;
-		System.out.println("joueur : " + this.identifiant);
-		System.out.println(" + " + p +" points");
+		System.out.println(this.nom + " : + " + p +" points");
 	}
 	
 	public void retirePion(Pion p) {

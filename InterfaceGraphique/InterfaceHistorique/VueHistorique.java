@@ -75,12 +75,12 @@ public class VueHistorique implements Observer, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==boutonPasser){
+			ContPlateau.evaluationFinTour();
 			ContPioche.ControleurPioche.getModele().piocher();
 			Joueur.joueurSuivant();
 			this.setEtatBoutonPasser(false);
 			ContPioche.ControleurPioche.setRotation(true);
 			this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
-			ContPlateau.evaluationFinTour();
 			ContPlateau.activerBoutonsPoserTuile();
 			ContPlateau.desactiverBoutonsPoserPion();
 			ContPlateau.refresh();

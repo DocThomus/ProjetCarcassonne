@@ -303,13 +303,13 @@ public class Evaluation {
 	public ArrayList<Joueur>getMajorité(ArrayList<Joueur> player){
 	// Renvoie la liste du(ou des) joueur(s) ayant la majorité des pions sur une construction achevé. Et retire les pions.
 		ArrayList<Evaluation> evalPosePion = this.evalPosePion();
-		System.out.println("evalPosePion : " + evalPosePion.size());
+		//System.out.println("evalPosePion : " + evalPosePion.size());
 		ArrayList<Joueur> winner = new ArrayList<Joueur>();
 		int [] nbpion= new int [player.size()];
 		for(int i=0;i<evalPosePion.size();i++){
 			if(evalPosePion.get(i).getT().getPionPlacé()!=null){ //Si il y a un pion sur cette tuile ...
 				if(evalPosePion.get(i).t.getPionPlacé().getPositionSurTuile()==evalPosePion.get(i).getPosition()){ // Pour ne pas comptabiliser un pion qui serait sur la tuile mais pas dans la construction qui nous intéresse
-					nbpion[evalPosePion.get(i).getT().getPionPlacé().getProprio().getIdentifiant()-1]++; // +1 dans la case du tableau ayant le même numéro que l'id du joueur.
+					nbpion[evalPosePion.get(i).getT().getPionPlacé().getProprio().getIdentifiant()]++; // +1 dans la case du tableau ayant le même numéro que l'id du joueur.
 					evalPosePion.get(i).getT().getPionPlacé().liberePion(); // retire le pion.
 				}
 			}
@@ -322,7 +322,7 @@ public class Evaluation {
 		}
 		
 		for(int i=0;i<player.size();i++){
-			if(nbpion[player.get(i).getIdentifiant()-1]==max){
+			if(nbpion[player.get(i).getIdentifiant()]==max){
 				winner.add(player.get(i));
 			}
 		}
