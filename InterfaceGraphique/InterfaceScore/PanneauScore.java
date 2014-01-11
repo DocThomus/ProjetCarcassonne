@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Noyau.Joueur;
+
 public class PanneauScore extends JPanel {
 
 	private static final long serialVersionUID = 13L;
@@ -47,7 +49,9 @@ public class PanneauScore extends JPanel {
 					}
 				} else { 
 					if (j == 0) {
-						this.add(new JLabel("  "+nomsJoueurs[i-1]), contraintesLayout); // Noms
+						JLabel nom = new JLabel("  "+nomsJoueurs[i-1]);
+						nom.setForeground(Joueur.getJoueur(i-1).getCouleur());
+						this.add(nom, contraintesLayout); // Noms
 					} else if (j == 1) {
 						this.etiquettesPions[i-1] = new JLabel();
 						this.add(this.etiquettesPions[i-1], contraintesLayout); // Pions

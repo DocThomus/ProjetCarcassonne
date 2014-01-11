@@ -117,9 +117,8 @@ public class ModPlateau extends Observable {
 	}
 	
 	private boolean isTuilePoseeDansPlateau() {
-		return ((this.etapePosePion) 
-				&& ((this.xPosPlateau <= this.xRelCentreTuilePosee) && (this.xRelCentreTuilePosee <= this.xPosPlateau+this.largNbTuiles))
-				&& ((this.yPosPlateau <= this.yRelCentreTuilePosee) && (this.yRelCentreTuilePosee <= this.yPosPlateau+this.hautNbTuiles)));
+		return (((this.xPosPlateau <= this.xRelCentreTuilePosee) && (this.xRelCentreTuilePosee <= this.xPosPlateau+this.largNbTuiles-1))
+			&& ((this.yPosPlateau <= this.yRelCentreTuilePosee) && (this.yRelCentreTuilePosee <= this.yPosPlateau+this.hautNbTuiles-1)));
 	}
 
 	public void setXPosPlateau(int x){
@@ -142,8 +141,10 @@ public class ModPlateau extends Observable {
 			Tuile tuilePosee = this.plateau.getTuile((this.xRelCentreTuilePosee), (this.yRelCentreTuilePosee));
 			boolean [] tabPresenceBoutonPosePion = tuilePosee.getTabPresenceBoutonPosePion();
 			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee, tabPresenceBoutonPosePion, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
+			System.out.println("tuilePosée dedans !");
 		} else {
 			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1, null, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
+			System.out.println("tuilePosée dehors !");
 		}		
 	}
 	

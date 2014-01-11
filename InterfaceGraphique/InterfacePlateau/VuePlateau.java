@@ -129,7 +129,7 @@ public class VuePlateau implements Observer, ActionListener {
 					if(this.tabtabImages[ligne][col] != null) {
 						PanneauTuile panTuile = new PanneauTuile(tabtabImages[ligne][col]);
 						if(tabtabPresencePion[ligne][col]) {
-							panTuile.setPion(tabtabPresencePion[col][ligne], tabtabPositionPion[col][ligne], tabtabCouleurPion[col][ligne]);
+							panTuile.setPion(tabtabPresencePion[ligne][col], tabtabPositionPion[ligne][col], tabtabCouleurPion[ligne][col]);
 						}
 						this.panPlateau.add(panTuile);
 						panTuile.revalidate();
