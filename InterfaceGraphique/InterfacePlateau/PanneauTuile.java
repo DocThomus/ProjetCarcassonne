@@ -88,9 +88,9 @@ public class PanneauTuile extends JPanel {
 		this.add(panVide33);
 		this.add(panVide34); // panTuilePosee.add(tabBoutonPosePion[4]);
 		this.add(panVide40);
-		this.add(panVide41); // panTuilePosee.add(tabBoutonPosePion[9]);
-		this.add(tabBoutonPosePion[8]);
-		this.add(panVide43); // panTuilePosee.add(tabBoutonPosePion[7]);
+		this.add(panVide41); // panTuilePosee.add(tabBoutonPosePion[7]);
+		this.add(tabBoutonPosePion[6]);
+		this.add(panVide43); // panTuilePosee.add(tabBoutonPosePion[5]);
 		this.add(panVide44);
 	}
 
