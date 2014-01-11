@@ -6,6 +6,8 @@ public class Joueur {
 	
 	private static ArrayList<Joueur> listJoueur= new ArrayList<Joueur>();
 	private static Joueur joueurActuel;
+	private static int numJoueurActuel = 0;
+	
 	public static int getNbJoueurs() {
 		return listJoueur.size();
 	}
@@ -21,14 +23,15 @@ public class Joueur {
 	
 	public static Joueur getJoueurActif(){
 		return Joueur.joueurActuel;
+	} 
+	
+	public static void initialiserJoueurActif() {
+		joueurActuel = listJoueur.get(0);
 	}
 	
 	public static void joueurSuivant(){
-		int num = Joueur.joueurActuel.getIdentifiant()+1;
-		if(num<Joueur.listJoueur.size()){
-			Joueur.joueurActuel=Joueur.listJoueur.get(num);
-		}
-		else { Joueur.joueurActuel=Joueur.listJoueur.get(0);}
+		numJoueurActuel = (numJoueurActuel+1) % listJoueur.size();
+		joueurActuel = listJoueur.get(numJoueurActuel);
 	}
 	
 	public static String[] getNomsJoueurs() {
@@ -54,7 +57,6 @@ public class Joueur {
 		this.setCouleur();
 		this.score = 0;
 		this.tabPions = new ArrayList<Pion>();
-		Joueur.joueurActuel=this;
 	}
 	
 	public void setCouleur(){
@@ -65,16 +67,16 @@ public class Joueur {
 			this.couleur=Color.RED;
 		}
 		if(this.identifiant==2){
-			this.couleur=Color.GREEN;
+			this.couleur=Color.MAGENTA;
 		}
 		if(this.identifiant==3){
-			this.couleur=Color.YELLOW;
-		}
-		if(this.identifiant==4){
 			this.couleur=Color.ORANGE;
 		}
+		if(this.identifiant==4){
+			this.couleur=Color.DARK_GRAY;
+		}
 		if(this.identifiant==5){
-			this.couleur=Color.PINK;
+			this.couleur=Color.GREEN;
 		}
 	}
 	

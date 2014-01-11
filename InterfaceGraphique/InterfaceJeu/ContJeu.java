@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 
 
+import Noyau.Joueur;
 import Noyau.Plateau;
 import Principal.Controleur;
 import InterfacePioche.ContPioche;
