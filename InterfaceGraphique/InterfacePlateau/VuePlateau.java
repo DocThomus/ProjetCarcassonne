@@ -52,6 +52,7 @@ public class VuePlateau implements Observer, ActionListener {
 	private boolean isTuilePoseeDansPlateau;
 	private int colTuilePosee;
 	private int ligneTuilePosee;
+	private boolean[] tabPresenceBoutonPosePion;
 
 	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau, ContPlateau controleur) {
 		this.largeurPlateau = largeurPlateau;
@@ -133,6 +134,7 @@ public class VuePlateau implements Observer, ActionListener {
 		this.isTuilePoseeDansPlateau = pp.isTuilePoseeDansPlateau();
 		this.colTuilePosee = pp.getColTuilePosee();
 		this.ligneTuilePosee = pp.getLigneTuilePosee();
+		this.tabPresenceBoutonPosePion = pp.getTabPresenceBoutonPosePion();
 		
 		this.panPlateau.removeAll();
 		this.panPlateau.validate();
@@ -158,6 +160,20 @@ public class VuePlateau implements Observer, ActionListener {
 					this.boutonPion41.setTuile(tuilePosee);
 					this.boutonPion42.setTuile(tuilePosee);
 					this.boutonPion43.setTuile(tuilePosee);
+					
+					this.boutonPion01.setVisible(tabPresenceBoutonPosePion[11]);
+					this.boutonPion02.setVisible(tabPresenceBoutonPosePion[12]);
+					this.boutonPion03.setVisible(tabPresenceBoutonPosePion[1]);
+					this.boutonPion10.setVisible(tabPresenceBoutonPosePion[10]);
+					this.boutonPion14.setVisible(tabPresenceBoutonPosePion[2]);
+					this.boutonPion20.setVisible(tabPresenceBoutonPosePion[9]);
+					this.boutonPion22.setVisible(tabPresenceBoutonPosePion[0]);
+					this.boutonPion24.setVisible(tabPresenceBoutonPosePion[3]);
+					this.boutonPion30.setVisible(tabPresenceBoutonPosePion[8]);
+					this.boutonPion34.setVisible(tabPresenceBoutonPosePion[4]);
+					this.boutonPion41.setVisible(tabPresenceBoutonPosePion[7]);
+					this.boutonPion42.setVisible(tabPresenceBoutonPosePion[6]);
+					this.boutonPion43.setVisible(tabPresenceBoutonPosePion[5]);
 					
 					panTuilePosee.setLayout(new GridLayout(5, 5, 10, 10)); 
 					JPanel panVide00 = new JPanel();

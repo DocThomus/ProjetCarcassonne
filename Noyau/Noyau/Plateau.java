@@ -30,6 +30,7 @@ public static int yCentre = 100;
 							{false, false, false, true , true},
 							{false, false, false, true , true , true},
 							{false, false, true , false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5); // Position du bouclier.
 		tuileDeBase.poseTuile(this, 0, 0); // Place la tuile de base sur le plateau en position 100/100 (xCentre et yCentre sont ajoutés dans poseTuile).
 		//this.tuileDeBase = tuileDeBase; 

@@ -30,6 +30,7 @@ public class Pioche {
 							{true , true , true , true , true},
 							{true , true , true , true , true , true},
 							{true , true , true , true , true , true , true}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -53,6 +54,7 @@ public class Pioche {
 							{true , true , true , true , true},
 							{true , true , true , true , true , true},
 							{true , true , true , true , true , true , true}},
+					new boolean [] {true, false, false, false, false, false, true, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -76,6 +78,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					4)); // Position du bouclier.
 		}
 		
@@ -99,6 +102,7 @@ public class Pioche {
 							{false, false, false, false, true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -122,6 +126,7 @@ public class Pioche {
 							{false, false, false, false, true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					0)); // Position du bouclier.
 		}
 		
@@ -145,6 +150,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, true, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -168,6 +174,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, true, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					4)); // Position du bouclier.
 		}
 		
@@ -191,6 +198,7 @@ public class Pioche {
 							{false, false, true , true , true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {false, false, false, false, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -214,6 +222,7 @@ public class Pioche {
 							{false, false, true , true , true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {false, false, false, false, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					0)); // Position du bouclier.
 		}
 		
@@ -237,6 +246,7 @@ public class Pioche {
 							{false, false, true , false, false},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -260,6 +270,7 @@ public class Pioche {
 							{false, false, true , false, false},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					0)); // Position du bouclier.
 		}
 		
@@ -283,6 +294,7 @@ public class Pioche {
 							{false, false, false, false, true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -308,6 +320,7 @@ public class Pioche {
 							{false, false, false, false, true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					1)); // Position du bouclier.
 		}
 		
@@ -331,6 +344,7 @@ public class Pioche {
 							{false, false, true , true , true},
 							{false, false, false, false, false, false},
 							{false, false, false, false, false, false, false}},
+					new boolean [] {false, false, false, false, false, false, false, false, false, true, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -353,6 +367,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, true , true , false, false},
 							{false, false, true , true , false, false, true}},
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -376,6 +391,7 @@ public class Pioche {
 							{false, false, true , true , true},
 							{false, false, true , true , true , true},
 							{false, false, true , true , true , true , true}},
+					new boolean [] {false, false, false, false, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -398,7 +414,8 @@ public class Pioche {
 							{false, false, true , true},
 							{false, false, false, false, false},
 							{false, false, false, false, false, true},
-							{false, false, true , true , true , false, false}},
+							{false, false, true , true , true , false, false}},		
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -422,6 +439,7 @@ public class Pioche {
 							{false, false, true , false, false},
 							{false, false, true , false, false, true},
 							{false, false, true , false, false, true , true}},
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -445,6 +463,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, true},
 							{false, false, true , false, false, false, false}},
+					new boolean [] {false, false, false, true, false, false, true, false, false, true, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -468,6 +487,7 @@ public class Pioche {
 							{false, false, false, true , true},
 							{false, false, false, true , true , true},
 							{false, false, true , false, false, false, false}},
+					new boolean [] {false, false, false, true, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -491,6 +511,7 @@ public class Pioche {
 							{true , false, false, false, false},
 							{true , false, false, false, false, true},
 							{true , false, false, false, false, true , true}},
+					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -514,6 +535,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, true},
 							{true , true , true , true , true , false, false}},
+					new boolean [] {false, false, false, false, false, false, true, false, false, false, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -537,6 +559,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, true},
 							{true , true , true , false, false, false, false}},
+					new boolean [] {false, false, false, true, false, false, true, false, false, true, false, false, false}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		
@@ -560,6 +583,7 @@ public class Pioche {
 							{false, false, false, false, false},
 							{false, false, false, false, false, true},
 							{true , false, false, false, false, false, false}},
+					new boolean [] {false, false, false, true, false, false, true, false, false, true, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
 		

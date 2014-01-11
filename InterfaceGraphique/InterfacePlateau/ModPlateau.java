@@ -97,9 +97,11 @@ public class ModPlateau extends Observable {
 		if (isTuilePoseeDansPlateau() && etapePosePion) {
 			int colTuilePosee = this.xRelCentreTuilePosee - xPosPlateau;
 			int ligneTuilePosee = -(yPosPlateau + this.yRelCentreTuilePosee);
-			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee));
+			Tuile tuilePosee = this.plateau.getTuile((this.xRelCentreTuilePosee), (this.yRelCentreTuilePosee));
+			boolean [] tabPresenceBoutonPosePion = tuilePosee.getTabPresenceBoutonPosePion();
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee, tabPresenceBoutonPosePion));
 		} else {
-			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1));
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1, null));
 		}		
 	}
 	

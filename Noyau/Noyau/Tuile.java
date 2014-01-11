@@ -38,6 +38,8 @@ public class Tuile {
 		 * Nécessite une revérification des écritures des tuiles dans la pioche.
 		 */
 	
+	private boolean[] tabPresenceBoutonPosePion;
+	
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion pionPlace;
 	// private ArrayList<Tuile> tuileAdjacentes;
@@ -56,7 +58,7 @@ public class Tuile {
 	 * @param bouclier : présence de bouclier ou non.
 	 */
 	
-	public Tuile(int num, Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, int bouclier){
+	public Tuile(int num, Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, boolean [] tabPresenceBoutonPosePion, int bouclier){
 		// pré-requis : Terrain [5] terre;
 		// boolean [8] presencechamps;
 		// boolean [4][4] connexitébordure;
@@ -67,6 +69,7 @@ public class Tuile {
 		this.tabPresenceChamps=presenceChamps;
 		this.tabConnexitéBordure=connexiteBordure;
 		this.tabConnexitéChamps=connexiteChamps;
+		this.tabPresenceBoutonPosePion = tabPresenceBoutonPosePion;
 		this.bouclier=bouclier;
 		//this.tuileAdjacentes=new ArrayList<Tuile>(4);
 		
@@ -184,6 +187,10 @@ public class Tuile {
 	public Pion getPionPlacé(){
 		return this.pionPlace;
 	}
+	
+	public boolean [] getTabPresenceBoutonPosePion() {
+		return this.tabPresenceBoutonPosePion;
+	}
 	 /**
 	  * 
 	  * @param sens : Cette méthode permet au joueur de faire tourner sa tuile si il le désir.
@@ -242,7 +249,21 @@ public class Tuile {
 		connexBord[3][3] = this.tabConnexitéBordure[3][2]; // CO prend CS
 		this.tabConnexitéBordure = connexBord;
 		
-			
+		boolean[] presenceBoutonPion = new boolean[13];
+		presenceBoutonPion[0] = tabPresenceBoutonPosePion[0];
+		presenceBoutonPion[1] = tabPresenceBoutonPosePion[10];
+		presenceBoutonPion[2] = tabPresenceBoutonPosePion[11];
+		presenceBoutonPion[3] = tabPresenceBoutonPosePion[12];
+		presenceBoutonPion[4] = tabPresenceBoutonPosePion[1];
+		presenceBoutonPion[5] = tabPresenceBoutonPosePion[2];
+		presenceBoutonPion[6] = tabPresenceBoutonPosePion[3];
+		presenceBoutonPion[7] = tabPresenceBoutonPosePion[4];
+		presenceBoutonPion[8] = tabPresenceBoutonPosePion[5];
+		presenceBoutonPion[9] = tabPresenceBoutonPosePion[6];
+		presenceBoutonPion[10] = tabPresenceBoutonPosePion[7];
+		presenceBoutonPion[11] = tabPresenceBoutonPosePion[8];
+		presenceBoutonPion[12] = tabPresenceBoutonPosePion[9];
+		this.tabPresenceBoutonPosePion = presenceBoutonPion;
 		
 	}
 
