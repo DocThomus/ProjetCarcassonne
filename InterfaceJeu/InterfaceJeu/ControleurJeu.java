@@ -30,6 +30,7 @@ public class ControleurJeu {
 		fenetrePrincipale.setSize(LARGEUR_FENETRE, HAUTEUR_FENETRE);
 		fenetrePrincipale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetrePrincipale.setLocationRelativeTo(null); //On centre la frame au millieu de l'écran
+		fenetrePrincipale.setResizable(false);
 		
 		fenetrePrincipale.getContentPane().setLayout(new GridBagLayout());
 		

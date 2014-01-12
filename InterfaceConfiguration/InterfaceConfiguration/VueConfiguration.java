@@ -22,97 +22,95 @@ public class VueConfiguration implements ActionListener {
 	private int joueurCree=0;
 	
 	public VueConfiguration (ControleurConfiguration cont){
-			this.controleur=cont;
-			
-			this.cadre = new JFrame();  // On crée un cadre 
-			JPanel ListeBoutons = new JPanel(); //on crée le panel qui sera contenu dans le JFrame ("cadre")
-			JPanel ListeChamps = new JPanel(); //On crée un panel qui vas gerer les champs
-			JPanel Titre = new JPanel();// Le titre de la page
-			JPanel Jeu = new JPanel(); // On créz un nouveau pannel pour le bouton demarrer
-			
-			Bouton1  = new JButton("OK"); // on cree un bouton
-			Bouton1.addActionListener(this); //On enregistre l'objet de type controleur comme etant un ecouteur du bouton 
-			
-			Bouton2 = new JButton("OK");
-			Bouton2.addActionListener(this); 
-			
-			Bouton3 = new JButton("OK");
-			Bouton3.addActionListener(this);
-			
-			Bouton4 = new JButton("OK");
-			Bouton4.addActionListener(this);
-			
-			Bouton5 = new JButton("OK");
-			Bouton5.addActionListener(this);
-			
-			Bouton6 = new JButton("OK");
-			Bouton6.addActionListener(this);
-			
-			Jouer = new JButton("JOUER");
-			Jouer.addActionListener(this);
-			
-			champ1 = new JTextField(12);
-			champ2 = new JTextField(12);
-			champ3 = new JTextField(12);
-			champ4 = new JTextField(12);
-			champ5 = new JTextField(12);
-			champ6 = new JTextField(12);
+		this.controleur=cont;
 		
-			label1 = new JLabel("Joueurs");
-			
-			ListeBoutons.setLayout(new BoxLayout(ListeBoutons, BoxLayout.Y_AXIS)); //on crée un nouveaux layout pour que les widgets soit disposé en colonne
-			ListeBoutons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
-			
-			ListeChamps.setLayout(new BoxLayout(ListeChamps, BoxLayout.Y_AXIS));
-			ListeChamps.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
-			
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ1); //on ajoute un champs
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ2);
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ3);
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ4);
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ5);
-			//ListeChamps.add(Box.createGlue());
-			ListeChamps.add(champ6);
-			//ListeChamps.add(Box.createGlue());
-			
-			ListeBoutons.add(Bouton1); //on ajoute un bouton
-			ListeBoutons.add(Box.createGlue());
-			ListeBoutons.add(Bouton2);
-			ListeBoutons.add(Box.createGlue());
-			ListeBoutons.add(Bouton3);
-			ListeBoutons.add(Box.createGlue());
-			ListeBoutons.add(Bouton4);
-			ListeBoutons.add(Box.createGlue());
-			ListeBoutons.add(Bouton5);
-			ListeBoutons.add(Box.createGlue());
-			ListeBoutons.add(Bouton6);
-			
-			Titre.add(label1); //on ajoute un titre
-			
-			Jeu.add(Jouer);
-			
-			//Titre.setBackground(Color.green);
-			//ListeBoutons.setBackground(Color.gray);
-			//ListeChamps.setBackground(Color.red);
-			
-			cadre.getContentPane().add(BorderLayout.NORTH,Titre);
-			cadre.getContentPane().add(BorderLayout.WEST,ListeChamps);
-			cadre.getContentPane().add(BorderLayout.EAST,ListeBoutons);
-			cadre.getContentPane().add(BorderLayout.SOUTH,Jeu);
+		this.cadre = new JFrame();  // On crée un cadre 
+		JPanel ListeBoutons = new JPanel(); //on crée le panel qui sera contenu dans le JFrame ("cadre")
+		JPanel ListeChamps = new JPanel(); //On crée un panel qui vas gerer les champs
+		JPanel Titre = new JPanel();// Le titre de la page
+		JPanel Jeu = new JPanel(); // On créz un nouveau pannel pour le bouton demarrer
 		
-			cadre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ce programme s'arretera des que l'on appuira sur la croix en haut à droite 
-			cadre.setSize(300,300);
-			cadre.setResizable(false);
-			cadre.setVisible(true); 
-			cadre.setLocationRelativeTo(null); //On centre la frame au millieu de l'écran
-			
-			
-		}
+		Bouton1  = new JButton("OK"); // on cree un bouton
+		Bouton1.addActionListener(this); //On enregistre l'objet de type controleur comme etant un ecouteur du bouton 
+		
+		Bouton2 = new JButton("OK");
+		Bouton2.addActionListener(this); 
+		
+		Bouton3 = new JButton("OK");
+		Bouton3.addActionListener(this);
+		
+		Bouton4 = new JButton("OK");
+		Bouton4.addActionListener(this);
+		
+		Bouton5 = new JButton("OK");
+		Bouton5.addActionListener(this);
+		
+		Bouton6 = new JButton("OK");
+		Bouton6.addActionListener(this);
+		
+		Jouer = new JButton("JOUER");
+		Jouer.addActionListener(this);
+		
+		champ1 = new JTextField(12);
+		champ2 = new JTextField(12);
+		champ3 = new JTextField(12);
+		champ4 = new JTextField(12);
+		champ5 = new JTextField(12);
+		champ6 = new JTextField(12);
+	
+		label1 = new JLabel("Joueurs");
+		
+		ListeBoutons.setLayout(new BoxLayout(ListeBoutons, BoxLayout.Y_AXIS)); //on crée un nouveaux layout pour que les widgets soit disposé en colonne
+		ListeBoutons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
+		
+		ListeChamps.setLayout(new BoxLayout(ListeChamps, BoxLayout.Y_AXIS));
+		ListeChamps.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //ON crée un bord imaginaire qui eloigne de 10 les widgets des bords
+		
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ1); //on ajoute un champs
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ2);
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ3);
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ4);
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ5);
+		//ListeChamps.add(Box.createGlue());
+		ListeChamps.add(champ6);
+		//ListeChamps.add(Box.createGlue());
+		
+		ListeBoutons.add(Bouton1); //on ajoute un bouton
+		ListeBoutons.add(Box.createGlue());
+		ListeBoutons.add(Bouton2);
+		ListeBoutons.add(Box.createGlue());
+		ListeBoutons.add(Bouton3);
+		ListeBoutons.add(Box.createGlue());
+		ListeBoutons.add(Bouton4);
+		ListeBoutons.add(Box.createGlue());
+		ListeBoutons.add(Bouton5);
+		ListeBoutons.add(Box.createGlue());
+		ListeBoutons.add(Bouton6);
+		
+		Titre.add(label1); //on ajoute un titre
+		
+		Jeu.add(Jouer);
+		
+		//Titre.setBackground(Color.green);
+		//ListeBoutons.setBackground(Color.gray);
+		//ListeChamps.setBackground(Color.red);
+		
+		cadre.getContentPane().add(BorderLayout.NORTH,Titre);
+		cadre.getContentPane().add(BorderLayout.WEST,ListeChamps);
+		cadre.getContentPane().add(BorderLayout.EAST,ListeBoutons);
+		cadre.getContentPane().add(BorderLayout.SOUTH,Jeu);
+	
+		cadre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ce programme s'arretera des que l'on appuira sur la croix en haut à droite 
+		cadre.setSize(300,300);
+		cadre.setResizable(false);
+		cadre.setVisible(true); 
+		cadre.setLocationRelativeTo(null); //On centre la frame au millieu de l'écran	
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Bouton1){
