@@ -11,14 +11,6 @@ public class ModeleScoreFin {
 		this.classementJoueurs(); // le tableau de Joueur est maintenant classé par ordre décroissant de score
 	}
 
-	public void relancePartie(){
-		//TODO : Code pour relancer une partie
-	}
-
-	public void quitter(){
-		//TODO : Code pour fermer le jeu
-	}
-
 	public String [] getNomsJoueurs() {	// renvoie les noms des Joueurs dans l'ordre décroissant de score
 		String [] nomsJoueurs = new String [listJoueur.size()];
 		for(int i=0; i<listJoueur.size(); i++) {
@@ -50,7 +42,7 @@ public class ModeleScoreFin {
     	int interscore = 0; Joueur interJoueur= null;
     	
     	for(int i =0; i<listJoueur.size();i++) {
-    		for(int j=1; j< listJoueur.size()-1; j++) {
+    		for(int j=1; j< listJoueur.size(); j++) {
     			if (scorejoueurs[j-1] < scorejoueurs[j]) {  
     				interscore = scorejoueurs[j-1];
 					interJoueur = listJoueur.get(j-1);

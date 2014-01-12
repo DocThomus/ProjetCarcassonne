@@ -12,11 +12,12 @@ public class VueScoreFin implements ActionListener{
 	private ControleurScoreFin controleur;
 	private JButton boutonQuitter;
 	private JButton boutonRejouer;
+	private JFrame fenetre;
 
 	public VueScoreFin(ControleurScoreFin c) {
 		this.controleur = c;
 		
-		JFrame fenetre = new JFrame();
+		fenetre = new JFrame();
 		
 		String [] nomsJoueurs = controleur.getNomsJoueurs();
 		String [] scoreJoueurs = controleur.getScoreJoueurs();
@@ -127,10 +128,11 @@ public class VueScoreFin implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.boutonQuitter) { // Fin de partie.
-			
-		} else if(e.getSource() == this.boutonRejouer) { // Realancer Partie.
-			
+		if(e.getSource() == this.boutonRejouer) { // Fin de partie.
+			this.controleur.relancerPartie();
+			this.fenetre.dispose();
+		} else if(e.getSource() == this.boutonQuitter) { // Realancer Partie.
+			this.fenetre.dispose();
 		}
 	}
 }
