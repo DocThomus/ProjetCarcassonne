@@ -26,8 +26,20 @@ public class ContPrincipal {
 				
 		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
 	}
-
-	public static void finPartie() {
+	
+	public static void introduction() { // Interface intro (avec l'image)
+		
+	}
+		
+	public static void configuration() { // Interface de choix des persos
+		//TODO
+	}
+	
+	public static void debutPartie() { // Interface Plateau
+		//TODO
+	}
+	
+	public static void finPartie() { // Interface de score final
 		//TODO
 	}
 }
