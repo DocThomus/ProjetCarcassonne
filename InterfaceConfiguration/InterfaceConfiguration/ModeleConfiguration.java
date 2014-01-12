@@ -1,13 +1,13 @@
-package InterfaceInitialisation;
+package InterfaceConfiguration;
 import java.util.ArrayList;
 
 import Noyau.Joueur;
 
 
-public class ModelePage2  {
+public class ModeleConfiguration  {
 	String[] pseudo;
 	
-	public ModelePage2(){
+	public ModeleConfiguration(){
 		this.pseudo= new String[7];
 	}
 	

@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="InterfaceAccueil"/>
 	<classpathentry kind="src" path="InterfaceConfiguration"/>
 	<classpathentry kind="src" path="InterfaceJeu"/>
-	<classpathentry kind="src" path="InterfaceScore"/>
+	<classpathentry kind="src" path="InterfaceScoreFinal"/>
 	<classpathentry kind="src" path="Main"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="Code/bin"/>

@@ -1,6 +1,5 @@
 package InterfaceHistorique;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import InterfaceJeu.ContJeu;
+import InterfaceJeu.ControleurJeu;
 import InterfacePioche.ContPioche;
 import InterfacePlateau.ContPlateau;
 import InterfaceScore.ContScore;
@@ -25,8 +24,8 @@ import Noyau.Joueur;
 import Principal.ContPrincipal;
 
 public class VueHistorique implements Observer, ActionListener {
-	private static final int LARGEUR_HISTORIQUE = (int) (ContJeu.LARGEUR_FENETRE*0.1);
-	private static final int HAUTEUR_HISTORIQUE = ContJeu.HAUTEUR_FENETRE;
+	private static final int LARGEUR_HISTORIQUE = (int) (ControleurJeu.LARGEUR_FENETRE*0.1);
+	private static final int HAUTEUR_HISTORIQUE = ControleurJeu.HAUTEUR_FENETRE;
 	private static final int INTERLIGNE_HISTORIQUE = 2;
 	
 	private ArrayList<JLabel> etiquettesMessages;
@@ -37,8 +36,6 @@ public class VueHistorique implements Observer, ActionListener {
 		this.controleur = controleur;
 		JPanel panHistorique = new JPanel();
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
-		
-		//panHistorique.setBackground(Color.cyan);
 		
 		panHistorique.setLayout(new BoxLayout(panHistorique, BoxLayout.Y_AXIS));
 		panHistorique.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 0));

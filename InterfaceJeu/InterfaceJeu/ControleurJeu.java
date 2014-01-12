@@ -5,16 +5,13 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 
-
-import Noyau.Joueur;
 import Noyau.Plateau;
-import Principal.Controleur;
 import InterfacePioche.ContPioche;
 import InterfaceScore.ContScore;
 import InterfaceHistorique.ContHistorique;
 import InterfacePlateau.ContPlateau;
 
-public class ContJeu implements Controleur {	
+public class ControleurJeu {	
 	public static final int LARGEUR_FENETRE = 1280;
 	public static final int HAUTEUR_FENETRE = 720;
 	
@@ -26,12 +23,7 @@ public class ContJeu implements Controleur {
 	public static int px[] = 	{10,  0,  0, 70};
 	public static int py[] = 	{ 0,100,  0,  0};
 	
-	private ContScore contScore;
-	private ContHistorique contHistorique;
-	private ContPioche contPioche;
-	private ContPlateau contPlateau;
-	
-	public ContJeu(int nbJoueurs, String[] nomsJoueurs) {
+	public ControleurJeu(int nbJoueurs, String[] nomsJoueurs) {
 		Plateau plateau = new Plateau();
 		
 		JFrame fenetrePrincipale = new JFrame();
@@ -50,16 +42,16 @@ public class ContJeu implements Controleur {
 			contraintesLayout.weightx = px[i];
 			contraintesLayout.weighty = py[i];
 			if (i == 0) {
-				contScore = new ContScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
+				new ContScore(fenetrePrincipale, contraintesLayout, nbJoueurs, nomsJoueurs);
 			} else if(i == 1) {
-				contPioche = new ContPioche(fenetrePrincipale, contraintesLayout, plateau);				
+				new ContPioche(fenetrePrincipale, contraintesLayout, plateau);				
 			} else if(i == 2) {
-				contPlateau = new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
+				new ContPlateau(fenetrePrincipale, contraintesLayout, plateau);
 			} else if(i == 3) {
-				contHistorique = new ContHistorique(fenetrePrincipale, contraintesLayout);
+				new ContHistorique(fenetrePrincipale, contraintesLayout);
 			}
 		}
-		contScore.refresh();
+		ContScore.refresh();
 		fenetrePrincipale.setVisible(true);
 	}
 }

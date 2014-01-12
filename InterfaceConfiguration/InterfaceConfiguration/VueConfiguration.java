@@ -1,4 +1,4 @@
-package InterfaceInitialisation;
+package InterfaceConfiguration;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,15 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class VuePage2 implements ActionListener {
+public class VueConfiguration implements ActionListener {
 	private JButton Bouton1,Bouton2,Bouton3,Bouton4,Bouton5,Bouton6,Jouer;
 	private JTextField champ1,champ2,champ3,champ4,champ5,champ6;
 	private JLabel label1;
-	private ControleurPage2 controleur;
+	private ControleurConfiguration controleur;
 	private JFrame cadre;
 	private int joueurCree=0;
 	
-	public VuePage2 (ControleurPage2 cont){
+	public VueConfiguration (ControleurConfiguration cont){
 			this.controleur=cont;
 			
 			this.cadre = new JFrame();  // On crée un cadre 
@@ -103,8 +103,8 @@ public class VuePage2 implements ActionListener {
 			//ListeChamps.setBackground(Color.red);
 			
 			cadre.getContentPane().add(BorderLayout.NORTH,Titre);
-			cadre.getContentPane().add(BorderLayout.WEST,ListeBoutons);
-			cadre.getContentPane().add(BorderLayout.EAST,ListeChamps);
+			cadre.getContentPane().add(BorderLayout.WEST,ListeChamps);
+			cadre.getContentPane().add(BorderLayout.EAST,ListeBoutons);
 			cadre.getContentPane().add(BorderLayout.SOUTH,Jeu);
 		
 			cadre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ce programme s'arretera des que l'on appuira sur la croix en haut à droite 

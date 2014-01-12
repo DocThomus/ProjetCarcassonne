@@ -1,15 +1,15 @@
-package InterfaceInitialisation;
+package InterfaceConfiguration;
 
 import Noyau.Joueur;
 import Principal.ContPrincipal;
 
-public class ControleurPage2 {
-	ModelePage2 modele;
-	VuePage2 vue;
+public class ControleurConfiguration {
+	ModeleConfiguration modele;
+	VueConfiguration vue;
 	
-	public ControleurPage2 (){
-		this.modele=new ModelePage2();
-		this.vue=new VuePage2(this);
+	public ControleurConfiguration (){
+		this.modele=new ModeleConfiguration();
+		this.vue=new VueConfiguration(this);
 	}
 	
 	public void ajoutJoueur(int num, String nom){
