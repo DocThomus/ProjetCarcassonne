@@ -92,25 +92,24 @@ public class ModPlateau extends Observable {
 			}
 		}
 		//Evaluation de l'ouest
-				evaltuileposee = new Evaluation(tuileposee,plateau,3);
-				construction = evaltuileposee.evalConstruction();
-				if(!construction.isEmpty()){
-					if(tuileposee.getCarac(3)==Terrain.ROUTE){
-						evalPion=new Evaluation(tuileposee,plateau,9);
-						winner = evalPion.getMajorité(Joueur.getListJoueur());
-						for(int i=0;i<winner.size();i++){
-							winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
-						}
-					}
-					if(tuileposee.getCarac(3)==Terrain.VILLE){
-						evalPion=new Evaluation(tuileposee,plateau,9);
-						winner = evalPion.getMajorité(Joueur.getListJoueur());
-						for(int i=0;i<winner.size();i++){
-							winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
-						}
-					}
+		evaltuileposee = new Evaluation(tuileposee,plateau,3);
+		construction = evaltuileposee.evalConstruction();
+		if(!construction.isEmpty()){
+			if(tuileposee.getCarac(3)==Terrain.ROUTE){
+				evalPion=new Evaluation(tuileposee,plateau,9);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurRoute(construction));
 				}
-		
+			}
+			if(tuileposee.getCarac(3)==Terrain.VILLE){
+				evalPion=new Evaluation(tuileposee,plateau,9);
+				winner = evalPion.getMajorité(Joueur.getListJoueur());
+				for(int i=0;i<winner.size();i++){
+					winner.get(i).ajoutPoints(evaltuileposee.valeurVille(construction));
+				}
+			}
+		}
 	}
 
 	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
@@ -192,7 +191,6 @@ public class ModPlateau extends Observable {
 		if(ContPioche.getTuile().verifPoseTuileLegale(this.plateau, x, y)){
 			ContPioche.getTuile().poseTuile(this.plateau, x, y);
 			this.setCoordonneesRelCentreTuilePosees(x,y);
-			System.out.println("c " + x + " " + y);
 			this.etapePosePion = true;
 			this.setEtapePoseTuile(false);
 			this.sendMajToVue();

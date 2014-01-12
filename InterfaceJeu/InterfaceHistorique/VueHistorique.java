@@ -78,7 +78,7 @@ public class VueHistorique implements Observer, ActionListener {
 		if(e.getSource()==boutonPasser){
 			ContPlateau.evaluationFinTour();
 			ContScore.refresh();
-			if (!ContPioche.isPiocheVide()) {
+			if (!ContPioche.isPiocheVide()) {	
 				ContPioche.piocher();
 				Joueur.joueurSuivant();
 				this.setEtatBoutonPasser(false);
@@ -87,7 +87,7 @@ public class VueHistorique implements Observer, ActionListener {
 				ContPlateau.activerBoutonsPoserTuile();
 				ContPlateau.desactiverBoutonsPoserPion();
 				ContPlateau.refresh();
-			} else {
+			} else {	// La partie est finie lorsque la pioche est vide.
 				ContPlateau.evaluationFinDePartie();
 				ContPrincipal.finPartie();
 				this.fenetrePrincipale.dispose();
