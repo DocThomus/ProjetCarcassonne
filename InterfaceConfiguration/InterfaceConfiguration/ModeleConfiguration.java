@@ -1,5 +1,4 @@
 package InterfaceConfiguration;
-import java.util.ArrayList;
 
 import Noyau.Joueur;
 

@@ -1,10 +1,6 @@
 package InterfacePioche;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
-
-import javax.swing.ImageIcon;
 
 import Noyau.Pioche;
 import Noyau.Plateau;

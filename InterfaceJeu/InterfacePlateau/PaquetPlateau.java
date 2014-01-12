@@ -3,8 +3,6 @@ package InterfacePlateau;
 import java.awt.Color;
 import java.awt.Image;
 
-import Noyau.Tuile;
-
 public class PaquetPlateau {
 	private Image[][] tabtabImages;
 	private boolean[][] tabtabCasesLibres;

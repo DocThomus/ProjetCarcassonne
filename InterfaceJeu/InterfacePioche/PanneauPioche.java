@@ -1,7 +1,6 @@
 package InterfacePioche;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +19,8 @@ import Noyau.Tuile;
 
 
 public class PanneauPioche extends JPanel implements ActionListener {
+	private static final long serialVersionUID = 9115548704472911549L;
 	
-	//private ImageIcon imgTuile;
 	private Image imgTuile;
 	private JButton rotationHoraire;
 	private JButton rotationAntiHoraire;
@@ -32,7 +31,7 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	
 	public PanneauPioche (ContPioche controleur){
 		this.controleur=controleur;
-		//this.imgTuile= new ImageIcon(Tuile.listImagesTuiles.get(24).get(0));
+		
 		this.imgTuile= Tuile.listImagesTuiles.get(24).get(0);
 		
 		ImageIcon icon = new ImageIcon();
