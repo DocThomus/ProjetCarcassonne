@@ -47,7 +47,7 @@ public class ModPioche extends Observable {
 		}
 		
 		public PaquetPioche getImage(){
-			return  new PaquetPioche(Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getOrientation()), this.pioche.getPioche().size());
+			return  new PaquetPioche(Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getOrientation()), this.pioche.getTaillePioche());
 		}
 		
 		public boolean isPiocheVide() {

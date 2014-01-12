@@ -8,7 +8,6 @@ private ArrayList<Tuile> tuilePosees;
 private static int taillePlateau = 200;
 public static int xCentre = 100;
 public static int yCentre = 100;
-//private static Tuile tuileDeBase; la tuile de base sera ajoutï¿½ comme les autres tuile en position centrale ( x=75, y= 75 pour un repere de taille 150
 
 	public Plateau () {
 		this.repere= new Tuile [taillePlateau][taillePlateau]; // taillePlateau = 200.
@@ -33,7 +32,6 @@ public static int yCentre = 100;
 					new boolean [] {true, false, false, false, false, false, false, false, false, false, false, false, true}, // Presence des boutons PoserPion.
 					5); // Position du bouclier.
 		tuileDeBase.poseTuile(this, 0, 0); // Place la tuile de base sur le plateau en position 100/100 (xCentre et yCentre sont ajoutés dans poseTuile).
-		//this.tuileDeBase = tuileDeBase; 
 	}
 
 	public void poseTuile (Tuile t, int x, int y){
@@ -106,8 +104,4 @@ public static int yCentre = 100;
 		// On considère la taille du plateau suffisemment grande pour ne pas dépasser ses bords.
 		return (this.isEmpty(x, y)) && ((!this.isEmpty(x-1, y) || !this.isEmpty(x, y-1) || !this.isEmpty(x+1, y) || !this.isEmpty(x, y+1)));
 	}
-	
-	
-	
-	
 }

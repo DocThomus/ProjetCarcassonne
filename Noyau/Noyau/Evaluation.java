@@ -140,26 +140,24 @@ public class Evaluation {
 			fils=frontiere.get(0).genereFils();
 			
 			if(!frontiere.isEmpty()){
-				if(fils.isEmpty()){impossible=true;
-				System.out.println("La construction n'est pas terminée");
-				} // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
-				else{frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);}// ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+				if(fils.isEmpty()){ // Si il y a encore des Evaluation dans frontiere mais aucun fils généré, alors la construction est imcompléte
+					impossible=true;
+				} else { // ajoute les fils dans frontiere et dejaVus, retire le pére de frontiere
+					frontiere.get(0).ajoutEtMaj(dejaVus,frontiere,fils);
+				}
 			} 			
-			if(frontiere.isEmpty()){fini=true;}
-			//**TEST pour voir les changement
-			//System.out.println("fils : "+fils.size());System.out.println("dejaVus : "+dejaVus.size());System.out.println("frontiere fin : "+frontiere.size());System.out.println("fini : "+ fini + ", impossible : " +impossible);System.out.println("------");
-			//**TEST
+			if(frontiere.isEmpty()){ 
+				fini=true;
+			}
 		}
 			
-		if(!impossible){
-				// La boucle suivante met les Tuile des Evaluation de dejaVus dans construction, en éliminant les tuiles en double parmis les Evaluation 	
+		if(!impossible){ // La boucle suivante met les Tuile des Evaluation de dejaVus dans construction, en éliminant les tuiles en double parmis les Evaluation 	
 			for(int i=0;i<dejaVus.size();i++){ 
 				if(!construction.contains(dejaVus.get(i).t)){
 					construction.add(dejaVus.get(i).t);
 				}
 			}			
 		}
-		System.out.println("construction : "+construction.size());
 		return construction;
 	}
 	
@@ -170,13 +168,15 @@ public class Evaluation {
 		boolean trouve =false;
 		for (int i = 0; i < fils.size(); i++) { // Pour chaque Evaluation dans fils...
 			trouve=false;
-			for(int j=0; j<dejaVus.size();j++){// et pour chaque Evaluation dans dejaVus...
+			for(int j=0; j<dejaVus.size();j++){ // et pour chaque Evaluation dans dejaVus...
 				if( fils.get(i).equals(dejaVus.get(j)) ){  // ... on vérifie si le fils est dans dejaVus
 					trouve=true;
 				}
 			}
-			if(!trouve){dejaVus.add(fils.get(i)); // Si il n'y était pas on l'ajoute a dejaVus et frontiere
-			frontiere.add(fils.get(i));}
+			if(!trouve){ // Si il n'y était pas on l'ajoute a dejaVus et frontiere
+				dejaVus.add(fils.get(i)); 
+				frontiere.add(fils.get(i));
+			}
 		}
 		frontiere.remove(this);
 	}
@@ -196,88 +196,140 @@ public class Evaluation {
 		
 		if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
 			
-			if(p.isEmpty(x, y+1)){existe=false;} // Si la tuile au dessus n'existe pas c'est que la construction n'est pas fini.
-			else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));} // Sinon on l'ajoute aux fils
+			if(p.isEmpty(x, y+1)){ // Si la tuile au dessus n'existe pas c'est que la construction n'est pas fini.
+				existe=false;
+			} else { // Sinon on l'ajoute aux fils
+				fils.add(new Evaluation(p.getTuile(x, y+1),p,2));
+			} 
 			
 			// Il faut faire de même avec d'autres caractéristiques si elles étaient connecté a position :
 			if(connex[0][0]){ 
-				//System.out.println("connection haut gauche");
-				if(p.isEmpty(x+1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+				if(p.isEmpty(x+1, y)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x+1, y),p,3));
+				}
 			}	
 			if(connex[1][0]){
-				//System.out.println("connection haut bas");
-				if(p.isEmpty(x, y-1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+				if(p.isEmpty(x, y-1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y-1),p,0));
+				}
 			}
 			if(connex[2][0]){
-				//System.out.println("connection haut droite");
-				if(p.isEmpty(x-1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+				if(p.isEmpty(x-1, y)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x-1, y),p,1));
+				}
 			}
 			if(connex[3][0]){
-				//System.out.println("connection avec le centre") : inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
+				// inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
 				fils.add(new Evaluation(p.getTuile(x, y),p,4));
 			}
-			
 		}
 		
 		if(position==1){
-			if(p.isEmpty(x+1, y)){existe=false;}
-			else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}
+			if(p.isEmpty(x+1, y)){
+				existe=false;
+			} else {
+				fils.add(new Evaluation(p.getTuile(x+1, y),p,3));
+			}
 			
 			if(connex[0][0]){
-				if(p.isEmpty(x, y+1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				if(p.isEmpty(x, y+1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y+1),p,2));
+				}
+			}
 	
 			if(connex[1][1]){
-				if(p.isEmpty(x, y-1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+				if(p.isEmpty(x, y-1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y-1),p,0));
+				}
+			}
 			
 			if(connex[2][1]){
-				if(p.isEmpty(x-1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+				if(p.isEmpty(x-1, y)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x-1, y),p,1));
+				}
+			}
 			if(connex[3][1]){
 				fils.add(new Evaluation(p.getTuile(x, y),p,4));
 			}
-			
 		}
 		
 		if(position==2){
-			if(p.isEmpty(x, y-1)){existe=false;}
-			else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}
+			if(p.isEmpty(x, y-1)){
+				existe=false;
+			} else {
+				fils.add(new Evaluation(p.getTuile(x, y-1),p,0));
+			}
 			
 			if(connex[1][0]){
-				if(p.isEmpty(x, y+1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				if(p.isEmpty(x, y+1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y+1),p,2));
+				}
+			}
 	
 			if(connex[1][1]){
-				if(p.isEmpty(x+1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+				if(p.isEmpty(x+1, y)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x+1, y),p,3));
+				}
+			}
 			
 			if(connex[2][2]){
-				if(p.isEmpty(x-1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}}
+				if(p.isEmpty(x-1, y)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x-1, y),p,1));
+				}
+			}
 			if(connex[3][2]){
 				fils.add(new Evaluation(p.getTuile(x, y),p,4));
 			}
 		}
 		
 		if(position==3){
-			if(p.isEmpty(x-1, y)){existe=false;}
-			else{fils.add(new Evaluation(p.getTuile(x-1, y),p,1));}
+			if(p.isEmpty(x-1, y)){
+				existe=false;
+			} else {
+				fils.add(new Evaluation(p.getTuile(x-1, y),p,1));
+			}
 			
 			if(connex[2][0]){
-				if(p.isEmpty(x, y+1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y+1),p,2));}}
+				if(p.isEmpty(x, y+1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y+1),p,2));
+				}
+			}
 	
 			if(connex[2][1]){
-				if(p.isEmpty(x+1, y)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x+1, y),p,3));}}
+				if(p.isEmpty(x+1, y)){
+					existe=false;
+				} else{
+					fils.add(new Evaluation(p.getTuile(x+1, y),p,3));
+				}
+			}
 			
 			if(connex[2][2]){
-				if(p.isEmpty(x, y-1)){existe=false;}
-				else{fils.add(new Evaluation(p.getTuile(x, y-1),p,0));}}
+				if(p.isEmpty(x, y-1)){
+					existe=false;
+				} else {
+					fils.add(new Evaluation(p.getTuile(x, y-1),p,0));
+				}
+			}
 			if(connex[3][3]){
 				fils.add(new Evaluation(p.getTuile(x, y),p,4));
 			}
@@ -285,16 +337,25 @@ public class Evaluation {
 		
 		if(position==4){
 			fils.add(this);
-			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,0));}
-			if(connex[3][1]){fils.add(new Evaluation(p.getTuile(x, y),p,1));}
-			if(connex[3][2]){fils.add(new Evaluation(p.getTuile(x, y),p,2));}
-			if(connex[3][3]){fils.add(new Evaluation(p.getTuile(x, y),p,3));}
-			
+			if(connex[3][0]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,0));
+			}
+			if(connex[3][1]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,1));
+			}
+			if(connex[3][2]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,2));
+			}
+			if(connex[3][3]){
+				fils.add(new Evaluation(p.getTuile(x, y),p,3));
+			}
 		}
 		
-		if(existe){ return fils; }
-		else return new ArrayList<Evaluation>();
-		
+		if(existe){ 
+			return fils; 
+		} else {
+			return new ArrayList<Evaluation>();
+		}
 	}
 	
 	///****Bloc concernant les Evaluation utilisé pour la gestion des pions, il s'agit parfois de fonction presque identique à celle utilisée pour les construction  
@@ -303,7 +364,6 @@ public class Evaluation {
 	public ArrayList<Joueur>getMajorité(ArrayList<Joueur> player){
 	// Renvoie la liste du(ou des) joueur(s) ayant la majorité des pions sur une construction achevé. Et retire les pions.
 		ArrayList<Evaluation> evalPosePion = this.evalPosePion();
-		//System.out.println("evalPosePion : " + evalPosePion.size());
 		ArrayList<Joueur> winner = new ArrayList<Joueur>();
 		int [] nbpion= new int [player.size()];
 		for(int i=0;i<evalPosePion.size();i++){
@@ -326,10 +386,7 @@ public class Evaluation {
 				winner.add(player.get(i));
 			}
 		}
-		
-		/*for(int i =0;i<nbpion.length;i++){
-			System.out.println("tableau pion : " +nbpion[i]);
-		}*/
+
 		return winner;
 	}
 	
@@ -363,7 +420,6 @@ public class Evaluation {
 		int y= t.getY();
 		ArrayList<Evaluation>fils = new ArrayList<Evaluation>();
 		
-		//if(position==0){ // On s'intéresse a la caractéristique au Nord de la Tuile.
 		if(position==12){ // On s'intéresse a la caractéristique au Nord de la Tuile. 12 et non 0 par rapport a la façon d'organiser les bonton voir la classe : VuePlateau
 			
 			if(!p.isEmpty(x, y+1)){
@@ -371,28 +427,24 @@ public class Evaluation {
 			
 			// Il faut faire de même avec d'autres caracéristiques si elles étaient connecté a position :
 			if(connex[0][0]){ 
-				//System.out.println("connection haut gauche");
 				if(!p.isEmpty(x+1, y)){
 				fils.add(new Evaluation(p.getTuile(x+1, y),p,9));}
 			}	
 			if(connex[1][0]){
-				//System.out.println("connection haut bas");
 				if(!p.isEmpty(x, y-1)){
 				fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}
 			}
 			if(connex[2][0]){
-				//System.out.println("connection haut droite");
 				if(!p.isEmpty(x-1, y)){
 				fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}
 			}
 			if(connex[3][0]){
-				//System.out.println("connection avec le centre") : inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
+				// inutile pour l'évaluation des construction mais important pour repérer les pions présent sur une même construction
 				fils.add(new Evaluation(p.getTuile(x, y),p,0));
 			}
 			
 		}
 		
-		//if(position==1){
 		if(position==3){
 			
 			if(!p.isEmpty(x+1, y)){
@@ -415,7 +467,6 @@ public class Evaluation {
 			
 		}
 		
-		//if(position==2){
 		if(position==6){
 			if(!p.isEmpty(x, y-1)){
 			fils.add(new Evaluation(p.getTuile(x, y-1),p,12));}
@@ -436,7 +487,6 @@ public class Evaluation {
 			}
 		}
 		
-		//if(position==3){
 		if(position==9){
 			if(!p.isEmpty(x-1, y)){
 			fils.add(new Evaluation(p.getTuile(x-1, y),p,3));}
@@ -457,7 +507,6 @@ public class Evaluation {
 			}
 		}
 		
-		//if(position==4){
 		if(position==0){
 			fils.add(this);
 			if(connex[3][0]){fils.add(new Evaluation(p.getTuile(x, y),p,12));}
@@ -467,6 +516,4 @@ public class Evaluation {
 		}
 		return fils; 		
 	}
-	
-	
-}// fin de classe
+}

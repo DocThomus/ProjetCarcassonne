@@ -8,14 +8,15 @@ import Noyau.Joueur;
 
 public class ContHistorique {
 	public static final int NB_EVENEMENTS_MAX_AFFICHES = 20;
-	public static ContHistorique contHistorique;
+	private static ContHistorique contHistorique;
 	private ModHistorique modele;
 	private VueHistorique vue;
 
 	public ContHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout) {
+		ContHistorique.contHistorique = this;
 		modele = new ModHistorique();
-		vue = new VueHistorique(fenetrePrincipale, contraintesLayout, this);
-		this.desactiverBoutonPasser();
+		vue = new VueHistorique(fenetrePrincipale, contraintesLayout);
+		desactiverBoutonPasser();
 		modele.addObserver(vue);
 		
 		modele.ajouterEvenement("Bienvenue sur le Projet Carcassonne !");
@@ -23,19 +24,17 @@ public class ContHistorique {
 		modele.ajouterEvenement("Bonne partie à tous.");
 		
 		modele.refresh();
-		
-		ContHistorique.contHistorique = this;
 	}
 	
-	public void ajouterEvenement(String str) {
-		this.modele.ajouterEvenement(str);
+	public static void ajouterEvenement(String str) {
+		contHistorique.modele.ajouterEvenement(str);
 	}
 	
-	public void activerBoutonPasser() {
-		this.vue.setEtatBoutonPasser(true);
+	public static void activerBoutonPasser() {
+		contHistorique.vue.setEtatBoutonPasser(true);
 	}
 	
-	public void desactiverBoutonPasser() {
-		this.vue.setEtatBoutonPasser(false);
+	public static void desactiverBoutonPasser() {
+		contHistorique.vue.setEtatBoutonPasser(false);
 	}	
 }

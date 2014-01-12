@@ -27,7 +27,6 @@ public class Joueur {
 	
 	public static void creerJoueur(String nom) {
 		listJoueur.add(new Joueur(nom));
-		System.out.println("joueur créé : " + nom);
 	}	
 	
 	public static Joueur getJoueur(int id) {
@@ -104,13 +103,7 @@ public class Joueur {
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
-	
-	public int comptagePointsFin() { 
-		// Action : Compte le score total en fin de partie en ajoutant les points apportés par les points en fin de partie.
-		// TODO : Ajouter les points apportés par les fonctions eval
-		return 0;
-	}
-	
+		
 	public int getNbPions() {
 		// Remarque : Un joueur peut avoir entre 0 et 7 pions.
 		return 7-this.tabPions.size();
@@ -126,9 +119,7 @@ public class Joueur {
 	
 	public void ajoutPoints(int p) {
 		// Pré-requis : p est positif ou nul.
-		// TODO A utiliser avec valeurAbbaye() ou valeurVille() ou valeurRoute()
 		this.score = this.score + p;
-		System.out.println(this.nom + " : + " + p +" points");
 	}
 	
 	public void retirePion(Pion p) {

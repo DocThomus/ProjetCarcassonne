@@ -9,6 +9,8 @@ import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
+import InterfaceHistorique.ContHistorique;
+
 public class Tuile {
 	private int num; // Numéro de la tuile (correspond au numéro de l'image associée)
 	private int orientation; // Numéro correspondant à une des 4 orientations possible de la tuile
@@ -116,10 +118,8 @@ public class Tuile {
 			Pion p = new Pion(j,this,pos);
 			j.getTabPions().add(p);
 			this.pionPlace=p;
-			System.out.println("pion posé, nb pion posé : " + j.getTabPions().size());
 			return true;
-		} else{ 
-			System.out.println("plus de pion");
+		} else { 
 			return false;
 		}
 		
@@ -135,13 +135,12 @@ public class Tuile {
 		//prérequis : aucun
 		//action : verifier si il y a déja un pion sur la construction.
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
-		System.out.println("taille de evalPosePion : "+ evalPosePion.size());
 		boolean pasAutrePion = true;
 		for(int i=0; i < evalPosePion.size(); i++) {
 			if(evalPosePion.get(i).getT().pionPlace != null) { // Si il y a un pion sur cette tuile et ...
 				if(evalPosePion.get(i).getT().pionPlace.getPositionSurTuile() == evalPosePion.get(i).getPosition()) { // .. si ce pion est sur la même position que celle de l'évaluation.
 					pasAutrePion = false; // C'est qu'il y a déjà un ou plusieurs pion sur cette construction.
-					System.out.println("Il y a déjà un pion sur cette construction"); //Si un pion est déjà présent on le signal au joueur.
+					ContHistorique.ajouterEvenement("Vous ne pouvez poser de pion ici !");
 				}
 			}
 		}
@@ -197,17 +196,6 @@ public class Tuile {
 	  */
 	 
 	public void rotation(){
-		//sens horaire		
-		/*
-			private boolean [][] tabConnexitéChamps; //Cette table de connexité concerne les champs.
-			private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
-			private Pion pionPlace;
-			//private ArrayList<Tuile> tuileAdjacentes;
-			private int sensTuile;
-			private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
-			private int y; // ordonnée ...
-		 */
-		
 		this.orientation = (this.orientation + 1) % 4;
 			
 		Terrain[] carac = new Terrain [5]; // Fait pivoter les caractéristique des bords.
@@ -264,7 +252,6 @@ public class Tuile {
 		presenceBoutonPion[11] = tabPresenceBoutonPosePion[8];
 		presenceBoutonPion[12] = tabPresenceBoutonPosePion[9];
 		this.tabPresenceBoutonPosePion = presenceBoutonPion;
-		
 	}
 
 	
@@ -929,5 +916,4 @@ public class Tuile {
 			e.printStackTrace();
 		}
 	}
-}// fin de classe
- 
+}

@@ -586,37 +586,12 @@ public class Pioche {
 					new boolean [] {false, false, false, true, false, false, true, false, false, true, false, false, true}, // Presence des boutons PoserPion.
 					5)); // Position du bouclier.
 		}
-		
-		
-		/*// Tuile 24 : Route à l'est et à l'ouest (joints), ville au nord, champs au sud, tuile de base (x1).
-		for (int i = 0; i < 1; i++) {
-			this.pioche.add(new Tuile(
-					24,
-					new Terrain [] {Terrain.VILLE, Terrain.ROUTE, Terrain.CHAMPS, Terrain.ROUTE, Terrain.ROUTE}, // Caractéristiques des bords.
-					new boolean [] {false, false, true, true, true, true, true, true}, // Présence des champs.
-					new boolean [][] { // Tableau de connexité des caractéristiques.
-							{false}, 
-							{false, false}, 
-							{false, true , false}, 
-							{false, true , false, true}},
-					new boolean [][] { // Tableau de connexité des champs.
-							{false},
-							{false, false},
-							{false, false, false},
-							{false, false, false, true},
-							{false, false, false, true , true},
-							{false, false, false, true , true , true},
-							{false, false, true , false, false, false, false}},
-					5)); // Position du bouclier.
-		}*/
 	}
-	
 	
 	public int random() {
 		Random r = new Random();
 		return r.nextInt(this.pioche.size()); // Un entier sera choisi entre 0 et la taille de la pioche.
 	}
-	
 	
 	public Tuile piocheAleatoire(){
 		int val = this.random();
@@ -629,8 +604,7 @@ public class Pioche {
 		return this.pioche.isEmpty();
 	}
 	
-	//TEST
-	public ArrayList<Tuile> getPioche(){
-		return this.pioche;
+	public int getTaillePioche() {
+		return this.pioche.size();
 	}
 }
