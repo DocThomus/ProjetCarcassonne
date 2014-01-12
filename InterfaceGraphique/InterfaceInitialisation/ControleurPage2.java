@@ -1,5 +1,8 @@
 package InterfaceInitialisation;
 
+import Noyau.Joueur;
+import Principal.ContPrincipal;
+
 public class ControleurPage2 {
 	ModelePage2 modele;
 	VuePage2 vue;
@@ -19,5 +22,7 @@ public class ControleurPage2 {
 	
 	public void commencerPartie(){
 		this.modele.creerJoueurs();
+		Joueur.initialiserJoueurActif();
+		ContPrincipal.debutPartie();
 	}
 }

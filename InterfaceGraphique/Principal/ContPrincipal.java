@@ -1,11 +1,11 @@
 package Principal;
 
-import InterfaceAccueil.Accueil;
 import InterfaceJeu.ContJeu;
 import Noyau.Joueur;
 
 public class ContPrincipal {
-
+	public static final int LARGEUR_FENETRE = 1280;
+	public static final int HAUTEUR_FENETRE = 720;
 	private static ContPrincipal contPrincipal;
 	
 	private VuePrincipale vuePrincipale;
@@ -16,19 +16,19 @@ public class ContPrincipal {
 		vuePrincipale = new VuePrincipale();
 		
 		// Temporaire, pour tester l'interface graphique Jeu.
-		/*Joueur.creerJoueur("Joueur1");
+		Joueur.creerJoueur("Joueur1");
 		Joueur.creerJoueur("Joueur2");
 		Joueur.creerJoueur("Joueur3");
 		Joueur.creerJoueur("Joueur4");
 		Joueur.creerJoueur("Joueur5");
 		Joueur.creerJoueur("Joueur6");
-		Joueur.initialiserJoueurActif();*/
+		Joueur.initialiserJoueurActif();
 				
-		//contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
+		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
 	}
 	
 	public static void introduction() { // Interface intro (avec l'image)
-		Accueil accueil = new Accueil();
+		
 	}
 		
 	public static void configuration() { // Interface de choix des persos
