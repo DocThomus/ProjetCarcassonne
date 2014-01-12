@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 
 import InterfacePioche.ContPioche;
 import InterfacePlateau.ContPlateau;
+import InterfaceScore.ContScore;
 import Noyau.Joueur;
 import Principal.ContPrincipal;
 
@@ -76,6 +77,7 @@ public class VueHistorique implements Observer, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==boutonPasser){
 			ContPlateau.evaluationFinTour();
+			ContScore.refresh();
 			ContPioche.ControleurPioche.getModele().piocher();
 			Joueur.joueurSuivant();
 			this.setEtatBoutonPasser(false);
