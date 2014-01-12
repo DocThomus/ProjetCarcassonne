@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import InterfaceHistorique.ContHistorique;
 import InterfacePioche.ContPioche;
+import InterfaceScore.ContScore;
 import Noyau.Evaluation;
 import Noyau.Joueur;
 import Noyau.Plateau;
@@ -86,12 +87,13 @@ public class ContPlateau {
 	}
 	
 	public void posePion(Tuile t, int pos) {
-		System.out.println("position pion :" + pos );
+		System.out.println("position pion :" + pos);
 		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
 			t.posePion(Joueur.getJoueurActif(), pos);
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
 			this.modele.setEtapePosePion(false);
 			this.modele.sendMajToVue();
+			ContScore.refresh();
 		} else {
 			System.out.println("PionPasPosable");
 		}
