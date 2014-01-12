@@ -20,11 +20,13 @@ public class VuePage2 implements ActionListener {
 	private JTextField champ1,champ2,champ3,champ4,champ5,champ6;
 	private JLabel label1;
 	private ControleurPage2 controleur;
+	private JFrame cadre;
+	private int joueurCree=0;
 	
 	public VuePage2 (ControleurPage2 cont){
 			this.controleur=cont;
 			
-			JFrame cadre = new JFrame();  // On crée un cadre 
+			this.cadre = new JFrame();  // On crée un cadre 
 			JPanel ListeBoutons = new JPanel(); //on crée le panel qui sera contenu dans le JFrame ("cadre")
 			JPanel ListeChamps = new JPanel(); //On crée un panel qui vas gerer les champs
 			JPanel Titre = new JPanel();// Le titre de la page
@@ -124,6 +126,7 @@ public class VuePage2 implements ActionListener {
 					this.Bouton1.setText("Annuler");
 					this.champ1.setEditable(false);
 					changement=false;
+					this.joueurCree++;
 				}
 			}
 			if(this.Bouton1.getText().equals("Annuler") && changement){
@@ -131,6 +134,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton1.setText("OK");
 				this.champ1.setEditable(true);
 				changement=false;
+				this.joueurCree--;
 			}
 		}
 		
@@ -142,6 +146,7 @@ public class VuePage2 implements ActionListener {
 					this.Bouton2.setText("Annuler");
 					this.champ2.setEditable(false);
 					changement=false;
+					this.joueurCree++;
 				}
 			}
 			if(this.Bouton2.getText().equals("Annuler") && changement){
@@ -149,6 +154,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton2.setText("OK");
 				this.champ2.setEditable(true);
 				changement=false;
+				this.joueurCree--;
 			}
 		}
 	
@@ -161,6 +167,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton3.setText("Annuler");
 				this.champ3.setEditable(false);
 				changement=false;
+				this.joueurCree++;
 			}
 		}
 		if(this.Bouton3.getText().equals("Annuler") && changement){
@@ -168,6 +175,7 @@ public class VuePage2 implements ActionListener {
 			this.Bouton3.setText("OK");
 			this.champ3.setEditable(true);
 			changement=false;
+			this.joueurCree--;
 		}
 	}
 	
@@ -179,6 +187,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton4.setText("Annuler");
 				this.champ4.setEditable(false);
 				changement=false;
+				this.joueurCree++;
 			}
 		}
 		if(this.Bouton4.getText().equals("Annuler") && changement){
@@ -186,6 +195,7 @@ public class VuePage2 implements ActionListener {
 			this.Bouton4.setText("OK");
 			this.champ4.setEditable(true);
 			changement=false;
+			this.joueurCree--;
 		}
 	}
 	
@@ -197,6 +207,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton5.setText("Annuler");
 				this.champ5.setEditable(false);
 				changement=false;
+				this.joueurCree++;
 			}
 		}
 		if(this.Bouton5.getText().equals("Annuler") && changement){
@@ -204,6 +215,7 @@ public class VuePage2 implements ActionListener {
 			this.Bouton5.setText("OK");
 			this.champ5.setEditable(true);
 			changement=false;
+			this.joueurCree--;
 		}
 	}
 	
@@ -215,6 +227,7 @@ public class VuePage2 implements ActionListener {
 				this.Bouton6.setText("Annuler");
 				this.champ6.setEditable(false);
 				changement=false;
+				this.joueurCree++;
 			}
 		}
 		if(this.Bouton6.getText().equals("Annuler") && changement){
@@ -222,11 +235,15 @@ public class VuePage2 implements ActionListener {
 			this.Bouton6.setText("OK");
 			this.champ6.setEditable(true);
 			changement=false;
+			this.joueurCree--;
 		}
 	}
 	
 	if(e.getSource() == Jouer){
-		this.controleur.commencerPartie();
+		if(this.joueurCree>=2){
+			this.controleur.commencerPartie();
+			this.cadre.setVisible(false);
+		}
 	}
 	
 	} // fin de ActionPerformed
