@@ -133,7 +133,6 @@ public class VueScoreFin implements ActionListener{
 		fenetre.setVisible(true);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.boutonRejouer) { // Fin de partie.
 			this.controleur.relancerPartie();

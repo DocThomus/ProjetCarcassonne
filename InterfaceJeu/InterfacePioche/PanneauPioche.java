@@ -75,12 +75,10 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	}
 	
 	public void maj (Image img,int taille){
-
 		this.imgTuile=img;
 		this.taillePioche=taille;
 		this.nbTuile.setText(""+this.taillePioche);
 		this.panImage.setIcon(new ImageIcon(img));
-
 	}
 
 	
@@ -97,7 +95,6 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		this.rotationAntiHoraire.setEnabled(etat);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == rotationHoraire){
 			this.controleur.rotationH();

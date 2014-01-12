@@ -114,7 +114,6 @@ public class VueConfiguration implements ActionListener {
 			
 		}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Bouton1){
 			boolean changement = true;
@@ -243,8 +242,8 @@ public class VueConfiguration implements ActionListener {
 				this.cadre.dispose();
 			}
 		}
-	} // fin de ActionPerformed
-}	// fin de classe	
+	} 
+}	
 	
 
 

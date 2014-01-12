@@ -11,8 +11,7 @@ public class ModeleConfiguration  {
 	}
 	
 	public void AjoutJoueur(int num,String nom){
-			this.pseudo[num]=nom;
-			System.out.println("pseudo ajouter : " + nom);	
+			this.pseudo[num]=nom;	
 	}
 	
 	public void supprimeJoueur(int num){
