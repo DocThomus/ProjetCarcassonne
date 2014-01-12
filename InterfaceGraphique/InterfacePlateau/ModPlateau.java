@@ -210,20 +210,25 @@ public class ModPlateau extends Observable {
 	}
 	
 	private boolean isTuilePoseeDansPlateau() {
-		return (((this.xPosPlateau <= this.xRelCentreTuilePosee) && (this.xRelCentreTuilePosee <= this.xPosPlateau+this.largNbTuiles-1))
-			&& ((this.yPosPlateau <= this.yRelCentreTuilePosee) && (this.yRelCentreTuilePosee <= this.yPosPlateau+this.hautNbTuiles-1)));
+		int xGauche = xPosPlateau;
+		int yHaut = -yPosPlateau;
+		int xDroite = xGauche + largNbTuiles - 1;
+		int yBas = yHaut - hautNbTuiles + 1;
+		
+		return ((xGauche <= xRelCentreTuilePosee) 	&&	(xRelCentreTuilePosee <= xDroite)
+			&&	(yBas <= yRelCentreTuilePosee)		&&	(yRelCentreTuilePosee <= yHaut)	 );	
 	}
 
 	public void setXPosPlateau(int x){
 		this.xPosPlateau=x;
 		this.sendMajToVue();
-		System.out.println("xPosPlateau :" + this.xPosPlateau);
+		//System.out.println("xPosPlateau :" + this.xPosPlateau);
 	}
 	
 	public void setYPosPlateau(int y){
 		this.yPosPlateau=y;
 		this.sendMajToVue();
-		System.out.println("yPosPlateau :" + this.yPosPlateau);
+		//System.out.println("yPosPlateau :" + this.yPosPlateau);
 	}
 
 	public void sendMajToVue() {

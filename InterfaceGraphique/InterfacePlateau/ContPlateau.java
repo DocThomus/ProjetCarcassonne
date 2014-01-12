@@ -77,10 +77,10 @@ public class ContPlateau {
 			ContPioche.ControleurPioche.setRotation(false);
 			ContHistorique.contHistorique.activerBoutonPasser();
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + "," + yPosRelativeCentre + ").");
-			System.out.println("posée");
+			//System.out.println("posée");
 		} else {
 			ContHistorique.contHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile ici !");
-			System.out.println("pas posable");
+			//System.out.println("pas posable");
 		}
 		System.out.println(xPosRelativeCentre + " " + yPosRelativeCentre);
 	}
@@ -90,6 +90,8 @@ public class ContPlateau {
 		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
 			t.posePion(Joueur.getJoueurActif(), pos);
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
+			this.modele.setEtapePosePion(false);
+			this.modele.sendMajToVue();
 		} else {
 			System.out.println("PionPasPosable");
 		}
