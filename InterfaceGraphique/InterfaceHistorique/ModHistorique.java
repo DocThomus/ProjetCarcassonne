@@ -24,7 +24,7 @@ public class ModHistorique extends Observable {
 	}
 	
 	private ArrayList<String> getListeEvenements() { // Retourne la liste des derniers éléments à afficher.
-		int nbMessages = min(listeEvenements.size(),10);
+		int nbMessages = min(listeEvenements.size(),ContHistorique.NB_EVENEMENTS_MAX_AFFICHES);
 		ArrayList<String> list = new ArrayList<String>();
 		
 		for(int i = 0; i < nbMessages; i++) {

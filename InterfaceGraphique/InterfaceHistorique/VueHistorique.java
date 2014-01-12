@@ -43,7 +43,7 @@ public class VueHistorique implements Observer, ActionListener {
 		panHistorique.add(new JLabel("Historique :"));
 		
 		etiquettesMessages = new ArrayList<JLabel>();
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < ContHistorique.NB_EVENEMENTS_MAX_AFFICHES; i++) {
 			panHistorique.add(Box.createVerticalStrut(INTERLIGNE_HISTORIQUE));
 			JLabel e = new JLabel();
 			panHistorique.add(e);
