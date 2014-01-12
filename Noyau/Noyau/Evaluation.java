@@ -60,7 +60,7 @@ public class Evaluation {
 	
 	public void evalAbbayeFinPartie(){
 		// pré-requis : tuile avec un pion sur une abbaye, en fin de partie
-		// action : retourne la valeur d'une abbaye en fin de partie, et retire le pion.
+		// action : ajoute la valeur d'une abbaye en fin de partie à son propriétaire, et retire le pion.
 		int x= t.getX(); // Pour simplifier la lecture de la suite.
 		int y= t.getY();
 		if(this.t.getPionPlacé()!=null){

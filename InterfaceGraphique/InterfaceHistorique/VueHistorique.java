@@ -88,6 +88,9 @@ public class VueHistorique implements Observer, ActionListener {
 				ContPlateau.desactiverBoutonsPoserPion();
 				ContPlateau.refresh();
 			} else {
+				ContPlateau.evaluationFinDePartie();
+				ContScore.refresh();
+				ContPlateau.refresh();
 				ContPrincipal.finPartie();
 			}
 		}
