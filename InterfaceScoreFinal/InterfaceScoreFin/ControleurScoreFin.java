@@ -7,12 +7,12 @@ public class ControleurScoreFin {
     VueScoreFin vue;
     
     public ControleurScoreFin (){
-            this.modele=new ModeleScoreFin();
-            this.vue=new VueScoreFin(this);
+        this.modele=new ModeleScoreFin();
+        this.vue=new VueScoreFin(this);
     }
     
     public String [] getNomsJoueurs(){
-            return modele.getNomsJoueurs();
+        return modele.getNomsJoueurs();
     }
     
     public String [] getScoreJoueurs(){
