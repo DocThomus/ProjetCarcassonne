@@ -1,5 +1,6 @@
 package Principal;
 
+import InterfaceInitialisation.ControleurPage2;
 import InterfaceJeu.ContJeu;
 import Noyau.Joueur;
 
@@ -10,19 +11,27 @@ public class ContPrincipal {
 	
 	private VuePrincipale vuePrincipale;
 	private Controleur contActuel;
+	private boolean etapeInitialisation=false;
 	
 	public ContPrincipal() {
 		contPrincipal = this;
+		
+		ControleurPage2 cont = new ControleurPage2();
+		while(true){
+				if(this.etapeInitialisation){break;}
+		}
+
+		
 		vuePrincipale = new VuePrincipale();
 		
 		// Temporaire, pour tester l'interface graphique Jeu.
-		Joueur.creerJoueur("Joueur1");
+		/*Joueur.creerJoueur("Joueur1");
 		Joueur.creerJoueur("Joueur2");
 		Joueur.creerJoueur("Joueur3");
 		Joueur.creerJoueur("Joueur4");
 		Joueur.creerJoueur("Joueur5");
 		Joueur.creerJoueur("Joueur6");
-		Joueur.initialiserJoueurActif();
+		Joueur.initialiserJoueurActif();*/
 				
 		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
 	}
@@ -32,7 +41,8 @@ public class ContPrincipal {
 	}
 		
 	public static void configuration() { // Interface de choix des persos
-		//TODO
+		ContPrincipal.contPrincipal.etapeInitialisation=true;
+		Joueur.initialiserJoueurActif();
 	}
 	
 	public static void debutPartie() { // Interface Plateau
