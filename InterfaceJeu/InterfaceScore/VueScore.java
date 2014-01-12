@@ -1,12 +1,11 @@
 package InterfaceScore;
 
 import java.awt.GridBagConstraints;
-import java.util.ArrayList;
+
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
-
 
 public class VueScore implements Observer{	
 	private PanneauScore panScore;
@@ -17,9 +16,9 @@ public class VueScore implements Observer{
 	}
 	
 	public void update(Observable o, Object arg) {
-		ArrayList<Object> tab = (ArrayList<Object>) arg; 		
-		int[] tabNbPion = (int[]) tab.get(0);
-		int[] tabScore = (int[]) tab.get(1);		
+		PaquetScore ps = (PaquetScore) arg; 		
+		int[] tabNbPion = ps.getTabNbPions();
+		int[] tabScore = ps.getTabScores();		
 		this.panScore.maj(tabNbPion, tabScore);
 	}
 }

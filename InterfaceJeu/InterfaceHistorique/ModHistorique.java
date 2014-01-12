@@ -36,6 +36,6 @@ public class ModHistorique extends Observable {
 	
 	public void refresh() {
 		this.setChanged();
-		this.notifyObservers(this.getListeEvenements());
+		this.notifyObservers(new PaquetHistorique(this.getListeEvenements()));
 	}
 }

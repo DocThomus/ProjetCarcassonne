@@ -94,7 +94,6 @@ public class ContPlateau {
 			this.modele.setEtapePosePion(false);
 			this.modele.sendMajToVue();
 			ContScore.refresh();
-		}
-		else {String IlfaudraitmettreunmessagedErreurici ;}
+		} 
 	}
 }

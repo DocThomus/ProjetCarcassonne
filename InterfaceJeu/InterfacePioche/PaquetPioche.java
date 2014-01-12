@@ -3,7 +3,6 @@ package InterfacePioche;
 import java.awt.Image;
 
 public class PaquetPioche {
-
 	private int taillePioche;
 	private Image imgTuile;
 	

@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import InterfaceHistorique.ContHistorique;
 import InterfacePioche.ContPioche;
 import Noyau.Evaluation;
 import Noyau.Joueur;
@@ -197,7 +198,7 @@ public class ModPlateau extends Observable {
 			return true;
 		}
 		else {
-			String messageerreurici;
+			ContHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile comme ceci !");
 			return false;
 		}
 	}

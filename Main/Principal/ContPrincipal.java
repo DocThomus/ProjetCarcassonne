@@ -14,7 +14,6 @@ public abstract class ContPrincipal {
 		
 	public static void configuration() { // Interface de choix des persos
 		new ControleurConfiguration();
-		System.out.println("config");
 	}
 	
 	public static void debutPartie(int nbJoueurs, String[] nomsJoueurs) { // Interface Plateau

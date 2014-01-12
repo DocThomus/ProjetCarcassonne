@@ -61,8 +61,11 @@ public class VueHistorique implements Observer, ActionListener {
 	}
 
 	public void update(Observable o, Object arg) {
-		for (int i = 0; i < ((ArrayList<String>)arg).size(); i++) {
-			etiquettesMessages.get(i).setText(((ArrayList<String>)arg).get(i));
+		PaquetHistorique ph = (PaquetHistorique) arg;
+		ArrayList<String> listEvenements = ph.getListEvenements();
+		
+		for (int i = 0; i < listEvenements.size(); i++) {
+			etiquettesMessages.get(i).setText(listEvenements.get(i));
 		}
 	}
 
