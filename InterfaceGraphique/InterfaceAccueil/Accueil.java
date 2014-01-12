@@ -13,21 +13,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class VueAcceuil extends JPanel {
+public class Accueil extends JPanel {
+	private static final long serialVersionUID = 8012493901397795711L;
 	JLabel image;
 	static JFrame cadre;
 	ImageIcon icone;
 	static BGFrame bg;
 	static Thread t;
 	
-	public static void main(String[]args) {
+	public Accueil() {
+		JFrame fenetre = new JFrame();
+		fenetre.setSize(300, 300);
+		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fenetre.setVisible(true);
+		
 		//cadre = new JFrame();
 		
 		
 		 // ImageIcon i = new ImageIcon();
 		//  ImageIcon icone = new ImageIcon("image/index.jpg");
 		 // JLabel image = new JLabel(icone);
-		 t = new Thread(); 
+		
+		 /*t = new Thread(); 
 		
 		  bg = new BGFrame(); //on crée une nouvelle frame
 		  bg.setBackground("Image/index.jpg"); //on met l'image en fond de frame
@@ -39,9 +46,8 @@ public class VueAcceuil extends JPanel {
 			t.sleep(10000); //on fait rester la page quelques secondes avant de l'enlever
 			bg.setVisible(false);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		  
 		  
 		 //cadre.getContentPane().add(image);

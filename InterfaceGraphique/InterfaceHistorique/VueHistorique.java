@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import InterfaceJeu.ContJeu;
 import InterfacePioche.ContPioche;
 import InterfacePlateau.ContPlateau;
 import InterfaceScore.ContScore;
@@ -24,8 +25,8 @@ import Noyau.Joueur;
 import Principal.ContPrincipal;
 
 public class VueHistorique implements Observer, ActionListener {
-	private static final int LARGEUR_HISTORIQUE = (int) (ContPrincipal.LARGEUR_FENETRE*0.1);
-	private static final int HAUTEUR_HISTORIQUE = ContPrincipal.HAUTEUR_FENETRE;
+	private static final int LARGEUR_HISTORIQUE = (int) (ContJeu.LARGEUR_FENETRE*0.1);
+	private static final int HAUTEUR_HISTORIQUE = ContJeu.HAUTEUR_FENETRE;
 	private static final int INTERLIGNE_HISTORIQUE = 2;
 	
 	private ArrayList<JLabel> etiquettesMessages;

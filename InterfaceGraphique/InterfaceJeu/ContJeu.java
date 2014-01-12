@@ -15,6 +15,8 @@ import InterfaceHistorique.ContHistorique;
 import InterfacePlateau.ContPlateau;
 
 public class ContJeu implements Controleur {	
+	public static final int LARGEUR_FENETRE = 1280;
+	public static final int HAUTEUR_FENETRE = 720;
 	
 	public static int nbElements = 4;
 	public static int x[] = 	{ 0,  0,  1,  7};
@@ -29,8 +31,12 @@ public class ContJeu implements Controleur {
 	private ContPioche contPioche;
 	private ContPlateau contPlateau;
 	
-	public ContJeu(JFrame fenetrePrincipale, int nbJoueurs, String[] nomsJoueurs) {
+	public ContJeu(int nbJoueurs, String[] nomsJoueurs) {
 		Plateau plateau = new Plateau();
+		
+		JFrame fenetrePrincipale = new JFrame();
+		fenetrePrincipale.setSize(LARGEUR_FENETRE, HAUTEUR_FENETRE);
+		fenetrePrincipale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		fenetrePrincipale.getContentPane().setLayout(new GridBagLayout());
 		
@@ -54,5 +60,6 @@ public class ContJeu implements Controleur {
 			}
 		}
 		contScore.refresh();
+		fenetrePrincipale.setVisible(true);
 	}
 }
