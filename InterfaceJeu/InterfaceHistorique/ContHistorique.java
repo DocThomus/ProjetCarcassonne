@@ -20,8 +20,8 @@ public class ContHistorique {
 		modele.addObserver(vue);
 		
 		modele.ajouterEvenement("Bienvenue sur le Projet Carcassonne !");
-		modele.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de commencer.");
 		modele.ajouterEvenement("Bonne partie à tous.");
+		modele.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de commencer.");
 		
 		modele.refresh();
 	}
