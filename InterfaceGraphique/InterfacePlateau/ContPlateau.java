@@ -75,7 +75,7 @@ public class ContPlateau {
 		this.yPosRelativeCentre = -(ligne + this.yPosPlateau);
 		
 		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
-			ContPioche.ControleurPioche.setRotation(false);
+			ContPioche.setRotation(false);
 			ContHistorique.contHistorique.activerBoutonPasser();
 			ContHistorique.contHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a posé une tuile en (" + xPosRelativeCentre + "," + yPosRelativeCentre + ").");
 			//System.out.println("posée");

@@ -6,11 +6,13 @@ import Noyau.Joueur;
 public class ContPrincipal {
 	public static final int LARGEUR_FENETRE = 1280;
 	public static final int HAUTEUR_FENETRE = 720;
+	private static ContPrincipal contPrincipal;
 	
 	private VuePrincipale vuePrincipale;
 	private Controleur contActuel;
 	
 	public ContPrincipal() {
+		contPrincipal = this;
 		vuePrincipale = new VuePrincipale();
 		
 		// Temporaire, pour tester l'interface graphique Jeu.
@@ -23,5 +25,9 @@ public class ContPrincipal {
 		Joueur.initialiserJoueurActif();
 				
 		contActuel = new ContJeu(vuePrincipale.getFenetrePrincipale(), Joueur.getNbJoueurs(), Joueur.getNomsJoueurs());
+	}
+
+	public static void finPartie() {
+		//TODO
 	}
 }

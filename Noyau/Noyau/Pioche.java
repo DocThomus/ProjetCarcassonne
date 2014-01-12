@@ -625,6 +625,10 @@ public class Pioche {
 		return t;
 	}
 	
+	public boolean isVide() {
+		return this.pioche.isEmpty();
+	}
+	
 	//TEST
 	public ArrayList<Tuile> getPioche(){
 		return this.pioche;

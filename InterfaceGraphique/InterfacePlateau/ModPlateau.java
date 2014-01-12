@@ -25,7 +25,7 @@ public class ModPlateau extends Observable {
 	private int yRelCentreTuilePosee;
 	
 	public void evaluationFinTour(){
-		Tuile tuileposee = ContPioche.ControleurPioche.getModele().getTuile();
+		Tuile tuileposee = ContPioche.getTuile();
 		ArrayList<Joueur> winner;
 		Evaluation evalPion;
 		// Evaluation des Abbaye
@@ -189,8 +189,8 @@ public class ModPlateau extends Observable {
 	}
 	
 	public boolean poseTuile(int x, int y){
-		if(ContPioche.ControleurPioche.getModele().getTuile().verifPoseTuileLegale(this.plateau, x, y)){
-			ContPioche.ControleurPioche.getModele().getTuile().poseTuile(this.plateau, x, y);
+		if(ContPioche.getTuile().verifPoseTuileLegale(this.plateau, x, y)){
+			ContPioche.getTuile().poseTuile(this.plateau, x, y);
 			this.setCoordonneesRelCentreTuilePosees(x,y);
 			System.out.println("c " + x + " " + y);
 			this.etapePosePion = true;

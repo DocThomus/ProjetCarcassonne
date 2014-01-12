@@ -78,14 +78,18 @@ public class VueHistorique implements Observer, ActionListener {
 		if(e.getSource()==boutonPasser){
 			ContPlateau.evaluationFinTour();
 			ContScore.refresh();
-			ContPioche.ControleurPioche.getModele().piocher();
-			Joueur.joueurSuivant();
-			this.setEtatBoutonPasser(false);
-			ContPioche.ControleurPioche.setRotation(true);
-			this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
-			ContPlateau.activerBoutonsPoserTuile();
-			ContPlateau.desactiverBoutonsPoserPion();
-			ContPlateau.refresh();
+			if (!ContPioche.isPiocheVide()) {
+				ContPioche.piocher();
+				Joueur.joueurSuivant();
+				this.setEtatBoutonPasser(false);
+				ContPioche.setRotation(true);
+				this.controleur.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
+				ContPlateau.activerBoutonsPoserTuile();
+				ContPlateau.desactiverBoutonsPoserPion();
+				ContPlateau.refresh();
+			} else {
+				ContPrincipal.finPartie();
+			}
 		}
 		
 	}

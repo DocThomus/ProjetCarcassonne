@@ -95,7 +95,7 @@ public class VuePlateau implements Observer, ActionListener {
 	public void update(Observable o, Object arg) {
 		PaquetPlateau pp = (PaquetPlateau) arg;
 		
-		Tuile tuilePosee = ContPioche.ControleurPioche.getModele().getTuile();
+		Tuile tuilePosee = ContPioche.getTuile();
 		
 		this.etapePoseTuile = pp.getEtapePoseTuile();
 		this.tabtabImages = pp.getTabTabImages();

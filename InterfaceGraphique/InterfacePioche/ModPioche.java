@@ -22,6 +22,11 @@ public class ModPioche extends Observable {
 			System.out.println(this.pioche.getPioche().size());
 			this.plateau= plateau;
 			this.piocher();
+			
+			// TODO Test :
+			for(int i = 0; i < 65; i++) {
+				this.piocher();
+			}
 		}
 		
 		public void piocher (){
@@ -55,6 +60,10 @@ public class ModPioche extends Observable {
 			//System.out.println(this.t.getNum() +"  "+ this.t.getPosition());
 			System.out.println(this.pioche.getPioche().size());
 			return  new PaquetPioche(Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getOrientation()), this.pioche.getPioche().size());
+		}
+		
+		public boolean isPiocheVide() {
+			return this.pioche.isVide();
 		}
 		
 }
