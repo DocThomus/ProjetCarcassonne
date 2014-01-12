@@ -17,6 +17,7 @@ public class Accueil {
 		JFrame fenetre = new JFrame();
 		fenetre.setSize(300, 300);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fenetre.setLocationRelativeTo(null); //On centre la frame au millieu de l'écran
 		
 		try {
 			Image imageAccueil = ImageIO.read(new File("Image/imageAccueil.jpg"));

@@ -16,9 +16,9 @@ public abstract class ContPrincipal {
 		new ControleurConfiguration();
 	}
 	
-	public static void debutPartie() { // Interface Plateau
+	public static void debutPartie(int nbJoueurs, String[] nomsJoueurs) { // Interface Plateau
 		Tuile.ajouteImagesTuiles();
-		new ControleurJeu(0, null);
+		new ControleurJeu(nbJoueurs, nomsJoueurs);
 	}
 	
 	public static void finPartie() { // Interface de score final

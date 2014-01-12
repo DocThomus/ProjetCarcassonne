@@ -159,96 +159,93 @@ public class VueConfiguration implements ActionListener {
 		}
 	
 	
-	if(e.getSource() == Bouton3){
-		boolean changement = true;
-		if(this.Bouton3.getText().equals("OK") && changement){
-			if(this.champ3.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
-				this.controleur.ajoutJoueur(3,this.champ3.getText());
-				this.Bouton3.setText("Annuler");
-				this.champ3.setEditable(false);
+		if(e.getSource() == Bouton3){
+			boolean changement = true;
+			if(this.Bouton3.getText().equals("OK") && changement){
+				if(this.champ3.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
+					this.controleur.ajoutJoueur(3,this.champ3.getText());
+					this.Bouton3.setText("Annuler");
+					this.champ3.setEditable(false);
+					changement=false;
+					this.joueurCree++;
+				}
+			}
+			if(this.Bouton3.getText().equals("Annuler") && changement){
+				this.controleur.supprimeJoueur(3);
+				this.Bouton3.setText("OK");
+				this.champ3.setEditable(true);
 				changement=false;
-				this.joueurCree++;
+				this.joueurCree--;
 			}
 		}
-		if(this.Bouton3.getText().equals("Annuler") && changement){
-			this.controleur.supprimeJoueur(3);
-			this.Bouton3.setText("OK");
-			this.champ3.setEditable(true);
-			changement=false;
-			this.joueurCree--;
-		}
-	}
 	
-	if(e.getSource() == Bouton4){
-		boolean changement = true;
-		if(this.Bouton4.getText().equals("OK") && changement){
-			if(this.champ4.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
-				this.controleur.ajoutJoueur(4,this.champ4.getText());
-				this.Bouton4.setText("Annuler");
-				this.champ4.setEditable(false);
+		if(e.getSource() == Bouton4){
+			boolean changement = true;
+			if(this.Bouton4.getText().equals("OK") && changement){
+				if(this.champ4.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
+					this.controleur.ajoutJoueur(4,this.champ4.getText());
+					this.Bouton4.setText("Annuler");
+					this.champ4.setEditable(false);
+					changement=false;
+					this.joueurCree++;
+				}
+			}
+			if(this.Bouton4.getText().equals("Annuler") && changement){
+				this.controleur.supprimeJoueur(4);
+				this.Bouton4.setText("OK");
+				this.champ4.setEditable(true);
 				changement=false;
-				this.joueurCree++;
+				this.joueurCree--;
 			}
 		}
-		if(this.Bouton4.getText().equals("Annuler") && changement){
-			this.controleur.supprimeJoueur(4);
-			this.Bouton4.setText("OK");
-			this.champ4.setEditable(true);
-			changement=false;
-			this.joueurCree--;
-		}
-	}
 	
-	if(e.getSource() == Bouton5){
-		boolean changement = true;
-		if(this.Bouton5.getText().equals("OK") && changement){
-			if(this.champ5.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
-				this.controleur.ajoutJoueur(5,this.champ5.getText());
-				this.Bouton5.setText("Annuler");
-				this.champ5.setEditable(false);
+		if(e.getSource() == Bouton5){
+			boolean changement = true;
+			if(this.Bouton5.getText().equals("OK") && changement){
+				if(this.champ5.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
+					this.controleur.ajoutJoueur(5,this.champ5.getText());
+					this.Bouton5.setText("Annuler");
+					this.champ5.setEditable(false);
+					changement=false;
+					this.joueurCree++;
+				}
+			}
+			if(this.Bouton5.getText().equals("Annuler") && changement){
+				this.controleur.supprimeJoueur(5);
+				this.Bouton5.setText("OK");
+				this.champ5.setEditable(true);
 				changement=false;
-				this.joueurCree++;
+				this.joueurCree--;
 			}
 		}
-		if(this.Bouton5.getText().equals("Annuler") && changement){
-			this.controleur.supprimeJoueur(5);
-			this.Bouton5.setText("OK");
-			this.champ5.setEditable(true);
-			changement=false;
-			this.joueurCree--;
-		}
-	}
 	
-	if(e.getSource() == Bouton6){
-		boolean changement = true;
-		if(this.Bouton6.getText().equals("OK") && changement){
-			if(this.champ6.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
-				this.controleur.ajoutJoueur(6,this.champ6.getText());
-				this.Bouton6.setText("Annuler");
-				this.champ6.setEditable(false);
+		if(e.getSource() == Bouton6){
+			boolean changement = true;
+			if(this.Bouton6.getText().equals("OK") && changement){
+				if(this.champ6.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
+					this.controleur.ajoutJoueur(6,this.champ6.getText());
+					this.Bouton6.setText("Annuler");
+					this.champ6.setEditable(false);
+					changement=false;
+					this.joueurCree++;
+				}
+			}
+			if(this.Bouton6.getText().equals("Annuler") && changement){
+				this.controleur.supprimeJoueur(6);
+				this.Bouton6.setText("OK");
+				this.champ6.setEditable(true);
 				changement=false;
-				this.joueurCree++;
+				this.joueurCree--;
 			}
 		}
-		if(this.Bouton6.getText().equals("Annuler") && changement){
-			this.controleur.supprimeJoueur(6);
-			this.Bouton6.setText("OK");
-			this.champ6.setEditable(true);
-			changement=false;
-			this.joueurCree--;
-		}
-	}
 	
-	if(e.getSource() == Jouer){
-		if(this.joueurCree>=2){
-			this.controleur.commencerPartie();
-			this.cadre.setVisible(false);
+		if(e.getSource() == Jouer){
+			if(this.joueurCree>=2){
+				this.controleur.commencerPartie();
+				this.cadre.dispose();
+			}
 		}
-	}
-	
 	} // fin de ActionPerformed
-	
-	
 }	// fin de classe	
 	
 

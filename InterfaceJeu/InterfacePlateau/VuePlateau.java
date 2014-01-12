@@ -44,8 +44,6 @@ public class VuePlateau implements Observer, ActionListener {
 	private int ligneTuilePosee;
 	private boolean[] tabPresenceBoutonPosePion;
 
-	
-
 	public VuePlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, int largeurPlateau, int hauteurPlateau, ContPlateau controleur) {
 		this.largeurPlateau = largeurPlateau;
 		this.hauteurPlateau = hauteurPlateau;

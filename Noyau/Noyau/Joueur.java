@@ -12,6 +12,15 @@ public class Joueur {
 		return listJoueur;
 	}
 	
+	public static String[] getTabNomsJoueur() {
+		int nbJoueurs = getNbJoueurs();
+		String[] tabNomsJoueurs = new String[nbJoueurs];
+		for(int i = 0; i < nbJoueurs; i++) {
+			tabNomsJoueurs[i] = getJoueur(i).getNom();
+		}
+		return tabNomsJoueurs;
+	}		
+	
 	public static int getNbJoueurs() {
 		return listJoueur.size();
 	}
@@ -126,5 +135,5 @@ public class Joueur {
 		// Pré-requis : une seule occurrence d'un pion dans la liste, et p appartient bien à la liste.
 		// Remarque : Possibilité d'utiliser tabPions.contains(p) pour savoir si p appartient vraiment à la liste (normalement oui).
 		this.tabPions.remove(p); 
-	}		
+	}
 }

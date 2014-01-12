@@ -23,6 +23,7 @@ public class ControleurConfiguration {
 	public void commencerPartie(){
 		this.modele.creerJoueurs();
 		Joueur.initialiserJoueurActif();
-		ContPrincipal.debutPartie();
+		
+		ContPrincipal.debutPartie(Joueur.getNbJoueurs(), Joueur.getTabNomsJoueur());
 	}
 }
