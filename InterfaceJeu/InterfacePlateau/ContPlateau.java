@@ -44,7 +44,7 @@ public class ContPlateau {
 	}
 	
 	public static void evaluationFinDePartie() {
-		
+		ContPlateau.contPlateau.modele.evaluationFinDePartie();
 	}
 	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {

@@ -253,6 +253,10 @@ public class ModPlateau extends Observable {
 	public void setEtapePosePion(boolean b) {
 		this.etapePosePion = b;
 	}
+
+	public void evaluationFinDePartie() {
+				
+	}
 	
 	
 	
