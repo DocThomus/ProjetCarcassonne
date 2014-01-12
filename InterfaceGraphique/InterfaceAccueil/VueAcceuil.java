@@ -20,7 +20,7 @@ public class VueAcceuil extends JPanel {
 	static BGFrame bg;
 	static Thread t;
 	
-	public static void main(String[]args) {
+	public VueAcceuil() {
 		//cadre = new JFrame();
 		
 		
