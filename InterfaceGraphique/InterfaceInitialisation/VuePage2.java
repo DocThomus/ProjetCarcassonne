@@ -30,22 +30,22 @@ public class VuePage2 implements ActionListener {
 			JPanel Titre = new JPanel();// Le titre de la page
 			JPanel Jeu = new JPanel(); // On créz un nouveau pannel pour le bouton demarrer
 			
-			Bouton1  = new JButton("Joueur1"); // on cree un bouton
+			Bouton1  = new JButton("OK"); // on cree un bouton
 			Bouton1.addActionListener(this); //On enregistre l'objet de type controleur comme etant un ecouteur du bouton 
 			
-			Bouton2 = new JButton("Joueur2");
+			Bouton2 = new JButton("OK");
 			Bouton2.addActionListener(this); 
 			
-			Bouton3 = new JButton("Joueur3");
+			Bouton3 = new JButton("OK");
 			Bouton3.addActionListener(this);
 			
-			Bouton4 = new JButton("Joueur4");
+			Bouton4 = new JButton("OK");
 			Bouton4.addActionListener(this);
 			
-			Bouton5 = new JButton("Joueur5");
+			Bouton5 = new JButton("OK");
 			Bouton5.addActionListener(this);
 			
-			Bouton6 = new JButton("Joueur6");
+			Bouton6 = new JButton("OK");
 			Bouton6.addActionListener(this);
 			
 			Jouer = new JButton("JOUER");
@@ -118,17 +118,17 @@ public class VuePage2 implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Bouton1){
 			boolean changement = true;
-			if(this.Bouton1.getText().equals("Joueur1") && changement){
+			if(this.Bouton1.getText().equals("OK") && changement){
 				if(this.champ1.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 					this.controleur.ajoutJoueur(1,this.champ1.getText());
-					this.Bouton1.setText("OK");
+					this.Bouton1.setText("Annuler");
 					this.champ1.setEditable(false);
 					changement=false;
 				}
 			}
-			if(this.Bouton1.getText().equals("OK") && changement){
+			if(this.Bouton1.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(1);
-				this.Bouton1.setText("Joueur1");
+				this.Bouton1.setText("OK");
 				this.champ1.setEditable(true);
 				changement=false;
 			}
@@ -136,17 +136,17 @@ public class VuePage2 implements ActionListener {
 		
 		if(e.getSource() == Bouton2){
 			boolean changement = true;
-			if(this.Bouton2.getText().equals("Joueur2") && changement){
+			if(this.Bouton2.getText().equals("OK") && changement){
 				if(this.champ2.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 					this.controleur.ajoutJoueur(2,this.champ2.getText());
-					this.Bouton2.setText("OK");
+					this.Bouton2.setText("Annuler");
 					this.champ2.setEditable(false);
 					changement=false;
 				}
 			}
-			if(this.Bouton2.getText().equals("OK") && changement){
+			if(this.Bouton2.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(2);
-				this.Bouton2.setText("Joueur2");
+				this.Bouton2.setText("OK");
 				this.champ2.setEditable(true);
 				changement=false;
 			}
@@ -155,17 +155,17 @@ public class VuePage2 implements ActionListener {
 	
 	if(e.getSource() == Bouton3){
 		boolean changement = true;
-		if(this.Bouton3.getText().equals("Joueur3") && changement){
+		if(this.Bouton3.getText().equals("OK") && changement){
 			if(this.champ3.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 				this.controleur.ajoutJoueur(3,this.champ3.getText());
-				this.Bouton3.setText("OK");
+				this.Bouton3.setText("Annuler");
 				this.champ3.setEditable(false);
 				changement=false;
 			}
 		}
-		if(this.Bouton3.getText().equals("OK") && changement){
+		if(this.Bouton3.getText().equals("Annuler") && changement){
 			this.controleur.supprimeJoueur(3);
-			this.Bouton3.setText("Joueur3");
+			this.Bouton3.setText("OK");
 			this.champ3.setEditable(true);
 			changement=false;
 		}
@@ -173,17 +173,17 @@ public class VuePage2 implements ActionListener {
 	
 	if(e.getSource() == Bouton4){
 		boolean changement = true;
-		if(this.Bouton4.getText().equals("Joueur4") && changement){
+		if(this.Bouton4.getText().equals("OK") && changement){
 			if(this.champ4.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 				this.controleur.ajoutJoueur(4,this.champ4.getText());
-				this.Bouton4.setText("OK");
+				this.Bouton4.setText("Annuler");
 				this.champ4.setEditable(false);
 				changement=false;
 			}
 		}
-		if(this.Bouton4.getText().equals("OK") && changement){
+		if(this.Bouton4.getText().equals("Annuler") && changement){
 			this.controleur.supprimeJoueur(4);
-			this.Bouton4.setText("Joueur4");
+			this.Bouton4.setText("OK");
 			this.champ4.setEditable(true);
 			changement=false;
 		}
@@ -191,17 +191,17 @@ public class VuePage2 implements ActionListener {
 	
 	if(e.getSource() == Bouton5){
 		boolean changement = true;
-		if(this.Bouton5.getText().equals("Joueur5") && changement){
+		if(this.Bouton5.getText().equals("OK") && changement){
 			if(this.champ5.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 				this.controleur.ajoutJoueur(5,this.champ5.getText());
-				this.Bouton5.setText("OK");
+				this.Bouton5.setText("Annuler");
 				this.champ5.setEditable(false);
 				changement=false;
 			}
 		}
-		if(this.Bouton5.getText().equals("OK") && changement){
+		if(this.Bouton5.getText().equals("Annuler") && changement){
 			this.controleur.supprimeJoueur(5);
-			this.Bouton5.setText("Joueur5");
+			this.Bouton5.setText("OK");
 			this.champ5.setEditable(true);
 			changement=false;
 		}
@@ -209,17 +209,17 @@ public class VuePage2 implements ActionListener {
 	
 	if(e.getSource() == Bouton6){
 		boolean changement = true;
-		if(this.Bouton6.getText().equals("Joueur6") && changement){
+		if(this.Bouton6.getText().equals("OK") && changement){
 			if(this.champ6.getText().length()>0){ // Ne marche pas : un joueur sans pseudo est créé
 				this.controleur.ajoutJoueur(6,this.champ6.getText());
-				this.Bouton6.setText("OK");
+				this.Bouton6.setText("Annuler");
 				this.champ6.setEditable(false);
 				changement=false;
 			}
 		}
-		if(this.Bouton6.getText().equals("OK") && changement){
+		if(this.Bouton6.getText().equals("Annuler") && changement){
 			this.controleur.supprimeJoueur(6);
-			this.Bouton6.setText("Joueur6");
+			this.Bouton6.setText("OK");
 			this.champ6.setEditable(true);
 			changement=false;
 		}
