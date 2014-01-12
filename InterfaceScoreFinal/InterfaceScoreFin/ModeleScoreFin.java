@@ -7,11 +7,7 @@ public class ModeleScoreFin {
 	private ArrayList<Joueur> listJoueur;
 	               
 	public ModeleScoreFin() {   
-		listJoueur = Joueur.getListJoueur();
-		
-		for(int i = 0; i < Joueur.getNbJoueurs(); i++) { // récupération des joueurs en désordre (par rapport au score)
-			listJoueur.add(Joueur.getJoueur(i));
-		}          
+		listJoueur = Joueur.getListJoueur();     
 		this.classementJoueurs(); // le tableau de Joueur est maintenant classé par ordre décroissant de score
 	}
 
