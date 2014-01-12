@@ -104,7 +104,7 @@ public class Joueur {
 	
 	public int getNbPions() {
 		// Remarque : Un joueur peut avoir entre 0 et 7 pions.
-		return this.tabPions.size();
+		return 7-this.tabPions.size();
 	}
 	
 	public ArrayList<Pion> getTabPions(){
