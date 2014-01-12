@@ -15,12 +15,12 @@ public class Accueil {
 	
 	public Accueil() {
 		JFrame fenetre = new JFrame();
-		fenetre.setSize(300, 300);
+		fenetre.setSize(425, 635);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setLocationRelativeTo(null); //On centre la frame au millieu de l'écran
 		
 		try {
-			Image imageAccueil = ImageIO.read(new File("Image/imageAccueil.jpg"));
+			Image imageAccueil = ImageIO.read(new File("Image/presentation.jpg"));
 			fenetre.add(new JLabel(new ImageIcon(imageAccueil)));
 		} catch (IOException e) {
 			e.printStackTrace();
