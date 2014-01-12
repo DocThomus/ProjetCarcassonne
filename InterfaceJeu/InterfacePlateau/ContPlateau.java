@@ -43,6 +43,10 @@ public class ContPlateau {
 		ContPlateau.contPlateau.modele.evaluationFinTour();
 	}
 	
+	public static void evaluationFinDePartie() {
+		
+	}
+	
 	public ContPlateau(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, Plateau plateau) {
 		this.plateau = plateau;
 		modele = new ModPlateau(plateau, largNbTuiles, hautNbTuiles, xPosPlateau, yPosPlateau);
@@ -98,6 +102,4 @@ public class ContPlateau {
 			System.out.println("PionPasPosable");
 		}
 	}
-
-
 }
