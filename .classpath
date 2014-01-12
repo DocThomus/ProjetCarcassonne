@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="InterfaceGraphique"/>
 	<classpathentry kind="src" path="Noyau"/>
+	<classpathentry kind="src" path="InterfaceAccueil"/>
+	<classpathentry kind="src" path="InterfaceConfiguration"/>
+	<classpathentry kind="src" path="InterfaceJeu"/>
+	<classpathentry kind="src" path="InterfaceScore"/>
+	<classpathentry kind="src" path="Main"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="Code/bin"/>
 </classpath>
