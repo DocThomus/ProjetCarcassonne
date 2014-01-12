@@ -60,7 +60,6 @@ public class VueHistorique implements Observer, ActionListener {
 		panHistorique.repaint();
 	}
 
-	@SuppressWarnings("unchecked")
 	public void update(Observable o, Object arg) {
 		for (int i = 0; i < ((ArrayList<String>)arg).size(); i++) {
 			etiquettesMessages.get(i).setText(((ArrayList<String>)arg).get(i));
@@ -71,7 +70,6 @@ public class VueHistorique implements Observer, ActionListener {
 		this.boutonPasser.setEnabled(b);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==boutonPasser){
 			ContPlateau.evaluationFinTour();

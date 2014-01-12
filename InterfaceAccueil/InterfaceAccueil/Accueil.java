@@ -23,7 +23,6 @@ public class Accueil {
 			Image imageAccueil = ImageIO.read(new File("Image/imageAccueil.jpg"));
 			fenetre.add(new JLabel(new ImageIcon(imageAccueil)));
 		} catch (IOException e) {
-			System.out.println("image d'accueil introuvable.");
 			e.printStackTrace();
 		}
 		
@@ -32,7 +31,6 @@ public class Accueil {
 		try {
 			Thread.sleep(2500);	// On fait attendre le processus 2,5 secondes
 		} catch (InterruptedException e) {
-			System.out.println("Arrêt pendant le chargement.");
 			e.printStackTrace();
 		}
 		

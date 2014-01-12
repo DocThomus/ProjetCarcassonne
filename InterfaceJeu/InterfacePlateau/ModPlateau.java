@@ -197,7 +197,7 @@ public class ModPlateau extends Observable {
 			return true;
 		}
 		else {
-			System.out.println("Pose impossible");
+			String messageerreurici;
 			return false;
 		}
 	}
@@ -220,13 +220,11 @@ public class ModPlateau extends Observable {
 	public void setXPosPlateau(int x){
 		this.xPosPlateau=x;
 		this.sendMajToVue();
-		//System.out.println("xPosPlateau :" + this.xPosPlateau);
 	}
 	
 	public void setYPosPlateau(int y){
 		this.yPosPlateau=y;
 		this.sendMajToVue();
-		//System.out.println("yPosPlateau :" + this.yPosPlateau);
 	}
 
 	public void sendMajToVue() {
@@ -237,10 +235,8 @@ public class ModPlateau extends Observable {
 			Tuile tuilePosee = this.plateau.getTuile((this.xRelCentreTuilePosee), (this.yRelCentreTuilePosee));
 			boolean [] tabPresenceBoutonPosePion = tuilePosee.getTabPresenceBoutonPosePion();
 			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee, tabPresenceBoutonPosePion, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
-			System.out.println("tuilePosée dedans !");
 		} else {
 			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1, null, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
-			System.out.println("tuilePosée dehors !");
 		}		
 	}
 	

@@ -17,12 +17,9 @@ public class VueScore implements Observer{
 	}
 	
 	public void update(Observable o, Object arg) {
-		@SuppressWarnings("unchecked")
-		ArrayList<Object> tab = (ArrayList<Object>) arg; 
-		
+		ArrayList<Object> tab = (ArrayList<Object>) arg; 		
 		int[] tabNbPion = (int[]) tab.get(0);
-		int[] tabScore = (int[]) tab.get(1);
-		
+		int[] tabScore = (int[]) tab.get(1);		
 		this.panScore.maj(tabNbPion, tabScore);
 	}
 }

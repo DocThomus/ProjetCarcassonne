@@ -13,7 +13,6 @@ public class ControleurConfiguration {
 	}
 	
 	public void ajoutJoueur(int num, String nom){
-		System.out.println("Controleur ok  : " + nom);
 		this.modele.AjoutJoueur(num,nom);
 	}
 	public void supprimeJoueur(int num){

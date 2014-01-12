@@ -26,8 +26,6 @@ public class VuePlateau implements Observer, ActionListener {
 	private JButton boutonBas;
 	private JButton boutonGauche;
 	private JPanel panPlateau;				// Contient les images des tuiles et les boutons pour poser.
-	//private JPanel panPlateauAvecBoutons;	// Contient panPlateau entouré de 4 boutons grâce à un BorderLayout.
-	//private JPanel panPlateauAvecGlues; 	// Contient verticalement : 1 glue, panPlateauAvecBoutons, 1 glue.
 	private int largeurPlateau;
 	private int hauteurPlateau;
 	private Image[][] tabtabImages;
@@ -161,14 +159,11 @@ public class VuePlateau implements Observer, ActionListener {
 			this.controleur.decaleDroite();
 		} else if(e.getSource().getClass() == BoutonTuile.class) {	// Bouton Tuile
 			int colPosBouton = ((BoutonTuile) e.getSource()).getCol();
-			//System.out.println(""+colPosBouton);
 			int lignePosBouton = ((BoutonTuile) e.getSource()).getLigne();
-			//System.out.println(""+lignePosBouton);
 			this.controleur.poseTuile(lignePosBouton, colPosBouton);
 		} else if(e.getSource().getClass() == BoutonPosePion.class) {	// Bouton Pion
 			int position = ((BoutonPosePion) e.getSource()).getPosition();
 			Tuile tuile = ((BoutonPosePion) e.getSource()).getTuile();
-			System.out.println("Pion : " + position);
 			this.controleur.posePion(tuile, position);
 		}
 	}
