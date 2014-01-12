@@ -116,7 +116,7 @@ public class Tuile {
 			Pion p = new Pion(j,this,pos);
 			j.getTabPions().add(p);
 			this.pionPlace=p;
-			System.out.println("pion posé");
+			System.out.println("pion posé, nb pion posé : " + j.getTabPions().size());
 			return true;
 		} else{ 
 			System.out.println("plus de pion");

@@ -327,9 +327,9 @@ public class Evaluation {
 			}
 		}
 		
-		for(int i =0;i<nbpion.length;i++){
+		/*for(int i =0;i<nbpion.length;i++){
 			System.out.println("tableau pion : " +nbpion[i]);
-		}
+		}*/
 		return winner;
 	}
 	
