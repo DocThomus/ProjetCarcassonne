@@ -31,8 +31,10 @@ public class VueHistorique implements Observer, ActionListener {
 	private ArrayList<JLabel> etiquettesMessages;
 	private JButton boutonPasser;
 	private ContHistorique controleur;
+	private JFrame fenetrePrincipale;
 
 	public VueHistorique(JFrame fenetrePrincipale, GridBagConstraints contraintesLayout, ContHistorique controleur) {
+		this.fenetrePrincipale = fenetrePrincipale;
 		this.controleur = controleur;
 		JPanel panHistorique = new JPanel();
 		fenetrePrincipale.getContentPane().add(panHistorique, contraintesLayout);
@@ -87,12 +89,9 @@ public class VueHistorique implements Observer, ActionListener {
 				ContPlateau.refresh();
 			} else {
 				ContPlateau.evaluationFinDePartie();
-				ContScore.refresh();
-				ContPlateau.refresh();
 				ContPrincipal.finPartie();
+				this.fenetrePrincipale.dispose();
 			}
 		}
-		
 	}
-
 }
