@@ -9,6 +9,7 @@ import Noyau.Tuile;
 public abstract class ContPrincipal {
 	
 	public static void accueil() { // Interface intro (avec l'image)
+		Tuile.ajouteImagesTuiles();
 		new Accueil();
 	}
 		
@@ -17,7 +18,6 @@ public abstract class ContPrincipal {
 	}
 	
 	public static void debutPartie(int nbJoueurs, String[] nomsJoueurs) { // Interface Plateau
-		Tuile.ajouteImagesTuiles();
 		new ControleurJeu(nbJoueurs, nomsJoueurs);
 	}
 	
