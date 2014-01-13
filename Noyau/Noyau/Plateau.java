@@ -3,11 +3,12 @@ import java.util.ArrayList;
 
 public class Plateau {
 
-private Tuile [][] repere;
-private ArrayList<Tuile> tuilePosees;
-private static int taillePlateau = 200;
-public static int xCentre = 100;
-public static int yCentre = 100;
+	private Tuile [][] repere;
+	private ArrayList<Tuile> tuilePosees;
+	private static int taillePlateau = 200;
+	
+	public final static int xCentre = 100;
+	public final static int yCentre = 100;
 
 	public Plateau () {
 		this.repere= new Tuile [taillePlateau][taillePlateau]; // taillePlateau = 200.
