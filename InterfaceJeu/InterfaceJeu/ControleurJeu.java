@@ -15,13 +15,13 @@ public class ControleurJeu {
 	public static final int LARGEUR_FENETRE = 1280;
 	public static final int HAUTEUR_FENETRE = 720;
 	
-	public static int nbElements = 4;
-	public static int x[] = 	{ 0,  0,  1,  7};
-	public static int y[] = 	{ 0,  2,  0,  0};
-	public static int larg[] = 	{ 1,  1,  6,  3};
-	public static int haut[] =  { 3,  8,  8, 10};
-	public static int px[] = 	{10,  0,  0, 70};
-	public static int py[] = 	{ 0,100,  0,  0};
+	private static int nbElements = 4;
+	private static int x[] = 	{ 0,  0,  1,  7};
+	private static int y[] = 	{ 0,  2,  0,  0};
+	private static int larg[] = { 1,  1,  6,  3};
+	private static int haut[] = { 3,  8,  8, 10};
+	private static int px[] = 	{10,  0,  0, 70};
+	private static int py[] = 	{ 0,100,  0,  0};
 	
 	public ControleurJeu(int nbJoueurs, String[] nomsJoueurs) {
 		Plateau plateau = new Plateau();
