@@ -88,7 +88,7 @@ public class VueHistorique implements Observer, ActionListener {
 				ContPlateau.refresh();
 			} else {	// La partie est finie lorsque la pioche est vide.
 				ContPlateau.evaluationFinDePartie();
-				ContPrincipal.finPartie();
+				ContPrincipal.scoreFin();
 				this.fenetrePrincipale.dispose();
 			}
 		}

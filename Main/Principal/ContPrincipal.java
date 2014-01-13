@@ -8,7 +8,7 @@ import Noyau.Tuile;
 
 public abstract class ContPrincipal {
 	
-	public static void introduction() { // Interface intro (avec l'image)
+	public static void accueil() { // Interface intro (avec l'image)
 		new Accueil();
 	}
 		
@@ -21,7 +21,7 @@ public abstract class ContPrincipal {
 		new ControleurJeu(nbJoueurs, nomsJoueurs);
 	}
 	
-	public static void finPartie() { // Interface de score final
+	public static void scoreFin() { // Interface de score final
 		new ControleurScoreFin();
 	}
 }
