@@ -51,7 +51,6 @@ public class VuePlateau implements Observer, ActionListener {
 		
 		this.panPlateau = new JPanel();
 		this.panPlateau.setLayout(new GridLayout(this.hauteurPlateau, this.largeurPlateau));
-		//this.panPlateau.setBackground(Color.pink);
 		
 		this.boutonHaut = new JButton("Haut");
 		this.boutonBas = new JButton("Bas");
@@ -78,14 +77,6 @@ public class VuePlateau implements Observer, ActionListener {
 		boutonGauche.addActionListener(this);
 
 		fenetrePrincipale.getContentPane().add(panPlateauAvecBoutons, contraintesLayout);
-		
-		/*JPanel panPlateauComplet = new JPanel();
-		panPlateauComplet.setLayout(new BoxLayout(panPlateauComplet, BoxLayout.PAGE_AXIS));
-		panPlateauComplet.add(Box.createHorizontalGlue());
-		panPlateauComplet.add(panPlateauAvecBoutons);
-		panPlateauComplet.add(Box.createHorizontalGlue());*/
-		
-		//fenetrePrincipale.getContentPane().add(panPlateauComplet, contraintesLayout);
 	}
 
 	public void update(Observable o, Object arg) {
@@ -138,6 +129,7 @@ public class VuePlateau implements Observer, ActionListener {
 					} else {
 						JPanel panelVide = new JPanel();
 						panelVide.setMinimumSize(new Dimension(100, 100));
+						panelVide.setBackground(new Color(204, 153, 102));
 						this.panPlateau.add(panelVide);
 						panelVide.revalidate();
 					}
