@@ -40,11 +40,17 @@ public class Tuile {
 		 * Nécessite une revérification des écritures des tuiles dans la pioche.
 		 */
 	
-	private boolean[] tabPresenceBoutonPosePion;
+	private boolean[] tabPresenceBoutonPosePion; // Ce tableau permet de savoir ou sont les positions possibles d'un pion sur la tuile.
+		/*	Ce schéma est le même que pour représenter la position d'un pion (dans la classe Pion).
+		 * 		11	12	1
+		 * 	10				2
+		 * 	9		0		3
+		 * 	8				4
+		 * 		7	6	5
+		 */
 	
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion pionPlace;
-	// private ArrayList<Tuile> tuileAdjacentes;
 	private int sensTuile;
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
@@ -61,10 +67,7 @@ public class Tuile {
 	 */
 	
 	public Tuile(int num, Terrain [] caracs, boolean [] presenceChamps, boolean [][] connexiteBordure, boolean [][] connexiteChamps, boolean [] tabPresenceBoutonPosePion, int bouclier){
-		// pré-requis : Terrain [5] terre;
-		// boolean [8] presencechamps;
-		// boolean [4][4] connexitébordure;
-		// boolean [8][8] connexitéchamps;
+		// Pré-requis : la structure de chaque paramètre doit être définie comme demandé.
 		this.num = num;
 		this.orientation=0;
 		this.tabCarac=caracs;
@@ -72,9 +75,7 @@ public class Tuile {
 		this.tabConnexitéBordure=connexiteBordure;
 		this.tabConnexitéChamps=connexiteChamps;
 		this.tabPresenceBoutonPosePion = tabPresenceBoutonPosePion;
-		this.bouclier=bouclier;
-		//this.tuileAdjacentes=new ArrayList<Tuile>(4);
-		
+		this.bouclier=bouclier;		
 	}
 	
 	@Override
@@ -132,7 +133,7 @@ public class Tuile {
 	 */
 	
 	public boolean verifPosePionLegale(Evaluation e){
-		//prérequis : aucun
+		//pré-requis : aucun
 		//action : verifier si il y a déja un pion sur la construction.
 		ArrayList<Evaluation> evalPosePion = e.evalPosePion();
 		boolean pasAutrePion = true;
@@ -217,7 +218,8 @@ public class Tuile {
 		champs[7] = this.tabPresenceChamps[5];
 		this.tabPresenceChamps = champs;
 		
-		/* x\y	0	1	2	3
+		/* Rappel : structure de connexitéBordures :
+		 * x\y	0	1	2	3
 		 * 	0	EN 
 		 * 	1	SN 	SE
 		 * 	2	ON 	OE 	OS

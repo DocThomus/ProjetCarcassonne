@@ -1,9 +1,15 @@
 package Noyau;
-public class Pion {
 
+public class Pion {
 	private Joueur proprio; // Propriétaire de la tuile.
-	private int positionSurTuile; // Entier entre 0 et 12 (inclus) : 0 = milieu / 1..12 = position selon le sens horraire (3 = est, 6 = sud, 9 = ouest, 12 = nord).
 	private Tuile tuile; // Tuile sur laquelle est posée le pion.
+	private int positionSurTuile; // Position du pion sur la tuile, en suivant la logique suivante :
+		/* 		11	12	1
+		 * 	10				2
+		 * 	9		0		3
+		 * 	8				4
+		 * 		7	6	5
+		 */	
 	
 	public Pion(Joueur proprio, Tuile tuile, int pos){
 		this.proprio = proprio;
@@ -27,7 +33,4 @@ public class Pion {
 		this.proprio.retirePion(this); 
 		this.tuile.retirePion(); 
 	}
-	
-	
-
 }
