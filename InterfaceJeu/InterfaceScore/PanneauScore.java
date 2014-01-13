@@ -9,13 +9,10 @@ import javax.swing.JPanel;
 import Noyau.Joueur;
 
 public class PanneauScore extends JPanel {
-
 	private static final long serialVersionUID = 13L;
- 	
-	public static int px[] = {90, 10, 10};
+	private final static int px[] = {90, 10, 10};
 	
 	private int nbJoueurs;
-	
 	private JLabel[] etiquettesPions;
 	private JLabel[] etiquettesScores;
 	
