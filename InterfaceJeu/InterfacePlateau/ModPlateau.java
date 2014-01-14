@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import InterfaceHistorique.ContHistorique;
 import InterfacePioche.ContPioche;
 import Noyau.Evaluation;
 import Noyau.Joueur;
@@ -99,7 +98,7 @@ public class ModPlateau extends Observable {
 		return tabtabCouleurPion;
 	}
 	
-	private void setCoordonneesRelCentreTuilePosees(int x, int y) {
+	public void setCoordonneesRelCentreTuilePosees(int x, int y) {
 		this.xRelCentreTuilePosee = x;
 		this.yRelCentreTuilePosee = y;
 	}
@@ -120,21 +119,6 @@ public class ModPlateau extends Observable {
 	
 	public void setEtapePosePion(boolean b) {
 		this.etapePosePion = b;
-	}
-	
-	public boolean poseTuile(int x, int y){
-		if(ContPioche.getTuile().verifPoseTuileLegale(this.plateau, x, y)){
-			ContPioche.getTuile().poseTuile(this.plateau, x, y);
-			this.setCoordonneesRelCentreTuilePosees(x,y);
-			this.etapePosePion = true;
-			this.setEtapePoseTuile(false);
-			this.sendMajToVue();
-			return true;
-		}
-		else {
-			ContHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile comme ceci !");
-			return false;
-		}
 	}
 	
 	private boolean isTuilePoseeDansPlateau() {

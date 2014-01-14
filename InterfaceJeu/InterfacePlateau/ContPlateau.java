@@ -78,10 +78,15 @@ public class ContPlateau {
 		this.xPosRelativeCentre = col + this.xPosPlateau;
 		this.yPosRelativeCentre = -(ligne + this.yPosPlateau);
 		
-		if (this.modele.poseTuile(xPosRelativeCentre, yPosRelativeCentre)) {
+		if (ContPioche.getTuile().verifPoseTuileLegale(this.plateau, xPosRelativeCentre, yPosRelativeCentre)) {
+			ContPioche.getTuile().poseTuile(this.plateau, xPosRelativeCentre, yPosRelativeCentre);
 			ContPioche.setRotation(false);
+			this.modele.setCoordonneesRelCentreTuilePosees(xPosRelativeCentre, yPosRelativeCentre);
+			this.modele.setEtapePosePion(true);
+			this.modele.setEtapePoseTuile(false);
 			ContHistorique.activerBoutonPasser();
 			ContHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a pose une tuile en (" + xPosRelativeCentre + "," + yPosRelativeCentre + ").");
+			this.modele.sendMajToVue();
 		} else {
 			ContHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile ici !");
 		}
