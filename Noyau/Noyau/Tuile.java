@@ -51,7 +51,6 @@ public class Tuile {
 	
 	private int bouclier; // 0 nord, 1 est, 2 sud, 3 ouest, 4 centre, 5 pas de bouclier.
 	private Pion pionPlace;
-	private int sensTuile;
 	private int x; // abscisse de la tuile dans le repére du jeu ( ensemble des tuile posée )
 	private int y; // ordonnée ...
 	
@@ -89,7 +88,7 @@ public class Tuile {
 		Tuile other = (Tuile) obj;
 		if (bouclier != other.bouclier)
 			return false;
-		if (sensTuile != other.sensTuile)
+		if (orientation != other.orientation)
 			return false;
 		if (!Arrays.equals(tabCarac, other.tabCarac))
 			return false;
