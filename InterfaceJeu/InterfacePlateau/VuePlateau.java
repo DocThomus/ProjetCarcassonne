@@ -82,8 +82,6 @@ public class VuePlateau implements Observer, ActionListener {
 	public void update(Observable o, Object arg) {
 		PaquetPlateau pp = (PaquetPlateau) arg;
 		
-		Tuile tuilePosee = ContPioche.getTuile();
-		
 		this.etapePoseTuile = pp.getEtapePoseTuile();
 		this.tabtabImages = pp.getTabTabImages();
 		this.tabtabCasesLibres = pp.getTabTabCasesLibres();
@@ -104,7 +102,6 @@ public class VuePlateau implements Observer, ActionListener {
 					PanneauTuile panTuilePosee = new PanneauTuile(tabtabImages[ligne][col]);
 					
 					for(int i = 0; i < 13; i++) {
-						this.tabBoutonPosePion[i].setTuile(tuilePosee);
 						this.tabBoutonPosePion[i].setVisible(tabPresenceBoutonPosePion[i]);
 					}
 					panTuilePosee.setBoutonsPosePion(this.tabBoutonPosePion, tabPresenceBoutonPosePion);			
@@ -155,8 +152,8 @@ public class VuePlateau implements Observer, ActionListener {
 			this.controleur.poseTuile(lignePosBouton, colPosBouton);
 		} else if(e.getSource().getClass() == BoutonPosePion.class) {	// Bouton Pion
 			int position = ((BoutonPosePion) e.getSource()).getPosition();
-			Tuile tuile = ((BoutonPosePion) e.getSource()).getTuile();
-			this.controleur.posePion(tuile, position);
+			Tuile tuilePosee = ContPioche.getTuile();
+			this.controleur.posePion(tuilePosee, position);
 		}
 	}
 }
