@@ -21,26 +21,6 @@ public class PanneauTuile extends JPanel {
 		this.setMinimumSize(new Dimension(100, 100));
 	}
 	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(this.imageTuile, 0, 0, null);
-		
-		if(this.presencePion) {
-			g.setColor(this.couleurPion);
-			if(this.positionPion == 0) { // Centre
-				g.fillRect(45, 45, 10, 10);
-			} else if(this.positionPion == 12) { // Nord 
-				g.fillRect(45, 5, 10, 10);
-			} else if(this.positionPion == 3) {	// Est
-				g.fillRect(85, 45, 10, 10);
-			} else if(this.positionPion == 6) { // Sud
-				g.fillRect(45, 85, 10, 10);
-			} else if(this.positionPion == 9) { // Ouest
-				g.fillRect(5, 45, 10, 10);
-			}
-		}
-	}
-	
 	public void setPion(boolean presencePion, int positionPion, Color couleurPion) {
 		this.presencePion = presencePion;
 		this.positionPion = positionPion;
@@ -117,5 +97,25 @@ public class PanneauTuile extends JPanel {
 		this.add(tabBoutonPosePion[6]);
 		this.add(panVide43); // panTuilePosee.add(tabBoutonPosePion[5]);
 		this.add(panVide44);
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(this.imageTuile, 0, 0, null);
+		
+		if(this.presencePion) {
+			g.setColor(this.couleurPion);
+			if(this.positionPion == 0) { // Centre
+				g.fillRect(45, 45, 10, 10);
+			} else if(this.positionPion == 12) { // Nord 
+				g.fillRect(45, 5, 10, 10);
+			} else if(this.positionPion == 3) {	// Est
+				g.fillRect(85, 45, 10, 10);
+			} else if(this.positionPion == 6) { // Sud
+				g.fillRect(45, 85, 10, 10);
+			} else if(this.positionPion == 9) { // Ouest
+				g.fillRect(5, 45, 10, 10);
+			}
+		}
 	}
 }
