@@ -16,7 +16,6 @@ public class ModPioche extends Observable {
 		public ModPioche (Plateau plateau){
 			this.pioche= new Pioche();
 			this.plateau= plateau;
-			this.piocher();
 		}
 		
 		public void piocher (){
