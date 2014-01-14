@@ -120,7 +120,7 @@ public class VuePlateau implements Observer, ActionListener {
 						this.panPlateau.add(panTuile);
 						panTuile.revalidate();
 					} else if(this.tabtabCasesLibres[ligne][col] == true) {
-						BoutonTuile boutonPoser = new BoutonTuile("Poser", ligne, col);
+						BoutonPoseTuile boutonPoser = new BoutonPoseTuile("Poser", ligne, col);
 						boutonPoser.setEnabled(this.etapePoseTuile);
 						boutonPoser.setMinimumSize(new Dimension(100, 100));
 						this.panPlateau.add(boutonPoser); // On peut créer sa propre classe qui extends JButton, et qui prend en paramètre les coordonnées du bouton sur le plateau.
@@ -149,9 +149,9 @@ public class VuePlateau implements Observer, ActionListener {
 			this.controleur.decaleGauche();
 		} else if(e.getSource()== boutonDroit){		// Bouton Droit
 			this.controleur.decaleDroite();
-		} else if(e.getSource().getClass() == BoutonTuile.class) {	// Bouton Tuile
-			int colPosBouton = ((BoutonTuile) e.getSource()).getCol();
-			int lignePosBouton = ((BoutonTuile) e.getSource()).getLigne();
+		} else if(e.getSource().getClass() == BoutonPoseTuile.class) {	// Bouton Tuile
+			int colPosBouton = ((BoutonPoseTuile) e.getSource()).getCol();
+			int lignePosBouton = ((BoutonPoseTuile) e.getSource()).getLigne();
 			this.controleur.poseTuile(lignePosBouton, colPosBouton);
 		} else if(e.getSource().getClass() == BoutonPosePion.class) {	// Bouton Pion
 			int position = ((BoutonPosePion) e.getSource()).getPosition();
