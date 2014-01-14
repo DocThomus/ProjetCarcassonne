@@ -24,6 +24,141 @@ public class ModPlateau extends Observable {
 	private boolean etapePosePion;
 	private int xRelCentreTuilePosee;
 	private int yRelCentreTuilePosee;
+
+	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
+		this.plateau = plateau;
+		this.largNbTuiles = largNbTuiles;
+		this.hautNbTuiles = hautNbTuiles;
+		this.xPosPlateau = xPosPlateau;
+		this.yPosPlateau = yPosPlateau;
+		this.etapePoseTuile = true;
+		this.etapePosePion = false;
+	}
+	
+	private Image[][] getTabTabImages() {
+		Image[][] tabtabImages = new Image[hautNbTuiles][largNbTuiles];
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau))); 
+				if (t != null) {
+					tabtabImages[ligne][col] = t.getImageTuile();
+				} 
+			}
+		}
+		return tabtabImages;
+	}
+	
+	private boolean[][] getTabTabCasesLibres() {
+		boolean[][] tabtabCasesLibres = new boolean[hautNbTuiles][largNbTuiles];
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				tabtabCasesLibres[ligne][col] = this.plateau.isCaseLibre((col + this.xPosPlateau), (-(ligne + yPosPlateau))); 
+			}
+		}
+		return tabtabCasesLibres;
+	}
+	
+	public boolean[][] getTabTabPresencePion(){
+		boolean[][] tabtabPresencePion = new boolean[hautNbTuiles][largNbTuiles];
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
+				if (t != null && t.getPionPlacé()!=null) {
+					tabtabPresencePion[ligne][col] = true;
+				} else {
+					tabtabPresencePion[ligne][col] = false;
+				}
+			}
+		}
+		return tabtabPresencePion;
+	}
+	
+	public int [][] getTabTabPositionPion(){
+		int[][] tabtabPositionPion = new int[hautNbTuiles][largNbTuiles];
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
+				if (t != null && t.getPionPlacé()!=null) {
+					tabtabPositionPion[ligne][col]=t.getPionPlacé().getPositionSurTuile();
+				} 
+			}
+		}
+		return tabtabPositionPion;
+	}
+	
+	public  Color[][] getTabTabCouleurPion(){
+		Color[][] tabtabCouleurPion = new Color[hautNbTuiles][largNbTuiles];
+		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
+			for (int col = 0; col < largNbTuiles; col++) {
+				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
+				if (t != null && t.getPionPlacé()!=null) {
+						tabtabCouleurPion[ligne][col]=t.getPionPlacé().getProprio().getCouleur();
+				}
+			}
+		}
+		return tabtabCouleurPion;
+	}
+	
+	private void setCoordonneesRelCentreTuilePosees(int x, int y) {
+		this.xRelCentreTuilePosee = x;
+		this.yRelCentreTuilePosee = y;
+	}
+
+	public void setXPosPlateau(int x){
+		this.xPosPlateau=x;
+		this.sendMajToVue();
+	}
+	
+	public void setYPosPlateau(int y){
+		this.yPosPlateau=y;
+		this.sendMajToVue();
+	}
+	
+	public void setEtapePoseTuile(boolean b) {
+		this.etapePoseTuile = b;
+	}
+	
+	public void setEtapePosePion(boolean b) {
+		this.etapePosePion = b;
+	}
+	
+	public boolean poseTuile(int x, int y){
+		if(ContPioche.getTuile().verifPoseTuileLegale(this.plateau, x, y)){
+			ContPioche.getTuile().poseTuile(this.plateau, x, y);
+			this.setCoordonneesRelCentreTuilePosees(x,y);
+			this.etapePosePion = true;
+			this.setEtapePoseTuile(false);
+			this.sendMajToVue();
+			return true;
+		}
+		else {
+			ContHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile comme ceci !");
+			return false;
+		}
+	}
+	
+	private boolean isTuilePoseeDansPlateau() {
+		int xGauche = xPosPlateau;
+		int yHaut = -yPosPlateau;
+		int xDroite = xGauche + largNbTuiles - 1;
+		int yBas = yHaut - hautNbTuiles + 1;
+		
+		return ((xGauche <= xRelCentreTuilePosee) 	&&	(xRelCentreTuilePosee <= xDroite)
+			&&	(yBas <= yRelCentreTuilePosee)		&&	(yRelCentreTuilePosee <= yHaut)	 );	
+	}
+
+	public void sendMajToVue() {
+		this.setChanged();
+		if (isTuilePoseeDansPlateau() && etapePosePion) {
+			int colTuilePosee = this.xRelCentreTuilePosee - xPosPlateau;
+			int ligneTuilePosee = -(yPosPlateau + this.yRelCentreTuilePosee);
+			Tuile tuilePosee = this.plateau.getTuile((this.xRelCentreTuilePosee), (this.yRelCentreTuilePosee));
+			boolean [] tabPresenceBoutonPosePion = tuilePosee.getTabPresenceBoutonPosePion();
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee, tabPresenceBoutonPosePion, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
+		} else {
+			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1, null, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
+		}		
+	}
 	
 	public void evaluationFinTour(){
 		Tuile tuileposee = ContPioche.getTuile();
@@ -111,142 +246,6 @@ public class ModPlateau extends Observable {
 				}
 			}
 		}
-	}
-
-	public ModPlateau(Plateau plateau, int largNbTuiles, int hautNbTuiles, int xPosPlateau, int yPosPlateau) {
-		this.plateau = plateau;
-		this.largNbTuiles = largNbTuiles;
-		this.hautNbTuiles = hautNbTuiles;
-		this.xPosPlateau = xPosPlateau;
-		this.yPosPlateau = yPosPlateau;
-		this.etapePoseTuile = true;
-		this.etapePosePion = false;
-	}
-	
-	
-	private Image[][] getTabTabImages() {
-		Image[][] tabtabImages = new Image[hautNbTuiles][largNbTuiles];
-		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
-			for (int col = 0; col < largNbTuiles; col++) {
-				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau))); 
-				if (t != null) {
-					tabtabImages[ligne][col] = t.getImageTuile();
-				} 
-			}
-		}
-		return tabtabImages;
-	}
-	
-	private boolean[][] getTabTabCasesLibres() {
-		boolean[][] tabtabCasesLibres = new boolean[hautNbTuiles][largNbTuiles];
-		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
-			for (int col = 0; col < largNbTuiles; col++) {
-				tabtabCasesLibres[ligne][col] = this.plateau.isCaseLibre((col + this.xPosPlateau), (-(ligne + yPosPlateau))); 
-			}
-		}
-		return tabtabCasesLibres;
-	}
-	
-	public boolean[][] getTabTabPresencePion(){
-		boolean[][] tabtabPresencePion = new boolean[hautNbTuiles][largNbTuiles];
-		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
-			for (int col = 0; col < largNbTuiles; col++) {
-				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null && t.getPionPlacé()!=null) {
-					tabtabPresencePion[ligne][col] = true;
-				} else {
-					tabtabPresencePion[ligne][col] = false;
-				}
-			}
-		}
-		return tabtabPresencePion;
-	}
-	
-	public int [][] getTabTabPositionPion(){
-		int[][] tabtabPositionPion = new int[hautNbTuiles][largNbTuiles];
-		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
-			for (int col = 0; col < largNbTuiles; col++) {
-				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null && t.getPionPlacé()!=null) {
-					tabtabPositionPion[ligne][col]=t.getPionPlacé().getPositionSurTuile();
-				} 
-			}
-		}
-		return tabtabPositionPion;
-	}
-	
-	public  Color[][] getTabTabCouleurPion(){
-		Color[][] tabtabCouleurPion = new Color[hautNbTuiles][largNbTuiles];
-		for (int ligne = 0; ligne < hautNbTuiles; ligne++) {
-			for (int col = 0; col < largNbTuiles; col++) {
-				Tuile t = plateau.getTuile((col + this.xPosPlateau), (-(ligne + yPosPlateau)));
-				if (t != null && t.getPionPlacé()!=null) {
-						tabtabCouleurPion[ligne][col]=t.getPionPlacé().getProprio().getCouleur();
-				}
-			}
-		}
-		return tabtabCouleurPion;
-	}
-	
-	public boolean poseTuile(int x, int y){
-		if(ContPioche.getTuile().verifPoseTuileLegale(this.plateau, x, y)){
-			ContPioche.getTuile().poseTuile(this.plateau, x, y);
-			this.setCoordonneesRelCentreTuilePosees(x,y);
-			this.etapePosePion = true;
-			this.setEtapePoseTuile(false);
-			this.sendMajToVue();
-			return true;
-		}
-		else {
-			ContHistorique.ajouterEvenement("Vous ne pouvez poser cette tuile comme ceci !");
-			return false;
-		}
-	}
-	
-	private void setCoordonneesRelCentreTuilePosees(int x, int y) {
-		this.xRelCentreTuilePosee = x;
-		this.yRelCentreTuilePosee = y;
-	}
-	
-	private boolean isTuilePoseeDansPlateau() {
-		int xGauche = xPosPlateau;
-		int yHaut = -yPosPlateau;
-		int xDroite = xGauche + largNbTuiles - 1;
-		int yBas = yHaut - hautNbTuiles + 1;
-		
-		return ((xGauche <= xRelCentreTuilePosee) 	&&	(xRelCentreTuilePosee <= xDroite)
-			&&	(yBas <= yRelCentreTuilePosee)		&&	(yRelCentreTuilePosee <= yHaut)	 );	
-	}
-
-	public void setXPosPlateau(int x){
-		this.xPosPlateau=x;
-		this.sendMajToVue();
-	}
-	
-	public void setYPosPlateau(int y){
-		this.yPosPlateau=y;
-		this.sendMajToVue();
-	}
-
-	public void sendMajToVue() {
-		this.setChanged();
-		if (isTuilePoseeDansPlateau() && etapePosePion) {
-			int colTuilePosee = this.xRelCentreTuilePosee - xPosPlateau;
-			int ligneTuilePosee = -(yPosPlateau + this.yRelCentreTuilePosee);
-			Tuile tuilePosee = this.plateau.getTuile((this.xRelCentreTuilePosee), (this.yRelCentreTuilePosee));
-			boolean [] tabPresenceBoutonPosePion = tuilePosee.getTabPresenceBoutonPosePion();
-			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, true, colTuilePosee, ligneTuilePosee, tabPresenceBoutonPosePion, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
-		} else {
-			this.notifyObservers(new PaquetPlateau(this.getTabTabImages(), this.getTabTabCasesLibres(), this.etapePoseTuile, false, -1, -1, null, this.getTabTabPresencePion(), this.getTabTabPositionPion(), this.getTabTabCouleurPion()));
-		}		
-	}
-	
-	public void setEtapePoseTuile(boolean b) {
-		this.etapePoseTuile = b;
-	}
-	
-	public void setEtapePosePion(boolean b) {
-		this.etapePosePion = b;
 	}
 
 	public void evaluationFinDePartie(){
