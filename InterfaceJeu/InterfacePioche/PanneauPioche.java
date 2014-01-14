@@ -15,13 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Noyau.Tuile;
-
 
 public class PanneauPioche extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 9115548704472911549L;
 	
-	private Image imgTuile;
 	private JButton rotationHoraire;
 	private JButton rotationAntiHoraire;
 	private ContPioche controleur;
@@ -31,8 +28,6 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	
 	public PanneauPioche (ContPioche controleur){
 		this.controleur=controleur;
-		
-		this.imgTuile= Tuile.listImagesTuiles.get(24).get(0);
 		
 		ImageIcon icon = new ImageIcon();
 		try {
@@ -58,7 +53,7 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		panBoutons.add(rotationHoraire);
 		panBoutons.add(rotationAntiHoraire);
 		
-		this.panImage = new JLabel(new ImageIcon(imgTuile));
+		this.panImage = new JLabel(new ImageIcon());
 		this.panImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		JLabel labelNbTuilesConst = new JLabel("Nombre de tuiles restantes : ");
 		labelNbTuilesConst.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -75,7 +70,6 @@ public class PanneauPioche extends JPanel implements ActionListener {
 	}
 	
 	public void maj (Image img,int taille){
-		this.imgTuile=img;
 		this.taillePioche=taille;
 		this.nbTuile.setText(""+this.taillePioche);
 		this.panImage.setIcon(new ImageIcon(img));
