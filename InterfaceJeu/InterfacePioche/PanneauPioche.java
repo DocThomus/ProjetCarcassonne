@@ -80,15 +80,6 @@ public class PanneauPioche extends JPanel implements ActionListener {
 		this.nbTuile.setText(""+this.taillePioche);
 		this.panImage.setIcon(new ImageIcon(img));
 	}
-
-	
-	public JButton getRotationH(){
-		return this.rotationHoraire;
-	}
-	
-	public JButton getRotationAH(){
-		return this.rotationAntiHoraire;
-	}
 	
 	public void setRotation(boolean etat){
 		this.rotationHoraire.setEnabled(etat);
