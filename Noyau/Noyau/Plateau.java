@@ -58,48 +58,6 @@ public class Plateau {
 		return (this.repere[x][y]==null);
 	}
 	
-	public ArrayList<Tuile> getTuileAdjacentes(int x, int y) {
-		// renvoie les tuile adjacente a un point pr�cis pour faire les v�rifications de l�galit�, poser la tuile etc...
-		// si il n'y a pas de tuile en renvoie une Tuile vide plut�t qu'un null pour �viter les probl�mes par la suite
-		ArrayList<Tuile> tAdjacente= new ArrayList<Tuile>(4);
-		
-		
-		if (this.isEmpty(x, y+1)) { // ajoute la uile du haut à tAdjacence
-			tAdjacente.add(0, null);
-		} else {
-			x = x + xCentre;
-			y = y + yCentre;
-			tAdjacente.add(0, this.getTuile(x, y+1));
-		}
-		
-		if (this.isEmpty(x+1, y)) { // ajoute la tuile de droite à tAdjacence
-			tAdjacente.add(1, null);
-		} else {
-			x = x + xCentre;
-			y = y + yCentre;
-			tAdjacente.add(1, this.getTuile(x+1, y));
-		}
-		
-		if (this.isEmpty(x, y-1)) { // ajoute la tuile du bas à tadjacence
-			tAdjacente.add(2, null);
-		}
-		else {
-			x = x + xCentre;
-			y = y + yCentre;
-			tAdjacente.add(2, this.getTuile(x, y-1));
-		}
-		
-		if (this.isEmpty(x-1, y)) {  // ajoute la tuile de gauche à tAdjacence
-			tAdjacente.add(3, null);
-		} else {
-			x = x + xCentre;
-			y = y + yCentre;
-			tAdjacente.add(3, this.getTuile(x-1, y));
-		}
-		
-		return tAdjacente;
-	}
-	
 	public boolean isCaseLibre(int x, int y) {
 		// retourne vrai ssi la case en positon (x,y) est libre, et si elle a au moins un voisin.
 		// On consid�re la taille du plateau suffisemment grande pour ne pas d�passer ses bords.
