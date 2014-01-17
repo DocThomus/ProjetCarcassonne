@@ -588,7 +588,7 @@ public class Pioche {
 		}
 	}
 	
-	public int random() {
+	private int random() {
 		Random r = new Random();
 		return r.nextInt(this.pioche.size()); // Un entier sera choisi entre 0 et la taille de la pioche.
 	}
