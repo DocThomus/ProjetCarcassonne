@@ -21,7 +21,7 @@ public class Pion {
 		return this.proprio;
 	}
 	
-	public Integer getPositionSurTuile() {
+	public int getPositionSurTuile() {
 		return this.positionSurTuile;
 	}
 	
