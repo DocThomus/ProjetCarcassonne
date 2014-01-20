@@ -111,18 +111,14 @@ public class Tuile {
 	 * @param pos : la position à laquelle le joueur veut poser le pion.
 	 */
 	
-	public boolean posePion(Joueur j, int pos){
+	public void posePion(Joueur j, int pos){
 		//pré-requis : la pose du pion est légale
 		//action: pose un pion à la position souhaitée
 		if(j.getTabPions().size()<7){			
 			Pion p = new Pion(j,this,pos);
 			j.getTabPions().add(p);
 			this.pionPlace=p;
-			return true;
-		} else { 
-			return false;
 		}
-		
 	}
 	
 	/**
