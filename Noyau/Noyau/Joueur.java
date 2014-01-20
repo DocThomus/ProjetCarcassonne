@@ -127,4 +127,8 @@ public class Joueur {
 		// Remarque : Possibilité d'utiliser tabPions.contains(p) pour savoir si p appartient vraiment à la liste (normalement oui).
 		this.tabPions.remove(p); 
 	}
+	
+	public boolean nAPlusDePion() {
+		return (this.getNbPions() == 0);
+	}
 }

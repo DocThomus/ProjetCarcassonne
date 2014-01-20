@@ -93,12 +93,16 @@ public class ContPlateau {
 	}
 	
 	public void posePion(Tuile t, int pos) {
-		if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
-			t.posePion(Joueur.getJoueurActif(), pos);
-			ContHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a pose un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
-			this.modele.setEtapePosePion(false);
-			this.modele.sendMajToVue();
-			ContScore.refresh();
-		} 
+		if(!Joueur.getJoueurActif().nAPlusDePion()) {
+			if(t.verifPosePionLegale(new Evaluation(t, this.plateau, pos))) {
+				t.posePion(Joueur.getJoueurActif(), pos);
+				ContHistorique.ajouterEvenement(Joueur.getJoueurActif().getNom() + " a pose un pion en (" + this.xPosRelativeCentre + "," + this.yPosRelativeCentre + ").");
+				this.modele.setEtapePosePion(false);
+				this.modele.sendMajToVue();
+				ContScore.refresh();
+			}
+		} else {
+			ContHistorique.ajouterEvenement("Vous n'avez plus de pion");
+		}
 	}
 }
