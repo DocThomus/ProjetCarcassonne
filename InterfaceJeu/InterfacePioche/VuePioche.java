@@ -18,7 +18,7 @@ public class VuePioche implements Observer {
 	
 	public void update(Observable o, Object arg) {
 		PaquetPioche pp = (PaquetPioche) arg;	
-		this.panPioche.maj(pp.getImageTuile(),pp.getTaillePioche());
+		this.panPioche.maj(pp.getJoueurActuel(), pp.getCouleurJoueurActuel(), pp.getImageTuile(),pp.getTaillePioche());
 	}
 	
 	public void setRotation(boolean etat){

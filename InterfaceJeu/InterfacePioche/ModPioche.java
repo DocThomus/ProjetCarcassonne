@@ -2,6 +2,7 @@ package InterfacePioche;
 
 import java.util.Observable;
 
+import Noyau.Joueur;
 import Noyau.Pioche;
 import Noyau.Plateau;
 import Noyau.Tuile;
@@ -46,7 +47,7 @@ public class ModPioche extends Observable {
 		}
 		
 		public PaquetPioche getImage(){
-			return  new PaquetPioche(Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getOrientation()), this.pioche.getTaillePioche());
+			return  new PaquetPioche(Joueur.getJoueurActif().getNom(), Joueur.getJoueurActif().getCouleur(), Tuile.listImagesTuiles.get(this.t.getNum()).get(this.t.getOrientation()), this.pioche.getTaillePioche());
 		}
 		
 		public boolean isPiocheVide() {

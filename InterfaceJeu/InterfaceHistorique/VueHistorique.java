@@ -78,8 +78,8 @@ public class VueHistorique implements Observer, ActionListener {
 			ContPlateau.evaluationFinTour();
 			ContScore.refresh();
 			if (!ContPioche.isPiocheVide()) {	
-				ContPioche.piocher();
 				Joueur.joueurSuivant();
+				ContPioche.piocher();
 				this.setEtatBoutonPasser(false);
 				ContPioche.setRotation(true);
 				ContHistorique.ajouterEvenement("C'est à " + Joueur.getJoueurActif().getNom() + " de jouer.");
