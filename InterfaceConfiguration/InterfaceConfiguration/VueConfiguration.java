@@ -92,6 +92,21 @@ public class VueConfiguration implements ActionListener {
 		ListeBoutons.add(Box.createGlue());
 		ListeBoutons.add(Bouton6);
 		
+		Bouton1.setVisible(true);
+		Bouton2.setVisible(false);
+		Bouton3.setVisible(false);
+		Bouton4.setVisible(false);
+		Bouton5.setVisible(false);
+		Bouton6.setVisible(false);
+		
+		
+		champ1.setVisible(true);
+		champ2.setVisible(false);
+		champ3.setVisible(false);
+		champ4.setVisible(false);
+		champ5.setVisible(false);
+		champ6.setVisible(false);
+		
 		Titre.add(label1); //on ajoute un titre
 		
 		Jeu.add(Jouer);
@@ -122,12 +137,16 @@ public class VueConfiguration implements ActionListener {
 					this.champ1.setEditable(false);
 					changement=false;
 					this.joueurCree++;
+					Bouton2.setVisible(true);
+					champ2.setVisible(true);
 				}
 			}
 			if(this.Bouton1.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(1);
 				this.Bouton1.setText("OK");
 				this.champ1.setEditable(true);
+				Bouton2.setVisible(false);
+				champ2.setVisible(false);
 				changement=false;
 				this.joueurCree--;
 			}
@@ -142,12 +161,16 @@ public class VueConfiguration implements ActionListener {
 					this.champ2.setEditable(false);
 					changement=false;
 					this.joueurCree++;
+					Bouton3.setVisible(true);
+					champ3.setVisible(true);
 				}
 			}
 			if(this.Bouton2.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(2);
 				this.Bouton2.setText("OK");
 				this.champ2.setEditable(true);
+				Bouton3.setVisible(false);
+				champ3.setVisible(false);
 				changement=false;
 				this.joueurCree--;
 			}
@@ -163,12 +186,16 @@ public class VueConfiguration implements ActionListener {
 					this.champ3.setEditable(false);
 					changement=false;
 					this.joueurCree++;
+					Bouton4.setVisible(true);
+					champ4.setVisible(true);
 				}
 			}
 			if(this.Bouton3.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(3);
 				this.Bouton3.setText("OK");
 				this.champ3.setEditable(true);
+				Bouton4.setVisible(false);
+				champ4.setVisible(false);
 				changement=false;
 				this.joueurCree--;
 			}
@@ -183,12 +210,16 @@ public class VueConfiguration implements ActionListener {
 					this.champ4.setEditable(false);
 					changement=false;
 					this.joueurCree++;
+					Bouton5.setVisible(true);
+					champ5.setVisible(true);
 				}
 			}
 			if(this.Bouton4.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(4);
 				this.Bouton4.setText("OK");
 				this.champ4.setEditable(true);
+				Bouton5.setVisible(false);
+				champ5.setVisible(false);
 				changement=false;
 				this.joueurCree--;
 			}
@@ -203,12 +234,16 @@ public class VueConfiguration implements ActionListener {
 					this.champ5.setEditable(false);
 					changement=false;
 					this.joueurCree++;
+					Bouton6.setVisible(true);
+					champ6.setVisible(true);
 				}
 			}
 			if(this.Bouton5.getText().equals("Annuler") && changement){
 				this.controleur.supprimeJoueur(5);
 				this.Bouton5.setText("OK");
 				this.champ5.setEditable(true);
+				Bouton6.setVisible(false);
+				champ6.setVisible(false);
 				changement=false;
 				this.joueurCree--;
 			}
@@ -243,5 +278,3 @@ public class VueConfiguration implements ActionListener {
 	} 
 }	
 	
-
-
