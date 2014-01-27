@@ -1,5 +1,6 @@
 package InterfaceScoreFin;
 
+import Noyau.Joueur;
 import Principal.ContPrincipal;
 
 public class ControleurScoreFin {
@@ -24,6 +25,7 @@ public class ControleurScoreFin {
     }
     
     public void relancerPartie(){
+    	Joueur.resetListeJoueurs();
     	ContPrincipal.configuration();
     }
 }

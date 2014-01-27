@@ -56,6 +56,10 @@ public class Joueur {
 		
 		return noms;
 	}
+
+	public static void resetListeJoueurs() {
+		listJoueur = new ArrayList<Joueur>();
+	}
 		
 	private String nom; // Nom du joueur (en rapport avec l'interface)
 	private int identifiant; // Identifiant permettant de différencier les joueurs. l'id est la position dans l'arrayList listJoueur.

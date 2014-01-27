@@ -17,6 +17,10 @@ public class ModPioche extends Observable {
 		public ModPioche (Plateau plateau){
 			this.pioche= new Pioche();
 			this.plateau= plateau;
+			
+			for(int i = 0; i < 65; i++) {
+				this.pioche.piocheAleatoire();
+			}
 		}
 		
 		public void piocher (){
